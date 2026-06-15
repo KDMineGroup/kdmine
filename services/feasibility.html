@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Feasibility Studies — KDMine Group</title>
+<style>
+:root{--primary:#0f2d5e;--secondary:#1a56db;--accent:#3b82f6;--gold:#f59e0b;--success:#059669;--teal:#0d9488;--text-dark:#0f172a;--text-mid:#334155;--text-light:#64748b;--bg-light:#f8fafc;--border:#e2e8f0;--s1:0 1px 3px rgba(0,0,0,.07);--s2:0 4px 12px rgba(0,0,0,.10);--s3:0 12px 30px rgba(0,0,0,.12);--s4:0 20px 50px rgba(0,0,0,.15);--r1:8px;--r2:14px;--r3:20px;--tr:all .3s cubic-bezier(.4,0,.2,1)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,sans-serif;line-height:1.7;color:var(--text-dark);background:#fff;overflow-x:hidden}
+img{max-width:100%;display:block}a{text-decoration:none;color:inherit}
+[dir="rtl"] body{font-family:'B Nazanin',Tahoma,Arial,sans-serif}
+.lt{position:fixed;top:20px;right:20px;z-index:1100;background:#fff;padding:8px 16px;border-radius:50px;box-shadow:var(--s2);cursor:pointer;font-weight:700;font-size:.82rem;border:2px solid var(--border);transition:var(--tr);color:var(--primary);display:flex;align-items:center;gap:6px}
+[dir="rtl"] .lt{right:auto;left:20px}
+.stt{position:fixed;bottom:26px;right:26px;z-index:999;width:42px;height:42px;background:var(--secondary);color:#fff;border-radius:50%;border:none;cursor:pointer;font-size:1.1rem;box-shadow:var(--s3);opacity:0;pointer-events:none;transition:var(--tr);display:flex;align-items:center;justify-content:center}
+.stt.vis{opacity:1;pointer-events:all}
+.topbar{background:var(--primary);color:rgba(255,255,255,.8);font-size:.8rem;padding:7px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.topbar a{color:rgba(255,255,255,.8)}.topbar a:hover{color:#fff}.tb-r{display:flex;gap:20px}
+.hdr{background:rgba(255,255,255,.98);backdrop-filter:blur(12px);position:sticky;top:0;z-index:1000;box-shadow:var(--s2);border-bottom:1px solid var(--border)}
+.hdr-in{max-width:1400px;margin:0 auto;padding:13px 40px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.logo{display:flex;align-items:center;gap:13px}.logo img{width:50px;height:50px;border-radius:11px}
+.logo h1{font-size:1.3rem;color:var(--primary);font-weight:800}.logo p{font-size:.72rem;color:var(--text-light);font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.nav{display:flex;gap:4px;align-items:center}
+.nl{color:var(--text-mid);font-weight:600;font-size:.9rem;padding:8px 13px;border-radius:var(--r1);transition:var(--tr)}
+.nl:hover,.nl.active{color:var(--secondary);background:rgba(26,86,219,.06)}
+.nl.dd{padding-right:20px;position:relative}.nl.dd::after{content:"▾";position:absolute;right:7px;top:50%;transform:translateY(-50%);font-size:.65rem}
+.ddw{position:relative}.ddm{position:absolute;top:calc(100% + 8px);left:0;background:#fff;border-radius:var(--r2);min-width:270px;box-shadow:var(--s4);border:1px solid var(--border);opacity:0;visibility:hidden;transform:translateY(-8px);transition:var(--tr);z-index:200}
+.ddw:hover .ddm{opacity:1;visibility:visible;transform:translateY(0)}
+.ddi{display:flex;align-items:center;gap:10px;padding:11px 18px;color:var(--text-mid);font-size:.86rem;font-weight:500;transition:var(--tr)}.ddi:hover{background:var(--bg-light);color:var(--secondary)}.ddi-ic{font-size:1rem;width:20px;text-align:center}
+.bcta{background:linear-gradient(135deg,var(--secondary),#1d4ed8);color:#fff;padding:10px 22px;border-radius:50px;font-weight:700;font-size:.88rem;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(26,86,219,.35);transition:var(--tr);display:inline-flex;align-items:center;gap:7px}
+.bcta:hover{transform:translateY(-2px)}
+.mbt{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:10px}.mbt span{width:24px;height:2.5px;background:var(--text-dark);border-radius:2px;transition:var(--tr)}
+/* HERO */
+.svc-hero{background:linear-gradient(135deg,#071428 0%,#0f2d5e 55%,#1a56db 100%);color:#fff;padding:120px 40px 90px;position:relative;overflow:hidden}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:50px 50px}
+.hero-glow{position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(59,130,246,.18) 0%,transparent 70%);pointer-events:none}
+.svc-hero-in{max-width:1400px;margin:0 auto;position:relative;z-index:1;display:grid;grid-template-columns:1fr 420px;gap:60px;align-items:center}
+.breadcrumb{display:flex;gap:8px;align-items:center;font-size:.82rem;color:rgba(255,255,255,.55);margin-bottom:18px}
+.breadcrumb a{color:rgba(255,255,255,.65)}.breadcrumb a:hover{color:#fff}.breadcrumb span{color:rgba(255,255,255,.35)}
+.hero-stag{display:inline-block;background:rgba(255,255,255,.12);color:rgba(255,255,255,.9);font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:14px}
+.svc-hero h1{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:800;line-height:1.2;margin-bottom:18px}
+.svc-hero h1 span{color:#93c5fd}
+.svc-hero p{font-size:1rem;opacity:.82;line-height:1.8;margin-bottom:28px;max-width:580px}
+.hero-acts{display:flex;gap:12px;flex-wrap:wrap}
+.btn-w{background:#fff;color:var(--primary);padding:13px 26px;border-radius:50px;font-weight:700;font-size:.92rem;border:none;cursor:pointer;transition:var(--tr);display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 16px rgba(0,0,0,.2)}
+.btn-w:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.btn-o{background:transparent;color:#fff;padding:13px 26px;border-radius:50px;font-weight:700;font-size:.92rem;border:1.5px solid rgba(255,255,255,.35);cursor:pointer;transition:var(--tr);display:inline-flex;align-items:center;gap:8px}
+.btn-o:hover{background:rgba(255,255,255,.1)}
+/* HERO CARD */
+.hero-card{background:rgba(255,255,255,.07);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.12);border-radius:var(--r3);padding:28px;display:flex;flex-direction:column;gap:16px}
+.hc-title{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:rgba(255,255,255,.55);margin-bottom:4px}
+.hc-stat{display:flex;align-items:center;gap:12px;padding:12px;background:rgba(255,255,255,.06);border-radius:var(--r1);border:1px solid rgba(255,255,255,.08)}
+.hc-ic{width:38px;height:38px;border-radius:var(--r1);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.hc-n{font-size:1.3rem;font-weight:800;color:#fff}.hc-l{font-size:.72rem;color:rgba(255,255,255,.55)}
+.hc-divider{height:1px;background:rgba(255,255,255,.1)}
+.hc-tags{display:flex;flex-wrap:wrap;gap:6px}
+.hc-tag{font-size:.68rem;font-weight:700;padding:3px 10px;border-radius:50px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.12)}
+/* AACE CLASSES */
+.aace-sec{padding:80px 40px;background:var(--bg-light)}
+.aace-in{max-width:1400px;margin:0 auto}
+.sec-hdr{text-align:center;margin-bottom:52px}
+.sec-hdr .stag{display:inline-block;background:rgba(26,86,219,.08);color:var(--secondary);font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:12px}
+.sec-hdr h2{font-size:clamp(1.7rem,3.5vw,2.6rem);font-weight:800;color:var(--primary);margin-bottom:12px}
+.sec-hdr p{font-size:.96rem;color:var(--text-light);max-width:680px;margin:0 auto}
+.aace-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.aace-card{background:#fff;border-radius:var(--r2);padding:22px 18px;border:2px solid var(--border);transition:var(--tr);position:relative;overflow:hidden;cursor:default}
+.aace-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--ac-color,var(--secondary))}
+.aace-card:hover{transform:translateY(-4px);box-shadow:var(--s3);border-color:transparent}
+.ac-class{font-size:1.8rem;font-weight:900;color:var(--ac-color,var(--secondary));margin-bottom:4px}
+.ac-name{font-size:.78rem;font-weight:800;color:var(--text-dark);margin-bottom:8px;text-transform:uppercase;letter-spacing:.4px}
+.ac-acc{display:inline-block;background:var(--bg-light);border:1px solid var(--border);border-radius:50px;font-size:.7rem;font-weight:700;padding:2px 10px;color:var(--text-mid);margin-bottom:12px}
+.ac-eng{font-size:.72rem;color:var(--text-light);margin-bottom:12px}
+.ac-desc{font-size:.82rem;color:var(--text-mid);line-height:1.65}
+.ac-use{margin-top:10px;font-size:.75rem;font-weight:700;color:var(--ac-color,var(--secondary))}
+/* PROCESS SECTION */
+.process-sec{padding:88px 40px;background:#fff}
+.process-in{max-width:1400px;margin:0 auto}
+.process-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.process-steps{display:flex;flex-direction:column;gap:0}
+.ps{display:flex;gap:20px;padding:22px 0;border-bottom:1px solid var(--border);position:relative;cursor:pointer;transition:var(--tr)}
+.ps:last-child{border-bottom:none}
+.ps:hover .ps-body{opacity:1}
+.ps-num{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--secondary),var(--accent));color:#fff;font-size:.88rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px rgba(26,86,219,.3)}
+.ps-content{flex:1}
+.ps-title{font-size:.96rem;font-weight:800;color:var(--text-dark);margin-bottom:4px}
+.ps-sub{font-size:.78rem;color:var(--text-light);font-weight:600;margin-bottom:6px}
+.ps-body{font-size:.84rem;color:var(--text-mid);line-height:1.7}
+.ps-dur{font-size:.72rem;font-weight:700;color:var(--secondary);background:rgba(26,86,219,.07);padding:2px 10px;border-radius:50px;display:inline-block;margin-top:6px}
+.process-img{border-radius:var(--r3);overflow:hidden;box-shadow:var(--s4);position:relative}
+.process-img img{width:100%;height:480px;object-fit:cover}
+.process-img-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,45,94,.7) 0%,transparent 50%)}
+.process-img-caption{position:absolute;bottom:24px;left:24px;right:24px;color:#fff}
+.process-img-caption h3{font-size:1.1rem;font-weight:800;margin-bottom:4px}
+.process-img-caption p{font-size:.8rem;opacity:.8}
+/* DELIVERABLES */
+.deliv-sec{padding:80px 40px;background:var(--bg-light)}
+.deliv-in{max-width:1400px;margin:0 auto}
+.deliv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.dcard{background:#fff;border-radius:var(--r2);padding:28px;border:1px solid var(--border);box-shadow:var(--s1);transition:var(--tr)}
+.dcard:hover{transform:translateY(-4px);box-shadow:var(--s3);border-color:transparent}
+.dcard-ic{width:52px;height:52px;border-radius:var(--r1);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:16px}
+.dcard h3{font-size:1rem;font-weight:800;color:var(--text-dark);margin-bottom:8px}
+.dcard p{font-size:.84rem;color:var(--text-light);line-height:1.7;margin-bottom:14px}
+.dcard ul{padding-left:16px}
+.dcard ul li{font-size:.82rem;color:var(--text-mid);line-height:1.7;margin-bottom:3px}
+/* COMMODITIES */
+.comm-sec{padding:80px 40px;background:#fff}
+.comm-in{max-width:1400px;margin:0 auto}
+.comm-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.ccard{border-radius:var(--r2);padding:24px;border:1px solid var(--border);transition:var(--tr);position:relative;overflow:hidden;cursor:default}
+.ccard::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--cc-color)}
+.ccard:hover{transform:translateY(-4px);box-shadow:var(--s3)}
+.cc-ic{font-size:2rem;margin-bottom:12px}
+.cc-name{font-size:1rem;font-weight:800;color:var(--text-dark);margin-bottom:6px}
+.cc-count{font-size:.72rem;font-weight:700;color:var(--text-light);background:var(--bg-light);padding:2px 10px;border-radius:50px;border:1px solid var(--border);display:inline-block;margin-bottom:10px}
+.cc-list{font-size:.8rem;color:var(--text-mid);line-height:1.75}
+/* CASE STUDIES */
+.cs-sec{padding:80px 40px;background:var(--bg-light)}
+.cs-in{max-width:1400px;margin:0 auto}
+.cs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.cscard{background:#fff;border-radius:var(--r2);overflow:hidden;border:1px solid var(--border);box-shadow:var(--s1);transition:var(--tr)}
+.cscard:hover{transform:translateY(-5px);box-shadow:var(--s3);border-color:transparent}
+.cscard-img{height:180px;overflow:hidden;position:relative}
+.cscard-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.cscard:hover .cscard-img img{transform:scale(1.06)}
+.cscard-body{padding:22px}
+.cscard-meta{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.cscard-tag{font-size:.65rem;font-weight:700;padding:3px 9px;border-radius:50px;color:#fff}
+.cscard h3{font-size:.96rem;font-weight:800;color:var(--text-dark);margin-bottom:8px;line-height:1.4}
+.cscard-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.ck{background:var(--bg-light);border-radius:var(--r1);padding:8px;text-align:center;border:1px solid var(--border)}
+.ck-v{font-size:.88rem;font-weight:800;color:var(--primary)}.ck-l{font-size:.62rem;color:var(--text-light)}
+.cscard-lnk{color:var(--secondary);font-weight:700;font-size:.82rem;display:inline-flex;align-items:center;gap:5px;transition:var(--tr)}
+.cscard-lnk:hover{gap:9px}
+/* TEAM */
+.team-sec{padding:80px 40px;background:#fff}
+.team-in{max-width:1400px;margin:0 auto}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.tcard{background:#fff;border-radius:var(--r2);padding:24px;border:1px solid var(--border);box-shadow:var(--s1);text-align:center;transition:var(--tr)}
+.tcard:hover{transform:translateY(-4px);box-shadow:var(--s3)}
+.tcard-av{width:72px;height:72px;border-radius:50%;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;font-weight:800;color:#fff}
+.tcard h3{font-size:.96rem;font-weight:800;color:var(--text-dark);margin-bottom:4px}
+.tcard-role{font-size:.78rem;color:var(--secondary);font-weight:700;margin-bottom:8px}
+.tcard-quals{font-size:.76rem;color:var(--text-light);line-height:1.65;margin-bottom:12px}
+.tcard-tags{display:flex;flex-wrap:wrap;gap:5px;justify-content:center}
+.tcard-tag{font-size:.65rem;font-weight:600;padding:2px 8px;border-radius:50px;background:var(--bg-light);border:1px solid var(--border);color:var(--text-mid)}
+/* FAQ */
+.faq-sec{padding:80px 40px;background:var(--bg-light)}
+.faq-in{max-width:900px;margin:0 auto}
+.faq-list{display:flex;flex-direction:column;gap:10px;margin-top:40px}
+.faq-item{background:#fff;border-radius:var(--r2);border:1px solid var(--border);overflow:hidden;transition:var(--tr)}
+.faq-item.open{box-shadow:var(--s2)}
+.faq-q{padding:18px 22px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-weight:700;font-size:.94rem;color:var(--text-dark);gap:12px}
+.faq-q:hover{color:var(--secondary)}
+.faq-ic{width:28px;height:28px;border-radius:50%;background:var(--bg-light);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.8rem;flex-shrink:0;transition:var(--tr)}
+.faq-item.open .faq-ic{background:var(--secondary);color:#fff;border-color:var(--secondary);transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;padding:0 22px;font-size:.88rem;color:var(--text-mid);line-height:1.8}
+.faq-item.open .faq-a{max-height:400px;padding:0 22px 18px}
+/* CTA */
+.cta-sec{padding:100px 40px;background:linear-gradient(135deg,#071428,#0f2d5e,#1a56db);color:#fff;text-align:center;position:relative;overflow:hidden}
+.cta-sec::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:50px 50px}
+.cta-in{max-width:700px;margin:0 auto;position:relative;z-index:1}
+.cta-sec h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;margin-bottom:14px}
+.cta-sec p{font-size:.98rem;opacity:.8;margin-bottom:36px;line-height:1.75}
+.cta-acts{display:flex;gap:13px;justify-content:center;flex-wrap:wrap}
+.bcp{background:#fff;color:var(--primary);padding:14px 30px;border-radius:50px;font-weight:700;font-size:.96rem;border:none;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.25);transition:var(--tr);display:inline-flex;align-items:center;gap:8px}
+.bcp:hover{transform:translateY(-3px)}
+.bco{background:transparent;color:#fff;padding:14px 30px;border-radius:50px;font-weight:700;font-size:.96rem;border:1.5px solid rgba(255,255,255,.35);cursor:pointer;transition:var(--tr);display:inline-flex;align-items:center;gap:8px}
+.bco:hover{background:rgba(255,255,255,.1)}
+/* FOOTER */
+.footer{background:#0a1628;color:#fff;padding:68px 40px 26px}
+.footer-in{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:36px;margin-bottom:46px}
+.fb-desc{font-size:.84rem;color:rgba(255,255,255,.5);line-height:1.75;margin-top:13px;margin-bottom:17px}
+.fb-socs{display:flex;gap:8px}
+.fb-s{width:34px;height:34px;background:rgba(255,255,255,.08);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.86rem;transition:var(--tr);color:rgba(255,255,255,.52)}.fb-s:hover{background:var(--secondary);color:#fff}
+.fc h4{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.45);margin-bottom:15px}
+.fc a{display:block;color:rgba(255,255,255,.66);font-size:.84rem;padding:4px 0;transition:var(--tr)}.fc a:hover{color:#fff}
+.footer-bot{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding-top:22px;border-top:1px solid rgba(255,255,255,.08);font-size:.78rem;color:rgba(255,255,255,.36);flex-wrap:wrap;gap:10px}
+.fb-lnks{display:flex;gap:18px}.fb-lnks a{color:rgba(255,255,255,.36)}.fb-lnks a:hover{color:rgba(255,255,255,.75)}
+@media(max-width:1100px){.svc-hero-in{grid-template-columns:1fr}.hero-card{display:none}.aace-grid{grid-template-columns:repeat(3,1fr)}.process-grid{grid-template-columns:1fr}.comm-grid{grid-template-columns:repeat(2,1fr)}.team-grid{grid-template-columns:repeat(2,1fr)}.footer-in{grid-template-columns:1fr 1fr 1fr}}
+@media(max-width:768px){.topbar{display:none}.mbt{display:flex}.nav{position:fixed;top:78px;right:-100%;width:80%;max-width:290px;height:calc(100vh - 78px);background:#fff;flex-direction:column;padding:28px;box-shadow:var(--s4);transition:right .3s ease;align-items:flex-start;overflow-y:auto;z-index:999}.nav.open{right:0}.ddm{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:none;background:var(--bg-light);margin-top:5px}.svc-hero,.aace-sec,.process-sec,.deliv-sec,.comm-sec,.cs-sec,.team-sec,.faq-sec,.cta-sec,.footer{padding-left:22px;padding-right:22px}.aace-grid{grid-template-columns:1fr 1fr}.deliv-grid,.cs-grid{grid-template-columns:1fr}.comm-grid{grid-template-columns:1fr 1fr}.team-grid{grid-template-columns:1fr 1fr}.footer-in{grid-template-columns:1fr 1fr}.footer-bot{flex-direction:column;text-align:center}.hdr-in{padding:13px 20px}}
+</style>
+</head>
+<body>
+<button class="lt" onclick="tgLang()">🌐 <span id="lt-txt">FA | فارسی</span></button>
+<button class="stt" id="sttBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<div class="topbar">
+  <div>📧 info@kdmine.com &nbsp;|&nbsp; 📞 +98 21 1234 5678 &nbsp;|&nbsp; 🕐 Sat–Wed 08:00–18:00 IRST</div>
+  <div class="tb-r"><a href="../register.html">🔐 Client Login</a><a href="../register.html">📊 Dashboard</a></div>
+</div>
+
+<header class="hdr">
+  <div class="hdr-in">
+    <div class="logo">
+      <img src="https://cdn.grapesjs.com/workspaces/cmgvbwak408ja13nsemkia83b/assets/7e057c43-5d96-4c3a-a8fc-8bd5f6589a93__kavianpremiumbadgelogo.svg" alt="KDMine">
+      <div><h1 data-en="KDMine Group" data-fa="کاویان توسعه معدن">KDMine Group</h1><p data-en="Mining Engineering & Economics" data-fa="مهندسی و اقتصاد معدن">Mining Engineering & Economics</p></div>
+    </div>
+    <button class="mbt" onclick="tgMenu()"><span></span><span></span><span></span></button>
+    <nav class="nav" id="mainNav">
+      <div class="ddw"><a href="../index.html#services" class="nl dd active" data-en="Services" data-fa="خدمات">Services</a>
+        <div class="ddm">
+          <a href="feasibility.html" class="ddi" style="color:var(--secondary);background:var(--bg-light)"><span class="ddi-ic">📋</span><span>Feasibility Studies</span></a>
+          <a href="cost-estimation.html" class="ddi"><span class="ddi-ic">💰</span><span>CAPEX/OPEX Estimation</span></a>
+          <a href="plant-design.html" class="ddi"><span class="ddi-ic">🏭</span><span>Process Plant Design</span></a>
+          <a href="critical-minerals.html" class="ddi"><span class="ddi-ic">⚡</span><span>Critical Minerals</span></a>
+          <a href="esg-decarbonization.html" class="ddi"><span class="ddi-ic">🌱</span><span>ESG & Decarbonization</span></a>
+          <a href="digital-mining.html" class="ddi"><span class="ddi-ic">🤖</span><span>Digital Mining & AI</span></a>
+        </div>
+      </div>
+      <div class="ddw"><a href="../index.html#tools" class="nl dd" data-en="Tools" data-fa="ابزارها">Tools</a>
+        <div class="ddm">
+          <a href="../tools/cost-calculator.html" class="ddi"><span class="ddi-ic">🧮</span><span>Cost Calculator</span></a>
+          <a href="../tools/equipment-database.html" class="ddi"><span class="ddi-ic">🗃️</span><span>Equipment Database</span></a>
+          <a href="../tools/monte-carlo.html" class="ddi"><span class="ddi-ic">📉</span><span>Monte Carlo Simulator</span></a>
+          <a href="../tools/market-dashboard.html" class="ddi"><span class="ddi-ic">🌍</span><span>Market Dashboard</span></a>
+        </div>
+      </div>
+      <a href="../resources.html" class="nl" data-en="Resources" data-fa="منابع">Resources</a>
+      <a href="../portfolio.html" class="nl" data-en="Portfolio" data-fa="نمونه کارها">Portfolio</a>
+      <a href="../about.html" class="nl" data-en="About" data-fa="درباره ما">About</a>
+      <a href="../contact.html" class="nl" data-en="Contact" data-fa="تماس">Contact</a>
+      <a href="../register.html" class="bcta" data-en="Get Started →" data-fa="شروع کنید ←">Get Started →</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ═══ HERO ═══ -->
+<section class="svc-hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="svc-hero-in">
+    <div>
+      <div class="breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="../index.html#services">Services</a><span>/</span><span>Feasibility Studies</span></div>
+      <div class="hero-stag" data-en="AACE Class 1–5 | NI 43-101 | JORC" data-fa="AACE کلاس ۱–۵ | NI 43-101 | JORC">AACE Class 1–5 | NI 43-101 | JORC</div>
+      <h1 data-en="Bankable <span>Feasibility Studies</span> for Global Mining Projects" data-fa="مطالعات امکان‌سنجی <span>بانکی</span> برای پروژه‌های معدنی جهانی">Bankable <span>Feasibility Studies</span> for Global Mining Projects</h1>
+      <p data-en="From scoping to bankable feasibility — KDMine Group delivers AACE-compliant, NI 43-101 and JORC-ready feasibility studies that secure financing, satisfy regulators, and de-risk investment decisions for open pit, underground, and processing projects worldwide." data-fa="از مطالعه اولیه تا امکان‌سنجی بانکی — KDMine Group مطالعات امکان‌سنجی منطبق با AACE، آماده برای NI 43-101 و JORC ارائه می‌دهد که تأمین مالی را تضمین می‌کند، نظارت‌کنندگان را راضی می‌کند و تصمیمات سرمایه‌گذاری را برای پروژه‌های معدن روباز، زیرزمینی و فرآوری در سراسر جهان کاهش ریسک می‌دهد.">From scoping to bankable feasibility — KDMine Group delivers AACE-compliant, NI 43-101 and JORC-ready feasibility studies that secure financing, satisfy regulators, and de-risk investment decisions for open pit, underground, and processing projects worldwide.</p>
+      <div class="hero-acts">
+        <a href="../contact.html" class="btn-w">📋 <span data-en="Request a Proposal →" data-fa="درخواست پیشنهاد ←">Request a Proposal →</span></a>
+        <a href="../resources.html" class="btn-o">📥 <span data-en="Download BoE Template" data-fa="دانلود قالب BoE">Download BoE Template</span></a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hc-title" data-en="KDMine Feasibility Track Record" data-fa="سابقه امکان‌سنجی KDMine">KDMine Feasibility Track Record</div>
+      <div class="hc-stat"><div class="hc-ic" style="background:rgba(59,130,246,.15)">📋</div><div><div class="hc-n">68</div><div class="hc-l" data-en="Feasibility Studies Completed" data-fa="مطالعات امکان‌سنجی تکمیل‌شده">Feasibility Studies Completed</div></div></div>
+      <div class="hc-stat"><div class="hc-ic" style="background:rgba(5,150,105,.15)">💰</div><div><div class="hc-n">$42B</div><div class="hc-l" data-en="Total Project Value Studied" data-fa="ارزش کل پروژه مطالعه‌شده">Total Project Value Studied</div></div></div>
+      <div class="hc-stat"><div class="hc-ic" style="background:rgba(245,158,11,.15)">🌍</div><div><div class="hc-n">24</div><div class="hc-l" data-en="Countries & Jurisdictions" data-fa="کشورها و حوزه‌های قضایی">Countries & Jurisdictions</div></div></div>
+      <div class="hc-stat"><div class="hc-ic" style="background:rgba(124,58,237,.15)">✅</div><div><div class="hc-n">100%</div><div class="hc-l" data-en="AACE 47R-11 Compliance Rate" data-fa="نرخ انطباق AACE 47R-11">AACE 47R-11 Compliance Rate</div></div></div>
+      <div class="hc-divider"></div>
+      <div class="hc-tags">
+        <span class="hc-tag">NI 43-101</span><span class="hc-tag">JORC</span><span class="hc-tag">AACE Class 3</span>
+        <span class="hc-tag">Open Pit</span><span class="hc-tag">Underground</span><span class="hc-tag">HPAL</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ AACE CLASSES ═══ -->
+<section class="aace-sec">
+  <div class="aace-in">
+    <div class="sec-hdr">
+      <div class="stag" data-en="AACE 47R-11 Framework" data-fa="چارچوب AACE 47R-11">AACE 47R-11 Framework</div>
+      <h2 data-en="Which Estimate Class Does Your Project Need?" data-fa="پروژه شما به کدام کلاس تخمین نیاز دارد؟">Which Estimate Class Does Your Project Need?</h2>
+      <p data-en="KDMine delivers all five AACE estimate classes. We match the right class to your project stage — preventing costly over-engineering at early stages and under-engineering at decision gates." data-fa="KDMine تمام پنج کلاس تخمین AACE را ارائه می‌دهد. ما کلاس مناسب را با مرحله پروژه شما تطبیق می‌دهیم — از مهندسی بیش از حد پرهزینه در مراحل اولیه و مهندسی ناکافی در دروازه‌های تصمیم‌گیری جلوگیری می‌کنیم.">KDMine delivers all five AACE estimate classes. We match the right class to your project stage — preventing costly over-engineering at early stages and under-engineering at decision gates.</p>
+    </div>
+    <div class="aace-grid">
+      <div class="aace-card" style="--ac-color:#94a3b8">
+        <div class="ac-class">5</div>
+        <div class="ac-name" data-en="Order of Magnitude" data-fa="مرتبه بزرگی">Order of Magnitude</div>
+        <div class="ac-acc">±50%</div>
+        <div class="ac-eng" data-en="0–2% Engineering" data-fa="۰–۲٪ مهندسی">0–2% Engineering</div>
+        <div class="ac-desc" data-en="Concept screening and portfolio prioritisation. Factored from historical data and analogous projects. Suitable for early exploration decisions." data-fa="غربالگری مفهوم و اولویت‌بندی پورتفولیو. فاکتورشده از داده‌های تاریخی و پروژه‌های مشابه. مناسب برای تصمیمات اکتشاف اولیه.">Concept screening and portfolio prioritisation. Factored from historical data and analogous projects. Suitable for early exploration decisions.</div>
+        <div class="ac-use" data-en="→ Exploration / Concept" data-fa="→ اکتشاف / مفهوم">→ Exploration / Concept</div>
+      </div>
+      <div class="aace-card" style="--ac-color:#3b82f6">
+        <div class="ac-class">4</div>
+        <div class="ac-name" data-en="Pre-Feasibility" data-fa="پیش‌امکان‌سنجی">Pre-Feasibility</div>
+        <div class="ac-acc">±30%</div>
+        <div class="ac-eng" data-en="1–15% Engineering" data-fa="۱–۱۵٪ مهندسی">1–15% Engineering</div>
+        <div class="ac-desc" data-en="Technical option selection and concept comparison. Equipment sizing from process design criteria. Used to select the preferred development option." data-fa="انتخاب گزینه فنی و مقایسه مفهوم. اندازه‌گیری تجهیزات از معیارهای طراحی فرآیند. برای انتخاب گزینه توسعه ترجیحی استفاده می‌شود.">Technical option selection and concept comparison. Equipment sizing from process design criteria. Used to select the preferred development option.</div>
+        <div class="ac-use" data-en="→ Pre-Feasibility Study" data-fa="→ مطالعه پیش‌امکان‌سنجی">→ Pre-Feasibility Study</div>
+      </div>
+      <div class="aace-card" style="--ac-color:#1a56db;box-shadow:0 8px 24px rgba(26,86,219,.15)">
+        <div class="ac-class" style="font-size:2.2rem">3</div>
+        <div class="ac-name" data-en="Bankable Feasibility" data-fa="امکان‌سنجی بانکی">Bankable Feasibility</div>
+        <div class="ac-acc" style="background:rgba(26,86,219,.08);border-color:rgba(26,86,219,.2);color:var(--secondary)">±20%</div>
+        <div class="ac-eng" data-en="10–40% Engineering" data-fa="۱۰–۴۰٪ مهندسی">10–40% Engineering</div>
+        <div class="ac-desc" data-en="The gold standard for project financing. Required for NI 43-101 and JORC filings. Includes detailed equipment lists, vendor quotes, and site-specific data." data-fa="استاندارد طلایی برای تأمین مالی پروژه. مورد نیاز برای ثبت‌های NI 43-101 و JORC. شامل لیست‌های تجهیزات دقیق، نقل‌قول‌های فروشنده و داده‌های خاص سایت.">The gold standard for project financing. Required for NI 43-101 and JORC filings. Includes detailed equipment lists, vendor quotes, and site-specific data.</div>
+        <div class="ac-use" data-en="→ Bankable FS / Financing" data-fa="→ FS بانکی / تأمین مالی">→ Bankable FS / Financing</div>
+      </div>
+      <div class="aace-card" style="--ac-color:#059669">
+        <div class="ac-class">2</div>
+        <div class="ac-name" data-en="Definitive Estimate" data-fa="تخمین قطعی">Definitive Estimate</div>
+        <div class="ac-acc">±15%</div>
+        <div class="ac-eng" data-en="30–70% Engineering" data-fa="۳۰–۷۰٪ مهندسی">30–70% Engineering</div>
+        <div class="ac-desc" data-en="Detailed engineering with major vendor quotes. Used for EPC contract award preparation and project budget control. Requires substantial engineering completion." data-fa="مهندسی دقیق با نقل‌قول‌های فروشنده اصلی. برای آماده‌سازی اعطای قرارداد EPC و کنترل بودجه پروژه استفاده می‌شود.">Detailed engineering with major vendor quotes. Used for EPC contract award preparation and project budget control. Requires substantial engineering completion.</div>
+        <div class="ac-use" data-en="→ EPC Preparation" data-fa="→ آماده‌سازی EPC">→ EPC Preparation</div>
+      </div>
+      <div class="aace-card" style="--ac-color:#d97706">
+        <div class="ac-class">1</div>
+        <div class="ac-name" data-en="Check Estimate" data-fa="تخمین کنترلی">Check Estimate</div>
+        <div class="ac-acc">±10%</div>
+        <div class="ac-eng" data-en="65–100% Engineering" data-fa="۶۵–۱۰۰٪ مهندسی">65–100% Engineering</div>
+        <div class="ac-desc" data-en="Full detailed engineering with firm vendor quotes. Used for construction budget control and change order management. The most accurate and expensive estimate class." data-fa="مهندسی دقیق کامل با نقل‌قول‌های قطعی فروشنده. برای کنترل بودجه ساخت و مدیریت دستور تغییر استفاده می‌شود.">Full detailed engineering with firm vendor quotes. Used for construction budget control and change order management. The most accurate and expensive estimate class.</div>
+        <div class="ac-use" data-en="→ Construction Control" data-fa="→ کنترل ساخت">→ Construction Control</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROCESS ═══ -->
+<section class="process-sec">
+  <div class="process-in">
+    <div class="sec-hdr">
+      <div class="stag" data-en="Our Methodology" data-fa="روش‌شناسی ما">Our Methodology</div>
+      <h2 data-en="How We Deliver a Bankable Feasibility Study" data-fa="چگونه یک مطالعه امکان‌سنجی بانکی ارائه می‌دهیم">How We Deliver a Bankable Feasibility Study</h2>
+      <p data-en="Our 8-phase feasibility methodology is designed to produce a study that withstands lender due diligence, regulatory review, and independent technical audit." data-fa="روش‌شناسی امکان‌سنجی ۸ مرحله‌ای ما برای تولید مطالعه‌ای طراحی شده که بررسی دقیق وام‌دهنده، بررسی نظارتی و ممیزی فنی مستقل را تحمل می‌کند.">Our 8-phase feasibility methodology is designed to produce a study that withstands lender due diligence, regulatory review, and independent technical audit.</p>
+    </div>
+    <div class="process-grid">
+      <div class="process-steps">
+        <div class="ps">
+          <div class="ps-num">1</div>
+          <div class="ps-content">
+            <div class="ps-title" data-en="Scope Definition & BoE" data-fa="تعریف محدوده و BoE">Scope Definition & BoE</div>
+            <div class="ps-sub" data-en="Basis of Estimate Document" data-fa="سند مبنای تخمین">Basis of Estimate Document</div>
+            <div class="ps-body" data-en="Define study scope, inclusions/exclusions, pricing basis, and AACE class. Establish the Basis of Estimate (BoE) document — the contractual foundation of the study." data-fa="محدوده مطالعه، موارد شامل/مستثنی، مبنای قیمت‌گذاری و کلاس AACE را تعریف کنید. سند مبنای تخمین (BoE) را ایجاد کنید — پایه قراردادی مطالعه.">Define study scope, inclusions/exclusions, pricing basis, and AACE class. Establish the Basis of Estimate (BoE) document — the contractual foundation of the study.</div>
+            <span class="ps-dur">2–3 weeks</span>
+          </div>
+        </div>
+        <div class="ps">
+          <div class="ps-num">2</div>
+          <div class="ps-content">
+            <div class="ps-title" data-en="Geology & Resource Model" data-fa="زمین‌شناسی و مدل منابع">Geology & Resource Model</div>
+            <div class="ps-sub" data-en="NI 43-101 / JORC Compliant" data-fa="منطبق با NI 43-101 / JORC">NI 43-101 / JORC Compliant</div>
+            <div class="ps-body" data-en="Review and validate the geological resource model. Confirm resource/reserve classification under NI 43-101 or JORC. Establish the LOM production schedule basis." data-fa="مدل منابع زمین‌شناختی را بررسی و اعتبارسنجی کنید. طبقه‌بندی منابع/ذخایر را تحت NI 43-101 یا JORC تأیید کنید. مبنای برنامه تولید LOM را ایجاد کنید.">Review and validate the geological resource model. Confirm resource/reserve classification under NI 43-101 or JORC. Establish the LOM production schedule basis.</div>
+            <span class="ps-dur">4–6 weeks</span>
+          </div>
+        </div>
+        <div class="ps">
+          <div class="ps-num">3</div>
+          <div class="ps-content">
+            <div class="ps-title" data-en="Mining Engineering & LOM Schedule" data-fa="مهندسی معدن و برنامه LOM">Mining Engineering & LOM Schedule</div>
+            <div class="ps-sub" data-en="Pit Design, Fleet Sizing, Schedule" data-fa="طراحی پیت، اندازه‌گیری ناوگان، برنامه‌ریزی">Pit Design, Fleet Sizing, Schedule</div>
+            <div class="ps-body" data-en="Optimised pit design (Whittle/Pseudoflow), mine scheduling (LOM), haul truck and drill fleet sizing, waste dump design, and geotechnical slope analysis." data-fa="طراحی پیت بهینه‌شده (Whittle/Pseudoflow)، زمان‌بندی معدن (LOM)، اندازه‌گیری ناوگان کامیون حمل و حفاری، طراحی دامپ باطله و تحلیل شیب ژئوتکنیکی.">Optimised pit design (Whittle/Pseudoflow), mine scheduling (LOM), haul truck and drill fleet sizing, waste dump design, and geotechnical slope analysis.</div>
+            <span class="ps-dur">6–10 weeks</span>
+          </div>
+        </div>
+        <div class="ps">
+          <div class="ps-num">4</div>
+          <div class="ps-content">
+            <div class="ps-title" data-en="Metallurgy & Process Design" data-fa="متالورژی و طراحی فرآیند">Metallurgy & Process Design</div>
+            <div class="ps-sub" data-en="Flowsheet, Mass Balance, Equipment Sizing" data-fa="فلوشیت، تراز جرمی، اندازه‌گیری تجهیزات">Flowsheet, Mass Balance, Equipment Sizing</div>
+            <div class="ps-body" data-en="Process flowsheet development, mass balance, equipment sizing (SAG/ball mills, flotation, leach, SX-EW), reagent consumption, and water balance." data-fa="توسعه فلوشیت فرآیند، تراز جرمی، اندازه‌گیری تجهیزات (SAG/آسیاب گلوله‌ای، فلوتاسیون، لیچ، SX-EW)، مصرف معرف و تراز آب.">Process flowsheet development, mass balance, equipment sizing (SAG/ball mills, flotation, leach, SX-EW), reagent consumption, and water balance.</div>
+            <span class="ps-dur">8–12 weeks</span>
+          </div>
+        </div>
+        <div class="ps">
+          <div class="ps-num">5</div>
+          <div class="ps-content">
+            <div class="ps-title" data-en="Infrastructure & Site Services" data-fa="زیرساخت و خدمات سایت">Infrastructure & Site Services</div>
+            <div class="ps-sub" data-en="Power, Water, Access, Camp, Tailings" data-fa="برق، آب، دسترسی، اردوگاه، باطله">Power, Water, Access, Camp, Tailings</div>
+            <div class="ps-body" data-en="Site infrastructure design: power supply (grid connection or diesel/solar hybrid), water supply and treatment, access roads, camp facilities, and tailings storage facility (TSF) design." data-fa="طراحی زیرساخت سایت: تأمین برق (اتصال به شبکه یا هیبرید دیزل/خورشیدی)، تأمین و تصفیه آب، جاده‌های دسترسی، امکانات اردوگاه و طراحی تأسیسات ذخیره‌سازی باطله (TSF).">Site infrastructure design: power supply, water supply and treatment, access roads, camp facilities, and tailings storage facility (TSF) design.</div>
+            <span class="ps-dur">6–8 weeks</span>
+          </div>
+        </div>
+        <div class="ps">
+          <div class="ps-num">6</div>
+          <div class="ps-content">
+            <div class="ps-title" data-en="CAPEX / OPEX Estimation" data-fa="تخمین CAPEX / OPEX">CAPEX / OPEX Estimation</div>
+            <div class="ps-sub" data-en="AACE 47R-11 Compliant | CostMine 2025" data-fa="منطبق با AACE 47R-11 | CostMine 2025">AACE 47R-11 Compliant | CostMine 2025</div>
+            <div class="ps-body" data-en="Full CAPEX estimate (direct, indirect, owner's costs, contingency) and LOM OPEX model using CostMine 2025 pricing. Monte Carlo contingency analysis with P50/P80/P90 outputs." data-fa="تخمین کامل CAPEX (مستقیم، غیرمستقیم، هزینه‌های مالک، اقتضایی) و مدل OPEX LOM با استفاده از قیمت‌گذاری CostMine 2025. تحلیل اقتضایی مونت کارلو با خروجی‌های P50/P80/P90.">Full CAPEX estimate (direct, indirect, owner's costs, contingency) and LOM OPEX model using CostMine 2025 pricing. Monte Carlo contingency analysis with P50/P80/P90 outputs.</div>
+            <span class="ps-dur">4–6 weeks</span>
+          </div>
+        </div>
+        <div class="ps">
+          <div class="ps-num">7</div>
+          <div class="ps-content">
+            <div class="ps-title" data-en="Financial Modelling & Economics" data-fa="مدل‌سازی مالی و اقتصاد">Financial Modelling & Economics</div>
+            <div class="ps-sub" data-en="DCF / NPV / IRR / Sensitivity" data-fa="DCF / NPV / IRR / حساسیت">DCF / NPV / IRR / Sensitivity</div>
+            <div class="ps-body" data-en="Full DCF financial model: LOM cash flow, NPV/IRR, payback period, sensitivity analysis (commodity price, CAPEX, OPEX, discount rate), and project finance structuring." data-fa="مدل مالی DCF کامل: جریان نقدی LOM، NPV/IRR، دوره بازگشت، تحلیل حساسیت (قیمت کالا، CAPEX، OPEX، نرخ تنزیل) و ساختاردهی تأمین مالی پروژه.">Full DCF financial model: LOM cash flow, NPV/IRR, payback period, sensitivity analysis (commodity price, CAPEX, OPEX, discount rate), and project finance structuring.</div>
+            <span class="ps-dur">3–4 weeks</span>
+          </div>
+        </div>
+        <div class="ps">
+          <div class="ps-num">8</div>
+          <div class="ps-content">
+            <div class="ps-title" data-en="Report, Review & ITA Preparation" data-fa="گزارش، بررسی و آماده‌سازی ITA"> Report, Review & ITA Preparation</div>
+            <div class="ps-sub" data-en="Independent Technical Audit Ready" data-fa="آماده ممیزی فنی مستقل">Independent Technical Audit Ready</div>
+            <div class="ps-body" data-en="Compile the full feasibility report, conduct internal peer review, address QP/CP sign-off requirements, and prepare the study package for Independent Technical Audit (ITA) by lender-appointed engineers." data-fa="گزارش کامل امکان‌سنجی را تهیه کنید، بررسی داخلی همتایان را انجام دهید، الزامات تأیید QP/CP را برطرف کنید و بسته مطالعه را برای ممیزی فنی مستقل (ITA) توسط مهندسان منصوب وام‌دهنده آماده کنید.">Compile the full feasibility report, conduct internal peer review, address QP/CP sign-off requirements, and prepare the study package for Independent Technical Audit (ITA) by lender-appointed engineers.</div>
+            <span class="ps-dur">4–6 weeks</span>
+          </div>
+        </div>
+      </div><!-- /process-steps -->
+
+      <div class="process-img">
+        <img src="https://thumbs.dreamstime.com/b/aerial-view-massive-open-pit-copper-mine-industrial-terraces-extraction-operations-large-trucks-navigate-roads-deep-395303962.jpg" alt="Open Pit Mining Feasibility" loading="lazy">
+        <div class="process-img-overlay"></div>
+        <div class="process-img-caption">
+          <h3 data-en="Sar Cheshmeh Expansion — Class 3 Feasibility" data-fa="توسعه سرچشمه — امکان‌سنجی کلاس ۳">Sar Cheshmeh Expansion — Class 3 Feasibility</h3>
+          <p data-en="120 Mtpa open pit copper project | $4.8B CAPEX | NPV $2.1B @ 8% discount rate" data-fa="پروژه مس روباز ۱۲۰ میلیون تن در سال | CAPEX 4.8 میلیارد دلار | NPV 2.1 میلیارد دلار با نرخ تنزیل ۸٪">120 Mtpa open pit copper project | $4.8B CAPEX | NPV $2.1B @ 8% discount rate</p>
+        </div>
+      </div>
+    </div><!-- /process-grid -->
+  </div>
+</section>
+
+<!-- ═══ DELIVERABLES ═══ -->
+<section class="deliv-sec">
+  <div class="deliv-in">
+    <div class="sec-hdr">
+      <div class="stag" data-en="What You Receive" data-fa="آنچه دریافت می‌کنید">What You Receive</div>
+      <h2 data-en="Feasibility Study Deliverables" data-fa="تحویلی‌های مطالعه امکان‌سنجی">Feasibility Study Deliverables</h2>
+      <p data-en="Every KDMine feasibility study includes a comprehensive set of technical, financial, and compliance deliverables — structured for lender review, regulatory filing, and board presentation." data-fa="هر مطالعه امکان‌سنجی KDMine شامل مجموعه جامعی از تحویلی‌های فنی، مالی و انطباقی است — ساختاریافته برای بررسی وام‌دهنده، ثبت نظارتی و ارائه به هیئت مدیره.">Every KDMine feasibility study includes a comprehensive set of technical, financial, and compliance deliverables — structured for lender review, regulatory filing, and board presentation.</p>
+    </div>
+    <div class="deliv-grid">
+
+      <div class="dcard">
+        <div class="dcard-ic" style="background:rgba(26,86,219,.1)">📋</div>
+        <h3 data-en="Technical Report Package" data-fa="بسته گزارش فنی">Technical Report Package</h3>
+        <p data-en="The core feasibility study document — structured for NI 43-101 or JORC filing with all required technical sections." data-fa="سند اصلی مطالعه امکان‌سنجی — ساختاریافته برای ثبت NI 43-101 یا JORC با تمام بخش‌های فنی مورد نیاز.">The core feasibility study document — structured for NI 43-101 or JORC filing with all required technical sections.</p>
+        <ul>
+          <li data-en="Executive summary and investment thesis" data-fa="خلاصه اجرایی و پایان‌نامه سرمایه‌گذاری">Executive summary and investment thesis</li>
+          <li data-en="Geology, resource, and reserve statement" data-fa="زمین‌شناسی، منابع و بیانیه ذخایر">Geology, resource, and reserve statement</li>
+          <li data-en="Mining engineering and LOM schedule" data-fa="مهندسی معدن و برنامه LOM">Mining engineering and LOM schedule</li>
+          <li data-en="Process design and metallurgical testwork" data-fa="طراحی فرآیند و آزمایش متالورژیکی">Process design and metallurgical testwork</li>
+          <li data-en="Infrastructure and site services" data-fa="زیرساخت و خدمات سایت">Infrastructure and site services</li>
+          <li data-en="Environmental and social baseline" data-fa="خط پایه محیطی و اجتماعی">Environmental and social baseline</li>
+        </ul>
+      </div>
+
+      <div class="dcard">
+        <div class="dcard-ic" style="background:rgba(5,150,105,.1)">💰</div>
+        <h3 data-en="CAPEX / OPEX Models" data-fa="مدل‌های CAPEX / OPEX">CAPEX / OPEX Models</h3>
+        <p data-en="AACE 47R-11 compliant cost models with full transparency — every line item traceable to its pricing source." data-fa="مدل‌های هزینه منطبق با AACE 47R-11 با شفافیت کامل — هر قلم قابل ردیابی به منبع قیمت‌گذاری خود.">AACE 47R-11 compliant cost models with full transparency — every line item traceable to its pricing source.</p>
+        <ul>
+          <li data-en="Direct CAPEX: mining, processing, infrastructure" data-fa="CAPEX مستقیم: معدن، فرآوری، زیرساخت">Direct CAPEX: mining, processing, infrastructure</li>
+          <li data-en="Indirect CAPEX: EPCM, owner's costs, contingency" data-fa="CAPEX غیرمستقیم: EPCM، هزینه‌های مالک، اقتضایی">Indirect CAPEX: EPCM, owner's costs, contingency</li>
+          <li data-en="Monte Carlo P50/P80/P90 contingency analysis" data-fa="تحلیل اقتضایی مونت کارلو P50/P80/P90">Monte Carlo P50/P80/P90 contingency analysis</li>
+          <li data-en="LOM OPEX model by cost category" data-fa="مدل OPEX LOM بر اساس دسته هزینه">LOM OPEX model by cost category</li>
+          <li data-en="Sustaining capital schedule" data-fa="برنامه سرمایه پایدار">Sustaining capital schedule</li>
+          <li data-en="Basis of Estimate (BoE) document" data-fa="سند مبنای تخمین (BoE)">Basis of Estimate (BoE) document</li>
+        </ul>
+      </div>
+
+      <div class="dcard">
+        <div class="dcard-ic" style="background:rgba(245,158,11,.1)">💹</div>
+        <h3 data-en="Financial Model & Economics" data-fa="مدل مالی و اقتصاد">Financial Model & Economics</h3>
+        <p data-en="Institutional-grade DCF financial model with full LOM cash flow, sensitivity analysis, and project finance structuring." data-fa="مدل مالی DCF درجه نهادی با جریان نقدی کامل LOM، تحلیل حساسیت و ساختاردهی تأمین مالی پروژه.">Institutional-grade DCF financial model with full LOM cash flow, sensitivity analysis, and project finance structuring.</p>
+        <ul>
+          <li data-en="LOM DCF model (Excel, fully unlocked)" data-fa="مدل DCF LOM (اکسل، کاملاً باز)">LOM DCF model (Excel, fully unlocked)</li>
+          <li data-en="NPV, IRR, payback period outputs" data-fa="خروجی‌های NPV، IRR، دوره بازگشت">NPV, IRR, payback period outputs</li>
+          <li data-en="Commodity price sensitivity (tornado + spider)" data-fa="حساسیت قیمت کالا (tornado + spider)">Commodity price sensitivity (tornado + spider)</li>
+          <li data-en="Tax, royalty, and depreciation model" data-fa="مدل مالیات، حق‌الامتیاز و استهلاک">Tax, royalty, and depreciation model</li>
+          <li data-en="Project finance debt sizing model" data-fa="مدل اندازه‌گیری بدهی تأمین مالی پروژه">Project finance debt sizing model</li>
+          <li data-en="Board-ready executive summary slides" data-fa="اسلایدهای خلاصه اجرایی آماده برای هیئت مدیره">Board-ready executive summary slides</li>
+        </ul>
+      </div>
+
+      <div class="dcard">
+        <div class="dcard-ic" style="background:rgba(13,148,136,.1)">🌱</div>
+        <h3 data-en="ESG & Permitting Framework" data-fa="چارچوب ESG و مجوزدهی">ESG & Permitting Framework</h3>
+        <p data-en="Environmental, social, and governance framework aligned with IFC Performance Standards and lender ESG requirements." data-fa="چارچوب محیطی، اجتماعی و حاکمیتی هم‌راستا با استانداردهای عملکرد IFC و الزامات ESG وام‌دهنده.">Environmental, social, and governance framework aligned with IFC Performance Standards and lender ESG requirements.</p>
+        <ul>
+          <li data-en="Environmental and Social Impact Assessment (ESIA)" data-fa="ارزیابی تأثیر محیطی و اجتماعی (ESIA)">Environmental and Social Impact Assessment (ESIA)</li>
+          <li data-en="IFC Performance Standards gap analysis" data-fa="تحلیل شکاف استانداردهای عملکرد IFC">IFC Performance Standards gap analysis</li>
+          <li data-en="Permitting schedule and critical path" data-fa="برنامه مجوزدهی و مسیر بحرانی">Permitting schedule and critical path</li>
+          <li data-en="Water management plan" data-fa="طرح مدیریت آب">Water management plan</li>
+          <li data-en="Tailings management plan (GISTM aligned)" data-fa="طرح مدیریت باطله (هم‌راستا با GISTM)">Tailings management plan (GISTM aligned)</li>
+          <li data-en="Community engagement framework" data-fa="چارچوب تعامل با جامعه">Community engagement framework</li>
+        </ul>
+      </div>
+
+      <div class="dcard">
+        <div class="dcard-ic" style="background:rgba(124,58,237,.1)">📐</div>
+        <h3 data-en="Compliance & Audit Package" data-fa="بسته انطباق و ممیزی">Compliance & Audit Package</h3>
+        <p data-en="Complete documentation package for regulatory filing, lender due diligence, and Independent Technical Audit (ITA)." data-fa="بسته مستندات کامل برای ثبت نظارتی، بررسی دقیق وام‌دهنده و ممیزی فنی مستقل (ITA).">Complete documentation package for regulatory filing, lender due diligence, and Independent Technical Audit (ITA).</p>
+        <ul>
+          <li data-en="AACE 47R-11 compliance certificate" data-fa="گواهی انطباق AACE 47R-11">AACE 47R-11 compliance certificate</li>
+          <li data-en="QP/CP sign-off documentation" data-fa="مستندات تأیید QP/CP">QP/CP sign-off documentation</li>
+          <li data-en="Assumptions and exclusions register" data-fa="ثبت فرضیات و استثناها">Assumptions and exclusions register</li>
+          <li data-en="Data room index and document list" data-fa="فهرست اتاق داده و لیست اسناد">Data room index and document list</li>
+          <li data-en="ITA response template and FAQ" data-fa="قالب پاسخ ITA و سؤالات متداول">ITA response template and FAQ</li>
+          <li data-en="Lender presentation deck (50+ slides)" data-fa="دک ارائه وام‌دهنده (۵۰+ اسلاید)">Lender presentation deck (50+ slides)</li>
+        </ul>
+      </div>
+
+      <div class="dcard">
+        <div class="dcard-ic" style="background:rgba(220,38,38,.1)">⚙️</div>
+        <h3 data-en="Engineering Design Package" data-fa="بسته طراحی مهندسی">Engineering Design Package</h3>
+        <p data-en="Supporting engineering drawings, equipment lists, and design criteria documents for all major project areas." data-fa="نقشه‌های مهندسی پشتیبان، لیست‌های تجهیزات و اسناد معیارهای طراحی برای تمام حوزه‌های اصلی پروژه.">Supporting engineering drawings, equipment lists, and design criteria documents for all major project areas.</p>
+        <ul>
+          <li data-en="Process flow diagrams (PFDs)" data-fa="نمودارهای جریان فرآیند (PFD)">Process flow diagrams (PFDs)</li>
+          <li data-en="Equipment list with tag numbers and specs" data-fa="لیست تجهیزات با شماره تگ و مشخصات">Equipment list with tag numbers and specs</li>
+          <li data-en="Site layout and plot plan" data-fa="طرح سایت و نقشه محوطه">Site layout and plot plan</li>
+          <li data-en="Geotechnical design criteria" data-fa="معیارهای طراحی ژئوتکنیکی">Geotechnical design criteria</li>
+          <li data-en="Electrical single-line diagram" data-fa="نمودار تک‌خطی برقی">Electrical single-line diagram</li>
+          <li data-en="TSF design and stability analysis" data-fa="طراحی TSF و تحلیل پایداری">TSF design and stability analysis</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ COMMODITIES ═══ -->
+<section class="comm-sec">
+  <div class="comm-in">
+    <div class="sec-hdr">
+      <div class="stag" data-en="Commodity Coverage" data-fa="پوشش کالا">Commodity Coverage</div>
+      <h2 data-en="Feasibility Studies Across All Major Commodities" data-fa="مطالعات امکان‌سنجی در تمام کالاهای اصلی">Feasibility Studies Across All Major Commodities</h2>
+      <p data-en="Our team has deep commodity-specific expertise — from conventional copper flotation to complex HPAL nickel laterite and rare earth processing." data-fa="تیم ما دارای تخصص عمیق خاص کالا است — از فلوتاسیون مس معمولی تا HPAL پیچیده لاتریت نیکل و فرآوری عناصر خاکی کمیاب.">Our team has deep commodity-specific expertise — from conventional copper flotation to complex HPAL nickel laterite and rare earth processing.</p>
+    </div>
+    <div class="comm-grid">
+      <div class="ccard" style="--cc-color:#ef4444">
+        <div class="cc-ic">🔴</div>
+        <div class="cc-name" data-en="Copper" data-fa="مس">Copper</div>
+        <div class="cc-count" data-en="24 studies" data-fa="۲۴ مطالعه">24 studies</div>
+        <div class="cc-list" data-en="Open pit flotation · SX-EW heap leach · Underground block cave · Porphyry & IOCG deposits · Concentrate logistics" data-fa="فلوتاسیون روباز · لیچ انباشتی SX-EW · بلوک کیو زیرزمینی · کانسارهای پورفیری و IOCG · لجستیک کنسانتره">Open pit flotation · SX-EW heap leach · Underground block cave · Porphyry & IOCG deposits · Concentrate logistics</div>
+      </div>
+      <div class="ccard" style="--cc-color:#f59e0b">
+        <div class="cc-ic">🟡</div>
+        <div class="cc-name" data-en="Gold" data-fa="طلا">Gold</div>
+        <div class="cc-count" data-en="18 studies" data-fa="۱۸ مطالعه">18 studies</div>
+        <div class="cc-list" data-en="CIL/CIP processing · Heap leach · Refractory ore (BIOX/POX) · Underground narrow vein · Alluvial & placer" data-fa="فرآوری CIL/CIP · لیچ انباشتی · سنگ معدن مقاوم (BIOX/POX) · رگه باریک زیرزمینی · آبرفتی و پلاسر">CIL/CIP processing · Heap leach · Refractory ore (BIOX/POX) · Underground narrow vein · Alluvial & placer</div>
+      </div>
+      <div class="ccard" style="--cc-color:#64748b">
+        <div class="cc-ic">⚫</div>
+        <div class="cc-name" data-en="Iron Ore" data-fa="سنگ آهن">Iron Ore</div>
+        <div class="cc-count" data-en="8 studies" data-fa="۸ مطالعه">8 studies</div>
+        <div class="cc-list" data-en="DSO hematite · Magnetite concentrate · Pellet plant · Rail & port logistics · Slurry pipeline" data-fa="هماتیت DSO · کنسانتره مگنتیت · کارخانه گندله · لجستیک ریلی و بندری · خط لوله دوغاب">DSO hematite · Magnetite concentrate · Pellet plant · Rail & port logistics · Slurry pipeline</div>
+      </div>
+      <div class="ccard" style="--cc-color:#a855f7">
+        <div class="cc-ic">🔋</div>
+        <div class="cc-name" data-en="Lithium" data-fa="لیتیوم">Lithium</div>
+        <div class="cc-count" data-en="7 studies" data-fa="۷ مطالعه">7 studies</div>
+        <div class="cc-list" data-en="Hard rock spodumene · Brine DLE · LiOH conversion · Battery-grade product · CAPEX risk modelling" data-fa="اسپودومن سنگ سخت · DLE آب‌نمک · تبدیل LiOH · محصول درجه باتری · مدل‌سازی ریسک CAPEX">Hard rock spodumene · Brine DLE · LiOH conversion · Battery-grade product · CAPEX risk modelling</div>
+      </div>
+      <div class="ccard" style="--cc-color:#0d9488">
+        <div class="cc-ic">🟢</div>
+        <div class="cc-name" data-en="Nickel" data-fa="نیکل">Nickel</div>
+        <div class="cc-count" data-en="5 studies" data-fa="۵ مطالعه">5 studies</div>
+        <div class="cc-list" data-en="HPAL laterite · Sulphide flotation · MHP product · Class 1 nickel · Battery precursor" data-fa="لاتریت HPAL · فلوتاسیون سولفید · محصول MHP · نیکل کلاس ۱ · پیش‌ماده باتری">HPAL laterite · Sulphide flotation · MHP product · Class 1 nickel · Battery precursor</div>
+      </div>
+      <div class="ccard" style="--cc-color:#3b82f6">
+        <div class="cc-ic">🔵</div>
+        <div class="cc-name" data-en="Zinc / Lead" data-fa="روی / سرب">Zinc / Lead</div>
+        <div class="cc-count" data-en="4 studies" data-fa="۴ مطالعه">4 studies</div>
+        <div class="cc-list" data-en="Poly-metallic flotation · Zinc oxide heap leach · Underground VMS · Concentrate smelting economics" data-fa="فلوتاسیون چند فلزی · لیچ انباشتی اکسید روی · VMS زیرزمینی · اقتصاد ذوب کنسانتره">Poly-metallic flotation · Zinc oxide heap leach · Underground VMS · Concentrate smelting economics</div>
+      </div>
+      <div class="ccard" style="--cc-color:#f97316">
+        <div class="cc-ic">🟠</div>
+        <div class="cc-name" data-en="Rare Earths" data-fa="عناصر خاکی کمیاب">Rare Earths</div>
+        <div class="cc-count" data-en="3 studies" data-fa="۳ مطالعه">3 studies</div>
+        <div class="cc-list" data-en="Carbonatite & ionic clay · Separation & refining · NdPr oxide product · Magnet precursor · Ex-China supply chain" data-fa="کربناتیت و خاک یونی · جداسازی و تصفیه · محصول اکسید NdPr · پیش‌ماده آهنربا · زنجیره تأمین خارج از چین">Carbonatite & ionic clay · Separation & refining · NdPr oxide product · Magnet precursor · Ex-China supply chain</div>
+      </div>
+      <div class="ccard" style="--cc-color:#1a56db">
+        <div class="cc-ic">⚡</div>
+        <div class="cc-name" data-en="Other Critical Minerals" data-fa="سایر مواد معدنی حیاتی">Other Critical Minerals</div>
+        <div class="cc-count" data-en="5 studies" data-fa="۵ مطالعه">5 studies</div>
+        <div class="cc-list" data-en="Cobalt · Manganese · Tungsten · Vanadium · Phosphate · Potash" data-fa="کبالت · منگنز · تنگستن · وانادیوم · فسفات · پتاس">Cobalt · Manganese · Tungsten · Vanadium · Phosphate · Potash</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CASE STUDIES ═══ -->
+<section class="cs-sec">
+  <div class="cs-in">
+    <div class="sec-hdr">
+      <div class="stag" data-en="Selected Projects" data-fa="پروژه‌های منتخب">Selected Projects</div>
+      <h2 data-en="Recent Feasibility Study Case Studies" data-fa="مطالعات موردی امکان‌سنجی اخیر">Recent Feasibility Study Case Studies</h2>
+      <p data-en="A selection of recently completed feasibility studies across commodities and jurisdictions — demonstrating our depth of technical and financial expertise." data-fa="انتخابی از مطالعات امکان‌سنجی اخیراً تکمیل‌شده در کالاها و حوزه‌های قضایی مختلف — نشان‌دهنده عمق تخصص فنی و مالی ما.">A selection of recently completed feasibility studies across commodities and jurisdictions — demonstrating our depth of technical and financial expertise.</p>
+    </div>
+    <div class="cs-grid">
+
+      <div class="cscard">
+        <div class="cscard-img">
+          <img src="https://thumbs.dreamstime.com/b/aerial-view-massive-open-pit-copper-mine-industrial-terraces-extraction-operations-large-trucks-navigate-roads-deep-395303962.jpg" alt="Copper FS" loading="lazy">
+        </div>
+        <div class="cscard-body">
+          <div class="cscard-meta">
+            <span class="cscard-tag" style="background:#ef4444">Copper</span>
+            <span class="cscard-tag" style="background:#1a56db">Class 3 FS</span>
+            <span class="cscard-tag" style="background:#059669">Iran</span>
+          </div>
+          <h3 data-en="Daralu Copper Project — Bankable Feasibility Study" data-fa="پروژه مس دارالو — مطالعه امکان‌سنجی بانکی">Daralu Copper Project — Bankable Feasibility Study</h3>
+          <div class="cscard-kpis">
+            <div class="ck"><div class="ck-v">85 Mtpa</div><div class="ck-l">Throughput</div></div>
+            <div class="ck"><div class="ck-v">$2.4B</div><div class="ck-l">CAPEX</div></div>
+            <div class="ck"><div class="ck-v">18.2%</div><div class="ck-l">IRR</div></div>
+          </div>
+          <a href="../contact.html" class="cscard-lnk" data-en="View Case Study →" data-fa="مشاهده مطالعه موردی ←">View Case Study →</a>
+        </div>
+      </div>
+
+      <div class="cscard">
+        <div class="cscard-img">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Lithium FS" loading="lazy">
+        </div>
+        <div class="cscard-body">
+          <div class="cscard-meta">
+            <span class="cscard-tag" style="background:#a855f7">Lithium</span>
+            <span class="cscard-tag" style="background:#1a56db">Class 4 PFS</span>
+            <span class="cscard-tag" style="background:#d97706">Kazakhstan</span>
+          </div>
+          <h3 data-en="Balkhash Lithium Brine — Pre-Feasibility Study" data-fa="آب‌نمک لیتیوم بالخاش — مطالعه پیش‌امکان‌سنجی">Balkhash Lithium Brine — Pre-Feasibility Study</h3>
+          <div class="cscard-kpis">
+            <div class="ck"><div class="ck-v">25 ktpa</div><div class="ck-l">LCE Output</div></div>
+            <div class="ck"><div class="ck-v">$1.1B</div><div class="ck-l">CAPEX</div></div>
+            <div class="ck"><div class="ck-v">22.8%</div><div class="ck-l">IRR</div></div>
+          </div>
+          <a href="../contact.html" class="cscard-lnk" data-en="View Case Study →" data-fa="مشاهده مطالعه موردی ←">View Case Study →</a>
+        </div>
+      </div>
+
+      <div class="cscard">
+        <div class="cscard-img">
+          <img src="https://www.geologyforinvestors.com/wp-content/uploads/2022/05/heap-leaching.jpg" alt="Nickel HPAL FS" loading="lazy">
+        </div>
+        <div class="cscard-body">
+          <div class="cscard-meta">
+            <span class="cscard-tag" style="background:#0d9488">Nickel</span>
+            <span class="cscard-tag" style="background:#1a56db">Class 3 FS</span>
+            <span class="cscard-tag" style="background:#7c3aed">Indonesia</span>
+          </div>
+          <h3 data-en="Sulawesi HPAL Nickel Laterite — Bankable Feasibility" data-fa="لاتریت نیکل HPAL سولاوسی — امکان‌سنجی بانکی">Sulawesi HPAL Nickel Laterite — Bankable Feasibility</h3>
+          <div class="cscard-kpis">
+            <div class="ck"><div class="ck-v">40 ktpa</div><div class="ck-l">Ni Output</div></div>
+            <div class="ck"><div class="ck-v">$3.8B</div><div class="ck-l">CAPEX</div></div>
+            <div class="ck"><div class="ck-v">14.6%</div><div class="ck-l">IRR</div></div>
+          </div>
+          <a href="../contact.html" class="cscard-lnk" data-en="View Case Study →" data-fa="مشاهده مطالعه موردی ←">View Case Study →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TEAM ═══ -->
+<section class="team-sec">
+  <div class="team-in">
+    <div class="sec-hdr">
+      <div class="stag" data-en="Our Experts" data-fa="متخصصان ما">Our Experts</div>
+      <h2 data-en="The Team Behind Your Feasibility Study" data-fa="تیم پشت مطالعه امکان‌سنجی شما">The Team Behind Your Feasibility Study</h2>
+      <p data-en="Every KDMine feasibility study is led by a Qualified Person (QP) or Competent Person (CP) with 15+ years of commodity-specific experience." data-fa="هر مطالعه امکان‌سنجی KDMine توسط یک شخص واجد شرایط (QP) یا شخص شایسته (CP) با ۱۵+ سال تجربه خاص کالا هدایت می‌شود.">Every KDMine feasibility study is led by a Qualified Person (QP) or Competent Person (CP) with 15+ years of commodity-specific experience.</p>
+    </div>
+    <div class="team-grid">
+      <div class="tcard">
+        <div class="tcard-av" style="background:linear-gradient(135deg,#0f2d5e,#1a56db)">KD</div>
+        <h3>Dr. Kavian Dehghani</h3>
+        <div class="tcard-role" data-en="Lead Feasibility Engineer & QP" data-fa="مهندس ارشد امکان‌سنجی و QP">Lead Feasibility Engineer & QP</div>
+        <div class="tcard-quals" data-en="PhD Mining Engineering · 22 years · 40+ feasibility studies · NI 43-101 QP · AACE CCP" data-fa="دکترای مهندسی معدن · ۲۲ سال · ۴۰+ مطالعه امکان‌سنجی · QP NI 43-101 · AACE CCP">PhD Mining Engineering · 22 years · 40+ feasibility studies · NI 43-101 QP · AACE CCP</div>
+        <div class="tcard-tags"><span class="tcard-tag">Copper</span><span class="tcard-tag">Iron Ore</span><span class="tcard-tag">CAPEX</span><span class="tcard-tag">Iran</span></div>
+      </div>
+      <div class="tcard">
+        <div class="tcard-av" style="background:linear-gradient(135deg,#059669,#10b981)">LA</div>
+        <h3>Dr. Leila Ahmadi</h3>
+        <div class="tcard-role" data-en="Process Engineer & Metallurgist" data-fa="مهندس فرآیند و متالورژیست">Process Engineer & Metallurgist</div>
+        <div class="tcard-quals" data-en="PhD Metallurgy · 18 years · Flotation, CIL, HPAL · JORC CP · ESG specialist" data-fa="دکترای متالورژی · ۱۸ سال · فلوتاسیون، CIL، HPAL · CP JORC · متخصص ESG">PhD Metallurgy · 18 years · Flotation, CIL, HPAL · JORC CP · ESG specialist</div>
+        <div class="tcard-tags"><span class="tcard-tag">Gold</span><span class="tcard-tag">Nickel</span><span class="tcard-tag">HPAL</span><span class="tcard-tag">ESG</span></div>
+      </div>
+      <div class="tcard">
+        <div class="tcard-av" style="background:linear-gradient(135deg,#d97706,#f59e0b)">JT</div>
+        <h3>James Thornton</h3>
+        <div class="tcard-role" data-en="Financial Modelling & Economics" data-fa="مدل‌سازی مالی و اقتصاد">Financial Modelling & Economics</div>
+        <div class="tcard-quals" data-en="MSc Finance · 16 years · DCF/project finance · IFC lender advisory · 25+ financial models" data-fa="کارشناسی ارشد مالی · ۱۶ سال · DCF/تأمین مالی پروژه · مشاوره وام‌دهنده IFC · ۲۵+ مدل مالی">MSc Finance · 16 years · DCF/project finance · IFC lender advisory · 25+ financial models</div>
+        <div class="tcard-tags"><span class="tcard-tag">DCF</span><span class="tcard-tag">Project Finance</span><span class="tcard-tag">Lithium</span></div>
+      </div>
+      <div class="tcard">
+        <div class="tcard-av" style="background:linear-gradient(135deg,#0d9488,#14b8a6)">SM</div>
+        <h3>Dr. Sarah Mitchell</h3>
+        <div class="tcard-role" data-en="Geotechnical & Mine Planning" data-fa="ژئوتکنیک و برنامه‌ریزی معدن">Geotechnical & Mine Planning</div>
+        <div class="tcard-quals" data-en="PhD Geotechnical Eng · 19 years · Pit optimisation · Slope stability · LOM scheduling" data-fa="دکترای مهندسی ژئوتکنیک · ۱۹ سال · بهینه‌سازی پیت · پایداری شیب · زمان‌بندی LOM">PhD Geotechnical Eng · 19 years · Pit optimisation · Slope stability · LOM scheduling</div>
+        <div class="tcard-tags"><span class="tcard-tag">Pit Design</span><span class="tcard-tag">Geotechnical</span><span class="tcard-tag">LOM</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="faq-sec">
+  <div class="faq-in">
+    <div class="sec-hdr">
+      <div class="stag" data-en="Common Questions" data-fa="سؤالات رایج">Common Questions</div>
+      <h2 data-en="Feasibility Study FAQ" data-fa="سؤالات متداول مطالعه امکان‌سنجی">Feasibility Study FAQ</h2>
+    </div>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="tgFaq(this)">
+          <span data-en="How long does a Class 3 bankable feasibility study take?" data-fa="یک مطالعه امکان‌سنجی بانکی کلاس ۳ چقدر طول می‌کشد؟">How long does a Class 3 bankable feasibility study take?</span>
+          <div class="faq-ic">+</div>
+        </div>
+        <div class="faq-a" data-en="A Class 3 bankable feasibility study for a greenfield open pit project typically takes 9–14 months from scope definition to final report. Underground projects and complex metallurgy (HPAL, refractory gold) typically require 12–18 months. The critical path is usually metallurgical testwork (6–9 months) and geotechnical investigation (4–6 months) — both of which should begin before the formal feasibility study commences." data-fa="یک مطالعه امکان‌سنجی بانکی کلاس ۳ برای یک پروژه روباز سبز معمولاً ۹ تا ۱۴ ماه از تعریف محدوده تا گزارش نهایی طول می‌کشد. پروژه‌های زیرزمینی و متالورژی پیچیده (HPAL، طلای مقاوم) معمولاً ۱۲ تا ۱۸ ماه نیاز دارند.">A Class 3 bankable feasibility study for a greenfield open pit project typically takes 9–14 months from scope definition to final report. Underground projects and complex metallurgy (HPAL, refractory gold) typically require 12–18 months. The critical path is usually metallurgical testwork (6–9 months) and geotechnical investigation (4–6 months) — both of which should begin before the formal feasibility study commences.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="tgFaq(this)">
+          <span data-en="What is the difference between a pre-feasibility and a bankable feasibility study?" data-fa="تفاوت بین پیش‌امکان‌سنجی و مطالعه امکان‌سنجی بانکی چیست؟">What is the difference between a pre-feasibility and a bankable feasibility study?</span>
+          <div class="faq-ic">+</div>
+        </div>
+        <div class="faq-a" data-en="A pre-feasibility study (AACE Class 4, ±30%) is used to select the preferred development option and confirm the project is worth advancing. A bankable feasibility study (AACE Class 3, ±20%) is the minimum standard required for institutional project financing, NI 43-101/JORC reserve declaration, and construction decision. The key differences are: engineering completion (1–15% vs. 10–40%), pricing basis (factored vs. vendor quotes), and contingency methodology (fixed % vs. Monte Carlo)." data-fa="مطالعه پیش‌امکان‌سنجی (AACE کلاس ۴، ±۳۰٪) برای انتخاب گزینه توسعه ترجیحی و تأیید ارزش پیشرفت پروژه استفاده می‌شود. مطالعه امکان‌سنجی بانکی (AACE کلاس ۳، ±۲۰٪) حداقل استاندارد مورد نیاز برای تأمین مالی نهادی پروژه، اعلام ذخایر NI 43-101/JORC و تصمیم ساخت است.">A pre-feasibility study (AACE Class 4, ±30%) is used to select the preferred development option and confirm the project is worth advancing. A bankable feasibility study (AACE Class 3, ±20%) is the minimum standard required for institutional project financing, NI 43-101/JORC reserve declaration, and construction decision. The key differences are: engineering completion (1–15% vs. 10–40%), pricing basis (factored vs. vendor quotes), and contingency methodology (fixed % vs. Monte Carlo).</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="tgFaq(this)">
+          <span data-en="How much does a Class 3 feasibility study cost?" data-fa="هزینه یک مطالعه امکان‌سنجی کلاس ۳ چقدر است؟">How much does a Class 3 feasibility study cost?</span>
+          <div class="faq-ic">+</div>
+        </div>
+        <div class="faq-a" data-en="The cost of a Class 3 feasibility study is typically 0.5–1.5% of the project's estimated CAPEX. For a $500M project, this means $2.5–7.5M. The wide range reflects project complexity: a simple heap leach operation costs less than a complex HPAL plant. KDMine provides fixed-price proposals with clearly defined scope — no scope creep surprises. Contact us for a project-specific proposal within 5 business days." data-fa="هزینه یک مطالعه امکان‌سنجی کلاس ۳ معمولاً ۰.۵ تا ۱.۵٪ از CAPEX تخمینی پروژه است. برای یک پروژه ۵۰۰ میلیون دلاری، این به معنای ۲.۵ تا ۷.۵ میلیون دلار است. محدوده گسترده نشان‌دهنده پیچیدگی پروژه است: یک عملیات ساده لیچ انباشتی کمتر از یک کارخانه HPAL پیچیده هزینه دارد.">The cost of a Class 3 feasibility study is typically 0.5–1.5% of the project's estimated CAPEX. For a $500M project, this means $2.5–7.5M. The wide range reflects project complexity: a simple heap leach operation costs less than a complex HPAL plant. KDMine provides fixed-price proposals with clearly defined scope — no scope creep surprises. Contact us for a project-specific proposal within 5 business days.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="tgFaq(this)">
+          <span data-en="Can KDMine provide a Qualified Person (QP) or Competent Person (CP) sign-off?" data-fa="آیا KDMine می‌تواند تأیید شخص واجد شرایط (QP) یا شخص شایسته (CP) ارائه دهد؟">Can KDMine provide a Qualified Person (QP) or Competent Person (CP) sign-off?</span>
+          <div class="faq-ic">+</div>
+        </div>
+        <div class="faq-a" data-en="Yes. KDMine has registered QPs under NI 43-101 (Canada) and CPs under JORC (Australia/international) on staff. Our QPs and CPs are members of recognised professional organisations including APEGBC, AusIMM, and SME. We can provide QP/CP sign-off for all technical sections of the feasibility study, including geology, mining, processing, and economics." data-fa="بله. KDMine دارای QP‌های ثبت‌شده تحت NI 43-101 (کانادا) و CP‌های تحت JORC (استرالیا/بین‌المللی) در کارکنان است. QP‌ها و CP‌های ما عضو سازمان‌های حرفه‌ای شناخته‌شده از جمله APEGBC، AusIMM و SME هستند.">Yes. KDMine has registered QPs under NI 43-101 (Canada) and CPs under JORC (Australia/international) on staff. Our QPs and CPs are members of recognised professional organisations including APEGBC, AusIMM, and SME. We can provide QP/CP sign-off for all technical sections of the feasibility study, including geology, mining, processing, and economics.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="tgFaq(this)">
+          <span data-en="What data do you need from us to start a feasibility study?" data-fa="برای شروع مطالعه امکان‌سنجی به چه داده‌هایی از ما نیاز دارید؟">What data do you need from us to start a feasibility study?</span>
+          <div class="faq-ic">+</div>
+        </div>
+        <div class="faq-a" data-en="Minimum data requirements for a Class 3 feasibility study: (1) Geological resource model (block model or resource estimate) with supporting drill data, (2) Metallurgical testwork results (minimum 500kg composite samples for SAGDesign and flotation/leach testwork), (3) Geotechnical investigation data (minimum 2 geotechnical boreholes per pit wall sector), (4) Site survey and topographic data, (5) Environmental baseline data (12 months minimum for water and air quality). We can advise on data gaps and help design additional investigation programs." data-fa="حداقل الزامات داده برای مطالعه امکان‌سنجی کلاس ۳: (۱) مدل منابع زمین‌شناختی با داده‌های حفاری پشتیبان، (۲) نتایج آزمایش متالورژیکی، (۳) داده‌های تحقیقات ژئوتکنیکی، (۴) داده‌های نقشه‌برداری سایت و توپوگرافی، (۵) داده‌های خط پایه محیطی.">Minimum data requirements for a Class 3 feasibility study: (1) Geological resource model with supporting drill data, (2) Metallurgical testwork results (minimum 500kg composite samples), (3) Geotechnical investigation data, (4) Site survey and topographic data, (5) Environmental baseline data (12 months minimum). We can advise on data gaps and help design additional investigation programs.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="tgFaq(this)">
+          <span data-en="Do you work on projects in Iran and Central Asia?" data-fa="آیا روی پروژه‌های ایران و آسیای مرکزی کار می‌کنید؟">Do you work on projects in Iran and Central Asia?</span>
+          <div class="faq-ic">+</div>
+        </div>
+        <div class="faq-a" data-en="Yes. Iran and Central Asia are core markets for KDMine Group. We have completed 18 feasibility studies in Iran (copper, iron ore, zinc, lead, gold) and 8 in Central Asia (Kazakhstan, Uzbekistan, Kyrgyzstan). Our team includes Persian and Russian-speaking engineers with deep knowledge of local regulatory frameworks, equipment import logistics, labour markets, and energy costs. We are familiar with IMIDRO requirements for Iranian projects and can navigate local content requirements." data-fa="بله. ایران و آسیای مرکزی بازارهای اصلی KDMine Group هستند. ما ۱۸ مطالعه امکان‌سنجی در ایران (مس، سنگ آهن، روی، سرب، طلا) و ۸ مطالعه در آسیای مرکزی (قزاقستان، ازبکستان، قرقیزستان) تکمیل کرده‌ایم.">Yes. Iran and Central Asia are core markets for KDMine Group. We have completed 18 feasibility studies in Iran (copper, iron ore, zinc, lead, gold) and 8 in Central Asia (Kazakhstan, Uzbekistan, Kyrgyzstan). Our team includes Persian and Russian-speaking engineers with deep knowledge of local regulatory frameworks, equipment import logistics, labour markets, and energy costs.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="cta-sec">
+  <div class="cta-in">
+    <div style="display:inline-block;background:rgba(255,255,255,.12);color:rgba(255,255,255,.9);font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:16px" data-en="Start Your Feasibility Study" data-fa="مطالعه امکان‌سنجی خود را شروع کنید">Start Your Feasibility Study</div>
+    <h2 data-en="Ready to Advance Your Mining Project?" data-fa="آماده پیشرفت پروژه معدنی خود هستید؟">Ready to Advance Your Mining Project?</h2>
+    <p data-en="Contact KDMine Group for a fixed-price proposal within 5 business days. We'll review your project data, recommend the right AACE estimate class, and outline the study scope, timeline, and cost." data-fa="با KDMine Group تماس بگیرید تا یک پیشنهاد قیمت ثابت در ۵ روز کاری دریافت کنید. ما داده‌های پروژه شما را بررسی می‌کنیم، کلاس تخمین AACE مناسب را توصیه می‌کنیم و محدوده مطالعه، جدول زمانی و هزینه را مشخص می‌کنیم.">Contact KDMine Group for a fixed-price proposal within 5 business days. We'll review your project data, recommend the right AACE estimate class, and outline the study scope, timeline, and cost.</p>
+    <div class="cta-acts">
+      <a href="../contact.html" class="bcp">📋 <span data-en="Request a Proposal →" data-fa="درخواست پیشنهاد ←">Request a Proposal →</span></a>
+      <a href="../resources.html" class="bco">📥 <span data-en="Download BoE Template" data-fa="دانلود قالب BoE">Download BoE Template</span></a>
+    </div>
+    <div style="margin-top:32px;display:flex;gap:32px;justify-content:center;flex-wrap:wrap">
+      <div style="text-align:center"><div style="font-size:1.6rem;font-weight:800;color:#fff">68</div><div style="font-size:.72rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.5px" data-en="Studies Completed" data-fa="مطالعات تکمیل‌شده">Studies Completed</div></div>
+      <div style="text-align:center"><div style="font-size:1.6rem;font-weight:800;color:#fff">$42B</div><div style="font-size:.72rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.5px" data-en="Project Value" data-fa="ارزش پروژه">Project Value</div></div>
+      <div style="text-align:center"><div style="font-size:1.6rem;font-weight:800;color:#fff">5 Days</div><div style="font-size:.72rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.5px" data-en="Proposal Turnaround" data-fa="زمان پیشنهاد">Proposal Turnaround</div></div>
+      <div style="text-align:center"><div style="font-size:1.6rem;font-weight:800;color:#fff">100%</div><div style="font-size:.72rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.5px" data-en="AACE Compliance" data-fa="انطباق AACE">AACE Compliance</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="footer-in">
+    <div>
+      <div style="display:flex;align-items:center;gap:12px">
+        <img src="https://cdn.grapesjs.com/workspaces/cmgvbwak408ja13nsemkia83b/assets/7e057c43-5d96-4c3a-a8fc-8bd5f6589a93__kavianpremiumbadgelogo.svg" alt="KDMine" style="width:44px;height:44px;border-radius:10px">
+        <div><div style="font-size:1.1rem;font-weight:800;color:#fff" data-en="KDMine Group" data-fa="کاویان توسعه معدن">KDMine Group</div><div style="font-size:.7rem;color:rgba(255,255,255,.45);font-weight:600">Mining Engineering & Economics</div></div>
+      </div>
+      <p class="fb-desc">Data-driven mining engineering platform — from feasibility to ESG and AI, for global mining projects.</p>
+      <div class="fb-socs"><a href="#" class="fb-s">in</a><a href="#" class="fb-s">𝕏</a><a href="#" class="fb-s">▶</a><a href="#" class="fb-s">✉</a></div>
+    </div>
+    <div class="fc"><h4>Services</h4>
+      <a href="feasibility.html">Feasibility Studies</a>
+      <a href="cost-estimation.html">CAPEX/OPEX</a>
+      <a href="plant-design.html">Plant Design</a>
+      <a href="critical-minerals.html">Critical Minerals</a>
+      <a href="esg-decarbonization.html">ESG & Decarbonization</a>
+    </div>
+    <div class="fc"><h4>Tools</h4>
+      <a href="../tools/cost-calculator.html">Cost Calculator</a>
+      <a href="../tools/equipment-database.html">Equipment Database</a>
+      <a href="../tools/monte-carlo.html">Monte Carlo</a>
+      <a href="../tools/market-dashboard.html">Market Dashboard</a>
+    </div>
+    <div class="fc"><h4>Resources</h4>
+      <a href="../resources.html">Resource Library</a>
+      <a href="../blog.html">Blog & Insights</a>
+      <a href="../portfolio.html">Portfolio</a>
+      <a href="../about.html">About Us</a>
+    </div>
+    <div class="fc"><h4>Contact</h4>
+      <a href="../contact.html">Get in Touch</a>
+      <a href="../register.html">Free Registration</a>
+      <a href="mailto:info@kdmine.com">info@kdmine.com</a>
+      <a href="tel:+982112345678">+98 21 1234 5678</a>
+    </div>
+  </div>
+  <div class="footer-bot">
+    <span data-en="© 2026 KDMine Group. All rights reserved." data-fa="© ۲۰۲۶ کاویان توسعه معدن. تمامی حقوق محفوظ است.">© 2026 KDMine Group. All rights reserved.</span>
+    <div class="fb-lnks"><a href="../privacy.html">Privacy Policy</a><a href="../terms.html">Terms of Service</a><a href="../sitemap.html">Sitemap</a></div>
+  </div>
+</footer>
+
+<!-- ═══ JAVASCRIPT ═══ -->
+<script>
+/* ── LANG ── */
+let lang='en';
+function applyLang(l){
+  lang=l;const fa=l==='fa';
+  document.documentElement.setAttribute('lang',l);
+  document.documentElement.setAttribute('dir',fa?'rtl':'ltr');
+  document.body.style.fontFamily=fa?"'B Nazanin',Tahoma,Arial,sans-serif":"'Segoe UI',system-ui,sans-serif";
+  document.getElementById('lt-txt').textContent=fa?'EN | English':'FA | فارسی';
+  document.querySelectorAll('[data-en][data-fa]').forEach(el=>{
+    const v=el.getAttribute('data-'+l);
+    if(v!==null){
+      if(el.tagName==='INPUT'||el.tagName==='TEXTAREA')el.placeholder=v;
+      else el.innerHTML=v;
+    }
+  });
+  try{localStorage.setItem('kdmine_lang',l);}catch(e){}
+}
+function tgLang(){applyLang(lang==='en'?'fa':'en');}
+window.addEventListener('DOMContentLoaded',()=>{
+  try{const s=localStorage.getItem('kdmine_lang');if(s&&s!=='en')applyLang(s);}catch(e){}
+});
+
+/* ── MENU ── */
+function tgMenu(){
+  const nav=document.getElementById('mainNav');
+  const o=nav.classList.toggle('open');
+  const sp=document.querySelectorAll('.mbt span');
+  sp[0].style.transform=o?'translateY(7px) rotate(45deg)':'';
+  sp[1].style.opacity=o?'0':'1';
+  sp[2].style.transform=o?'translateY(-7px) rotate(-45deg)':'';
+}
+document.addEventListener('click',e=>{
+  const nav=document.getElementById('mainNav');
+  const btn=document.querySelector('.mbt');
+  if(nav&&btn&&!nav.contains(e.target)&&!btn.contains(e.target)){
+    nav.classList.remove('open');
+    document.querySelectorAll('.mbt span').forEach(s=>{s.style.transform='';s.style.opacity='1';});
+  }
+});
+
+/* ── SCROLL TO TOP ── */
+window.addEventListener('scroll',()=>{
+  const s=document.getElementById('sttBtn');
+  if(s)s.classList.toggle('vis',window.scrollY>400);
+});
+
+/* ── FAQ ACCORDION ── */
+function tgFaq(btn){
+  const item=btn.closest('.faq-item');
+  const isOpen=item.classList.contains('open');
+  // close all
+  document.querySelectorAll('.faq-item.open').forEach(i=>{
+    i.classList.remove('open');
+  });
+  // open clicked if was closed
+  if(!isOpen) item.classList.add('open');
+}
+
+/* ── SCROLL ANIMATIONS ── */
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.style.opacity='1';
+      e.target.style.transform='translateY(0) scale(1)';
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:0.07});
+
+window.addEventListener('DOMContentLoaded',()=>{
+  const animTargets=[
+    ...document.querySelectorAll('.aace-card'),
+    ...document.querySelectorAll('.dcard'),
+    ...document.querySelectorAll('.ccard'),
+    ...document.querySelectorAll('.cscard'),
+    ...document.querySelectorAll('.tcard'),
+    ...document.querySelectorAll('.ps')
+  ];
+  animTargets.forEach((el,i)=>{
+    el.style.opacity='0';
+    el.style.transform='translateY(20px) scale(0.97)';
+    el.style.transition=`opacity 0.42s ease ${(i%6)*0.07}s, transform 0.42s ease ${(i%6)*0.07}s`;
+    io.observe(el);
+  });
+});
+
+/* ── ACTIVE NAV HIGHLIGHT ── */
+window.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('.nl').forEach(a=>{
+    if(a.getAttribute('href')&&window.location.pathname.includes('feasibility'))
+      a.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

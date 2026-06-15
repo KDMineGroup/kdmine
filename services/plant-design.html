@@ -1,1 +1,685 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Process Plant Design — KDMine Group</title>
+<style>
+:root{--primary:#0f2d5e;--secondary:#1a56db;--indigo:#4f46e5;--violet:#7c3aed;--cyan:#0891b2;--teal:#0d9488;--green:#059669;--text-dark:#0f172a;--text-mid:#334155;--text-light:#64748b;--bg-light:#f8fafc;--border:#e2e8f0;--s1:0 1px 3px rgba(0,0,0,.07);--s2:0 4px 12px rgba(0,0,0,.10);--s3:0 12px 30px rgba(0,0,0,.12);--s4:0 20px 50px rgba(0,0,0,.15);--r1:8px;--r2:14px;--r3:20px;--tr:all .3s cubic-bezier(.4,0,.2,1)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,sans-serif;line-height:1.7;color:var(--text-dark);background:#fff;overflow-x:hidden}
+img{max-width:100%;display:block}a{text-decoration:none;color:inherit}
+[dir="rtl"] body{font-family:'B Nazanin',Tahoma,Arial,sans-serif}
+.lt{position:fixed;top:20px;right:20px;z-index:1100;background:#fff;padding:8px 16px;border-radius:50px;box-shadow:var(--s2);cursor:pointer;font-weight:700;font-size:.82rem;border:2px solid var(--border);transition:var(--tr);color:var(--primary);display:flex;align-items:center;gap:6px}
+[dir="rtl"] .lt{right:auto;left:20px}
+.stt{position:fixed;bottom:26px;right:26px;z-index:999;width:42px;height:42px;background:var(--indigo);color:#fff;border-radius:50%;border:none;cursor:pointer;font-size:1.1rem;box-shadow:var(--s3);opacity:0;pointer-events:none;transition:var(--tr);display:flex;align-items:center;justify-content:center}
+.stt.vis{opacity:1;pointer-events:all}
+.topbar{background:var(--primary);color:rgba(255,255,255,.8);font-size:.8rem;padding:7px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.topbar a{color:rgba(255,255,255,.8)}.topbar a:hover{color:#fff}.tb-r{display:flex;gap:20px}
+.hdr{background:rgba(255,255,255,.98);backdrop-filter:blur(12px);position:sticky;top:0;z-index:1000;box-shadow:var(--s2);border-bottom:1px solid var(--border)}
+.hdr-in{max-width:1400px;margin:0 auto;padding:13px 40px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.logo{display:flex;align-items:center;gap:13px}.logo img{width:50px;height:50px;border-radius:11px}
+.logo h1{font-size:1.3rem;color:var(--primary);font-weight:800}.logo p{font-size:.72rem;color:var(--text-light);font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.nav{display:flex;gap:4px;align-items:center}
+.nl{color:var(--text-mid);font-weight:600;font-size:.9rem;padding:8px 13px;border-radius:var(--r1);transition:var(--tr)}
+.nl:hover,.nl.active{color:var(--secondary);background:rgba(26,86,219,.06)}
+.nl.dd{padding-right:20px;position:relative}.nl.dd::after{content:"▾";position:absolute;right:7px;top:50%;transform:translateY(-50%);font-size:.65rem}
+.ddw{position:relative}.ddm{position:absolute;top:calc(100% + 8px);left:0;background:#fff;border-radius:var(--r2);min-width:270px;box-shadow:var(--s4);border:1px solid var(--border);opacity:0;visibility:hidden;transform:translateY(-8px);transition:var(--tr);z-index:200}
+.ddw:hover .ddm{opacity:1;visibility:visible;transform:translateY(0)}
+.ddi{display:flex;align-items:center;gap:10px;padding:11px 18px;color:var(--text-mid);font-size:.86rem;font-weight:500;transition:var(--tr)}.ddi:hover{background:var(--bg-light);color:var(--secondary)}.ddi-ic{font-size:1rem;width:20px;text-align:center}
+.bcta{background:linear-gradient(135deg,var(--secondary),#1d4ed8);color:#fff;padding:10px 22px;border-radius:50px;font-weight:700;font-size:.88rem;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(26,86,219,.35);transition:var(--tr);display:inline-flex;align-items:center;gap:7px}
+.bcta:hover{transform:translateY(-2px)}
+.mbt{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:10px}.mbt span{width:24px;height:2.5px;background:var(--text-dark);border-radius:2px;transition:var(--tr)}
+/* HERO */
+.svc-hero{background:linear-gradient(135deg,#0c0a2e 0%,#1e1b4b 50%,#312e81 100%);color:#fff;padding:120px 40px 90px;position:relative;overflow:hidden}
+.hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(99,102,241,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(99,102,241,.08) 1px,transparent 1px);background-size:40px 40px;pointer-events:none}
+.hero-glow{position:absolute;top:-100px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(99,102,241,.25) 0%,transparent 65%);pointer-events:none}
+.hero-glow2{position:absolute;bottom:-60px;left:-60px;width:350px;height:350px;background:radial-gradient(circle,rgba(124,58,237,.15) 0%,transparent 65%);pointer-events:none}
+.svc-hero-in{max-width:1400px;margin:0 auto;position:relative;z-index:1;display:grid;grid-template-columns:1fr 400px;gap:60px;align-items:center}
+.breadcrumb{display:flex;gap:8px;align-items:center;font-size:.82rem;color:rgba(255,255,255,.55);margin-bottom:18px}
+.breadcrumb a{color:rgba(255,255,255,.65)}.breadcrumb a:hover{color:#fff}.breadcrumb span{color:rgba(255,255,255,.35)}
+.hero-stag{display:inline-block;background:rgba(99,102,241,.25);color:#c7d2fe;font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:14px;border:1px solid rgba(99,102,241,.35)}
+.svc-hero h1{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:800;line-height:1.2;margin-bottom:18px}
+.svc-hero h1 span{color:#c7d2fe}
+.svc-hero p{font-size:1rem;opacity:.82;line-height:1.8;margin-bottom:28px;max-width:580px}
+.hero-acts{display:flex;gap:12px;flex-wrap:wrap}
+.btn-w{background:#fff;color:#0c0a2e;padding:13px 26px;border-radius:50px;font-weight:700;font-size:.92rem;border:none;cursor:pointer;transition:var(--tr);display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 16px rgba(0,0,0,.2)}
+.btn-w:hover{transform:translateY(-2px)}
+.btn-o{background:transparent;color:#fff;padding:13px 26px;border-radius:50px;font-weight:700;font-size:.92rem;border:1.5px solid rgba(255,255,255,.35);cursor:pointer;transition:var(--tr);display:inline-flex;align-items:center;gap:8px}
+.btn-o:hover{background:rgba(255,255,255,.1)}
+/* HERO METRICS */
+.hero-metrics{display:flex;flex-direction:column;gap:12px}
+.hm-card{background:rgba(255,255,255,.07);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.12);border-radius:var(--r2);padding:16px 20px;display:flex;align-items:center;gap:14px}
+.hm-ic{width:42px;height:42px;border-radius:var(--r1);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.hm-n{font-size:1.4rem;font-weight:800;color:#fff}
+.hm-l{font-size:.72rem;color:rgba(255,255,255,.6)}
+/* SECTIONS */
+.sec{padding:80px 40px}
+.sec-in{max-width:1400px;margin:0 auto}
+.sec-hdr{text-align:center;margin-bottom:52px}
+.stag{display:inline-block;background:rgba(79,70,229,.08);color:var(--indigo);font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:12px}
+.sec-hdr h2{font-size:clamp(1.7rem,3.5vw,2.6rem);font-weight:800;color:var(--primary);margin-bottom:12px}
+.sec-hdr p{font-size:.96rem;color:var(--text-light);max-width:680px;margin:0 auto}
+/* PROCESS TYPES */
+.proc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.prc-card{background:#fff;border-radius:var(--r2);padding:28px;border:1px solid var(--border);box-shadow:var(--s1);transition:var(--tr);position:relative;overflow:hidden}
+.prc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--pc-color,var(--indigo))}
+.prc-card:hover{transform:translateY(-5px);box-shadow:var(--s3);border-color:transparent}
+.prc-ic{width:56px;height:56px;border-radius:var(--r2);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:16px}
+.prc-card h3{font-size:1.05rem;font-weight:800;color:var(--text-dark);margin-bottom:8px}
+.prc-card p{font-size:.84rem;color:var(--text-light);line-height:1.7;margin-bottom:14px}
+.prc-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}
+.prc-tag{font-size:.65rem;font-weight:700;padding:3px 9px;border-radius:50px;background:var(--bg-light);border:1px solid var(--border);color:var(--text-mid)}
+.prc-feats{display:flex;flex-direction:column;gap:5px}
+.pf{display:flex;align-items:center;gap:7px;font-size:.8rem;color:var(--text-mid)}
+.pf::before{content:'▸';color:var(--indigo);font-weight:800;font-size:.75rem;flex-shrink:0}
+/* DESIGN STAGES */
+.stage-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.stg-card{background:#fff;border-radius:var(--r2);padding:24px;border:1px solid var(--border);box-shadow:var(--s1);transition:var(--tr);position:relative}
+.stg-card:hover{transform:translateY(-4px);box-shadow:var(--s3)}
+.stg-num{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--indigo),var(--violet));color:#fff;font-size:.9rem;font-weight:800;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+.stg-phase{font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--indigo);background:rgba(79,70,229,.07);padding:3px 10px;border-radius:50px;display:inline-block;margin-bottom:8px;border:1px solid rgba(79,70,229,.15)}
+.stg-card h3{font-size:.92rem;font-weight:800;color:var(--text-dark);margin-bottom:8px}
+.stg-items{display:flex;flex-direction:column;gap:4px}
+.si{font-size:.8rem;color:var(--text-mid);display:flex;align-items:flex-start;gap:6px}
+.si::before{content:'→';color:var(--indigo);font-weight:800;flex-shrink:0;margin-top:2px}
+.stg-acc{margin-top:10px;padding:8px 12px;background:rgba(79,70,229,.05);border-radius:var(--r1);font-size:.76rem;font-weight:700;color:var(--indigo);border:1px solid rgba(79,70,229,.12)}
+/* COMMODITIES */
+.comm-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.comm-card{background:#fff;border-radius:var(--r2);padding:20px;border:1px solid var(--border);box-shadow:var(--s1);transition:var(--tr);text-align:center}
+.comm-card:hover{transform:translateY(-4px);box-shadow:var(--s3)}
+.comm-ic{font-size:2rem;margin-bottom:8px}
+.comm-card h3{font-size:.88rem;font-weight:800;color:var(--text-dark);margin-bottom:6px}
+.comm-route{font-size:.72rem;color:var(--text-light);margin-bottom:8px;line-height:1.5}
+.comm-badge{display:inline-block;font-size:.62rem;font-weight:700;padding:2px 8px;border-radius:50px;color:#fff}
+/* DELIVERABLES TABLE */
+.deliv-wrap{overflow-x:auto;border-radius:var(--r2);border:1px solid var(--border);box-shadow:var(--s1)}
+.deliv-table{width:100%;border-collapse:collapse;font-size:.84rem}
+.deliv-table thead{background:linear-gradient(135deg,#1e1b4b,#312e81);color:#fff}
+.deliv-table th{padding:13px 18px;text-align:left;font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:.4px;white-space:nowrap}
+.deliv-table td{padding:11px 18px;border-bottom:1px solid var(--border);color:var(--text-mid);vertical-align:middle;font-size:.83rem}
+.deliv-table tr:last-child td{border-bottom:none}
+.deliv-table tr:hover td{background:var(--bg-light)}
+.deliv-table tr:nth-child(even) td{background:#fafbfc}
+.dt-stage{display:inline-block;font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:50px;color:#fff}
+.dt-check{color:var(--green);font-weight:800}
+/* TECH STACK */
+.tech-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.tech-card{background:#fff;border-radius:var(--r2);padding:18px 20px;border:1px solid var(--border);box-shadow:var(--s1);display:flex;align-items:center;gap:12px;transition:var(--tr)}
+.tech-card:hover{transform:translateY(-3px);box-shadow:var(--s2)}
+.tech-ic{width:40px;height:40px;border-radius:var(--r1);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.tech-name{font-size:.88rem;font-weight:800;color:var(--text-dark)}
+.tech-cat{font-size:.7rem;color:var(--text-light);margin-top:2px}
+/* STATS STRIP */
+.stats-strip{background:linear-gradient(135deg,#0c0a2e,#1e1b4b);padding:60px 40px;color:#fff}
+.stats-in{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:30px;text-align:center}
+.stat-n{font-size:2.2rem;font-weight:800;color:#c7d2fe}
+.stat-l{font-size:.78rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.5px;margin-top:4px}
+/* FAQ */
+.faq-in{max-width:900px;margin:0 auto}
+.faq-list{display:flex;flex-direction:column;gap:10px;margin-top:40px}
+.faq-item{background:#fff;border-radius:var(--r2);border:1px solid var(--border);overflow:hidden}
+.faq-item.open{box-shadow:var(--s2)}
+.faq-q{padding:18px 22px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-weight:700;font-size:.94rem;color:var(--text-dark);gap:12px}
+.faq-q:hover{color:var(--indigo)}
+.faq-ic{width:28px;height:28px;border-radius:50%;background:var(--bg-light);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.8rem;flex-shrink:0;transition:var(--tr)}
+.faq-item.open .faq-ic{background:var(--indigo);color:#fff;border-color:var(--indigo);transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;padding:0 22px;font-size:.88rem;color:var(--text-mid);line-height:1.8}
+.faq-item.open .faq-a{max-height:500px;padding:0 22px 18px}
+/* CTA */
+.cta-sec{padding:100px 40px;background:linear-gradient(135deg,#0c0a2e,#1e1b4b,#312e81);color:#fff;text-align:center;position:relative;overflow:hidden}
+.cta-sec::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(99,102,241,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(99,102,241,.05) 1px,transparent 1px);background-size:40px 40px}
+.cta-in{max-width:700px;margin:0 auto;position:relative;z-index:1}
+.cta-sec h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;margin-bottom:14px}
+.cta-sec p{font-size:.98rem;opacity:.8;margin-bottom:36px;line-height:1.75}
+.cta-acts{display:flex;gap:13px;justify-content:center;flex-wrap:wrap}
+.bcp{background:linear-gradient(135deg,var(--indigo),var(--violet));color:#fff;padding:14px 30px;border-radius:50px;font-weight:700;font-size:.96rem;border:none;cursor:pointer;box-shadow:0 6px 20px rgba(79,70,229,.4);transition:var(--tr);display:inline-flex;align-items:center;gap:8px}
+.bcp:hover{transform:translateY(-3px)}
+.bco{background:transparent;color:#fff;padding:14px 30px;border-radius:50px;font-weight:700;font-size:.96rem;border:1.5px solid rgba(255,255,255,.35);cursor:pointer;transition:var(--tr);display:inline-flex;align-items:center;gap:8px}
+.bco:hover{background:rgba(255,255,255,.1)}
+/* FOOTER */
+.footer{background:#0a1628;color:#fff;padding:68px 40px 26px}
+.footer-in{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:36px;margin-bottom:46px}
+.fb-desc{font-size:.84rem;color:rgba(255,255,255,.5);line-height:1.75;margin-top:13px;margin-bottom:17px}
+.fb-socs{display:flex;gap:8px}
+.fb-s{width:34px;height:34px;background:rgba(255,255,255,.08);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.86rem;transition:var(--tr);color:rgba(255,255,255,.52)}.fb-s:hover{background:var(--secondary);color:#fff}
+.fc h4{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.45);margin-bottom:15px}
+.fc a{display:block;color:rgba(255,255,255,.66);font-size:.84rem;padding:4px 0;transition:var(--tr)}.fc a:hover{color:#fff}
+.footer-bot{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding-top:22px;border-top:1px solid rgba(255,255,255,.08);font-size:.78rem;color:rgba(255,255,255,.36);flex-wrap:wrap;gap:10px}
+.fb-lnks{display:flex;gap:18px}.fb-lnks a{color:rgba(255,255,255,.36)}.fb-lnks a:hover{color:rgba(255,255,255,.75)}
+@media(max-width:1100px){.svc-hero-in{grid-template-columns:1fr}.hero-metrics{display:grid;grid-template-columns:1fr 1fr}.proc-grid{grid-template-columns:1fr 1fr}.stage-grid{grid-template-columns:1fr 1fr}.comm-grid{grid-template-columns:repeat(2,1fr)}.tech-grid{grid-template-columns:repeat(2,1fr)}.stats-in{grid-template-columns:repeat(3,1fr)}.footer-in{grid-template-columns:1fr 1fr 1fr}}
+@media(max-width:768px){.topbar{display:none}.mbt{display:flex}.nav{position:fixed;top:78px;right:-100%;width:80%;max-width:290px;height:calc(100vh - 78px);background:#fff;flex-direction:column;padding:28px;box-shadow:var(--s4);transition:right .3s ease;align-items:flex-start;overflow-y:auto;z-index:999}.nav.open{right:0}.ddm{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:none;background:var(--bg-light);margin-top:5px}.svc-hero,.sec,.stats-strip,.cta-sec,.footer{padding-left:22px;padding-right:22px}.proc-grid,.stage-grid,.comm-grid,.tech-grid{grid-template-columns:1fr}.stats-in{grid-template-columns:repeat(2,1fr)}.footer-in{grid-template-columns:1fr 1fr}.footer-bot{flex-direction:column;text-align:center}.hdr-in{padding:13px 20px}}
+</style>
+</head>
+<body>
+<button class="lt" onclick="tgLang()">🌐 <span id="lt-txt">FA | فارسی</span></button>
+<button class="stt" id="sttBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<div class="topbar">
+  <div>📧 info@kdmine.com &nbsp;|&nbsp; 📞 +98 21 1234 5678 &nbsp;|&nbsp; 🕐 Sat–Wed 08:00–18:00 IRST</div>
+  <div class="tb-r"><a href="../register.html">🔐 Client Login</a><a href="../register.html">📊 Dashboard</a></div>
+</div>
+<header class="hdr">
+  <div class="hdr-in">
+    <div class="logo">
+      <img src="https://cdn.grapesjs.com/workspaces/cmgvbwak408ja13nsemkia83b/assets/7e057c43-5d96-4c3a-a8fc-8bd5f6589a93__kavianpremiumbadgelogo.svg" alt="KDMine">
+      <div><h1 data-en="KDMine Group" data-fa="کاویان توسعه معدن">KDMine Group</h1><p data-en="Mining Engineering & Economics" data-fa="مهندسی و اقتصاد معدن">Mining Engineering & Economics</p></div>
+    </div>
+    <button class="mbt" onclick="tgMenu()"><span></span><span></span><span></span></button>
+    <nav class="nav" id="mainNav">
+      <div class="ddw"><a href="../index.html#services" class="nl dd active">Services</a>
+        <div class="ddm">
+          <a href="feasibility.html" class="ddi"><span class="ddi-ic">📋</span><span>Feasibility Studies</span></a>
+          <a href="cost-estimation.html" class="ddi"><span class="ddi-ic">💰</span><span>CAPEX/OPEX Estimation</span></a>
+          <a href="plant-design.html" class="ddi" style="color:var(--secondary);background:var(--bg-light)"><span class="ddi-ic">🏭</span><span>Process Plant Design</span></a>
+          <a href="critical-minerals.html" class="ddi"><span class="ddi-ic">⚡</span><span>Critical Minerals</span></a>
+          <a href="esg-decarbonization.html" class="ddi"><span class="ddi-ic">🌱</span><span>ESG & Decarbonization</span></a>
+          <a href="digital-mining.html" class="ddi"><span class="ddi-ic">🤖</span><span>Digital Mining & AI</span></a>
+        </div>
+      </div>
+      <div class="ddw"><a href="../index.html#tools" class="nl dd">Tools</a>
+        <div class="ddm">
+          <a href="../tools/cost-calculator.html" class="ddi"><span class="ddi-ic">🧮</span><span>Cost Calculator</span></a>
+          <a href="../tools/equipment-database.html" class="ddi"><span class="ddi-ic">🗃️</span><span>Equipment Database</span></a>
+          <a href="../tools/monte-carlo.html" class="ddi"><span class="ddi-ic">📉</span><span>Monte Carlo Simulator</span></a>
+          <a href="../tools/market-dashboard.html" class="ddi"><span class="ddi-ic">🌍</span><span>Market Dashboard</span></a>
+        </div>
+      </div>
+      <a href="../resources.html" class="nl">Resources</a>
+      <a href="../portfolio.html" class="nl">Portfolio</a>
+      <a href="../about.html" class="nl">About</a>
+      <a href="../contact.html" class="nl">Contact</a>
+      <a href="../register.html" class="bcta">Get Started →</a>
+    </nav>
+  </div>
+</header>
 
+<!-- ═══ HERO ═══ -->
+<section class="svc-hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="svc-hero-in">
+    <div>
+      <div class="breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="../index.html#services">Services</a><span>/</span><span>Process Plant Design</span></div>
+      <div class="hero-stag">Comminution · Flotation · Hydromet · HPAL · SX-EW · CIL/CIP · Pyrometallurgy</div>
+      <h1>Process Plant <span>Design & Engineering</span></h1>
+      <p data-en="KDMine Group delivers full-cycle process plant design for metallic and industrial mineral projects — from conceptual flowsheet development through to detailed engineering, equipment selection, and commissioning support. We cover all major metallurgical routes for copper, gold, iron ore, lithium, nickel, zinc, and critical minerals." data-fa="KDMine Group طراحی کارخانه فرآوری کامل برای پروژه‌های مواد معدنی فلزی و صنعتی ارائه می‌دهد — از توسعه فلوشیت مفهومی تا مهندسی تفصیلی، انتخاب تجهیزات و پشتیبانی راه‌اندازی. ما تمام مسیرهای متالورژیکی اصلی برای مس، طلا، سنگ آهن، لیتیوم، نیکل، روی و مواد معدنی حیاتی را پوشش می‌دهیم.">KDMine Group delivers full-cycle process plant design for metallic and industrial mineral projects — from conceptual flowsheet development through to detailed engineering, equipment selection, and commissioning support. We cover all major metallurgical routes for copper, gold, iron ore, lithium, nickel, zinc, and critical minerals.</p>
+      <div class="hero-acts">
+        <a href="../contact.html" class="btn-w">🏭 Request Plant Design Proposal →</a>
+        <a href="../resources.html" class="btn-o">📐 Download Design Standards</a>
+      </div>
+    </div>
+    <div class="hero-metrics">
+      <div class="hm-card"><div class="hm-ic" style="background:rgba(99,102,241,.2)">🏭</div><div><div class="hm-n">85+</div><div class="hm-l">Process Plants Designed</div></div></div>
+      <div class="hm-card"><div class="hm-ic" style="background:rgba(99,102,241,.2)">⚙️</div><div><div class="hm-n">12</div><div class="hm-l">Metallurgical Routes Covered</div></div></div>
+      <div class="hm-card"><div class="hm-ic" style="background:rgba(99,102,241,.2)">📐</div><div><div class="hm-n">Class 3–5</div><div class="hm-l">AACE Design Accuracy</div></div></div>
+      <div class="hm-card"><div class="hm-ic" style="background:rgba(99,102,241,.2)">🌍</div><div><div class="hm-n">22</div><div class="hm-l">Countries — Active Projects</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stats-in">
+    <div><div class="stat-n">85+</div><div class="stat-l">Plants Designed</div></div>
+    <div><div class="stat-n">12</div><div class="stat-l">Metallurgical Routes</div></div>
+    <div><div class="stat-n">22</div><div class="stat-l">Countries</div></div>
+    <div><div class="stat-n">$28B</div><div class="stat-l">Plant CAPEX Designed</div></div>
+    <div><div class="stat-n">98%</div><div class="stat-l">On-Spec Commissioning Rate</div></div>
+  </div>
+</div>
+
+<!-- ═══ PROCESS TYPES ═══ -->
+<section class="sec" style="background:var(--bg-light)">
+  <div class="sec-in">
+    <div class="sec-hdr">
+      <div class="stag">Metallurgical Routes</div>
+      <h2 data-en="Process Plant Types & Metallurgical Routes" data-fa="انواع کارخانه فرآوری و مسیرهای متالورژیکی">Process Plant Types & Metallurgical Routes</h2>
+      <p>KDMine covers all major metallurgical processing routes — from conventional comminution and flotation to advanced hydrometallurgy, HPAL, and pyrometallurgy.</p>
+    </div>
+    <div class="proc-grid">
+
+      <div class="prc-card" style="--pc-color:#4f46e5">
+        <div class="prc-ic" style="background:rgba(79,70,229,.1)">⚙️</div>
+        <h3>Comminution & Beneficiation</h3>
+        <p>Full comminution circuit design — crushing, grinding (SAG/AG/Ball), classification, and gravity concentration. Covers ROM to final concentrate for all metallic minerals.</p>
+        <div class="prc-tags"><span class="prc-tag">SAG Mill</span><span class="prc-tag">Ball Mill</span><span class="prc-tag">HPGR</span><span class="prc-tag">Gravity</span></div>
+        <div class="prc-feats">
+          <div class="pf">Comminution circuit selection & sizing</div>
+          <div class="pf">Bond Work Index & SPI test interpretation</div>
+          <div class="pf">Cyclone & screen sizing (Krebs, Derrick)</div>
+          <div class="pf">Gravity circuit (Knelson, Falcon, Jig)</div>
+          <div class="pf">HPGR vs. SAG trade-off study</div>
+        </div>
+      </div>
+
+      <div class="prc-card" style="--pc-color:#7c3aed">
+        <div class="prc-ic" style="background:rgba(124,58,237,.1)">🫧</div>
+        <h3>Flotation & Concentration</h3>
+        <p>Sulphide and oxide flotation circuit design for copper, zinc, lead, nickel, molybdenum, and PGMs. Includes reagent scheme optimisation and column flotation design.</p>
+        <div class="prc-tags"><span class="prc-tag">Cu Flotation</span><span class="prc-tag">Zn/Pb</span><span class="prc-tag">Ni/PGM</span><span class="prc-tag">Mo</span></div>
+        <div class="prc-feats">
+          <div class="pf">Rougher-scavenger-cleaner circuit design</div>
+          <div class="pf">Reagent scheme (collector, frother, modifier)</div>
+          <div class="pf">Column flotation & Jameson cell sizing</div>
+          <div class="pf">Concentrate thickening & filtration</div>
+          <div class="pf">Tailings management & water recovery</div>
+        </div>
+      </div>
+
+      <div class="prc-card" style="--pc-color:#0891b2">
+        <div class="prc-ic" style="background:rgba(8,145,178,.1)">🧪</div>
+        <h3>Hydrometallurgy — Leach & SX-EW</h3>
+        <p>Heap leach, vat leach, and agitated tank leach circuit design for copper oxide, gold, uranium, and nickel. Includes SX-EW, SART, and Merrill-Crowe circuits.</p>
+        <div class="prc-tags"><span class="prc-tag">Heap Leach</span><span class="prc-tag">SX-EW</span><span class="prc-tag">SART</span><span class="prc-tag">Merrill-Crowe</span></div>
+        <div class="prc-feats">
+          <div class="pf">Heap leach pad design (on/off, valley fill)</div>
+          <div class="pf">PLS/raffinate circuit sizing</div>
+          <div class="pf">SX mixer-settler selection & sizing</div>
+          <div class="pf">EW tankhouse design (current density, cells)</div>
+          <div class="pf">Acid balance & water management</div>
+        </div>
+      </div>
+
+      <div class="prc-card" style="--pc-color:#059669">
+        <div class="prc-ic" style="background:rgba(5,150,105,.1)">🥇</div>
+        <h3>CIL / CIP / Elution — Gold</h3>
+        <p>Carbon-in-leach (CIL) and carbon-in-pulp (CIP) circuit design for gold and silver. Includes cyanide leach, carbon management, elution, electrowinning, and smelting.</p>
+        <div class="prc-tags"><span class="prc-tag">CIL</span><span class="prc-tag">CIP</span><span class="prc-tag">AARL Elution</span><span class="prc-tag">Merrill-Crowe</span></div>
+        <div class="prc-feats">
+          <div class="pf">CIL/CIP tank sizing (residence time, OTF)</div>
+          <div class="pf">Carbon management (advance, transfer, strip)</div>
+          <div class="pf">AARL/Anglo-American elution circuit</div>
+          <div class="pf">Gold room (EW, smelting, doré)</div>
+          <div class="pf">Cyanide destruction (INCO SO₂/Air)</div>
+        </div>
+      </div>
+
+      <div class="prc-card" style="--pc-color:#d97706">
+        <div class="prc-ic" style="background:rgba(217,119,6,.1)">⚗️</div>
+        <h3>HPAL — Nickel & Cobalt Laterite</h3>
+        <p>High Pressure Acid Leach (HPAL) plant design for nickel-cobalt laterite projects. Covers autoclave design, CCD washing, MHP/MSP precipitation, and product refining.</p>
+        <div class="prc-tags"><span class="prc-tag">HPAL</span><span class="prc-tag">Autoclave</span><span class="prc-tag">MHP</span><span class="prc-tag">MSP</span></div>
+        <div class="prc-feats">
+          <div class="pf">Autoclave sizing (temperature, pressure, residence)</div>
+          <div class="pf">CCD washing circuit design</div>
+          <div class="pf">MHP/MSP precipitation & filtration</div>
+          <div class="pf">NiSO₄/CoSO₄ battery-grade refining</div>
+          <div class="pf">Acid plant integration & steam balance</div>
+        </div>
+      </div>
+
+      <div class="prc-card" style="--pc-color:#dc2626">
+        <div class="prc-ic" style="background:rgba(220,38,38,.1)">🔥</div>
+        <h3>Pyrometallurgy — Smelting & Roasting</h3>
+        <p>Smelting and roasting circuit design for copper, nickel, zinc, and iron ore. Covers flash smelting, electric furnace, roaster, and direct reduced iron (DRI) processes.</p>
+        <div class="prc-tags"><span class="prc-tag">Flash Smelting</span><span class="prc-tag">Electric Furnace</span><span class="prc-tag">Roaster</span><span class="prc-tag">DRI</span></div>
+        <div class="prc-feats">
+          <div class="pf">Smelter mass & energy balance</div>
+          <div class="pf">Converter & anode furnace sizing</div>
+          <div class="pf">Acid plant (double contact, double absorption)</div>
+          <div class="pf">Slag treatment & copper recovery</div>
+          <div class="pf">DRI/HBI plant (Midrex, HYL/Energiron)</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DESIGN STAGES ═══ -->
+<section class="sec" style="background:#fff">
+  <div class="sec-in">
+    <div class="sec-hdr">
+      <div class="stag">Design Lifecycle</div>
+      <h2>Plant Design Stages — From Concept to Commissioning</h2>
+      <p>KDMine delivers process plant design across all AACE study classes — from early-stage conceptual design through to detailed engineering and commissioning support.</p>
+    </div>
+    <div class="stage-grid">
+      <div class="stg-card">
+        <div class="stg-num">1</div>
+        <div class="stg-phase">AACE Class 5</div>
+        <h3>Conceptual / Scoping</h3>
+        <div class="stg-items">
+          <div class="si">Process route selection</div>
+          <div class="si">Conceptual flowsheet (PFD)</div>
+          <div class="si">Order-of-magnitude CAPEX</div>
+          <div class="si">Throughput & recovery assumptions</div>
+          <div class="si">Site layout concept</div>
+        </div>
+        <div class="stg-acc">Accuracy: −50% / +100%</div>
+      </div>
+      <div class="stg-card">
+        <div class="stg-num">2</div>
+        <div class="stg-phase">AACE Class 4</div>
+        <h3>Pre-Feasibility (PFS)</h3>
+        <div class="stg-items">
+          <div class="si">Mass & water balance</div>
+          <div class="si">Equipment list & sizing</div>
+          <div class="si">P&ID (preliminary)</div>
+          <div class="si">Factored CAPEX estimate</div>
+          <div class="si">Reagent & utility consumption</div>
+        </div>
+        <div class="stg-acc">Accuracy: −30% / +50%</div>
+      </div>
+      <div class="stg-card">
+        <div class="stg-num">3</div>
+        <div class="stg-phase">AACE Class 3</div>
+        <h3>Feasibility Study (FS)</h3>
+        <div class="stg-items">
+          <div class="si">Detailed mass balance (METSIM/JKSimMet)</div>
+          <div class="si">Equipment datasheets & RFQs</div>
+          <div class="si">P&ID (approved for design)</div>
+          <div class="si">General arrangement drawings</div>
+          <div class="si">Definitive CAPEX estimate</div>
+        </div>
+        <div class="stg-acc">Accuracy: −15% / +25%</div>
+      </div>
+      <div class="stg-card">
+        <div class="stg-num">4</div>
+        <div class="stg-phase">AACE Class 1–2</div>
+        <h3>Detailed Engineering & EPC</h3>
+        <div class="stg-items">
+          <div class="si">IFC drawings (civil, structural, piping)</div>
+          <div class="si">Electrical & instrumentation design</div>
+          <div class="si">3D plant model (PDMS/E3D/Navisworks)</div>
+          <div class="si">Procurement support & vendor review</div>
+          <div class="si">Commissioning & start-up support</div>
+        </div>
+        <div class="stg-acc">Accuracy: −5% / +10%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ COMMODITIES ═══ -->
+<section class="sec" style="background:var(--bg-light)">
+  <div class="sec-in">
+    <div class="sec-hdr">
+      <div class="stag">Commodity Coverage</div>
+      <h2>Commodities & Processing Routes</h2>
+      <p>KDMine has designed process plants for 16 commodities across all major metallurgical routes — from conventional sulphide flotation to advanced hydrometallurgy.</p>
+    </div>
+    <div class="comm-grid">
+      <div class="comm-card"><div class="comm-ic">🟠</div><h3>Copper</h3><div class="comm-route">Flotation → Concentrate<br>Heap Leach → SX-EW<br>HPAL (laterite)</div><span class="comm-badge" style="background:#d97706">Primary</span></div>
+      <div class="comm-card"><div class="comm-ic">🟡</div><h3>Gold</h3><div class="comm-route">CIL / CIP<br>Heap Leach → Merrill-Crowe<br>Gravity + CIL</div><span class="comm-badge" style="background:#f59e0b">Primary</span></div>
+      <div class="comm-card"><div class="comm-ic">🔵</div><h3>Iron Ore</h3><div class="comm-route">Crushing & Screening<br>Magnetic Separation (LIMS/HIMS)<br>DRI / Pelletising</div><span class="comm-badge" style="background:#1a56db">Primary</span></div>
+      <div class="comm-card"><div class="comm-ic">🟢</div><h3>Nickel</h3><div class="comm-route">Sulphide Flotation → Smelting<br>HPAL (laterite) → MHP<br>NiSO₄ battery grade</div><span class="comm-badge" style="background:#059669">Primary</span></div>
+      <div class="comm-card"><div class="comm-ic">🔴</div><h3>Zinc / Lead</h3><div class="comm-route">Selective Flotation<br>Zn/Pb Bulk → Separation<br>Imperial Smelting</div><span class="comm-badge" style="background:#dc2626">Primary</span></div>
+      <div class="comm-card"><div class="comm-ic">🟣</div><h3>Lithium</h3><div class="comm-route">Spodumene → LiOH/Li₂CO₃<br>Brine → DLE → LiCl<br>Lepidolite processing</div><span class="comm-badge" style="background:#7c3aed">Critical</span></div>
+      <div class="comm-card"><div class="comm-ic">⚪</div><h3>PGMs</h3><div class="comm-route">UG2 / Merensky Flotation<br>Smelting → Base Metal Refinery<br>PGM Refinery (chlorine leach)</div><span class="comm-badge" style="background:#64748b">Primary</span></div>
+      <div class="comm-card"><div class="comm-ic">🟤</div><h3>REE</h3><div class="comm-route">Physical separation<br>Acid leach → SX separation<br>Mixed REE carbonate / oxide</div><span class="comm-badge" style="background:#dc2626">Critical</span></div>
+      <div class="comm-card"><div class="comm-ic">🔶</div><h3>Molybdenum</h3><div class="comm-route">Cu-Mo Flotation → Mo Separation<br>Pressure oxidation<br>MoO₃ roasting</div><span class="comm-badge" style="background:#ea580c">By-product</span></div>
+      <div class="comm-card"><div class="comm-ic">🔷</div><h3>Cobalt</h3><div class="comm-route">Cu-Co Flotation (DRC)<br>HPAL → CoSO₄<br>Cobalt hydroxide precipitation</div><span class="comm-badge" style="background:#1a56db">Critical</span></div>
+      <div class="comm-card"><div class="comm-ic">⬛</div><h3>Graphite</h3><div class="comm-route">Flotation → Concentrate<br>Thermal purification<br>Spheronisation (anode grade)</div><span class="comm-badge" style="background:#0d9488">Critical</span></div>
+      <div class="comm-card"><div class="comm-ic">🔘</div><h3>Phosphate</h3><div class="comm-route">Crushing & Screening<br>Flotation / Scrubbing<br>Beneficiation to DAP/MAP</div><span class="comm-badge" style="background:#64748b">Industrial</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DELIVERABLES TABLE ═══ -->
+<section class="sec" style="background:#fff">
+  <div class="sec-in">
+    <div class="sec-hdr">
+      <div class="stag">Engineering Deliverables</div>
+      <h2>Process Plant Design Deliverables by Study Stage</h2>
+      <p>KDMine's standard deliverable matrix — aligned with AACE International study class definitions and industry best practice.</p>
+    </div>
+    <div class="deliv-wrap">
+      <table class="deliv-table">
+        <thead>
+          <tr><th>Deliverable</th><th>Scoping (Cl.5)</th><th>PFS (Cl.4)</th><th>FS (Cl.3)</th><th>Detailed (Cl.1-2)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Process Flow Diagram (PFD)</td><td class="dt-check">✓ Conceptual</td><td class="dt-check">✓ Preliminary</td><td class="dt-check">✓ Approved</td><td class="dt-check">✓ IFC</td></tr>
+          <tr><td>Mass & Water Balance</td><td>Indicative</td><td class="dt-check">✓ Preliminary</td><td class="dt-check">✓ Definitive</td><td class="dt-check">✓ Detailed</td></tr>
+          <tr><td>Piping & Instrumentation Diagram (P&ID)</td><td>—</td><td class="dt-check">✓ Preliminary</td><td class="dt-check">✓ Approved for Design</td><td class="dt-check">✓ IFC / As-Built</td></tr>
+          <tr><td>Equipment List & Sizing</td><td>Indicative</td><td class="dt-check">✓ Preliminary</td><td class="dt-check">✓ Definitive + Datasheets</td><td class="dt-check">✓ Vendor Approved</td></tr>
+          <tr><td>General Arrangement Drawings</td><td>Concept</td><td class="dt-check">✓ Preliminary</td><td class="dt-check">✓ Approved</td><td class="dt-check">✓ IFC</td></tr>
+          <tr><td>3D Plant Model</td><td>—</td><td>—</td><td>Preliminary</td><td class="dt-check">✓ Full PDMS/E3D</td></tr>
+          <tr><td>Electrical Single Line Diagram</td><td>—</td><td>Indicative</td><td class="dt-check">✓ Preliminary</td><td class="dt-check">✓ IFC</td></tr>
+          <tr><td>Instrumentation & Control (I&C)</td><td>—</td><td>Indicative</td><td class="dt-check">✓ Preliminary</td><td class="dt-check">✓ IFC + FAT</td></tr>
+          <tr><td>CAPEX Estimate</td><td>Order of Magnitude</td><td class="dt-check">✓ Factored</td><td class="dt-check">✓ Definitive</td><td class="dt-check">✓ Control Estimate</td></tr>
+          <tr><td>OPEX Model</td><td>Indicative</td><td class="dt-check">✓ Preliminary</td><td class="dt-check">✓ Definitive</td><td class="dt-check">✓ Detailed</td></tr>
+          <tr><td>Commissioning & Start-up Plan</td><td>—</td><td>—</td><td>Outline</td><td class="dt-check">✓ Full C&SU Plan</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TECH STACK ═══ -->
+<section class="sec" style="background:var(--bg-light)">
+  <div class="sec-in">
+    <div class="sec-hdr">
+      <div class="stag">Engineering Tools</div>
+      <h2>Software & Engineering Tools</h2>
+      <p>KDMine's engineering team uses industry-standard process simulation, 3D modelling, and project management tools — ensuring deliverables meet international engineering standards.</p>
+    </div>
+    <div class="tech-grid">
+      <div class="tech-card"><div class="tech-ic" style="background:rgba(79,70,229,.1)">📊</div><div><div class="tech-name">METSIM</div><div class="tech-cat">Process simulation & mass balance</div></div></div>
+      <div class="tech-card"><div class="tech-ic" style="background:rgba(8,145,178,.1)">⚙️</div><div><div class="tech-name">JKSimMet</div><div class="tech-cat">Comminution circuit simulation</div></div></div>
+      <div class="tech-card"><div class="tech-ic" style="background:rgba(5,150,105,.1)">🔬</div><div><div class="tech-name">HSC Chemistry</div><div class="tech-cat">Thermodynamic & hydromet modelling</div></div></div>
+      <div class="tech-card"><div class="tech-ic" style="background:rgba(217,119,6,.1)">🏗️</div><div><div class="tech-name">AVEVA E3D / PDMS</div><div class="tech-cat">3D plant modelling</div></div></div>
+      <div class="tech-card"><div class="tech-ic" style="background:rgba(124,58,237,.1)">📐</div><div><div class="tech-name">AutoCAD / MicroStation</div><div class="tech-cat">2D engineering drawings</div></div></div>
+      <div class="tech-card"><div class="tech-ic" style="background:rgba(220,38,38,.1)">🔌</div><div><div class="tech-name">ETAP</div><div class="tech-cat">Electrical power system analysis</div></div></div>
+      <div class="tech-card"><div class="tech-ic" style="background:rgba(13,148,136,.1)">📋</div><div><div class="tech-name">AVEVA P&ID</div><div class="tech-cat">Piping & instrumentation diagrams</div></div></div>
+      <div class="tech-card"><div class="tech-ic" style="background:rgba(26,86,219,.1)">📈</div><div><div class="tech-name">Aspen HYSYS</div><div class="tech-cat">Process simulation (gas/liquid)</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="sec" style="background:#fff">
+  <div class="sec-in">
+    <div class="faq-in">
+      <div class="sec-hdr">
+        <div class="stag">Common Questions</div>
+        <h2>Process Plant Design FAQ</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q" onclick="tgFaq(this)"><span>How do we select the right processing route for our deposit?</span><div class="faq-ic">+</div></div>
+          <div class="faq-a">Process route selection is driven by ore mineralogy, grade, liberation characteristics, and target product. KDMine follows a structured process: (1) Ore characterisation — QEMSCAN/MLA mineralogical analysis to identify mineral associations and liberation size. (2) Metallurgical testwork — bench-scale flotation, leach, or gravity tests to establish recovery vs. grade curves. (3) Flowsheet options study — typically 3 options evaluated at scoping level with NPV/CAPEX trade-off. (4) Pilot plant — for complex ores or novel flowsheets, pilot-scale testing (500 kg to 5 t/day) to de-risk the design. (5) Definitive flowsheet selection — based on testwork results, CAPEX/OPEX, and product marketability. KDMine has a network of accredited metallurgical laboratories for testwork management.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="tgFaq(this)"><span>What is the difference between a PFS and a Feasibility Study for plant design?</span>What is the difference between a PFS and a Feasibility Study for plant design?</span><div class="faq-ic">+</div></div>
+          <div class="faq-a">A Pre-Feasibility Study (PFS) is an AACE Class 4 study (accuracy −30%/+50%) that confirms technical viability and provides a basis for the investment decision to proceed to full FS. For process plant design, a PFS includes: preliminary mass balance, equipment list with factored sizing, preliminary P&IDs, and a factored CAPEX estimate based on vendor budgetary quotes and factored costs. A Feasibility Study (FS) is an AACE Class 3 study (accuracy −15%/+25%) that provides the definitive basis for a Final Investment Decision (FID). It includes: detailed mass balance (METSIM/JKSimMet), equipment datasheets with vendor quotes, approved-for-design P&IDs, general arrangement drawings, and a definitive CAPEX estimate. The FS is typically required by lenders and boards before committing project capital. KDMine delivers both PFS and FS to international standards.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="tgFaq(this)"><span>How long does a process plant feasibility study take?</span><div class="faq-ic">+</div></div>
+          <div class="faq-a">Typical timelines for KDMine process plant studies: Scoping/Conceptual (AACE Class 5): 4–8 weeks. Pre-Feasibility Study (AACE Class 4): 4–6 months, depending on metallurgical testwork availability. Feasibility Study (AACE Class 3): 9–18 months, including metallurgical testwork (3–6 months), detailed engineering (4–8 months), and CAPEX estimation (2–3 months). Detailed Engineering (AACE Class 1–2): 12–24 months for a typical 5–10 Mtpa plant. The critical path is usually metallurgical testwork — KDMine recommends initiating testwork programmes at least 6 months before the FS start date to avoid schedule delays.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="tgFaq(this)"><span>What is HPAL and when is it the right choice for nickel laterite projects?</span><div class="faq-ic">+</div></div>
+          <div class="faq-a">High Pressure Acid Leach (HPAL) is a hydrometallurgical process that uses sulphuric acid at high temperature (250°C) and pressure (50 bar) in titanium-lined autoclaves to dissolve nickel and cobalt from laterite ores. HPAL is the preferred route when: (1) The ore is a limonite-dominated laterite (high Fe, low Mg) — HPAL achieves 95%+ Ni and Co recovery from limonite. (2) The target product is battery-grade NiSO₄/CoSO₄ — HPAL produces a clean mixed hydroxide precipitate (MHP) suitable for battery precursor. (3) The saprolite content is low — high saprolite increases acid consumption and OPEX. HPAL is capital-intensive ($2,000–3,500/t Ni CAPEX) and technically complex, but produces the highest-value battery-grade products. KDMine has designed HPAL plants in Indonesia, Philippines, and Papua New Guinea.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="tgFaq(this)"><span>How does KDMine approach process plant commissioning support?</span><div class="faq-ic">+</div></div>
+          <div class="faq-a">KDMine's commissioning support follows a structured 5-phase approach: (1) Pre-commissioning — mechanical completion checks, instrument loop checks, vendor FAT (Factory Acceptance Testing), and development of commissioning procedures. (2) Cold commissioning — water flushing, pump testing, conveyor running, and instrument calibration without process material. (3) Hot commissioning — introduction of ore/reagents, circuit stabilisation, and initial performance testing. (4) Performance testing — 72-hour or 30-day performance test runs to demonstrate design throughput, recovery, and product quality against contract guarantees. (5) Optimisation — post-commissioning optimisation of reagent dosing, grind size, and circuit configuration to maximise recovery and throughput. KDMine provides resident commissioning engineers on-site for the full hot commissioning period.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="cta-sec">
+  <div class="cta-in">
+    <div style="display:inline-block;background:rgba(99,102,241,.2);color:#c7d2fe;font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:16px;border:1px solid rgba(99,102,241,.3)">Process Plant Engineering</div>
+    <h2 data-en="Ready to Design Your Process Plant?" data-fa="آماده‌اید کارخانه فرآوری خود را طراحی کنید؟">Ready to Design Your Process Plant?</h2>
+    <p data-en="Contact KDMine Group for a free process route screening and scoping proposal. From conceptual flowsheet to detailed engineering — we deliver process plants that perform to specification, on time and on budget." data-fa="با KDMine Group تماس بگیرید تا یک غربالگری مسیر فرآوری رایگان و پیشنهاد مطالعه اولیه دریافت کنید. از فلوشیت مفهومی تا مهندسی تفصیلی — ما کارخانه‌های فرآوری را مطابق مشخصات، به موقع و در بودجه تحویل می‌دهیم.">Contact KDMine Group for a free process route screening and scoping proposal. From conceptual flowsheet to detailed engineering — we deliver process plants that perform to specification, on time and on budget.</p>
+    <div class="cta-acts">
+      <a href="../contact.html" class="bcp">🏭 Request Plant Design Proposal →</a>
+      <a href="../resources.html" class="bco">📐 Download Design Standards</a>
+    </div>
+    <div style="margin-top:32px;display:flex;gap:32px;justify-content:center;flex-wrap:wrap">
+      <div style="text-align:center"><div style="font-size:1.6rem;font-weight:800;color:#c7d2fe">85+</div><div style="font-size:.72rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.5px">Plants Designed</div></div>
+      <div style="text-align:center"><div style="font-size:1.6rem;font-weight:800;color:#c7d2fe">12</div><div style="font-size:.72rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.5px">Metallurgical Routes</div></div>
+      <div style="text-align:center"><div style="font-size:1.6rem;font-weight:800;color:#c7d2fe">$28B</div><div style="font-size:.72rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.5px">CAPEX Designed</div></div>
+      <div style="text-align:center"><div style="font-size:1.6rem;font-weight:800;color:#c7d2fe">98%</div><div style="font-size:.72rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.5px">On-Spec Commissioning</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="footer-in">
+    <div>
+      <div style="display:flex;align-items:center;gap:12px">
+        <img src="https://cdn.grapesjs.com/workspaces/cmgvbwak408ja13nsemkia83b/assets/7e057c43-5d96-4c3a-a8fc-8bd5f6589a93__kavianpremiumbadgelogo.svg" alt="KDMine" style="width:44px;height:44px;border-radius:10px">
+        <div>
+          <div style="font-size:1.1rem;font-weight:800;color:#fff">KDMine Group</div>
+          <div style="font-size:.7rem;color:rgba(255,255,255,.45);font-weight:600">Mining Engineering & Economics</div>
+        </div>
+      </div>
+      <p class="fb-desc">Data-driven mining engineering platform — from feasibility to ESG and AI, for global mining projects.</p>
+      <div class="fb-socs">
+        <a href="#" class="fb-s">in</a><a href="#" class="fb-s">𝕏</a><a href="#" class="fb-s">▶</a><a href="#" class="fb-s">✉</a>
+      </div>
+    </div>
+    <div class="fc"><h4>Services</h4>
+      <a href="feasibility.html">Feasibility Studies</a>
+      <a href="cost-estimation.html">CAPEX/OPEX</a>
+      <a href="plant-design.html">Plant Design</a>
+      <a href="critical-minerals.html">Critical Minerals</a>
+      <a href="esg-decarbonization.html">ESG & Decarbonization</a>
+      <a href="digital-mining.html">Digital Mining & AI</a>
+    </div>
+    <div class="fc"><h4>Tools</h4>
+      <a href="../tools/cost-calculator.html">Cost Calculator</a>
+      <a href="../tools/equipment-database.html">Equipment Database</a>
+      <a href="../tools/monte-carlo.html">Monte Carlo</a>
+      <a href="../tools/market-dashboard.html">Market Dashboard</a>
+    </div>
+    <div class="fc"><h4>Resources</h4>
+      <a href="../resources.html">Resource Library</a>
+      <a href="../blog.html">Blog & Insights</a>
+      <a href="../portfolio.html">Portfolio</a>
+      <a href="../about.html">About Us</a>
+    </div>
+    <div class="fc"><h4>Contact</h4>
+      <a href="../contact.html">Get in Touch</a>
+      <a href="../register.html">Free Registration</a>
+      <a href="mailto:info@kdmine.com">info@kdmine.com</a>
+      <a href="tel:+982112345678">+98 21 1234 5678</a>
+    </div>
+  </div>
+  <div class="footer-bot">
+    <span>© 2026 KDMine Group. All rights reserved.</span>
+    <div class="fb-lnks"><a href="../privacy.html">Privacy Policy</a><a href="../terms.html">Terms of Service</a><a href="../sitemap.html">Sitemap</a></div>
+  </div>
+</footer>
+
+<!-- ═══ JAVASCRIPT ═══ -->
+<script>
+/* ── LANG ── */
+let lang='en';
+function applyLang(l){
+  lang=l;
+  const fa=l==='fa';
+  document.documentElement.setAttribute('lang',l);
+  document.documentElement.setAttribute('dir',fa?'rtl':'ltr');
+  document.body.style.fontFamily=fa?"'B Nazanin',Tahoma,Arial,sans-serif":"'Segoe UI',system-ui,sans-serif";
+  document.getElementById('lt-txt').textContent=fa?'EN | English':'FA | فارسی';
+  document.querySelectorAll('[data-en][data-fa]').forEach(el=>{
+    const v=el.getAttribute('data-'+l);
+    if(v!==null){
+      if(el.tagName==='INPUT'||el.tagName==='TEXTAREA')el.placeholder=v;
+      else el.innerHTML=v;
+    }
+  });
+  try{localStorage.setItem('kdmine_lang',l);}catch(e){}
+}
+function tgLang(){applyLang(lang==='en'?'fa':'en');}
+window.addEventListener('DOMContentLoaded',()=>{
+  try{const s=localStorage.getItem('kdmine_lang');if(s&&s!=='en')applyLang(s);}catch(e){}
+});
+
+/* ── MENU ── */
+function tgMenu(){
+  const nav=document.getElementById('mainNav');
+  const o=nav.classList.toggle('open');
+  const sp=document.querySelectorAll('.mbt span');
+  sp[0].style.transform=o?'translateY(7px) rotate(45deg)':'';
+  sp[1].style.opacity=o?'0':'1';
+  sp[2].style.transform=o?'translateY(-7px) rotate(-45deg)':'';
+}
+document.addEventListener('click',e=>{
+  const nav=document.getElementById('mainNav');
+  const btn=document.querySelector('.mbt');
+  if(nav&&btn&&!nav.contains(e.target)&&!btn.contains(e.target)){
+    nav.classList.remove('open');
+    document.querySelectorAll('.mbt span').forEach(s=>{s.style.transform='';s.style.opacity='1';});
+  }
+});
+
+/* ── SCROLL TO TOP ── */
+window.addEventListener('scroll',()=>{
+  const s=document.getElementById('sttBtn');
+  if(s)s.classList.toggle('vis',window.scrollY>400);
+});
+
+/* ── FAQ ── */
+function tgFaq(btn){
+  const item=btn.closest('.faq-item');
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+  if(!isOpen)item.classList.add('open');
+}
+
+/* ── SCROLL ANIMATIONS ── */
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.style.opacity='1';
+      e.target.style.transform='translateY(0) scale(1)';
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:0.07});
+
+/* ── STAT COUNTER ── */
+const statObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const n=e.target.querySelector('.stat-n');
+      if(n&&!n.dataset.animated){
+        n.dataset.animated='1';
+        const raw=n.textContent.trim();
+        const num=parseFloat(raw.replace(/[^0-9.]/g,''));
+        if(!isNaN(num)&&num>0){
+          const suffix=raw.replace(/[0-9.]/g,'');
+          let cur=0;const steps=60;const inc=num/steps;
+          const t=setInterval(()=>{
+            cur+=inc;
+            if(cur>=num){cur=num;clearInterval(t);}
+            n.textContent=(Number.isInteger(num)?Math.floor(cur):cur.toFixed(1))+suffix;
+          },1800/steps);
+        }
+      }
+      statObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.5});
+
+window.addEventListener('DOMContentLoaded',()=>{
+  /* card scroll animations */
+  [
+    ...document.querySelectorAll('.prc-card'),
+    ...document.querySelectorAll('.stg-card'),
+    ...document.querySelectorAll('.comm-card'),
+    ...document.querySelectorAll('.tech-card'),
+    ...document.querySelectorAll('.hm-card')
+  ].forEach((el,i)=>{
+    el.style.opacity='0';
+    el.style.transform='translateY(22px) scale(0.97)';
+    el.style.transition=`opacity 0.42s ease ${(i%6)*0.07}s, transform 0.42s ease ${(i%6)*0.07}s`;
+    io.observe(el);
+  });
+  /* stat counters */
+  document.querySelectorAll('.stats-in > div').forEach(el=>statObs.observe(el));
+});
+</script>
+</body>
+</html>

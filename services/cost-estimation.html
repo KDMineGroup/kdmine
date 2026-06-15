@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>CAPEX/OPEX Cost Estimation — KDMine Group</title>
+<style>
+:root{--primary:#0f2d5e;--secondary:#1a56db;--accent:#3b82f6;--gold:#f59e0b;--success:#059669;--teal:#0d9488;--text-dark:#0f172a;--text-mid:#334155;--text-light:#64748b;--bg-light:#f8fafc;--border:#e2e8f0;--s1:0 1px 3px rgba(0,0,0,.07);--s2:0 4px 12px rgba(0,0,0,.10);--s3:0 12px 30px rgba(0,0,0,.12);--s4:0 20px 50px rgba(0,0,0,.15);--r1:8px;--r2:14px;--r3:20px;--tr:all .3s cubic-bezier(.4,0,.2,1)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,sans-serif;line-height:1.7;color:var(--text-dark);background:#fff;overflow-x:hidden}
+img{max-width:100%;display:block}a{text-decoration:none;color:inherit}
+[dir="rtl"] body{font-family:'B Nazanin',Tahoma,Arial,sans-serif}
+.lt{position:fixed;top:20px;right:20px;z-index:1100;background:#fff;padding:8px 16px;border-radius:50px;box-shadow:var(--s2);cursor:pointer;font-weight:700;font-size:.82rem;border:2px solid var(--border);transition:var(--tr);color:var(--primary);display:flex;align-items:center;gap:6px}
+[dir="rtl"] .lt{right:auto;left:20px}
+.stt{position:fixed;bottom:26px;right:26px;z-index:999;width:42px;height:42px;background:var(--secondary);color:#fff;border-radius:50%;border:none;cursor:pointer;font-size:1.1rem;box-shadow:var(--s3);opacity:0;pointer-events:none;transition:var(--tr);display:flex;align-items:center;justify-content:center}
+.stt.vis{opacity:1;pointer-events:all}
+.topbar{background:var(--primary);color:rgba(255,255,255,.8);font-size:.8rem;padding:7px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.topbar a{color:rgba(255,255,255,.8)}.topbar a:hover{color:#fff}.tb-r{display:flex;gap:20px}
+.hdr{background:rgba(255,255,255,.98);backdrop-filter:blur(12px);position:sticky;top:0;z-index:1000;box-shadow:var(--s2);border-bottom:1px solid var(--border)}
+.hdr-in{max-width:1400px;margin:0 auto;padding:13px 40px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.logo{display:flex;align-items:center;gap:13px}.logo img{width:50px;height:50px;border-radius:11px}
+.logo h1{font-size:1.3rem;color:var(--primary);font-weight:800}.logo p{font-size:.72rem;color:var(--text-light);font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.nav{display:flex;gap:4px;align-items:center}
+.nl{color:var(--text-mid);font-weight:600;font-size:.9rem;padding:8px 13px;border-radius:var(--r1);transition:var(--tr)}
+.nl:hover,.nl.active{color:var(--secondary);background:rgba(26,86,219,.06)}
+.nl.dd{padding-right:20px;position:relative}.nl.dd::after{content:"▾";position:absolute;right:7px;top:50%;transform:translateY(-50%);font-size:.65rem}
+.ddw{position:relative}.ddm{position:absolute;top:calc(100% + 8px);left:0;background:#fff;border-radius:var(--r2);min-width:270px;box-shadow:var(--s4);border:1px solid var(--border);opacity:0;visibility:hidden;transform:translateY(-8px);transition:var(--tr);z-index:200}
+.ddw:hover .ddm{opacity:1;visibility:visible;transform:translateY(0)}
+.ddi{display:flex;align-items:center;gap:10px;padding:11px 18px;color:var(--text-mid);font-size:.86rem;font-weight:500;transition:var(--tr)}.ddi:hover{background:var(--bg-light);color:var(--secondary)}.ddi-ic{font-size:1rem;width:20px;text-align:center}
+.bcta{background:linear-gradient(135deg,var(--secondary),#1d4ed8);color:#fff;padding:10px 22px;border-radius:50px;font-weight:700;font-size:.88rem;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(26,86,219,.35);transition:var(--tr);display:inline-flex;align-items:center;gap:7px}
+.bcta:hover{transform:translateY(-2px)}
+.mbt{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:10px}.mbt span{width:24px;height:2.5px;background:var(--text-dark);border-radius:2px;transition:var(--tr)}
+/* HERO */
+.svc-hero{background:linear-gradient(135deg,#071428 0%,#0f2d5e 50%,#1e3a8a 100%);color:#fff;padding:120px 40px 90px;position:relative;overflow:hidden}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:50px 50px}
+.hero-particles{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.hp{position:absolute;border-radius:50%;background:rgba(59,130,246,.15);animation:float 8s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-20px) scale(1.05)}}
+.svc-hero-in{max-width:1400px;margin:0 auto;position:relative;z-index:1;display:grid;grid-template-columns:1fr 400px;gap:60px;align-items:center}
+.breadcrumb{display:flex;gap:8px;align-items:center;font-size:.82rem;color:rgba(255,255,255,.55);margin-bottom:18px}
+.breadcrumb a{color:rgba(255,255,255,.65)}.breadcrumb a:hover{color:#fff}.breadcrumb span{color:rgba(255,255,255,.35)}
+.hero-stag{display:inline-block;background:rgba(255,255,255,.12);color:rgba(255,255,255,.9);font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:14px}
+.svc-hero h1{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:800;line-height:1.2;margin-bottom:18px}
+.svc-hero h1 span{color:#93c5fd}
+.svc-hero p{font-size:1rem;opacity:.82;line-height:1.8;margin-bottom:28px;max-width:580px}
+.hero-acts{display:flex;gap:12px;flex-wrap:wrap}
+.btn-w{background:#fff;color:var(--primary);padding:13px 26px;border-radius:50px;font-weight:700;font-size:.92rem;border:none;cursor:pointer;transition:var(--tr);display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 16px rgba(0,0,0,.2)}
+.btn-w:hover{transform:translateY(-2px)}
+.btn-o{background:transparent;color:#fff;padding:13px 26px;border-radius:50px;font-weight:700;font-size:.92rem;border:1.5px solid rgba(255,255,255,.35);cursor:pointer;transition:var(--tr);display:inline-flex;align-items:center;gap:8px}
+.btn-o:hover{background:rgba(255,255,255,.1)}
+/* HERO METRICS CARD */
+.hero-metrics{display:flex;flex-direction:column;gap:12px}
+.hm-card{background:rgba(255,255,255,.07);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.12);border-radius:var(--r2);padding:16px 20px;display:flex;align-items:center;gap:14px;transition:var(--tr)}
+.hm-card:hover{background:rgba(255,255,255,.11)}
+.hm-ic{width:42px;height:42px;border-radius:var(--r1);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.hm-n{font-size:1.4rem;font-weight:800;color:#fff}
+.hm-l{font-size:.72rem;color:rgba(255,255,255,.6);font-weight:500}
+.hm-bar{height:3px;background:rgba(255,255,255,.1);border-radius:2px;margin-top:6px;overflow:hidden}
+.hm-bar-fill{height:100%;border-radius:2px;transition:width 1.5s ease}
+/* SECTION COMMONS */
+.sec{padding:80px 40px}
+.sec-in{max-width:1400px;margin:0 auto}
+.sec-hdr{text-align:center;margin-bottom:52px}
+.stag{display:inline-block;background:rgba(26,86,219,.08);color:var(--secondary);font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:12px}
+.sec-hdr h2{font-size:clamp(1.7rem,3.5vw,2.6rem);font-weight:800;color:var(--primary);margin-bottom:12px}
+.sec-hdr p{font-size:.96rem;color:var(--text-light);max-width:680px;margin:0 auto}
+/* CAPEX BREAKDOWN */
+.capex-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.capex-tree{display:flex;flex-direction:column;gap:0}
+.ct-group{margin-bottom:8px}
+.ct-parent{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--bg-light);border-radius:var(--r1);border:1px solid var(--border);cursor:pointer;transition:var(--tr);font-weight:700;font-size:.9rem;color:var(--text-dark)}
+.ct-parent:hover{background:#e0e7ff;border-color:#c7d2fe}
+.ct-parent.open{background:linear-gradient(135deg,rgba(26,86,219,.08),rgba(59,130,246,.05));border-color:rgba(26,86,219,.2)}
+.ct-ic{width:32px;height:32px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
+.ct-pct{margin-left:auto;font-size:.78rem;font-weight:800;color:var(--secondary);background:rgba(26,86,219,.08);padding:2px 10px;border-radius:50px}
+.ct-arrow{font-size:.7rem;color:var(--text-light);transition:transform .3s ease;margin-left:6px}
+.ct-parent.open .ct-arrow{transform:rotate(90deg)}
+.ct-children{max-height:0;overflow:hidden;transition:max-height .35s ease;padding-left:20px}
+.ct-parent.open + .ct-children{max-height:500px}
+.ct-child{display:flex;align-items:center;gap:10px;padding:9px 14px;border-left:2px solid var(--border);margin-top:4px;font-size:.84rem;color:var(--text-mid);transition:var(--tr)}
+.ct-child:hover{color:var(--secondary);border-left-color:var(--secondary)}
+.ct-child-pct{margin-left:auto;font-size:.72rem;font-weight:700;color:var(--text-light)}
+/* CAPEX CHART VISUAL */
+.capex-chart{background:var(--bg-light);border-radius:var(--r2);padding:28px;border:1px solid var(--border)}
+.capex-chart h3{font-size:.9rem;font-weight:800;color:var(--text-dark);margin-bottom:20px;text-align:center}
+.cc-bar-list{display:flex;flex-direction:column;gap:12px}
+.cc-bar-item{display:flex;flex-direction:column;gap:5px}
+.cc-bar-label{display:flex;justify-content:space-between;font-size:.78rem;font-weight:600;color:var(--text-mid)}
+.cc-bar-track{height:10px;background:#e2e8f0;border-radius:5px;overflow:hidden}
+.cc-bar-fill{height:100%;border-radius:5px;transition:width 1.5s ease .2s}
+/* OPEX SECTION */
+.opex-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.opex-card{background:#fff;border-radius:var(--r2);padding:24px;border:1px solid var(--border);box-shadow:var(--s1);transition:var(--tr);position:relative;overflow:hidden}
+.opex-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--oc-color,var(--secondary))}
+.opex-card:hover{transform:translateY(-4px);box-shadow:var(--s3)}
+.opex-ic{width:48px;height:48px;border-radius:var(--r1);display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:14px}
+.opex-card h3{font-size:.96rem;font-weight:800;color:var(--text-dark);margin-bottom:6px}
+.opex-unit{font-size:.72rem;font-weight:700;color:var(--oc-color,var(--secondary));background:rgba(26,86,219,.07);padding:2px 10px;border-radius:50px;display:inline-block;margin-bottom:10px}
+.opex-card p{font-size:.83rem;color:var(--text-light);line-height:1.7;margin-bottom:12px}
+.opex-items{display:flex;flex-direction:column;gap:5px}
+.opex-item{display:flex;justify-content:space-between;align-items:center;font-size:.8rem;padding:5px 0;border-bottom:1px solid var(--border)}
+.opex-item:last-child{border-bottom:none}
+.opex-item-l{color:var(--text-mid)}
+.opex-item-v{font-weight:700;color:var(--text-dark)}
+/* METHODOLOGY */
+.method-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.mcard{background:#fff;border-radius:var(--r2);padding:24px;border:1px solid var(--border);box-shadow:var(--s1);transition:var(--tr);text-align:center}
+.mcard:hover{transform:translateY(-4px);box-shadow:var(--s3)}
+.mcard-step{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--secondary),var(--accent));color:#fff;font-size:.88rem;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+.mcard-ic{font-size:1.8rem;margin-bottom:10px}
+.mcard h3{font-size:.92rem;font-weight:800;color:var(--text-dark);margin-bottom:8px}
+.mcard p{font-size:.82rem;color:var(--text-light);line-height:1.7}
+/* BENCHMARK TABLE */
+.bench-wrap{overflow-x:auto;border-radius:var(--r2);border:1px solid var(--border);box-shadow:var(--s1)}
+.bench-table{width:100%;border-collapse:collapse;font-size:.84rem}
+.bench-table thead{background:var(--primary);color:#fff}
+.bench-table th{padding:14px 18px;text-align:left;font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:.4px;white-space:nowrap}
+.bench-table td{padding:12px 18px;border-bottom:1px solid var(--border);color:var(--text-mid);vertical-align:middle}
+.bench-table tr:last-child td{border-bottom:none}
+.bench-table tr:hover td{background:var(--bg-light)}
+.bench-table tr:nth-child(even) td{background:#fafbfc}
+.bt-comm{display:inline-flex;align-items:center;gap:6px;font-weight:700;color:var(--text-dark)}
+.bt-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.bt-range{font-weight:700;color:var(--secondary)}
+.bt-note{font-size:.72rem;color:var(--text-light)}
+/* TOOLS SECTION */
+.tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.tcard{background:#fff;border-radius:var(--r2);padding:26px;border:1px solid var(--border);box-shadow:var(--s1);transition:var(--tr);display:flex;flex-direction:column;gap:14px}
+.tcard:hover{transform:translateY(-4px);box-shadow:var(--s3);border-color:transparent}
+.tcard-top{display:flex;align-items:flex-start;gap:14px}
+.tcard-ic{width:48px;height:48px;border-radius:var(--r1);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.tcard h3{font-size:.96rem;font-weight:800;color:var(--text-dark);margin-bottom:4px}
+.tcard-type{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.4px}
+.tcard p{font-size:.83rem;color:var(--text-light);line-height:1.7}
+.tcard-feats{display:flex;flex-direction:column;gap:4px}
+.tf{display:flex;align-items:center;gap:7px;font-size:.8rem;color:var(--text-mid)}
+.tf::before{content:'✓';color:var(--success);font-weight:800;font-size:.75rem;flex-shrink:0}
+.tcard-btn{display:inline-flex;align-items:center;gap:7px;padding:9px 18px;border-radius:50px;font-size:.82rem;font-weight:700;transition:var(--tr);border:none;cursor:pointer;font-family:inherit;width:fit-content;background:linear-gradient(135deg,var(--secondary),#1d4ed8);color:#fff;box-shadow:0 3px 10px rgba(26,86,219,.3)}
+.tcard-btn:hover{transform:translateY(-2px)}
+/* ESCALATION */
+.esc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.esc-card{background:#fff;border-radius:var(--r2);padding:20px;border:1px solid var(--border);box-shadow:var(--s1);transition:var(--tr)}
+.esc-card:hover{transform:translateY(-3px);box-shadow:var(--s2)}
+.esc-cat{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--text-light);margin-bottom:8px}
+.esc-val{font-size:1.8rem;font-weight:800;color:var(--primary);margin-bottom:4px}
+.esc-val span{font-size:.9rem;color:var(--text-light)}
+.esc-trend{display:flex;align-items:center;gap:5px;font-size:.78rem;font-weight:700}
+.esc-up{color:#dc2626}.esc-dn{color:#059669}
+.esc-desc{font-size:.78rem;color:var(--text-light);margin-top:8px;line-height:1.6}
+/* REGIONAL */
+.region-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.rcard{background:#fff;border-radius:var(--r2);padding:22px;border:1px solid var(--border);box-shadow:var(--s1);transition:var(--tr)}
+.rcard:hover{transform:translateY(-3px);box-shadow:var(--s2)}
+.rcard-top{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.rcard-flag{font-size:1.6rem}
+.rcard h3{font-size:.96rem;font-weight:800;color:var(--text-dark)}
+.rcard-sub{font-size:.72rem;color:var(--text-light)}
+.rcard-factors{display:flex;flex-direction:column;gap:7px}
+.rf{display:flex;justify-content:space-between;align-items:center;font-size:.8rem;padding:5px 0;border-bottom:1px solid var(--border)}
+.rf:last-child{border-bottom:none}
+.rf-l{color:var(--text-mid)}
+.rf-v{font-weight:700;color:var(--text-dark)}
+.rf-bar{height:4px;background:#e2e8f0;border-radius:2px;margin-top:3px;overflow:hidden}
+.rf-bar-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--secondary),var(--accent))}
+/* FAQ */
+.faq-in{max-width:900px;margin:0 auto}
+.faq-list{display:flex;flex-direction:column;gap:10px;margin-top:40px}
+.faq-item{background:#fff;border-radius:var(--r2);border:1px solid var(--border);overflow:hidden}
+.faq-item.open{box-shadow:var(--s2)}
+.faq-q{padding:18px 22px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-weight:700;font-size:.94rem;color:var(--text-dark);gap:12px}
+.faq-q:hover{color:var(--secondary)}
+.faq-ic{width:28px;height:28px;border-radius:50%;background:var(--bg-light);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.8rem;flex-shrink:0;transition:var(--tr)}
+.faq-item.open .faq-ic{background:var(--secondary);color:#fff;border-color:var(--secondary);transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;padding:0 22px;font-size:.88rem;color:var(--text-mid);line-height:1.8}
+.faq-item.open .faq-a{max-height:400px;padding:0 22px 18px}
+/* CTA */
+.cta-sec{padding:100px 40px;background:linear-gradient(135deg,#071428,#0f2d5e,#1a56db);color:#fff;text-align:center;position:relative;overflow:hidden}
+.cta-sec::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:50px 50px}
+.cta-in{max-width:700px;margin:0 auto;position:relative;z-index:1}
+.cta-sec h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;margin-bottom:14px}
+.cta-sec p{font-size:.98rem;opacity:.8;margin-bottom:36px;line-height:1.75}
+.cta-acts{display:flex;gap:13px;justify-content:center;flex-wrap:wrap}
+.bcp{background:#fff;color:var(--primary);padding:14px 30px;border-radius:50px;font-weight:700;font-size:.96rem;border:none;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.25);transition:var(--tr);display:inline-flex;align-items:center;gap:8px}
+.bcp:hover{transform:translateY(-3px)}
+.bco{background:transparent;color:#fff;padding:14px 30px;border-radius:50px;font-weight:700;font-size:.96rem;border:1.5px solid rgba(255,255,255,.35);cursor:pointer;transition:var(--tr);display:inline-flex;align-items:center;gap:8px}
+.bco:hover{background:rgba(255,255,255,.1)}
+/* FOOTER */
+.footer{background:#0a1628;color:#fff;padding:68px 40px 26px}
+.footer-in{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:36px;margin-bottom:46px}
+.fb-desc{font-size:.84rem;color:rgba(255,255,255,.5);line-height:1.75;margin-top:13px;margin-bottom:17px}
+.fb-socs{display:flex;gap:8px}
+.fb-s{width:34px;height:34px;background:rgba(255,255,255,.08);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.86rem;transition:var(--tr);color:rgba(255,255,255,.52)}.fb-s:hover{background:var(--secondary);color:#fff}
+.fc h4{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.45);margin-bottom:15px}
+.fc a{display:block;color:rgba(255,255,255,.66);font-size:.84rem;padding:4px 0;transition:var(--tr)}.fc a:hover{color:#fff}
+.footer-bot{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding-top:22px;border-top:1px solid rgba(255,255,255,.08);font-size:.78rem;color:rgba(255,255,255,.36);flex-wrap:wrap;gap:10px}
+.fb-lnks{display:flex;gap:18px}.fb-lnks a{color:rgba(255,255,255,.36)}.fb-lnks a:hover{color:rgba(255,255,255,.75)}
+@media(max-width:1100px){.svc-hero-in{grid-template-columns:1fr}.hero-metrics{display:grid;grid-template-columns:1fr 1fr}.capex-grid{grid-template-columns:1fr}.method-grid{grid-template-columns:repeat(2,1fr)}.esc-grid{grid-template-columns:repeat(2,1fr)}.region-grid{grid-template-columns:1fr 1fr}.footer-in{grid-template-columns:1fr 1fr 1fr}}
+@media(max-width:768px){.topbar{display:none}.mbt{display:flex}.nav{position:fixed;top:78px;right:-100%;width:80%;max-width:290px;height:calc(100vh - 78px);background:#fff;flex-direction:column;padding:28px;box-shadow:var(--s4);transition:right .3s ease;align-items:flex-start;overflow-y:auto;z-index:999}.nav.open{right:0}.ddm{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:none;background:var(--bg-light);margin-top:5px}.svc-hero,.sec,.cta-sec,.footer{padding-left:22px;padding-right:22px}.opex-grid,.tools-grid{grid-template-columns:1fr}.method-grid{grid-template-columns:1fr}.esc-grid{grid-template-columns:1fr 1fr}.region-grid{grid-template-columns:1fr}.footer-in{grid-template-columns:1fr 1fr}.footer-bot{flex-direction:column;text-align:center}.hdr-in{padding:13px 20px}}
+</style>
+</head>
+<body>
+<button class="lt" onclick="tgLang()">🌐 <span id="lt-txt">FA | فارسی</span></button>
+<button class="stt" id="sttBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<div class="topbar">
+  <div>📧 info@kdmine.com &nbsp;|&nbsp; 📞 +98 21 1234 5678 &nbsp;|&nbsp; 🕐 Sat–Wed 08:00–18:00 IRST</div>
+  <div class="tb-r"><a href="../register.html">🔐 Client Login</a><a href="../register.html">📊 Dashboard</a></div>
+</div>
+
+<header class="hdr">
+  <div class="hdr-in">
+    <div class="logo">
+      <img src="https://cdn.grapesjs.com/workspaces/cmgvbwak408ja13nsemkia83b/assets/7e057c43-5d96-4c3a-a8fc-8bd5f6589a93__kavianpremiumbadgelogo.svg" alt="KDMine">
+      <div><h1 data-en="KDMine Group" data-fa="کاویان توسعه معدن">KDMine Group</h1><p data-en="Mining Engineering & Economics" data-fa="مهندسی و اقتصاد معدن">Mining Engineering & Economics</p></div>
+    </div>
+    <button class="mbt" onclick="tgMenu()"><span></span><span></span><span></span></button>
+    <nav class="nav" id="mainNav">
+      <div class="ddw"><a href="../index.html#services" class="nl dd active" data-en="Services" data-fa="خدمات">Services</a>
+        <div class="ddm">
+          <a href="feasibility.html" class="ddi"><span class="ddi-ic">📋</span><span>Feasibility Studies</span></a>
+          <a href="cost-estimation.html" class="ddi" style="color:var(--secondary);background:var(--bg-light)"><span class="ddi-ic">💰</span><span>CAPEX/OPEX Estimation</span></a>
+          <a href="plant-design.html" class="ddi"><span class="ddi-ic">🏭</span><span>Process Plant Design</span></a>
+          <a href="critical-minerals.html" class="ddi"><span class="ddi-ic">⚡</span><span>Critical Minerals</span></a>
+          <a href="esg-decarbonization.html" class="ddi"><span class="ddi-ic">🌱</span><span>ESG & Decarbonization</span></a>
+          <a href="digital-mining.html" class="ddi"><span class="ddi-ic">🤖</span><span>Digital Mining & AI</span></a>
+        </div>
+      </div>
+      <div class="ddw"><a href="../index.html#tools" class="nl dd" data-en="Tools" data-fa="ابزارها">Tools</a>
+        <div class="ddm">
+          <a href="../tools/cost-calculator.html" class="ddi"><span class="ddi-ic">🧮</span><span>Cost Calculator</span></a>
+          <a href="../tools/equipment-database.html" class="ddi"><span class="ddi-ic">🗃️</span><span>Equipment Database</span></a>
+          <a href="../tools/monte-carlo.html" class="ddi"><span class="ddi-ic">📉</span><span>Monte Carlo Simulator</span></a>
+          <a href="../tools/market-dashboard.html" class="ddi"><span class="ddi-ic">🌍</span><span>Market Dashboard</span></a>
+        </div>
+      </div>
+      <a href="../resources.html" class="nl" data-en="Resources" data-fa="منابع">Resources</a>
+      <a href="../portfolio.html" class="nl" data-en="Portfolio" data-fa="نمونه کارها">Portfolio</a>
+      <a href="../about.html" class="nl" data-en="About" data-fa="درباره ما">About</a>
+      <a href="../contact.html" class="nl" data-en="Contact" data-fa="تماس">Contact</a>
+      <a href="../register.html" class="bcta" data-en="Get Started →" data-fa="شروع کنید ←">Get Started →</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ═══ HERO ═══ -->
+<section class="svc-hero">
+  <div class="hero-grid"></div>
+  <div class="hero-particles">
+    <div class="hp" style="width:120px;height:120px;top:10%;left:5%;animation-delay:0s"></div>
+    <div class="hp" style="width:80px;height:80px;top:60%;left:15%;animation-delay:2s"></div>
+    <div class="hp" style="width:60px;height:60px;top:30%;right:10%;animation-delay:4s"></div>
+  </div>
+  <div class="svc-hero-in">
+    <div>
+      <div class="breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="../index.html#services">Services</a><span>/</span><span>CAPEX/OPEX Estimation</span></div>
+      <div class="hero-stag" data-en="AACE 47R-11 | CostMine 2026 | Monte Carlo" data-fa="AACE 47R-11 | CostMine 2026 | مونت کارلو">AACE 47R-11 | CostMine 2026 | Monte Carlo</div>
+      <h1 data-en="Accurate <span>CAPEX & OPEX</span> Estimation for Mining Projects" data-fa="تخمین دقیق <span>CAPEX و OPEX</span> برای پروژه‌های معدنی">Accurate <span>CAPEX & OPEX</span> Estimation for Mining Projects</h1>
+      <p data-en="KDMine Group delivers AACE 47R-11 compliant capital and operating cost estimates for open pit, underground, and process plant projects — from Class 5 order-of-magnitude to Class 1 definitive estimates. Powered by CostMine 2026 pricing and Monte Carlo risk analysis." data-fa="KDMine Group تخمین‌های هزینه سرمایه و عملیاتی منطبق با AACE 47R-11 برای پروژه‌های معدن روباز، زیرزمینی و کارخانه فرآوری ارائه می‌دهد — از کلاس ۵ مرتبه بزرگی تا تخمین‌های قطعی کلاس ۱. با قدرت قیمت‌گذاری CostMine 2026 و تحلیل ریسک مونت کارلو.">KDMine Group delivers AACE 47R-11 compliant capital and operating cost estimates for open pit, underground, and process plant projects — from Class 5 order-of-magnitude to Class 1 definitive estimates. Powered by CostMine 2026 pricing and Monte Carlo risk analysis.</p>
+      <div class="hero-acts">
+        <a href="../contact.html" class="btn-w">💰 <span data-en="Request a Cost Estimate →" data-fa="درخواست تخمین هزینه ←">Request a Cost Estimate →</span></a>
+        <a href="../tools/cost-calculator.html" class="btn-o">🧮 <span data-en="Try Cost Calculator" data-fa="امتحان ماشین‌حساب هزینه">Try Cost Calculator</span></a>
+      </div>
+    </div>
+    <div class="hero-metrics">
+      <div class="hm-card">
+        <div class="hm-ic" style="background:rgba(59,130,246,.15)">💰</div>
+        <div><div class="hm-n">$180B+</div><div class="hm-l" data-en="Total CAPEX Estimated" data-fa="کل CAPEX تخمین‌زده‌شده">Total CAPEX Estimated</div><div class="hm-bar"><div class="hm-bar-fill" style="width:90%;background:linear-gradient(90deg,#3b82f6,#1a56db)"></div></div></div>
+      </div>
+      <div class="hm-card">
+        <div class="hm-ic" style="background:rgba(5,150,105,.15)">📊</div>
+        <div><div class="hm-n">850+</div><div class="hm-l" data-en="Equipment Items Priced (2026)" data-fa="اقلام تجهیزات قیمت‌گذاری‌شده (۲۰۲۶)">Equipment Items Priced (2026)</div><div class="hm-bar"><div class="hm-bar-fill" style="width:85%;background:linear-gradient(90deg,#059669,#10b981)"></div></div></div>
+      </div>
+      <div class="hm-card">
+        <div class="hm-ic" style="background:rgba(245,158,11,.15)">🎲</div>
+        <div><div class="hm-n">10,000</div><div class="hm-l" data-en="Monte Carlo Iterations per Study" data-fa="تکرارهای مونت کارلو در هر مطالعه">Monte Carlo Iterations per Study</div><div class="hm-bar"><div class="hm-bar-fill" style="width:100%;background:linear-gradient(90deg,#d97706,#f59e0b)"></div></div></div>
+      </div>
+      <div class="hm-card">
+        <div class="hm-ic" style="background:rgba(124,58,237,.15)">✅</div>
+        <div><div class="hm-n">±20%</div><div class="hm-l" data-en="Class 3 Accuracy Guarantee" data-fa="ضمانت دقت کلاس ۳">Class 3 Accuracy Guarantee</div><div class="hm-bar"><div class="hm-bar-fill" style="width:80%;background:linear-gradient(90deg,#7c3aed,#a855f7)"></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CAPEX BREAKDOWN ═══ -->
+<section class="sec" style="background:var(--bg-light)">
+  <div class="sec-in">
+    <div class="sec-hdr">
+      <div class="stag" data-en="CAPEX Structure" data-fa="ساختار CAPEX">CAPEX Structure</div>
+      <h2 data-en="How We Build Your CAPEX Estimate" data-fa="چگونه تخمین CAPEX شما را می‌سازیم">How We Build Your CAPEX Estimate</h2>
+      <p data-en="Every KDMine CAPEX estimate is structured to AACE 47R-11 with full line-item transparency — from direct field costs to owner's costs and contingency." data-fa="هر تخمین CAPEX KDMine طبق AACE 47R-11 با شفافیت کامل اقلام — از هزینه‌های مستقیم میدانی تا هزینه‌های مالک و اقتضایی ساختار یافته است.">Every KDMine CAPEX estimate is structured to AACE 47R-11 with full line-item transparency — from direct field costs to owner's costs and contingency.</p>
+    </div>
+    <div class="capex-grid">
+      <div class="capex-tree">
+
+        <div class="ct-group">
+          <div class="ct-parent" onclick="tgTree(this)">
+            <div class="ct-ic" style="background:rgba(26,86,219,.1)">⛏️</div>
+            <span data-en="Mining — Direct Costs" data-fa="معدن — هزینه‌های مستقیم">Mining — Direct Costs</span>
+            <span class="ct-pct">18–25%</span>
+            <span class="ct-arrow">▶</span>
+          </div>
+          <div class="ct-children">
+            <div class="ct-child"><span data-en="Mobile mining fleet (trucks, excavators, drills)" data-fa="ناوگان معدنی متحرک (کامیون، بیل مکانیکی، حفاری)">Mobile mining fleet (trucks, excavators, drills)</span><span class="ct-child-pct">10–14%</span></div>
+            <div class="ct-child"><span data-en="Mine infrastructure (roads, drainage, dewatering)" data-fa="زیرساخت معدن (جاده‌ها، زهکشی، آب‌کشی)">Mine infrastructure (roads, drainage, dewatering)</span><span class="ct-child-pct">4–7%</span></div>
+            <div class="ct-child"><span data-en="Waste dump construction" data-fa="ساخت دامپ باطله">Waste dump construction</span><span class="ct-child-pct">2–4%</span></div>
+          </div>
+        </div>
+
+        <div class="ct-group">
+          <div class="ct-parent" onclick="tgTree(this)">
+            <div class="ct-ic" style="background:rgba(13,148,136,.1)">🏭</div>
+            <span data-en="Processing Plant — Direct Costs" data-fa="کارخانه فرآوری — هزینه‌های مستقیم">Processing Plant — Direct Costs</span>
+            <span class="ct-pct">35–45%</span>
+            <span class="ct-arrow">▶</span>
+          </div>
+          <div class="ct-children">
+            <div class="ct-child"><span data-en="Crushing & grinding circuit" data-fa="مدار خردایش و آسیاب">Crushing & grinding circuit</span><span class="ct-child-pct">12–16%</span></div>
+            <div class="ct-child"><span data-en="Flotation / leach / SX-EW circuit" data-fa="مدار فلوتاسیون / لیچ / SX-EW">Flotation / leach / SX-EW circuit</span><span class="ct-child-pct">10–14%</span></div>
+            <div class="ct-child"><span data-en="Tailings thickening & TSF" data-fa="ضخیم‌سازی باطله و TSF">Tailings thickening & TSF</span><span class="ct-child-pct">5–8%</span></div>
+            <div class="ct-child"><span data-en="Reagent storage & handling" data-fa="ذخیره‌سازی و جابجایی معرف">Reagent storage & handling</span><span class="ct-child-pct">2–4%</span></div>
+            <div class="ct-child"><span data-en="Electrical & instrumentation" data-fa="برق و ابزار دقیق">Electrical & instrumentation</span><span class="ct-child-pct">6–9%</span></div>
+          </div>
+        </div>
+
+        <div class="ct-group">
+          <div class="ct-parent" onclick="tgTree(this)">
+            <div class="ct-ic" style="background:rgba(245,158,11,.1)">🏗️</div>
+            <span data-en="Infrastructure — Direct Costs" data-fa="زیرساخت — هزینه‌های مستقیم">Infrastructure — Direct Costs</span>
+            <span class="ct-pct">15–22%</span>
+            <span class="ct-arrow">▶</span>
+          </div>
+          <div class="ct-children">
+            <div class="ct-child"><span data-en="Power supply (grid / diesel / solar+BESS)" data-fa="تأمین برق (شبکه / دیزل / خورشیدی+BESS)">Power supply (grid / diesel / solar+BESS)</span><span class="ct-child-pct">5–9%</span></div>
+            <div class="ct-child"><span data-en="Water supply & treatment" data-fa="تأمین و تصفیه آب">Water supply & treatment</span><span class="ct-child-pct">3–5%</span></div>
+            <div class="ct-child"><span data-en="Access roads & site preparation" data-fa="جاده‌های دسترسی و آماده‌سازی سایت">Access roads & site preparation</span><span class="ct-child-pct">3–5%</span></div>
+            <div class="ct-child"><span data-en="Camp & administration buildings" data-fa="اردوگاه و ساختمان‌های اداری">Camp & administration buildings</span><span class="ct-child-pct">2–4%</span></div>
+          </div>
+        </div>
+
+        <div class="ct-group">
+          <div class="ct-parent" onclick="tgTree(this)">
+            <div class="ct-ic" style="background:rgba(124,58,237,.1)">📐</div>
+            <span data-en="Indirect Costs" data-fa="هزینه‌های غیرمستقیم">Indirect Costs</span>
+            <span class="ct-pct">20–28%</span>
+            <span class="ct-arrow">▶</span>
+          </div>
+          <div class="ct-children">
+            <div class="ct-child"><span data-en="EPCM fees (8–12% of direct costs)" data-fa="هزینه‌های EPCM (۸–۱۲٪ از هزینه‌های مستقیم)">EPCM fees (8–12% of direct costs)</span><span class="ct-child-pct">8–12%</span></div>
+            <div class="ct-child"><span data-en="Owner's costs (team, permits, insurance)" data-fa="هزینه‌های مالک (تیم، مجوزها، بیمه)">Owner's costs (team, permits, insurance)</span><span class="ct-child-pct">4–6%</span></div>
+            <div class="ct-child"><span data-en="First fills, spares & commissioning" data-fa="پرکردن اولیه، قطعات یدکی و راه‌اندازی">First fills, spares & commissioning</span><span class="ct-child-pct">2–4%</span></div>
+            <div class="ct-child"><span data-en="Contingency (Monte Carlo P80)" data-fa="اقتضایی (مونت کارلو P80)">Contingency (Monte Carlo P80)</span><span class="ct-child-pct">8–15%</span></div>
+          </div>
+        </div>
+
+      </div><!-- /capex-tree -->
+
+      <div class="capex-chart">
+        <h3 data-en="Typical CAPEX Split — Open Pit Copper Flotation (100 Mtpa)" data-fa="تقسیم معمول CAPEX — مس فلوتاسیون روباز (۱۰۰ میلیون تن در سال)">Typical CAPEX Split — Open Pit Copper Flotation (100 Mtpa)</h3>
+        <div class="cc-bar-list">
+          <div class="cc-bar-item">
+            <div class="cc-bar-label"><span data-en="Processing Plant" data-fa="کارخانه فرآوری">Processing Plant</span><span>40%</span></div>
+            <div class="cc-bar-track"><div class="cc-bar-fill" style="width:40%;background:#1a56db"></div></div>
+          </div>
+          <div class="cc-bar-item">
+            <div class="cc-bar-label"><span data-en="Indirect / EPCM / Contingency" data-fa="غیرمستقیم / EPCM / اقتضایی">Indirect / EPCM / Contingency</span><span>24%</span></div>
+            <div class="cc-bar-track"><div class="cc-bar-fill" style="width:24%;background:#7c3aed"></div></div>
+          </div>
+          <div class="cc-bar-item">
+            <div class="cc-bar-label"><span data-en="Infrastructure" data-fa="زیرساخت">Infrastructure</span><span>18%</span></div>
+            <div class="cc-bar-track"><div class="cc-bar-fill" style="width:18%;background:#d97706"></div></div>
+          </div>
+          <div class="cc-bar-item">
+            <div class="cc-bar-label"><span data-en="Mining Fleet & Mine Infra" data-fa="ناوگان معدنی و زیرساخت معدن">Mining Fleet & Mine Infra</span><span>18%</span></div>
+            <div class="cc-bar-track"><div class="cc-bar-fill" style="width:18%;background:#059669"></div></div>
+          </div>
+        </div>
+        <div style="margin-top:22px;padding-top:18px;border-top:1px solid var(--border)">
+          <div style="font-size:.78rem;font-weight:700;color:var(--text-mid);margin-bottom:10px" data-en="AACE Class 3 Accuracy Range" data-fa="محدوده دقت AACE کلاس ۳">AACE Class 3 Accuracy Range</div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <div style="background:rgba(5,150,105,.08);border:1px solid rgba(5,150,105,.2);border-radius:7px;padding:8px 14px;text-align:center;flex:1"><div style="font-size:.72rem;color:var(--text-light)">P50</div><div style="font-size:1rem;font-weight:800;color:#059669">Base</div></div>
+            <div style="background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.2);border-radius:7px;padding:8px 14px;text-align:center;flex:1"><div style="font-size:.72rem;color:var(--text-light)">P80</div><div style="font-size:1rem;font-weight:800;color:#d97706">+12%</div></div>
+            <div style="background:rgba(220,38,38,.08);border:1px solid rgba(220,38,38,.2);border-radius:7px;padding:8px 14px;text-align:center;flex:1"><div style="font-size:.72rem;color:var(--text-light)">P90</div><div style="font-size:1rem;font-weight:800;color:#dc2626">+20%</div></div>
+            <div style="background:rgba(26,86,219,.08);border:1px solid rgba(26,86,219,.2);border-radius:7px;padding:8px 14px;text-align:center;flex:1"><div style="font-size:.72rem;color:var(--text-light)">Downside</div><div style="font-size:1rem;font-weight:800;color:#1a56db">−15%</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ OPEX SECTION ═══ -->
+<section class="sec" style="background:#fff">
+  <div class="sec-in">
+    <div class="sec-hdr">
+      <div class="stag" data-en="Operating Costs" data-fa="هزینه‌های عملیاتی">Operating Costs</div>
+      <h2 data-en="LOM OPEX Model — Cost Category Breakdown" data-fa="مدل OPEX LOM — تفکیک دسته هزینه">LOM OPEX Model — Cost Category Breakdown</h2>
+      <p data-en="Our LOM OPEX model covers all operating cost categories with unit rates benchmarked against CostMine 2026 and regional data for 12 mining jurisdictions." data-fa="مدل OPEX LOM ما تمام دسته‌های هزینه عملیاتی را با نرخ‌های واحد معیارسنجی‌شده در برابر CostMine 2026 و داده‌های منطقه‌ای برای ۱۲ حوزه قضایی معدنی پوشش می‌دهد.">Our LOM OPEX model covers all operating cost categories with unit rates benchmarked against CostMine 2026 and regional data for 12 mining jurisdictions.</p>
+    </div>
+    <div class="opex-grid">
+
+      <div class="opex-card" style="--oc-color:#ef4444">
+        <div class="opex-ic" style="background:rgba(239,68,68,.1)">⛏️</div>
+        <h3 data-en="Mining OPEX" data-fa="OPEX معدن">Mining OPEX</h3>
+        <div class="opex-unit">$/t mined or $/t ore</div>
+        <p data-en="All costs to mine and deliver ore to the ROM pad, including drilling, blasting, loading, hauling, and grade control." data-fa="تمام هزینه‌ها برای استخراج و تحویل سنگ معدن به پد ROM، شامل حفاری، انفجار، بارگیری، حمل و کنترل عیار.">All costs to mine and deliver ore to the ROM pad, including drilling, blasting, loading, hauling, and grade control.</p>
+        <div class="opex-items">
+          <div class="opex-item"><span class="opex-item-l" data-en="Drilling & blasting" data-fa="حفاری و انفجار">Drilling & blasting</span><span class="opex-item-v">$0.8–1.8/t</span></div>
+          <div class="opex-item"><span class="opex-item-l" data-en="Loading (excavator)" data-fa="بارگیری (بیل مکانیکی)">Loading (excavator)</span><span class="opex-item-v">$0.3–0.7/t</span></div>
+          <div class="opex-item"><span class="opex-item-l" data-en="Hauling (haul trucks)" data-fa="حمل (کامیون حمل)">Hauling (haul trucks)</span><span class="opex-item-v">$1.2–3.5/t</span></div>
+          <div class="opex-item"><span class="opex-item-l" data-en="Grade control & survey" data-fa="کنترل عیار و نقشه‌برداری">Grade control & survey</span><span class="opex-item-v">$0.1–0.3/t</span></div>
+          <div class="opex-item"><span class="opex-item-l" data-en="Mine G&A" data-fa="G&A معدن">Mine G&A</span><span class="opex-item-v">$0.2–0.5/t</span></div>
+        </div>
+      </div>
+
+      <div class="opex-card" style="--oc-color:#0d9488">
+        <div class="opex-ic" style="background:rgba(13,148,136,.1)">🏭</div>
+        <h3 data-en="Processing OPEX" data-fa="OPEX فرآوری">Processing OPEX</h3>
+        <div class="opex-unit">$/t processed</div>
+        <p data-en="All costs to process ore from the ROM pad to final product, including energy, reagents, grinding media, labour, and maintenance." data-fa="تمام هزینه‌ها برای فرآوری سنگ معدن از پد ROM تا محصول نهایی، شامل انرژی، معرف‌ها، محیط آسیاب، نیروی کار و نگهداری.">All costs to process ore from the ROM pad to final product, including energy, reagents, grinding media, labour, and maintenance.</p>
+        <div class="opex-items">
+          <div class="opex-item"><span class="opex-item-l" data-en="Energy (power)" data-fa="انرژی (برق)">Energy (power)</span><span class="opex-item-v">$2.5–6.0/t</span></div>
+          <div class="opex-item"><span class="opex-item-l" data-en="Reagents & consumables" data-fa="معرف‌ها و مواد مصرفی">Reagents & consumables</span><span class="opex-item-v">$1.5–4.0/t</span></div>
+          <div class="opex-item"><span class="opex-item-l" data-en="Grinding media & liners" data-fa="محیط آسیاب و لاینرها">Grinding media & liners</span><span class="opex-item-v">$0.8–2.0/t</span></div>
+          <div class="opex-item"><span class="opex-item-l" data-en="Labour (processing)" data-fa="نیروی کار (فرآوری)">Labour (processing)</span><span class="opex-item-v">$1.0–3.0/t</span></div>
+          <div class="opex-item"><span class="opex-item-l" data-en="Maintenance & parts" data-fa="نگهداری و قطعات">Maintenance & parts</span><span class="opex-item-v">$0.8–2.5/t</span></div>
+        </div>
+      </div>
+
+      <div class="opex-card" style="--oc-color:#d97706">
+        <div class="opex-ic" style="background:rgba(217,119,6,.1)">🏗️</div>
+        <h3 data-en="G&A & Site Services" data-fa="G&A و خدمات سایت">G&A & Site Services</h3>
+        <div class="opex-unit">$/t ore or $/year</div>
+        <p data-en="General and administrative costs including site management, camp, security, environmental monitoring, and sustaining capital." data-fa="هزینه‌های عمومی و اداری شامل مدیریت سایت، اردوگاه، امنیت، پایش محیطی و سرمایه پایدار.">General and administrative costs including site management, camp, security, environmental monitoring, and sustaining capital.</p>
+        <div class="opex-items">
+          <div class="opex-item"><span class="opex-item-l" data-en="Site management & admin" data-fa="مدیریت سایت و اداری">Site management & admin</span><span class="opex-item-v">$0.5–1.5/t</span></div>
+          <div class="opex-item"><span class="opex-item-l" data-en="Camp & catering" data-fa="اردوگاه و پذیرایی">Camp & catering</span><span class="opex-item-v">$0.3–0.8/t</span></div>
+          <div class="opex-item"><span class="opex-item-l" data-en="Environmental monitoring" data-fa="پایش محیطی">Environmental monitoring</span><span class="opex-item-v">$0.1–0.3/t</span></div>
+          <div class="opex-item"><span class="opex-item-l" data-en="Royalties & government fees" data-fa="حق‌الامتیاز و هزینه‌های دولتی">Royalties & government fees</span><span class="opex-item-v">2–5% revenue</span></div>
+          <div class="opex-item"><span class="opex-item-l" data-en="Sustaining capital" data-fa="سرمایه پایدار">Sustaining capital</span><span class="opex-item-v">$1.0–3.0/t</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ METHODOLOGY ═══ -->
+<section class="sec" style="background:var(--bg-light)">
+  <div class="sec-in">
+    <div class="sec-hdr">
+      <div class="stag" data-en="Our Approach" data-fa="رویکرد ما">Our Approach</div>
+      <h2 data-en="Cost Estimation Methodology" data-fa="روش‌شناسی تخمین هزینه">Cost Estimation Methodology</h2>
+      <p data-en="We combine four complementary pricing methodologies to maximise accuracy at each AACE estimate class — from factored screening to vendor-quoted definitive estimates." data-fa="ما چهار روش قیمت‌گذاری مکمل را برای به حداکثر رساندن دقت در هر کلاس تخمین AACE ترکیب می‌کنیم — از غربالگری فاکتورشده تا تخمین‌های قطعی نقل‌قول‌شده توسط فروشنده.">We combine four complementary pricing methodologies to maximise accuracy at each AACE estimate class — from factored screening to vendor-quoted definitive estimates.</p>
+    </div>
+    <div class="method-grid">
+      <div class="mcard">
+        <div class="mcard-step">1</div>
+        <div class="mcard-ic">📚</div>
+        <h3 data-en="Factored / Analogous" data-fa="فاکتورشده / مشابه">Factored / Analogous</h3>
+        <p data-en="Scale costs from analogous projects using capacity-based scaling factors (0.6 exponent rule). Used for Class 4–5 estimates. KDMine database: 200+ analogous projects." data-fa="هزینه‌ها را از پروژه‌های مشابه با استفاده از ضرایب مقیاس‌بندی مبتنی بر ظرفیت (قانون توان ۰.۶) مقیاس‌بندی کنید. برای تخمین‌های کلاس ۴–۵ استفاده می‌شود. پایگاه داده KDMine: ۲۰۰+ پروژه مشابه.">Scale costs from analogous projects using capacity-based scaling factors (0.6 exponent rule). Used for Class 4–5 estimates. KDMine database: 200+ analogous projects.</p>
+      </div>
+      <div class="mcard">
+        <div class="mcard-step">2</div>
+        <div class="mcard-ic">🗃️</div>
+        <h3 data-en="Equipment-Based (CostMine)" data-fa="مبتنی بر تجهیزات (CostMine)">Equipment-Based (CostMine)</h3>
+        <p data-en="Price individual equipment items from CostMine 2026 database (850+ items) with installation factors, freight, and commissioning allowances. Primary method for Class 3–4." data-fa="اقلام تجهیزات منفرد را از پایگاه داده CostMine 2026 (۸۵۰+ قلم) با ضرایب نصب، حمل‌ونقل و مجوزهای راه‌اندازی قیمت‌گذاری کنید. روش اصلی برای کلاس ۳–۴.">Price individual equipment items from CostMine 2026 database (850+ items) with installation factors, freight, and commissioning allowances. Primary method for Class 3–4.</p>
+      </div>
+      <div class="mcard">
+        <div class="mcard-step">3</div>
+        <div class="mcard-ic">📩</div>
+        <h3 data-en="Vendor Budgetary Quotes" data-fa="نقل‌قول‌های بودجه‌ای فروشنده">Vendor Budgetary Quotes</h3>
+        <p data-en="Obtain budgetary quotes from OEM vendors for major equipment (SAG mills, HPGR, autoclaves, large pumps). Required for Class 2–3. KDMine maintains active vendor relationships globally." data-fa="نقل‌قول‌های بودجه‌ای از فروشندگان OEM برای تجهیزات اصلی (آسیاب SAG، HPGR، اتوکلاو، پمپ‌های بزرگ) دریافت کنید. مورد نیاز برای کلاس ۲–۳. KDMine روابط فعال با فروشندگان در سراسر جهان دارد.">Obtain budgetary quotes from OEM vendors for major equipment (SAG mills, HPGR, autoclaves, large pumps). Required for Class 2–3. KDMine maintains active vendor relationships globally.</p>
+      </div>
+      <div class="mcard">
+        <div class="mcard-step">4</div>
+        <div class="mcard-ic">🎲</div>
+        <h3 data-en="Monte Carlo Risk Analysis" data-fa="تحلیل ریسک مونت کارلو">Monte Carlo Risk Analysis</h3>
+        <p data-en="10,000-iteration Monte Carlo simulation with PERT/triangular distributions and correlation matrix to generate P50/P80/P90 contingency outputs. Replaces fixed-% contingency for Class 3+." data-fa="شبیه‌سازی مونت کارلو ۱۰,۰۰۰ تکراری با توزیع‌های PERT/مثلثی و ماتریس همبستگی برای تولید خروجی‌های اقتضایی P50/P80/P90. جایگزین اقتضایی درصد ثابت برای کلاس ۳+ می‌شود.">10,000-iteration Monte Carlo simulation with PERT/triangular distributions and correlation matrix to generate P50/P80/P90 contingency outputs. Replaces fixed-% contingency for Class 3+.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BENCHMARK TABLE ═══ -->
+<section class="sec" style="background:#fff">
+  <div class="sec-in">
+    <div class="sec-hdr">
+      <div class="stag" data-en="2026 Benchmarks" data-fa="معیارهای ۲۰۲۶">2026 Benchmarks</div>
+      <h2 data-en="CAPEX & OPEX Benchmarks by Commodity — 2026" data-fa="معیارهای CAPEX و OPEX بر اساس کالا — ۲۰۲۶">CAPEX & OPEX Benchmarks by Commodity — 2026</h2>
+      <p data-en="Reference benchmarks from KDMine's proprietary database of 200+ completed feasibility studies. Use for early-stage screening and sanity-checking your estimates." data-fa="معیارهای مرجع از پایگاه داده اختصاصی KDMine از ۲۰۰+ مطالعه امکان‌سنجی تکمیل‌شده. برای غربالگری مرحله اولیه و بررسی صحت تخمین‌های شما استفاده کنید.">Reference benchmarks from KDMine's proprietary database of 200+ completed feasibility studies. Use for early-stage screening and sanity-checking your estimates.</p>
+    </div>
+    <div class="bench-wrap">
+      <table class="bench-table">
+        <thead>
+          <tr>
+            <th data-en="Commodity / Process" data-fa="کالا / فرآیند">Commodity / Process</th>
+            <th data-en="Throughput" data-fa="ظرفیت">Throughput</th>
+            <th data-en="CAPEX Range (2026)" data-fa="محدوده CAPEX (۲۰۲۶)">CAPEX Range (2026)</th>
+            <th data-en="CAPEX Intensity" data-fa="شدت CAPEX">CAPEX Intensity</th>
+            <th data-en="OPEX Range" data-fa="محدوده OPEX">OPEX Range</th>
+            <th data-en="C1 Cash Cost" data-fa="هزینه نقدی C1">C1 Cash Cost</th>
+            <th data-en="Note" data-fa="یادداشت">Note</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="bt-comm"><div class="bt-dot" style="background:#ef4444"></div>Cu Open Pit Flotation</div></td>
+            <td>50–150 Mtpa</td>
+            <td class="bt-range">$800M – $5.0B</td>
+            <td>$16–28/t annual capacity</td>
+            <td>$8–16/t ore</td>
+            <td>$1.8–3.2/lb Cu</td>
+            <td class="bt-note">Porphyry, 0.3–0.8% Cu</td>
+          </tr>
+          <tr>
+            <td><div class="bt-comm"><div class="bt-dot" style="background:#ef4444"></div>Cu SX-EW Heap Leach</div></td>
+            <td>20–80 Mtpa</td>
+            <td class="bt-range">$400M – $2.0B</td>
+            <td>$18–32/t annual capacity</td>
+            <td>$5–10/t ore</td>
+            <td>$1.4–2.4/lb Cu</td>
+            <td class="bt-note">Oxide ore, arid climate</td>
+          </tr>
+          <tr>
+            <td><div class="bt-comm"><div class="bt-dot" style="background:#f59e0b"></div>Au CIL Open Pit</div></td>
+            <td>5–20 Mtpa</td>
+            <td class="bt-range">$200M – $1.2B</td>
+            <td>$22–45/t annual capacity</td>
+            <td>$18–35/t ore</td>
+            <td>$900–1,400/oz Au</td>
+            <td class="bt-note">Free-milling, 0.8–2.5 g/t</td>
+          </tr>
+          <tr>
+            <td><div class="bt-comm"><div class="bt-dot" style="background:#f59e0b"></div>Au Refractory (POX)</div></td>
+            <td>3–10 Mtpa</td>
+            <td class="bt-range">$600M – $2.5B</td>
+            <td>$80–180/t annual capacity</td>
+            <td>$45–80/t ore</td>
+            <td>$1,200–1,800/oz Au</td>
+            <td class="bt-note">Autoclave CAPEX premium</td>
+          </tr>
+          <tr>
+            <td><div class="bt-comm"><div class="bt-dot" style="background:#64748b"></div>Fe Magnetite Concentrate</div></td>
+            <td>10–40 Mtpa</td>
+            <td class="bt-range">$1.5B – $6.0B</td>
+            <td>$45–90/t annual capacity</td>
+            <td>$25–45/t ore</td>
+            <td>$55–90/dmt Fe</td>
+            <td class="bt-note">HPGR + mag sep circuit</td>
+          </tr>
+          <tr>
+            <td><div class="bt-comm"><div class="bt-dot" style="background:#a855f7"></div>Li Spodumene (SC6)</div></td>
+            <td>2–6 Mtpa</td>
+            <td class="bt-range">$300M – $1.0B</td>
+            <td>$55–120/t annual capacity</td>
+            <td>$30–60/t ore</td>
+            <td>$350–600/t SC6</td>
+            <td class="bt-note">DMS + flotation</td>
+          </tr>
+          <tr>
+            <td><div class="bt-comm"><div class="bt-dot" style="background:#0d9488"></div>Ni HPAL Laterite</div></td>
+            <td>30–60 Mtpa</td>
+            <td class="bt-range">$3.0B – $8.0B</td>
+            <td>$80–160/t annual capacity</td>
+            <td>$35–65/t ore</td>
+            <td>$8,000–14,000/t Ni</td>
+            <td class="bt-note">Highest CAPEX intensity</td>
+          </tr>
+          <tr>
+            <td><div class="bt-comm"><div class="bt-dot" style="background:#3b82f6"></div>Zn/Pb Poly-metallic</div></td>
+            <td>2–8 Mtpa</td>
+            <td class="bt-range">$150M – $800M</td>
+            <td>$30–70/t annual capacity</td>
+            <td>$20–40/t ore</td>
+            <td>$0.40–0.80/lb Zn eq</td>
+            <td class="bt-note">Differential flotation</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:.76rem;color:var(--text-light);margin-top:12px;text-align:right" data-en="Source: KDMine proprietary database + CostMine 2026. All figures in 2026 USD. Ranges reflect project scale, location, and complexity." data-fa="منبع: پایگاه داده اختصاصی KDMine + CostMine 2026. تمام ارقام به دلار آمریکا ۲۰۲۶. محدوده‌ها نشان‌دهنده مقیاس، موقعیت و پیچیدگی پروژه هستند.">Source: KDMine proprietary database + CostMine 2026. All figures in 2026 USD. Ranges reflect project scale, location, and complexity.</p>
+  </div>
+</section>
+
+<!-- ═══ ESCALATION ═══ -->
+<section class="sec" style="background:var(--bg-light)">
+  <div class="sec-in">
+    <div class="sec-hdr">
+      <div class="stag" data-en="Cost Escalation 2026" data-fa="تشدید هزینه ۲۰۲۶">Cost Escalation 2026</div>
+      <h2 data-en="Mining Cost Escalation Indices — 2023 to 2026" data-fa="شاخص‌های تشدید هزینه معدن — ۲۰۲۳ تا ۲۰۲۶">Mining Cost Escalation Indices — 2023 to 2026</h2>
+      <p data-en="Understanding cost escalation by category is critical for accurate CAPEX and OPEX estimates. KDMine tracks escalation quarterly across all major cost categories." data-fa="درک تشدید هزینه بر اساس دسته برای تخمین‌های دقیق CAPEX و OPEX حیاتی است. KDMine تشدید را به صورت فصلی در تمام دسته‌های هزینه اصلی دنبال می‌کند.">Understanding cost escalation by category is critical for accurate CAPEX and OPEX estimates. KDMine tracks escalation quarterly across all major cost categories.</p>
+    </div>
+    <div class="esc-grid">
+      <div class="esc-card">
+        <div class="esc-cat" data-en="Large Equipment (SAG/HPGR)" data-fa="تجهیزات بزرگ (SAG/HPGR)">Large Equipment (SAG/HPGR)</div>
+        <div class="esc-val">+38%<span> vs 2022</span></div>
+        <div class="esc-trend esc-up">▲ +6.2% YoY (2025→2026)</div>
+        <div class="esc-desc" data-en="Lead times now 22–36 months. Supply chain constraints driving premium pricing. OEM order books full through 2027." data-fa="زمان‌های تحویل اکنون ۲۲–۳۶ ماه. محدودیت‌های زنجیره تأمین قیمت‌گذاری پریمیوم را هدایت می‌کند. دفاتر سفارش OEM تا ۲۰۲۷ پر است.">Lead times now 22–36 months. Supply chain constraints driving premium pricing. OEM order books full through 2027.</div>
+      </div>
+      <div class="esc-card">
+        <div class="esc-cat" data-en="Structural Steel & Fabrication" data-fa="فولاد سازه‌ای و ساخت">Structural Steel & Fabrication</div>
+        <div class="esc-val">+22%<span> vs 2022</span></div>
+        <div class="esc-trend esc-up">▲ +3.8% YoY</div>
+        <div class="esc-desc" data-en="Moderated from 2022 peak (+45%). Regional variation significant: Australia +28%, Americas +18%, Iran +35%." data-fa="از اوج ۲۰۲۲ (+۴۵٪) تعدیل شده است. تغییرات منطقه‌ای قابل توجه: استرالیا +۲۸٪، آمریکا +۱۸٪، ایران +۳۵٪.">Moderated from 2022 peak (+45%). Regional variation significant: Australia +28%, Americas +18%, Iran +35%.</div>
+      </div>
+      <div class="esc-card">
+        <div class="esc-cat" data-en="Skilled Labour (Mining)" data-fa="نیروی کار ماهر (معدن)">Skilled Labour (Mining)</div>
+        <div class="esc-val">+28%<span> vs 2022</span></div>
+        <div class="esc-trend esc-up">▲ +5.1% YoY</div>
+        <div class="esc-desc" data-en="Persistent skills shortage in Australia, Canada, and Chile. Remote site allowances and FIFO costs up 15% since 2023." data-fa="کمبود مهارت مداوم در استرالیا، کانادا و شیلی. مجوزهای سایت دور و هزینه‌های FIFO از ۲۰۲۳ تا ۱۵٪ افزایش یافته است.">Persistent skills shortage in Australia, Canada, and Chile. Remote site allowances and FIFO costs up 15% since 2023.</div>
+      </div>
+      <div class="esc-card">
+        <div class="esc-cat" data-en="Diesel Fuel" data-fa="سوخت دیزل">Diesel Fuel</div>
+        <div class="esc-val">+12%<span> vs 2022</span></div>
+        <div class="esc-trend esc-dn">▼ −2.1% YoY</div>
+        <div class="esc-desc" data-en="Diesel prices eased in 2025–2026. Solar+BESS adoption reducing diesel exposure for new projects. Hedge strategies recommended." data-fa="قیمت دیزل در ۲۰۲۵–۲۰۲۶ کاهش یافت. پذیرش خورشیدی+BESS در حال کاهش قرار گرفتن در معرض دیزل برای پروژه‌های جدید است. استراتژی‌های پوشش ریسک توصیه می‌شود.">Diesel prices eased in 2025–2026. Solar+BESS adoption reducing diesel exposure for new projects. Hedge strategies recommended.</div>
+      </div>
+      <div class="esc-card">
+        <div class="esc-cat" data-en="Reagents (Lime, Cyanide, H₂SO₄)" data-fa="معرف‌ها (آهک، سیانید، H₂SO₄)">Reagents (Lime, Cyanide, H₂SO₄)</div>
+        <div class="esc-val">+19%<span> vs 2022</span></div>
+        <div class="esc-trend esc-up">▲ +2.9% YoY</div>
+        <div class="esc-desc" data-en="Sulphuric acid prices volatile due to HPAL demand surge. Cyanide supply tightening. Lime stable but freight costs elevated." data-fa="قیمت اسید سولفوریک به دلیل افزایش تقاضای HPAL نوسان دارد. عرضه سیانید در حال کاهش است. آهک پایدار اما هزینه‌های حمل‌ونقل بالا است.">Sulphuric acid prices volatile due to HPAL demand surge. Cyanide supply tightening. Lime stable but freight costs elevated.</div>
+      </div>
+      <div class="esc-card">
+        <div class="esc-cat" data-en="Concrete & Civil Works" data-fa="بتن و کارهای عمرانی">Concrete & Civil Works</div>
+        <div class="esc-val">+17%<span> vs 2022</span></div>
+        <div class="esc-trend esc-up">▲ +3.2% YoY</div>
+        <div class="esc-desc" data-en="Cement and aggregate prices stabilising after 2022–2023 spike. Civil contractor availability improving in most regions." data-fa="قیمت سیمان و سنگدانه پس از اوج ۲۰۲۲–۲۰۲۳ در حال تثبیت است. در دسترس بودن پیمانکار عمرانی در اکثر مناطق در حال بهبود است.">Cement and aggregate prices stabilising after 2022–2023 spike. Civil contractor availability improving in most regions.</div>
+      </div>
+      <div class="esc-card">
+        <div class="esc-cat" data-en="Electrical Equipment" data-fa="تجهیزات برقی">Electrical Equipment</div>
+        <div class="esc-val">+31%<span> vs 2022</span></div>
+        <div class="esc-trend esc-up">▲ +7.4% YoY</div>
+        <div class="esc-desc" data-en="Power transformers (>20 MVA) now 18–26 month lead times. MV switchgear and VSD drives tight. Copper content driving costs." data-fa="ترانسفورماتورهای قدرت (>۲۰ MVA) اکنون ۱۸–۲۶ ماه زمان تحویل دارند. کلیدهای فشار متوسط و درایوهای VSD محدود هستند. محتوای مس هزینه‌ها را هدایت می‌کند.">Power transformers (>20 MVA) now 18–26 month lead times. MV switchgear and VSD drives tight. Copper content driving costs.</div>
+      </div>
+      <div class="esc-card">
+        <div class="esc-cat" data-en="Haul Trucks (Large)" data-fa="کامیون‌های حمل (بزرگ)">Haul Trucks (Large)</div>
+        <div class="esc-val">+24%<span> vs 2022</span></div>
+        <div class="esc-trend esc-up">▲ +4.6% YoY</div>
+        <div class="esc-desc" data-en="Cat 793/797 and Komatsu 930E lead times 14–20 months. EV haul truck options (Komatsu 930E-5 AHS) commanding 25% premium." data-fa="زمان‌های تحویل Cat 793/797 و Komatsu 930E 14–20 ماه. گزینه‌های کامیون حمل EV (Komatsu 930E-5 AHS) ۲۵٪ پریمیوم دارند.">Cat 793/797 and Komatsu 930E lead times 14–20 months. EV haul truck options (Komatsu 930E-5 AHS) commanding 25% premium.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ REGIONAL FACTORS ═══ -->
+<section class="sec" style="background:#fff">
+  <div class="sec-in">
+    <div class="sec-hdr">
+      <div class="stag" data-en="Regional Adjustments" data-fa="تعدیلات منطقه‌ای">Regional Adjustments</div>
+      <h2 data-en="Regional Cost Adjustment Factors — 2026" data-fa="ضرایب تعدیل هزینه منطقه‌ای — ۲۰۲۶">Regional Cost Adjustment Factors — 2026</h2>
+      <p data-en="Location significantly impacts CAPEX and OPEX. KDMine applies jurisdiction-specific adjustment factors for labour, logistics, energy, and regulatory compliance costs." data-fa="موقعیت به طور قابل توجهی بر CAPEX و OPEX تأثیر می‌گذارد. KDMine ضرایب تعدیل خاص حوزه قضایی را برای هزینه‌های نیروی کار، لجستیک، انرژی و انطباق نظارتی اعمال می‌کند.">Location significantly impacts CAPEX and OPEX. KDMine applies jurisdiction-specific adjustment factors for labour, logistics, energy, and regulatory compliance costs.</p>
+    </div>
+    <div class="region-grid">
+      <div class="rcard">
+        <div class="rcard-top"><div class="rcard-flag">🇦🇺</div><div><h3>Australia (WA/NT)</h3><div class="rcard-sub" data-en="Base index: 1.00" data-fa="شاخص پایه: ۱.۰۰">Base index: 1.00</div></div></div>
+        <div class="rcard-factors">
+          <div class="rf"><span class="rf-l" data-en="Labour rate" data-fa="نرخ نیروی کار">Labour rate</span><span class="rf-v">1.00×</span></div>
+          <div class="rf-bar"><div class="rf-bar-fill" style="width:100%"></div></div>
+          <div class="rf"><span class="rf-l" data-en="Equipment cost" data-fa="هزینه تجهیزات">Equipment cost</span><span class="rf-v">1.05×</span></div>
+          <div class="rf-bar"><div class="rf-bar-fill" style="width:95%"></div></div>
+          <div class="rf"><span class="rf-l" data-en="Energy cost" data-fa="هزینه انرژی">Energy cost</span><span class="rf-v">0.95×</span></div>
+          <div class="rf-bar"><div class="rf-bar-fill" style="width:85%"></div></div>
+          <div class="rf"><span class="rf-l" data-en="Overall CAPEX factor" data-fa="ضریب کلی CAPEX">Overall CAPEX factor</span><span class="rf-v" style="color:var(--secondary)">1.00×</span></div>
+        </div>
+      </div>
+      <div class="rcard">
+        <div class="rcard-top"><div class="rcard-flag">🇨🇱</div><div><h3>Chile / Peru</h3><div class="rcard-sub" data-en="Base index: 0.82" data-fa="شاخص پایه: ۰.۸۲">Base index: 0.82</div></div></div>
+        <div class="rcard-factors">
+          <div class="rf"><span class="rf-l" data-en="Labour rate" data-fa="نرخ نیروی کار">Labour rate</span><span class="rf-v">0.55×</span></div>
+          <div class="rf-bar"><div class="rf-bar-fill" style="width:55%"></div></div>
+          <div class="rf"><span class="rf-l" data-en="Equipment cost" data-fa="هزینه تجهیزات">Equipment cost</span><span class="rf-v">1.08×</span></div>
+          <div class="rf-bar"><div class="rf-bar-fill" style="width:90%"></div></div>
+          <div class="rf"><span class="rf-l" data-en="Energy cost" data-fa="هزینه انرژی">Energy cost</span><span class="rf-v">0.85×</span></div>
+          <div class="rf-bar"><div class="rf-bar-fill" style="width:75%"></div></div>
+          <div class="rf"><span class="rf-l" data-en="Overall CAPEX factor" data-fa="ضریب کلی CAPEX">Overall CAPEX factor</span><span class="rf-v" style="color:var(--secondary)">0.82×</span></div>
+        </div>
+      </div>
+      <div class="rcard">
+        <div class="rcard-top"><div class="rcard-flag">🇮🇷</div><div><h3>Iran</h3><div class="rcard-sub" data-en="Base index: 0.48" data-fa="شاخص پایه: ۰.۴۸">Base index: 0.48</div></div></div>
+        <div class="rcard-factors">
+          <div class="rf"><span class="rf-l" data-en="Labour rate" data-fa="نرخ نیروی کار">Labour rate</span><span class="rf-v">0.18×</span></div>
+          <div class="rf-bar"><div class="rf-bar-fill" style="width:18%"></div></div>
+          <div class="rf"><span class="rf-l" data-en="Equipment cost" data-fa="هزینه تجهیزات">Equipment cost</span><span class="rf-v">1.25×</span></div>
+          <div class="rf-bar"><div class="rf-bar-fill" style="width:80%"></div></div>
+          <div class="rf"><span class="rf-l" data-en="Energy cost" data-fa="هزینه انرژی">Energy cost</span><span class="rf-v">0.22×</span></div>
+          <div class="rf-bar"><div class="rf-bar-fill" style="width:22%"></div></div>
+          <div class="rf"><span class="rf-l" data-en="Overall CAPEX factor" data-fa="ضریب کلی CAPEX">Overall CAPEX factor</span><span class="rf-v" style="color:var(--secondary)">0.48×</span></div>
+        </div>
+      </div>
+      <div class="rcard">
+        <div class="rcard-top"><div class="rcard-flag">🇰🇿</div><div><h3>Kazakhstan / Central Asia</h3><div class="rcard-sub" data-en="Base index: 0.62" data-fa="شاخص پایه: ۰.۶۲">Base index: 0.62</div></div></div>
+        <div class="rcard-factors">
+          <div class="rf"><span class="rf-l" data-en="Labour rate" data-fa="نرخ نیروی کار">Labour rate</span><span class="rf-v">0.28×</span></div>
+          <div class="rf-bar"><div class="rf-bar-fill" style="width:28%"></div></div>
+          <div class="rf"><span class="rf-l" data-en="Equipment cost" data-fa="هزینه تجهیزات">Equipment cost</span><span class="rf-v">1.15×</span></div>
+          <div class="rf-bar"><div class="rf-bar-fill" style="width:85%"></div></div>
+          <div class="rf"><span class="rf-l" data-en="Energy cost" data-fa="هزینه انرژی">Energy cost</span><span class="rf-v">0.35×</span></div>
+          <div class="rf-bar"><div class="rf-bar-fill" style="width:35%"></div></div>
+          <div class="rf"><span class="rf-l" data-en="Overall CAPEX factor" data-fa="ضریب کلی CAPEX">Overall CAPEX factor</span><span class="rf-v" style="color:var(--secondary)">0.62×</span></div>
+        </div>
+      </div>
+      <div class="rcard">
+        <div class="rcard-top"><div class="rcard-flag">🇿🇦</div><div><h3>Sub-Saharan Africa</h3><div class="rcard-sub" data-en="Base index: 0.72" data-fa="شاخص پایه: ۰.۷۲">Base index: 0.72</div></div></div>
+        <div class="rcard-factors">
+          <div class="rf"><span class="rf-l" data-en="Labour rate" data-fa="نرخ نیروی کار">Labour rate</span><span class="rf-v">0.32×</span></div>
+          <div class="rf-bar"><div class="rf-bar-fill" style="width:32%"></div></div>
+          <div class="rf"><span class="rf-l" data-en="Equipment cost" data-fa="هزینه تجهیزات">Equipment cost</span><span class="rf-v">1.18×</span></div>
+          <div class="rf-bar"><div class="rf-bar-fill" style="width:82%"></div></div>
+          <div class="rf"><span class="rf-l" data-en="Energy cost" data-fa="هزینه انرژی">Energy cost</span><span class="rf-v">0.55×</span></div>
+          <div class="rf-bar"><div class="rf-bar-fill" style="width:55%"></div></div>
+          <div class="rf"><span class="rf-l" data-en="Overall CAPEX factor" data-fa="ضریب کلی CAPEX">Overall CAPEX factor</span><span class="rf-v" style="color:var(--secondary)">0.72×</span></div>
+        </div>
+      </div>
+      <div class="rcard">
+        <div class="rcard-top"><div class="rcard-flag">🇮🇩</div><div><h3>Indonesia / SE Asia</h3><div class="rcard-sub" data-en="Base index: 0.68" data-fa="شاخص پایه: ۰.۶۸">Base index: 0.68</div></div></div>
+        <div class="rcard-factors">
+          <div class="rf"><span class="rf-l" data-en="Labour rate" data-fa="نرخ نیروی کار">Labour rate</span><span class="rf-v">0.25×</span></div>
+          <div class="rf-bar"><div class="rf-bar-fill" style="width:25%"></div></div>
+          <div class="rf"><span class="rf-l" data-en="Equipment cost" data-fa="هزینه تجهیزات">Equipment cost</span><span class="rf-v">1.20×</span></div>
+          <div class="rf-bar"><div class="rf-bar-fill" style="width:85%"></div></div>
+          <div class="rf"><span class="rf-l" data-en="Energy cost" data-fa="هزینه انرژی">Energy cost</span><span class="rf-v">0.60×</span></div>
+          <div class="rf-bar"><div class="rf-bar-fill" style="width:60%"></div></div>
+          <div class="rf"><span class="rf-l" data-en="Overall CAPEX factor" data-fa="ضریب کلی CAPEX">Overall CAPEX factor</span><span class="rf-v" style="color:var(--secondary)">0.68×</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TOOLS ═══ -->
+<section class="sec" style="background:var(--bg-light)">
+  <div class="sec-in">
+    <div class="sec-hdr">
+      <div class="stag" data-en="Free Tools" data-fa="ابزارهای رایگان">Free Tools</div>
+      <h2 data-en="Cost Estimation Tools & Templates" data-fa="ابزارها و قالب‌های تخمین هزینه">Cost Estimation Tools & Templates</h2>
+      <p data-en="Download KDMine's free cost estimation tools — used by 8,000+ mining engineers globally." data-fa="ابزارهای تخمین هزینه رایگان KDMine را دانلود کنید — توسط ۸,۰۰۰+ مهندس معدن در سراسر جهان استفاده می‌شود.">Download KDMine's free cost estimation tools — used by 8,000+ mining engineers globally.</p>
+    </div>
+    <div class="tools-grid">
+      <div class="tcard">
+        <div class="tcard-top">
+          <div class="tcard-ic" style="background:rgba(26,86,219,.1)">📊</div>
+          <div><h3 data-en="CAPEX/OPEX Master Template" data-fa="قالب اصلی CAPEX/OPEX">CAPEX/OPEX Master Template</h3><div class="tcard-type" style="color:#1a56db">Excel · 4.8 MB · Free</div></div>
+        </div>
+        <p data-en="42-worksheet AACE 47R-11 compliant template with CostMine 2026 pricing, Monte Carlo module, and BoE document." data-fa="قالب ۴۲ برگه‌ای منطبق با AACE 47R-11 با قیمت‌گذاری CostMine 2026، ماژول مونت کارلو و سند BoE.">42-worksheet AACE 47R-11 compliant template with CostMine 2026 pricing, Monte Carlo module, and BoE document.</p>
+        <div class="tcard-feats">
+          <div class="tf" data-en="Direct + indirect CAPEX structure" data-fa="ساختار CAPEX مستقیم + غیرمستقیم">Direct + indirect CAPEX structure</div>
+          <div class="tf" data-en="LOM OPEX model by cost category" data-fa="مدل OPEX LOM بر اساس دسته هزینه">LOM OPEX model by cost category</div>
+          <div class="tf" data-en="Monte Carlo P50/P80/P90 outputs" data-fa="خروجی‌های مونت کارلو P50/P80/P90">Monte Carlo P50/P80/P90 outputs</div>
+          <div class="tf" data-en="AACE 47R-11 compliance checklist" data-fa="چک‌لیست انطباق AACE 47R-11">AACE 47R-11 compliance checklist</div>
+        </div>
+        <a href="../resources.html" class="tcard-btn">📥 <span data-en="Download Free →" data-fa="دانلود رایگان ←">Download Free →</span></a>
+      </div>
+      <div class="tcard">
+        <div class="tcard-top">
+          <div class="tcard-ic" style="background:rgba(13,148,136,.1)">🧮</div>
+          <div><h3 data-en="Interactive Cost Calculator" data-fa="ماشین‌حساب هزینه تعاملی">Interactive Cost Calculator</h3><div class="tcard-type" style="color:#0d9488">Web Tool · Free · No Login</div></div>
+        </div>
+        <p data-en="Browser-based CAPEX/OPEX calculator. Input throughput, commodity, and location — get instant Class 5 estimate with regional adjustment." data-fa="ماشین‌حساب CAPEX/OPEX مبتنی بر مرورگر. ظرفیت، کالا و موقعیت را وارد کنید — تخمین فوری کلاس ۵ با تعدیل منطقه‌ای دریافت کنید.">Browser-based CAPEX/OPEX calculator. Input throughput, commodity, and location — get instant Class 5 estimate with regional adjustment.</p>
+        <div class="tcard-feats">
+          <div class="tf" data-en="8 commodities supported" data-fa="۸ کالا پشتیبانی می‌شود">8 commodities supported</div>
+          <div class="tf" data-en="12 regional adjustment factors" data-fa="۱۲ ضریب تعدیل منطقه‌ای">12 regional adjustment factors</div>
+          <div class="tf" data-en="Instant CAPEX/OPEX output" data-fa="خروجی فوری CAPEX/OPEX">Instant CAPEX/OPEX output</div>
+          <div class="tf" data-en="Exportable PDF summary" data-fa="خلاصه PDF قابل صدور">Exportable PDF summary</div>
+        </div>
+        <a href="../tools/cost-calculator.html" class="tcard-btn">🧮 <span data-en="Open Calculator →" data-fa="باز کردن ماشین‌حساب ←">Open Calculator →</span></a>
+      </div>
+      <div class="tcard">
+        <div class="tcard-top">
+          <div class="tcard-ic" style="background:rgba(124,58,237,.1)">🎲</div>
+          <div><h3 data-en="Monte Carlo Simulator" data-fa="شبیه‌ساز مونت کارلو">Monte Carlo Simulator</h3><div class="tcard-type" style="color:#7c3aed">Web Tool · Members Only</div></div>
+        </div>
+        <p data-en="Browser-based 10,000-iteration Monte Carlo CAPEX risk simulator. Upload your cost estimate, set distributions, and generate P50/P80/P90 outputs instantly." data-fa="شبیه‌ساز ریسک CAPEX مونت کارلو ۱۰,۰۰۰ تکراری مبتنی بر مرورگر. تخمین هزینه خود را آپلود کنید، توزیع‌ها را تنظیم کنید و خروجی‌های P50/P80/P90 را فوراً تولید کنید.">Browser-based 10,000-iteration Monte Carlo CAPEX risk simulator. Upload your cost estimate, set distributions, and generate P50/P80/P90 outputs instantly.</p>
+        <div class="tcard-feats">
+          <div class="tf" data-en="PERT / triangular / lognormal distributions" data-fa="توزیع‌های PERT / مثلثی / لگ‌نرمال">PERT / triangular / lognormal distributions</div>
+          <div class="tf" data-en="Correlation matrix between cost items" data-fa="ماتریس همبستگی بین اقلام هزینه">Correlation matrix between cost items</div>
+          <div class="tf" data-en="Tornado chart of top risk drivers" data-fa="نمودار tornado از عوامل ریسک برتر">Tornado chart of top risk drivers</div>
+          <div class="tf" data-en="Automated P50/P80/P90 report" data-fa="گزارش خودکار P50/P80/P90">Automated P50/P80/P90 report</div>
+        </div>
+        <a href="../tools/monte-carlo.html" class="tcard-btn">🎲 <span data-en="Open Simulator →" data-fa="باز کردن شبیه‌ساز ←">Open Simulator →</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="sec" style="background:#fff">
+  <div class="sec-in">
+    <div class="faq-in">
+      <div class="sec-hdr">
+        <div class="stag" data-en="Common Questions" data-fa="سؤالات رایج">Common Questions</div>
+        <h2 data-en="CAPEX/OPEX Estimation FAQ" data-fa="سؤالات متداول تخمین CAPEX/OPEX">CAPEX/OPEX Estimation FAQ</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q" onclick="tgFaq(this)">
+            <span data-en="What is the typical accuracy of a Class 3 CAPEX estimate?" data-fa="دقت معمول یک تخمین CAPEX کلاس ۳ چیست؟">What is the typical accuracy of a Class 3 CAPEX estimate?</span>
+            <div class="faq-ic">+</div>
+          </div>
+          <div class="faq-a" data-en="AACE 47R-11 defines Class 3 accuracy as −10% to +20% at the P50 level. In practice, KDMine targets −15% to +20% for Class 3 mining estimates. The asymmetry (wider upside range) reflects the reality that mining projects more commonly overrun than underrun. Monte Carlo analysis is used to quantify the P80 and P90 contingency requirements rather than applying a fixed percentage." data-fa="AACE 47R-11 دقت کلاس ۳ را در سطح P50 به صورت −۱۰٪ تا +۲۰٪ تعریف می‌کند. در عمل، KDMine برای تخمین‌های معدنی کلاس ۳ −۱۵٪ تا +۲۰٪ را هدف قرار می‌دهد. عدم تقارن (محدوده صعودی گسترده‌تر) نشان‌دهنده واقعیتی است که پروژه‌های معدنی بیشتر از حد مجاز تجاوز می‌کنند تا کمتر.">AACE 47R-11 defines Class 3 accuracy as −10% to +20% at the P50 level. In practice, KDMine targets −15% to +20% for Class 3 mining estimates. The asymmetry (wider upside range) reflects the reality that mining projects more commonly overrun than underrun. Monte Carlo analysis is used to quantify the P80 and P90 contingency requirements rather than applying a fixed percentage.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="tgFaq(this)">
+            <span data-en="How do you handle equipment pricing for remote or sanctioned jurisdictions?" data-fa="چگونه قیمت‌گذاری تجهیزات را برای حوزه‌های قضایی دور یا تحریم‌شده مدیریت می‌کنید؟">How do you handle equipment pricing for remote or sanctioned jurisdictions?</span>
+            <div class="faq-ic">+</div>
+          </div>
+          <div class="faq-a" data-en="For projects in Iran and other jurisdictions with import restrictions, KDMine applies a three-layer pricing approach: (1) Identify locally manufactured equivalents where available, (2) Apply import duty, freight, and insurance premiums (typically +15–35% on FOB price), (3) Add lead time risk premium to contingency for long-lead items. We maintain a database of Iranian and regional equipment manufacturers and their 2026 pricing for common mining equipment categories." data-fa="برای پروژه‌های ایران و سایر حوزه‌های قضایی با محدودیت‌های واردات، KDMine رویکرد قیمت‌گذاری سه لایه اعمال می‌کند: (۱) شناسایی معادل‌های ساخت داخل در صورت وجود، (۲) اعمال حقوق گمرکی، حمل‌ونقل و پریمیوم‌های بیمه (معمولاً +۱۵–۳۵٪ بر قیمت FOB)، (۳) اضافه کردن پریمیوم ریسک زمان تحویل به اقتضایی برای اقلام با زمان تحویل طولانی.">For projects in Iran and other jurisdictions with import restrictions, KDMine applies a three-layer pricing approach: (1) Identify locally manufactured equivalents where available, (2) Apply import duty, freight, and insurance premiums (typically +15–35% on FOB price), (3) Add lead time risk premium to contingency for long-lead items. We maintain a database of Iranian and regional equipment manufacturers and their 2026 pricing for common mining equipment categories.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="tgFaq(this)">
+            <span data-en="What contingency percentage should I use for a Class 3 estimate?" data-fa="چه درصد اقتضایی باید برای یک تخمین کلاس ۳ استفاده کنم؟">What contingency percentage should I use for a Class 3 estimate?</span>
+            <div class="faq-ic">+</div>
+          </div>
+          <div class="faq-a" data-en="KDMine does not recommend using a fixed contingency percentage for Class 3 estimates. Instead, we use Monte Carlo simulation to derive risk-based contingency. Typical results for open pit projects: P50 contingency 8–12%, P80 contingency 15–20%, P90 contingency 22–28%. Complex projects (HPAL, refractory gold, underground) typically require 5–8% higher contingency at each percentile. Fixed contingencies of 10–15% are only acceptable for Class 4–5 estimates." data-fa="KDMine استفاده از درصد اقتضایی ثابت برای تخمین‌های کلاس ۳ را توصیه نمی‌کند. در عوض، ما از شبیه‌سازی مونت کارلو برای استخراج اقتضایی مبتنی بر ریسک استفاده می‌کنیم. نتایج معمول برای پروژه‌های روباز: اقتضایی P50 8–12٪، اقتضایی P80 15–20٪، اقتضایی P90 22–28٪.">KDMine does not recommend using a fixed contingency percentage for Class 3 estimates. Instead, we use Monte Carlo simulation to derive risk-based contingency. Typical results for open pit projects: P50 contingency 8–12%, P80 contingency 15–20%, P90 contingency 22–28%. Complex projects (HPAL, refractory gold, underground) typically require 5–8% higher contingency at each percentile.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="tgFaq(this)">
+            <span data-en="Can you update an existing CAPEX estimate to 2026 pricing?" data-fa="آیا می‌توانید یک تخمین CAPEX موجود را به قیمت‌گذاری ۲۰۲۶ به‌روزرسانی کنید؟">Can you update an existing CAPEX estimate to 2026 pricing?</span>
+            <div class="faq-ic">+</div>
+          </div>
+          <div class="faq-a" data-en="Yes. CAPEX estimate updates (re-basing) are one of our most common engagements. We apply category-specific escalation indices to update each cost line item from its original pricing date to June 2026. Typical re-basing engagement: 3–6 weeks, depending on estimate complexity. We also identify line items that require re-pricing from first principles (e.g., long-lead equipment with significant lead time changes since the original estimate)." data-fa="بله. به‌روزرسانی‌های تخمین CAPEX (تغییر پایه) یکی از رایج‌ترین تعاملات ما هستند. ما شاخص‌های تشدید خاص دسته را برای به‌روزرسانی هر قلم هزینه از تاریخ قیمت‌گذاری اصلی به ژوئن ۲۰۲۶ اعمال می‌کنیم. تعامل معمول تغییر پایه: ۳–۶ هفته، بسته به پیچیدگی تخمین.">Yes. CAPEX estimate updates (re-basing) are one of our most common engagements. We apply category-specific escalation indices to update each cost line item from its original pricing date to June 2026. Typical re-basing engagement: 3–6 weeks, depending on estimate complexity. We also identify line items that require re-pricing from first principles.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="cta-sec">
+  <div class="cta-in">
+    <div style="display:inline-block;background:rgba(255,255,255,.12);color:rgba(255,255,255,.9);font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:16px">Get Your Cost Estimate</div>
+    <h2 data-en="Need an Accurate CAPEX/OPEX Estimate?" data-fa="به یک تخمین دقیق CAPEX/OPEX نیاز دارید؟">Need an Accurate CAPEX/OPEX Estimate?</h2>
+    <p data-en="Contact KDMine Group for a fixed-price cost estimation proposal within 5 business days. We'll recommend the right AACE class, pricing methodology, and deliver a fully transparent, audit-ready estimate." data-fa="با KDMine Group تماس بگیرید تا یک پیشنهاد تخمین هزینه قیمت ثابت در ۵ روز ک       اری دریافت کنید. ما کلاس AACE مناسب، روش قیمت‌گذاری را توصیه می‌کنیم و یک تخمین کاملاً شفاف و آماده ممیزی ارائه می‌دهیم.">Contact KDMine Group for a fixed-price cost estimation proposal within 5 business days. We'll recommend the right AACE class, pricing methodology, and deliver a fully transparent, audit-ready estimate.</p>
+    <div class="cta-acts">
+      <a href="../contact.html" class="bcp">💰 <span data-en="Request a Cost Estimate →" data-fa="درخواست تخمین هزینه ←">Request a Cost Estimate →</span></a>
+      <a href="../tools/cost-calculator.html" class="bco">🧮 <span data-en="Try Free Calculator" data-fa="امتحان ماشین‌حساب رایگان">Try Free Calculator</span></a>
+    </div>
+    <div style="margin-top:32px;display:flex;gap:32px;justify-content:center;flex-wrap:wrap">
+      <div style="text-align:center"><div style="font-size:1.6rem;font-weight:800;color:#fff">$180B+</div><div style="font-size:.72rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.5px" data-en="CAPEX Estimated" data-fa="CAPEX تخمین‌زده‌شده">CAPEX Estimated</div></div>
+      <div style="text-align:center"><div style="font-size:1.6rem;font-weight:800;color:#fff">850+</div><div style="font-size:.72rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.5px" data-en="Equipment Items (2026)" data-fa="اقلام تجهیزات (۲۰۲۶)">Equipment Items (2026)</div></div>
+      <div style="text-align:center"><div style="font-size:1.6rem;font-weight:800;color:#fff">±20%</div><div style="font-size:.72rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.5px" data-en="Class 3 Accuracy" data-fa="دقت کلاس ۳">Class 3 Accuracy</div></div>
+      <div style="text-align:center"><div style="font-size:1.6rem;font-weight:800;color:#fff">5 Days</div><div style="font-size:.72rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.5px" data-en="Proposal Turnaround" data-fa="زمان پیشنهاد">Proposal Turnaround</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="footer-in">
+    <div>
+      <div style="display:flex;align-items:center;gap:12px">
+        <img src="https://cdn.grapesjs.com/workspaces/cmgvbwak408ja13nsemkia83b/assets/7e057c43-5d96-4c3a-a8fc-8bd5f6589a93__kavianpremiumbadgelogo.svg" alt="KDMine" style="width:44px;height:44px;border-radius:10px">
+        <div>
+          <div style="font-size:1.1rem;font-weight:800;color:#fff" data-en="KDMine Group" data-fa="کاویان توسعه معدن">KDMine Group</div>
+          <div style="font-size:.7rem;color:rgba(255,255,255,.45);font-weight:600">Mining Engineering & Economics</div>
+        </div>
+      </div>
+      <p class="fb-desc" data-en="Data-driven mining engineering platform — from feasibility to ESG and AI, for global mining projects." data-fa="پلتفرم مهندسی معدن مبتنی بر داده — از امکان‌سنجی تا ESG و هوش مصنوعی، برای پروژه‌های معدنی جهانی.">Data-driven mining engineering platform — from feasibility to ESG and AI, for global mining projects.</p>
+      <div class="fb-socs">
+        <a href="#" class="fb-s">in</a>
+        <a href="#" class="fb-s">𝕏</a>
+        <a href="#" class="fb-s">▶</a>
+        <a href="#" class="fb-s">✉</a>
+      </div>
+    </div>
+    <div class="fc">
+      <h4>Services</h4>
+      <a href="feasibility.html">Feasibility Studies</a>
+      <a href="cost-estimation.html">CAPEX/OPEX</a>
+      <a href="plant-design.html">Plant Design</a>
+      <a href="critical-minerals.html">Critical Minerals</a>
+      <a href="esg-decarbonization.html">ESG & Decarbonization</a>
+    </div>
+    <div class="fc">
+      <h4>Tools</h4>
+      <a href="../tools/cost-calculator.html">Cost Calculator</a>
+      <a href="../tools/equipment-database.html">Equipment Database</a>
+      <a href="../tools/monte-carlo.html">Monte Carlo</a>
+      <a href="../tools/market-dashboard.html">Market Dashboard</a>
+    </div>
+    <div class="fc">
+      <h4>Resources</h4>
+      <a href="../resources.html">Resource Library</a>
+      <a href="../blog.html">Blog & Insights</a>
+      <a href="../portfolio.html">Portfolio</a>
+      <a href="../about.html">About Us</a>
+    </div>
+    <div class="fc">
+      <h4>Contact</h4>
+      <a href="../contact.html">Get in Touch</a>
+      <a href="../register.html">Free Registration</a>
+      <a href="mailto:info@kdmine.com">info@kdmine.com</a>
+      <a href="tel:+982112345678">+98 21 1234 5678</a>
+    </div>
+  </div>
+  <div class="footer-bot">
+    <span data-en="© 2026 KDMine Group. All rights reserved." data-fa="© ۲۰۲۶ کاویان توسعه معدن. تمامی حقوق محفوظ است.">© 2026 KDMine Group. All rights reserved.</span>
+    <div class="fb-lnks">
+      <a href="../privacy.html">Privacy Policy</a>
+      <a href="../terms.html">Terms of Service</a>
+      <a href="../sitemap.html">Sitemap</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ JAVASCRIPT ═══ -->
+<script>
+/* ── LANG ── */
+let lang='en';
+function applyLang(l){
+  lang=l;
+  const fa=l==='fa';
+  document.documentElement.setAttribute('lang',l);
+  document.documentElement.setAttribute('dir',fa?'rtl':'ltr');
+  document.body.style.fontFamily=fa?"'B Nazanin',Tahoma,Arial,sans-serif":"'Segoe UI',system-ui,sans-serif";
+  document.getElementById('lt-txt').textContent=fa?'EN | English':'FA | فارسی';
+  document.querySelectorAll('[data-en][data-fa]').forEach(el=>{
+    const v=el.getAttribute('data-'+l);
+    if(v!==null){
+      if(el.tagName==='INPUT'||el.tagName==='TEXTAREA')el.placeholder=v;
+      else el.innerHTML=v;
+    }
+  });
+  try{localStorage.setItem('kdmine_lang',l);}catch(e){}
+}
+function tgLang(){applyLang(lang==='en'?'fa':'en');}
+window.addEventListener('DOMContentLoaded',()=>{
+  try{const s=localStorage.getItem('kdmine_lang');if(s&&s!=='en')applyLang(s);}catch(e){}
+});
+
+/* ── MENU ── */
+function tgMenu(){
+  const nav=document.getElementById('mainNav');
+  const o=nav.classList.toggle('open');
+  const sp=document.querySelectorAll('.mbt span');
+  sp[0].style.transform=o?'translateY(7px) rotate(45deg)':'';
+  sp[1].style.opacity=o?'0':'1';
+  sp[2].style.transform=o?'translateY(-7px) rotate(-45deg)':'';
+}
+document.addEventListener('click',e=>{
+  const nav=document.getElementById('mainNav');
+  const btn=document.querySelector('.mbt');
+  if(nav&&btn&&!nav.contains(e.target)&&!btn.contains(e.target)){
+    nav.classList.remove('open');
+    document.querySelectorAll('.mbt span').forEach(s=>{s.style.transform='';s.style.opacity='1';});
+  }
+});
+
+/* ── SCROLL TO TOP ── */
+window.addEventListener('scroll',()=>{
+  const s=document.getElementById('sttBtn');
+  if(s)s.classList.toggle('vis',window.scrollY>400);
+});
+
+/* ── CAPEX TREE ACCORDION ── */
+function tgTree(btn){
+  const isOpen=btn.classList.contains('open');
+  // close all
+  document.querySelectorAll('.ct-parent.open').forEach(p=>p.classList.remove('open'));
+  // open clicked if was closed
+  if(!isOpen) btn.classList.add('open');
+}
+
+/* ── FAQ ACCORDION ── */
+function tgFaq(btn){
+  const item=btn.closest('.faq-item');
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+  if(!isOpen) item.classList.add('open');
+}
+
+/* ── ANIMATE BARS ON SCROLL ── */
+const barObserver=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.cc-bar-fill,.hm-bar-fill,.rf-bar-fill').forEach(bar=>{
+        const w=bar.style.width;
+        bar.style.width='0';
+        setTimeout(()=>{bar.style.width=w;},100);
+      });
+      barObserver.unobserve(e.target);
+    }
+  });
+},{threshold:0.2});
+
+/* ── SCROLL ANIMATIONS ── */
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.style.opacity='1';
+      e.target.style.transform='translateY(0) scale(1)';
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:0.07});
+
+window.addEventListener('DOMContentLoaded',()=>{
+  // card animations
+  const targets=[
+    ...document.querySelectorAll('.opex-card'),
+    ...document.querySelectorAll('.mcard'),
+    ...document.querySelectorAll('.esc-card'),
+    ...document.querySelectorAll('.rcard'),
+    ...document.querySelectorAll('.tcard'),
+    ...document.querySelectorAll('.hm-card')
+  ];
+  targets.forEach((el,i)=>{
+    el.style.opacity='0';
+    el.style.transform='translateY(20px) scale(0.97)';
+    el.style.transition=`opacity 0.42s ease ${(i%6)*0.07}s, transform 0.42s ease ${(i%6)*0.07}s`;
+    io.observe(el);
+  });
+
+  // bar chart sections
+  document.querySelectorAll('.capex-chart,.hero-metrics,.region-grid').forEach(sec=>{
+    barObserver.observe(sec);
+  });
+
+  // open first CAPEX tree item by default
+  const firstTree=document.querySelector('.ct-parent');
+  if(firstTree) firstTree.classList.add('open');
+});
+</script>
+</body>
+</html>

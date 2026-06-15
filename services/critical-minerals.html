@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Critical Minerals — KDMine Group</title>
+<style>
+:root{--primary:#0f2d5e;--secondary:#1a56db;--amber:#d97706;--orange:#ea580c;--teal:#0d9488;--green:#059669;--purple:#7c3aed;--text-dark:#0f172a;--text-mid:#334155;--text-light:#64748b;--bg-light:#f8fafc;--border:#e2e8f0;--s1:0 1px 3px rgba(0,0,0,.07);--s2:0 4px 12px rgba(0,0,0,.10);--s3:0 12px 30px rgba(0,0,0,.12);--s4:0 20px 50px rgba(0,0,0,.15);--r1:8px;--r2:14px;--r3:20px;--tr:all .3s cubic-bezier(.4,0,.2,1)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,sans-serif;line-height:1.7;color:var(--text-dark);background:#fff;overflow-x:hidden}
+img{max-width:100%;display:block}a{text-decoration:none;color:inherit}
+[dir="rtl"] body{font-family:'B Nazanin',Tahoma,Arial,sans-serif}
+.lt{position:fixed;top:20px;right:20px;z-index:1100;background:#fff;padding:8px 16px;border-radius:50px;box-shadow:var(--s2);cursor:pointer;font-weight:700;font-size:.82rem;border:2px solid var(--border);transition:var(--tr);color:var(--primary);display:flex;align-items:center;gap:6px}
+[dir="rtl"] .lt{right:auto;left:20px}
+.stt{position:fixed;bottom:26px;right:26px;z-index:999;width:42px;height:42px;background:var(--amber);color:#fff;border-radius:50%;border:none;cursor:pointer;font-size:1.1rem;box-shadow:var(--s3);opacity:0;pointer-events:none;transition:var(--tr);display:flex;align-items:center;justify-content:center}
+.stt.vis{opacity:1;pointer-events:all}
+.topbar{background:var(--primary);color:rgba(255,255,255,.8);font-size:.8rem;padding:7px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.topbar a{color:rgba(255,255,255,.8)}.topbar a:hover{color:#fff}.tb-r{display:flex;gap:20px}
+.hdr{background:rgba(255,255,255,.98);backdrop-filter:blur(12px);position:sticky;top:0;z-index:1000;box-shadow:var(--s2);border-bottom:1px solid var(--border)}
+.hdr-in{max-width:1400px;margin:0 auto;padding:13px 40px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.logo{display:flex;align-items:center;gap:13px}.logo img{width:50px;height:50px;border-radius:11px}
+.logo h1{font-size:1.3rem;color:var(--primary);font-weight:800}.logo p{font-size:.72rem;color:var(--text-light);font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.nav{display:flex;gap:4px;align-items:center}
+.nl{color:var(--text-mid);font-weight:600;font-size:.9rem;padding:8px 13px;border-radius:var(--r1);transition:var(--tr)}
+.nl:hover,.nl.active{color:var(--secondary);background:rgba(26,86,219,.06)}
+.nl.dd{padding-right:20px;position:relative}.nl.dd::after{content:"▾";position:absolute;right:7px;top:50%;transform:translateY(-50%);font-size:.65rem}
+.ddw{position:relative}.ddm{position:absolute;top:calc(100% + 8px);left:0;background:#fff;border-radius:var(--r2);min-width:270px;box-shadow:var(--s4);border:1px solid var(--border);opacity:0;visibility:hidden;transform:translateY(-8px);transition:var(--tr);z-index:200}
+.ddw:hover .ddm{opacity:1;visibility:visible;transform:translateY(0)}
+.ddi{display:flex;align-items:center;gap:10px;padding:11px 18px;color:var(--text-mid);font-size:.86rem;font-weight:500;transition:var(--tr)}.ddi:hover{background:var(--bg-light);color:var(--secondary)}.ddi-ic{font-size:1rem;width:20px;text-align:center}
+.bcta{background:linear-gradient(135deg,var(--secondary),#1d4ed8);color:#fff;padding:10px 22px;border-radius:50px;font-weight:700;font-size:.88rem;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(26,86,219,.35);transition:var(--tr);display:inline-flex;align-items:center;gap:7px}
+.bcta:hover{transform:translateY(-2px)}
+.mbt{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:10px}.mbt span{width:24px;height:2.5px;background:var(--text-dark);border-radius:2px;transition:var(--tr)}
+/* HERO */
+.svc-hero{background:linear-gradient(135deg,#1c0a00 0%,#431407 50%,#7c2d12 100%);color:#fff;padding:120px 40px 90px;position:relative;overflow:hidden}
+.hero-hex{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(251,146,60,.06) 1px,transparent 1px);background-size:32px 32px;pointer-events:none}
+.hero-glow{position:absolute;top:-120px;right:-120px;width:550px;height:550px;background:radial-gradient(circle,rgba(234,88,12,.2) 0%,transparent 65%);pointer-events:none}
+.hero-glow2{position:absolute;bottom:-80px;left:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(217,119,6,.12) 0%,transparent 65%);pointer-events:none}
+.svc-hero-in{max-width:1400px;margin:0 auto;position:relative;z-index:1;display:grid;grid-template-columns:1fr 420px;gap:60px;align-items:center}
+.breadcrumb{display:flex;gap:8px;align-items:center;font-size:.82rem;color:rgba(255,255,255,.55);margin-bottom:18px}
+.breadcrumb a{color:rgba(255,255,255,.65)}.breadcrumb a:hover{color:#fff}.breadcrumb span{color:rgba(255,255,255,.35)}
+.hero-stag{display:inline-block;background:rgba(251,146,60,.2);color:#fed7aa;font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:14px;border:1px solid rgba(251,146,60,.3)}
+.svc-hero h1{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:800;line-height:1.2;margin-bottom:18px}
+.svc-hero h1 span{color:#fed7aa}
+.svc-hero p{font-size:1rem;opacity:.82;line-height:1.8;margin-bottom:28px;max-width:580px}
+.hero-acts{display:flex;gap:12px;flex-wrap:wrap}
+.btn-w{background:#fff;color:#1c0a00;padding:13px 26px;border-radius:50px;font-weight:700;font-size:.92rem;border:none;cursor:pointer;transition:var(--tr);display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 16px rgba(0,0,0,.2)}
+.btn-w:hover{transform:translateY(-2px)}
+.btn-o{background:transparent;color:#fff;padding:13px 26px;border-radius:50px;font-weight:700;font-size:.92rem;border:1.5px solid rgba(255,255,255,.35);cursor:pointer;transition:var(--tr);display:inline-flex;align-items:center;gap:8px}
+.btn-o:hover{background:rgba(255,255,255,.1)}
+/* MINERAL TICKER */
+.mineral-ticker{background:rgba(255,255,255,.06);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.1);border-radius:var(--r3);padding:22px;display:flex;flex-direction:column;gap:10px}
+.mt-title{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.45);margin-bottom:4px}
+.mt-row{display:flex;align-items:center;gap:10px;padding:9px 12px;background:rgba(255,255,255,.05);border-radius:var(--r1);border:1px solid rgba(255,255,255,.07)}
+.mt-symbol{width:36px;height:36px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:800;color:#fff;flex-shrink:0}
+.mt-name{font-size:.8rem;font-weight:600;color:rgba(255,255,255,.85);flex:1}
+.mt-price{font-size:.82rem;font-weight:800;color:#fff}
+.mt-chg{font-size:.7rem;font-weight:700;padding:2px 7px;border-radius:50px}
+.mt-up{background:rgba(5,150,105,.25);color:#6ee7b7}
+.mt-dn{background:rgba(220,38,38,.25);color:#fca5a5}
+/* SECTIONS */
+.sec{padding:80px 40px}
+.sec-in{max-width:1400px;margin:0 auto}
+.sec-hdr{text-align:center;margin-bottom:52px}
+.stag{display:inline-block;background:rgba(217,119,6,.08);color:var(--amber);font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:12px}
+.sec-hdr h2{font-size:clamp(1.7rem,3.5vw,2.6rem);font-weight:800;color:var(--primary);margin-bottom:12px}
+.sec-hdr p{font-size:.96rem;color:var(--text-light);max-width:680px;margin:0 auto}
+/* MINERAL CARDS GRID */
+.mineral-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.mcard{background:#fff;border-radius:var(--r2);padding:22px;border:1px solid var(--border);box-shadow:var(--s1);transition:var(--tr);position:relative;overflow:hidden;cursor:pointer}
+.mcard::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--mc-color,var(--amber))}
+.mcard:hover{transform:translateY(-5px);box-shadow:var(--s3);border-color:transparent}
+.mcard-sym{width:48px;height:48px;border-radius:var(--r1);display:flex;align-items:center;justify-content:center;font-size:.9rem;font-weight:900;color:#fff;margin-bottom:12px;flex-shrink:0}
+.mcard h3{font-size:.94rem;font-weight:800;color:var(--text-dark);margin-bottom:4px}
+.mcard-use{font-size:.7rem;color:var(--text-light);margin-bottom:10px}
+.mcard-price{font-size:1.1rem;font-weight:800;color:var(--mc-color,var(--amber));margin-bottom:4px}
+.mcard-unit{font-size:.68rem;color:var(--text-light)}
+.mcard-bar{height:4px;background:#e2e8f0;border-radius:2px;margin-top:10px;overflow:hidden}
+.mcard-bar-fill{height:100%;border-radius:2px;transition:width 1.5s ease .3s}
+.mcard-supply{font-size:.7rem;color:var(--text-light);margin-top:6px;display:flex;justify-content:space-between}
+/* SERVICE CARDS */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.scard{background:#fff;border-radius:var(--r2);padding:28px;border:1px solid var(--border);box-shadow:var(--s1);transition:var(--tr);position:relative;overflow:hidden}
+.scard::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--sc-color,var(--amber))}
+.scard:hover{transform:translateY(-5px);box-shadow:var(--s3);border-color:transparent}
+.scard-ic{width:52px;height:52px;border-radius:var(--r1);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:16px}
+.scard h3{font-size:1rem;font-weight:800;color:var(--text-dark);margin-bottom:8px}
+.scard p{font-size:.84rem;color:var(--text-light);line-height:1.7;margin-bottom:14px}
+.scard-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}
+.scard-tag{font-size:.65rem;font-weight:700;padding:3px 9px;border-radius:50px;background:var(--bg-light);border:1px solid var(--border);color:var(--text-mid)}
+.scard-feats{display:flex;flex-direction:column;gap:4px}
+.sf{display:flex;align-items:center;gap:7px;font-size:.8rem;color:var(--text-mid)}
+.sf::before{content:'⚡';color:var(--amber);font-size:.72rem;flex-shrink:0}
+/* SUPPLY CHAIN MAP */
+.chain-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative}
+.chain-grid::before{content:'';position:absolute;top:36px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--amber),var(--orange));z-index:0}
+.cstep{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 8px;position:relative;z-index:1}
+.cstep-num{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--amber),var(--orange));color:#fff;font-size:1.1rem;font-weight:800;display:flex;align-items:center;justify-content:center;margin-bottom:14px;box-shadow:0 4px 16px rgba(217,119,6,.35)}
+.cstep-ic{font-size:1.3rem;margin-bottom:6px}
+.cstep h4{font-size:.84rem;font-weight:800;color:var(--text-dark);margin-bottom:6px}
+.cstep p{font-size:.76rem;color:var(--text-light);line-height:1.6}
+/* DEMAND TABLE */
+.demand-wrap{overflow-x:auto;border-radius:var(--r2);border:1px solid var(--border);box-shadow:var(--s1)}
+.demand-table{width:100%;border-collapse:collapse;font-size:.84rem}
+.demand-table thead{background:linear-gradient(135deg,#431407,#7c2d12);color:#fff}
+.demand-table th{padding:14px 18px;text-align:left;font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:.4px;white-space:nowrap}
+.demand-table td{padding:12px 18px;border-bottom:1px solid var(--border);color:var(--text-mid);vertical-align:middle}
+.demand-table tr:last-child td{border-bottom:none}
+.demand-table tr:hover td{background:var(--bg-light)}
+.demand-table tr:nth-child(even) td{background:#fafbfc}
+.dt-mineral{display:flex;align-items:center;gap:8px;font-weight:700;color:var(--text-dark)}
+.dt-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.dt-growth{font-weight:800;color:var(--green)}
+.dt-risk{display:inline-block;font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:50px;color:#fff}
+/* JURISDICTION */
+.jur-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.jcard{background:#fff;border-radius:var(--r2);padding:22px;border:1px solid var(--border);box-shadow:var(--s1);transition:var(--tr)}
+.jcard:hover{transform:translateY(-3px);box-shadow:var(--s2)}
+.jcard-top{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.jcard-flag{font-size:1.6rem}
+.jcard h3{font-size:.96rem;font-weight:800;color:var(--text-dark)}
+.jcard-sub{font-size:.72rem;color:var(--text-light)}
+.jcard-minerals{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}
+.jm-tag{font-size:.68rem;font-weight:700;padding:3px 9px;border-radius:50px;color:#fff}
+.jcard-desc{font-size:.8rem;color:var(--text-light);line-height:1.65}
+/* STATS STRIP */
+.stats-strip{background:linear-gradient(135deg,#1c0a00,#431407);padding:60px 40px;color:#fff}
+.stats-in{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:30px;text-align:center}
+.stat-n{font-size:2.2rem;font-weight:800;color:#fed7aa}
+.stat-l{font-size:.78rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.5px;margin-top:4px}
+/* FAQ */
+.faq-in{max-width:900px;margin:0 auto}
+.faq-list{display:flex;flex-direction:column;gap:10px;margin-top:40px}
+.faq-item{background:#fff;border-radius:var(--r2);border:1px solid var(--border);overflow:hidden}
+.faq-item.open{box-shadow:var(--s2)}
+.faq-q{padding:18px 22px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-weight:700;font-size:.94rem;color:var(--text-dark);gap:12px}
+.faq-q:hover{color:var(--amber)}
+.faq-ic{width:28px;height:28px;border-radius:50%;background:var(--bg-light);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.8rem;flex-shrink:0;transition:var(--tr)}
+.faq-item.open .faq-ic{background:var(--amber);color:#fff;border-color:var(--amber);transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;padding:0 22px;font-size:.88rem;color:var(--text-mid);line-height:1.8}
+.faq-item.open .faq-a{max-height:400px;padding:0 22px 18px}
+/* CTA */
+.cta-sec{padding:100px 40px;background:linear-gradient(135deg,#1c0a00,#431407,#7c2d12);color:#fff;text-align:center;position:relative;overflow:hidden}
+.cta-sec::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(251,146,60,.06) 1px,transparent 1px);background-size:32px 32px}
+.cta-in{max-width:700px;margin:0 auto;position:relative;z-index:1}
+.cta-sec h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;margin-bottom:14px}
+.cta-sec p{font-size:.98rem;opacity:.8;margin-bottom:36px;line-height:1.75}
+.cta-acts{display:flex;gap:13px;justify-content:center;flex-wrap:wrap}
+.bcp{background:linear-gradient(135deg,var(--amber),var(--orange));color:#fff;padding:14px 30px;border-radius:50px;font-weight:700;font-size:.96rem;border:none;cursor:pointer;box-shadow:0 6px 20px rgba(217,119,6,.4);transition:var(--tr);display:inline-flex;align-items:center;gap:8px}
+.bcp:hover{transform:translateY(-3px)}
+.bco{background:transparent;color:#fff;padding:14px 30px;border-radius:50px;font-weight:700;font-size:.96rem;border:1.5px solid rgba(255,255,255,.35);cursor:pointer;transition:var(--tr);display:inline-flex;align-items:center;gap:8px}
+.bco:hover{background:rgba(255,255,255,.1)}
+/* FOOTER */
+.footer{background:#0a1628;color:#fff;padding:68px 40px 26px}
+.footer-in{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:36px;margin-bottom:46px}
+.fb-desc{font-size:.84rem;color:rgba(255,255,255,.5);line-height:1.75;margin-top:13px;margin-bottom:17px}
+.fb-socs{display:flex;gap:8px}
+.fb-s{width:34px;height:34px;background:rgba(255,255,255,.08);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.86rem;transition:var(--tr);color:rgba(255,255,255,.52)}.fb-s:hover{background:var(--secondary);color:#fff}
+.fc h4{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.45);margin-bottom:15px}
+.fc a{display:block;color:rgba(255,255,255,.66);font-size:.84rem;padding:4px 0;transition:var(--tr)}.fc a:hover{color:#fff}
+.footer-bot{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding-top:22px;border-top:1px solid rgba(255,255,255,.08);font-size:.78rem;color:rgba(255,255,255,.36);flex-wrap:wrap;gap:10px}
+.fb-lnks{display:flex;gap:18px}.fb-lnks a{color:rgba(255,255,255,.36)}.fb-lnks a:hover{color:rgba(255,255,255,.75)}
+@media(max-width:1100px){.svc-hero-in{grid-template-columns:1fr}.mineral-ticker{display:none}.mineral-grid{grid-template-columns:repeat(2,1fr)}.svc-grid{grid-template-columns:1fr 1fr}.chain-grid{grid-template-columns:repeat(3,1fr)}.chain-grid::before{display:none}.jur-grid{grid-template-columns:1fr 1fr}.stats-in{grid-template-columns:repeat(3,1fr)}.footer-in{grid-template-columns:1fr 1fr 1fr}}
+@media(max-width:768px){.topbar{display:none}.mbt{display:flex}.nav{position:fixed;top:78px;right:-100%;width:80%;max-width:290px;height:calc(100vh - 78px);background:#fff;flex-direction:column;padding:28px;box-shadow:var(--s4);transition:right .3s ease;align-items:flex-start;overflow-y:auto;z-index:999}.nav.open{right:0}.ddm{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:none;background:var(--bg-light);margin-top:5px}.svc-hero,.sec,.stats-strip,.cta-sec,.footer{padding-left:22px;padding-right:22px}.mineral-grid,.svc-grid,.jur-grid{grid-template-columns:1fr}.chain-grid{grid-template-columns:1fr 1fr}.stats-in{grid-template-columns:repeat(2,1fr)}.footer-in{grid-template-columns:1fr 1fr}.footer-bot{flex-direction:column;text-align:center}.hdr-in{padding:13px 20px}}
+</style>
+</head>
+<body>
+<button class="lt" onclick="tgLang()">🌐 <span id="lt-txt">FA | فارسی</span></button>
+<button class="stt" id="sttBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<div class="topbar">
+  <div>📧 info@kdmine.com &nbsp;|&nbsp; 📞 +98 21 1234 5678 &nbsp;|&nbsp; 🕐 Sat–Wed 08:00–18:00 IRST</div>
+  <div class="tb-r"><a href="../register.html">🔐 Client Login</a><a href="../register.html">📊 Dashboard</a></div>
+</div>
+<header class="hdr">
+  <div class="hdr-in">
+    <div class="logo">
+      <img src="https://cdn.grapesjs.com/workspaces/cmgvbwak408ja13nsemkia83b/assets/7e057c43-5d96-4c3a-a8fc-8bd5f6589a93__kavianpremiumbadgelogo.svg" alt="KDMine">
+      <div><h1 data-en="KDMine Group" data-fa="کاویان توسعه معدن">KDMine Group</h1><p data-en="Mining Engineering & Economics" data-fa="مهندسی و اقتصاد معدن">Mining Engineering & Economics</p></div>
+    </div>
+    <button class="mbt" onclick="tgMenu()"><span></span><span></span><span></span></button>
+    <nav class="nav" id="mainNav">
+      <div class="ddw"><a href="../index.html#services" class="nl dd active">Services</a>
+        <div class="ddm">
+          <a href="feasibility.html" class="ddi"><span class="ddi-ic">📋</span><span>Feasibility Studies</span></a>
+          <a href="cost-estimation.html" class="ddi"><span class="ddi-ic">💰</span><span>CAPEX/OPEX Estimation</span></a>
+          <a href="plant-design.html" class="ddi"><span class="ddi-ic">🏭</span><span>Process Plant Design</span></a>
+          <a href="critical-minerals.html" class="ddi" style="color:var(--secondary);background:var(--bg-light)"><span class="ddi-ic">⚡</span><span>Critical Minerals</span></a>
+          <a href="esg-decarbonization.html" class="ddi"><span class="ddi-ic">🌱</span><span>ESG & Decarbonization</span></a>
+          <a href="digital-mining.html" class="ddi"><span class="ddi-ic">🤖</span><span>Digital Mining & AI</span></a>
+        </div>
+      </div>
+      <div class="ddw"><a href="../index.html#tools" class="nl dd">Tools</a>
+        <div class="ddm">
+          <a href="../tools/cost-calculator.html" class="ddi"><span class="ddi-ic">🧮</span><span>Cost Calculator</span></a>
+          <a href="../tools/equipment-database.html" class="ddi"><span class="ddi-ic">🗃️</span><span>Equipment Database</span></a>
+          <a href="../tools/monte-carlo.html" class="ddi"><span class="ddi-ic">📉</span><span>Monte Carlo Simulator</span></a>
+          <a href="../tools/market-dashboard.html" class="ddi"><span class="ddi-ic">🌍</span><span>Market Dashboard</span></a>
+        </div>
+      </div>
+      <a href="../resources.html" class="nl">Resources</a>
+      <a href="../portfolio.html" class="nl">Portfolio</a>
+      <a href="../about.html" class="nl">About</a>
+      <a href="../contact.html" class="nl">Contact</a>
+      <a href="../register.html" class="bcta">Get Started →</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ═══ HERO ═══ -->
+<section class="svc-hero">
+  <div class="hero-hex"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="svc-hero-in">
+    <div>
+      <div class="breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="../index.html#services">Services</a><span>/</span><span>Critical Minerals</span></div>
+      <div class="hero-stag">Li · Co · Ni · REE · Cu · Mn · Graphite · PGMs</div>
+      <h1>Critical Minerals <span>Strategy & Advisory</span></h1>
+      <p data-en="KDMine Group provides specialist advisory for critical and strategic minerals — from resource evaluation and supply chain analysis to feasibility studies and offtake strategy. We cover all minerals essential to the energy transition: lithium, cobalt, nickel, rare earth elements, copper, manganese, graphite, and PGMs." data-fa="KDMine Group مشاوره تخصصی برای مواد معدنی حیاتی و استراتژیک ارائه می‌دهد — از ارزیابی منابع و تحلیل زنجیره تأمین تا مطالعات امکان‌سنجی و استراتژی قرارداد فروش. ما تمام مواد معدنی ضروری برای گذار انرژی را پوشش می‌دهیم.">KDMine Group provides specialist advisory for critical and strategic minerals — from resource evaluation and supply chain analysis to feasibility studies and offtake strategy. We cover all minerals essential to the energy transition: lithium, cobalt, nickel, rare earth elements, copper, manganese, graphite, and PGMs.</p>
+      <div class="hero-acts">
+        <a href="../contact.html" class="btn-w">⚡ Request Critical Minerals Advisory →</a>
+        <a href="../tools/market-dashboard.html" class="btn-o">📊 View Market Dashboard</a>
+      </div>
+    </div>
+    <div class="mineral-ticker">
+      <div class="mt-title">Critical Minerals — Indicative 2026 Prices</div>
+      <div class="mt-row"><div class="mt-symbol" style="background:#7c3aed">Li</div><span class="mt-name">Lithium Carbonate (99.5%)</span><span class="mt-price">$12,400/t</span><span class="mt-chg mt-up">▲ +4.2%</span></div>
+      <div class="mt-row"><div class="mt-symbol" style="background:#1a56db">Co</div><span class="mt-name">Cobalt Metal (99.8%)</span><span class="mt-price">$28,500/t</span><span class="mt-chg mt-up">▲ +2.8%</span></div>
+      <div class="mt-row"><div class="mt-symbol" style="background:#059669">Ni</div><span class="mt-name">Nickel (LME Cash)</span><span class="mt-price">$16,200/t</span><span class="mt-chg mt-dn">▼ −1.1%</span></div>
+      <div class="mt-row"><div class="mt-symbol" style="background:#d97706">Cu</div><span class="mt-name">Copper (LME Cash)</span><span class="mt-price">$9,850/t</span><span class="mt-chg mt-up">▲ +0.9%</span></div>
+      <div class="mt-row"><div class="mt-symbol" style="background:#dc2626">REE</div><span class="mt-name">Neodymium Oxide</span><span class="mt-price">$68,000/t</span><span class="mt-chg mt-up">▲ +6.1%</span></div>
+      <div class="mt-row"><div class="mt-symbol" style="background:#0d9488">Gr</div><span class="mt-name">Graphite (Flake, 94%)</span><span class="mt-price">$820/t</span><span class="mt-chg mt-dn">▼ −0.5%</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stats-in">
+    <div><div class="stat-n">30+</div><div class="stat-l">Critical Mineral Projects</div></div>
+    <div><div class="stat-n">8</div><div class="stat-l">Minerals Covered</div></div>
+    <div><div class="stat-n">4×</div><div class="stat-l">Avg. Demand Growth by 2035</div></div>
+    <div><div class="stat-n">18</div><div class="stat-l">Countries with Active Projects</div></div>
+    <div><div class="stat-n">$45B</div><div class="stat-l">Critical Mineral CAPEX Advised</div></div>
+  </div>
+</div>
+
+<!-- ═══ MINERAL CARDS ═══ -->
+<section class="sec" style="background:var(--bg-light)">
+  <div class="sec-in">
+    <div class="sec-hdr">
+      <div class="stag">Minerals Coverage</div>
+      <h2 data-en="Critical & Strategic Minerals We Cover" data-fa="مواد معدنی حیاتی و استراتژیک که پوشش می‌دهیم">Critical & Strategic Minerals We Cover</h2>
+      <p data-en="KDMine provides deep technical and commercial expertise across all minerals classified as critical by the EU, US DOE, and IEA for the clean energy transition." data-fa="KDMine تخصص فنی و تجاری عمیق در تمام مواد معدنی طبقه‌بندی‌شده به عنوان حیاتی توسط اتحادیه اروپا، وزارت انرژی آمریکا و آژانس بین‌المللی انرژی برای گذار انرژی پاک ارائه می‌دهد.">KDMine provides deep technical and commercial expertise across all minerals classified as critical by the EU, US DOE, and IEA for the clean energy transition.</p>
+    </div>
+    <div class="mineral-grid">
+      <div class="mcard" style="--mc-color:#7c3aed">
+        <div class="mcard-sym" style="background:#7c3aed">Li</div>
+        <h3>Lithium</h3>
+        <div class="mcard-use">EV batteries · Grid storage · Electronics</div>
+        <div class="mcard-price">$12,400/t</div>
+        <div class="mcard-unit">Li₂CO₃ 99.5% battery grade</div>
+        <div class="mcard-bar"><div class="mcard-bar-fill" style="width:88%;background:#7c3aed"></div></div>
+        <div class="mcard-supply"><span>Demand growth 2026–2035</span><span style="font-weight:700;color:#7c3aed">+340%</span></div>
+      </div>
+      <div class="mcard" style="--mc-color:#1a56db">
+        <div class="mcard-sym" style="background:#1a56db">Co</div>
+        <h3>Cobalt</h3>
+        <div class="mcard-use">NMC batteries · Superalloys · Magnets</div>
+        <div class="mcard-price">$28,500/t</div>
+        <div class="mcard-unit">Co metal 99.8% min</div>
+        <div class="mcard-bar"><div class="mcard-bar-fill" style="width:72%;background:#1a56db"></div></div>
+        <div class="mcard-supply"><span>Demand growth 2026–2035</span><span style="font-weight:700;color:#1a56db">+180%</span></div>
+      </div>
+      <div class="mcard" style="--mc-color:#059669">
+        <div class="mcard-sym" style="background:#059669">Ni</div>
+        <h3>Nickel</h3>
+        <div class="mcard-use">NMC/NCA batteries · Stainless steel</div>
+        <div class="mcard-price">$16,200/t</div>
+        <div class="mcard-unit">LME Grade A cathode</div>
+        <div class="mcard-bar"><div class="mcard-bar-fill" style="width:65%;background:#059669"></div></div>
+        <div class="mcard-supply"><span>Demand growth 2026–2035</span><span style="font-weight:700;color:#059669">+220%</span></div>
+      </div>
+      <div class="mcard" style="--mc-color:#dc2626">
+        <div class="mcard-sym" style="background:#dc2626">REE</div>
+        <h3>Rare Earth Elements</h3>
+        <div class="mcard-use">Permanent magnets · Wind turbines · EVs</div>
+        <div class="mcard-price">$68,000/t</div>
+        <div class="mcard-unit">Nd₂O₃ 99% min (NdPr oxide)</div>
+        <div class="mcard-bar"><div class="mcard-bar-fill" style="width:92%;background:#dc2626"></div></div>
+        <div class="mcard-supply"><span>Demand growth 2026–2035</span><span style="font-weight:700;color:#dc2626">+400%</span></div>
+      </div>
+      <div class="mcard" style="--mc-color:#d97706">
+        <div class="mcard-sym" style="background:#d97706">Cu</div>
+        <h3>Copper</h3>
+        <div class="mcard-use">Grid wiring · EVs · Renewables · Electronics</div>
+        <div class="mcard-price">$9,850/t</div>
+        <div class="mcard-unit">LME Grade A cathode</div>
+        <div class="mcard-bar"><div class="mcard-bar-fill" style="width:58%;background:#d97706"></div></div>
+        <div class="mcard-supply"><span>Demand growth 2026–2035</span><span style="font-weight:700;color:#d97706">+45%</span></div>
+      </div>
+      <div class="mcard" style="--mc-color:#0d9488">
+        <div class="mcard-sym" style="background:#0d9488">Gr</div>
+        <h3>Graphite</h3>
+        <div class="mcard-use">Li-ion anode · Fuel cells · Lubricants</div>
+        <div class="mcard-price">$820/t</div>
+        <div class="mcard-unit">Flake graphite 94% C</div>
+        <div class="mcard-bar"><div class="mcard-bar-fill" style="width:80%;background:#0d9488"></div></div>
+        <div class="mcard-supply"><span>Demand growth 2026–2035</span><span style="font-weight:700;color:#0d9488">+500%</span></div>
+      </div>
+      <div class="mcard" style="--mc-color:#64748b">
+        <div class="mcard-sym" style="background:#64748b">Mn</div>
+        <h3>Manganese</h3>
+        <div class="mcard-use">LMFP batteries · Steel · Fertilisers</div>
+        <div class="mcard-price">$4,200/t</div>
+        <div class="mcard-unit">MnSO₄ battery grade</div>
+        <div class="mcard-bar"><div class="mcard-bar-fill" style="width:55%;background:#64748b"></div></div>
+        <div class="mcard-supply"><span>Demand growth 2026–2035</span><span style="font-weight:700;color:#64748b">+280%</span></div>
+      </div>
+      <div class="mcard" style="--mc-color:#ea580c">
+        <div class="mcard-sym" style="background:#ea580c">PGM</div>
+        <h3>PGMs</h3>
+        <div class="mcard-use">Hydrogen fuel cells · Catalysts · Jewellery</div>
+        <div class="mcard-price">$980/oz</div>
+        <div class="mcard-unit">Platinum (spot)</div>
+        <div class="mcard-bar"><div class="mcard-bar-fill" style="width:48%;background:#ea580c"></div></div>
+        <div class="mcard-supply"><span>Demand growth 2026–2035</span><span style="font-weight:700;color:#ea580c">+120%</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SERVICES ═══ -->
+<section class="sec" style="background:#fff">
+  <div class="sec-in">
+    <div class="sec-hdr">
+      <div class="stag">Advisory Services</div>
+      <h2>Critical Minerals Advisory Services</h2>
+      <p data-en="End-to-end advisory covering the full critical minerals value chain — from exploration target generation to offtake negotiation and downstream processing strategy." data-fa="مشاوره کامل که زنجیره ارزش کامل مواد معدنی حیاتی را پوشش می‌دهد — از تولید هدف اکتشاف تا مذاکره قرارداد فروش و استراتژی فرآوری پایین‌دستی.">End-to-end advisory covering the full critical minerals value chain — from exploration target generation to offtake negotiation and downstream processing strategy.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="scard" style="--sc-color:#7c3aed">
+        <div class="scard-ic" style="background:rgba(124,58,237,.1)">🔬</div>
+        <h3>Resource Evaluation & Technical Due Diligence</h3>
+        <p>Independent technical review of critical mineral resource estimates, metallurgical test programmes, and processing flowsheet development. JORC/NI 43-101 compliant reporting.</p>
+        <div class="scard-tags"><span class="scard-tag">JORC</span><span class="scard-tag">NI 43-101</span><span class="scard-tag">SAMREC</span></div>
+        <div class="scard-feats">
+          <div class="sf">Resource estimate audit & QA/QC review</div>
+          <div class="sf">Metallurgical testwork programme design</div>
+          <div class="sf">Processing flowsheet evaluation</div>
+          <div class="sf">Independent technical report (ITR)</div>
+        </div>
+      </div>
+      <div class="scard" style="--sc-color:#d97706">
+        <div class="scard-ic" style="background:rgba(217,119,6,.1)">📈</div>
+        <h3>Market Analysis & Demand Forecasting</h3>
+        <p>Long-term demand forecasting for critical minerals under IEA NZE, SDS, and Stated Policies scenarios. Covers EV adoption curves, battery chemistry evolution, and supply-demand balance modelling.</p>
+        <div class="scard-tags"><span class="scard-tag">IEA NZE</span><span class="scard-tag">BloombergNEF</span><span class="scard-tag">Roskill</span></div>
+        <div class="scard-feats">
+          <div class="sf">2026–2040 demand scenarios (3 pathways)</div>
+          <div class="sf">Battery chemistry evolution modelling</div>
+          <div class="sf">Price forecasting (P10/P50/P90)</div>
+          <div class="sf">Competitor supply pipeline analysis</div>
+        </div>
+      </div>
+      <div class="scard" style="--sc-color:#059669">
+        <div class="scard-ic" style="background:rgba(5,150,105,.1)">🔗</div>
+        <h3>Supply Chain & Offtake Strategy</h3>
+        <p>Supply chain risk assessment, offtake agreement structuring, and downstream integration strategy. Covers DRC cobalt, Indonesian nickel, Chinese REE, and Chilean lithium supply chain risks.</p>
+        <div class="scard-tags"><span class="scard-tag">Offtake</span><span class="scard-tag">Supply Chain</span><span class="scard-tag">Geopolitical Risk</span></div>
+        <div class="scard-feats">
+          <div class="sf">Offtake agreement term sheet negotiation</div>
+          <div class="sf">Supply chain concentration risk mapping</div>
+          <div class="sf">Responsible sourcing due diligence</div>
+          <div class="sf">Downstream integration business case</div>
+        </div>
+      </div>
+      <div class="scard" style="--sc-color:#1a56db">
+        <div class="scard-ic" style="background:rgba(26,86,219,.1)">🏭</div>
+        <h3>Processing & Refining Feasibility</h3>
+        <p>Feasibility studies for critical mineral processing — from spodumene conversion to lithium hydroxide, HPAL nickel-cobalt, REE separation, and graphite purification/spheronisation.</p>
+        <div class="scard-tags"><span class="scard-tag">LiOH</span><span class="scard-tag">HPAL</span><span class="scard-tag">REE Sep.</span><span class="scard-tag">Graphite</span></div>
+        <div class="scard-feats">
+          <div class="sf">Hydromet flowsheet development</div>
+          <div class="sf">CAPEX/OPEX for processing plant</div>
+          <div class="sf">Battery-grade product specification</div>
+          <div class="sf">Waste & effluent management plan</div>
+        </div>
+      </div>
+      <div class="scard" style="--sc-color:#dc2626">
+        <div class="scard-ic" style="background:rgba(220,38,38,.1)">🌍</div>
+        <h3>Geopolitical Risk & Strategic Stockpiling</h3>
+        <p>Assessment of geopolitical concentration risks for critical mineral supply chains. Advisory for government strategic reserve programmes, friend-shoring strategies, and supply diversification.</p>
+        <div class="scard-tags"><span class="scard-tag">Friend-shoring</span><span class="scard-tag">Strategic Reserve</span><span class="scard-tag">CRMA</span></div>
+        <div class="scard-feats">
+          <div class="sf">EU CRMA compliance assessment</div>
+          <div class="sf">US IRA domestic content analysis</div>
+          <div class="sf">Strategic stockpile sizing model</div>
+          <div class="sf">Supply diversification roadmap</div>
+        </div>
+      </div>
+      <div class="scard" style="--sc-color:#0d9488">
+        <div class="scard-ic" style="background:rgba(13,148,136,.1)">♻️</div>
+        <h3>Battery Recycling & Urban Mining</h3>
+        <p>Feasibility and market analysis for lithium-ion battery recycling — black mass processing, hydromet recovery of Li/Co/Ni/Mn, and circular economy business models.</p>
+        <div class="scard-tags"><span class="scard-tag">Black Mass</span><span class="scard-tag">Hydromet</span><span class="scard-tag">Circular Economy</span></div>
+        <div class="scard-feats">
+          <div class="sf">Battery recycling plant feasibility</div>
+          <div class="sf">Black mass processing flowsheet</div>
+          <div class="sf">Li/Co/Ni recovery economics</div>
+          <div class="sf">Regulatory compliance (EU Battery Regulation)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DEMAND TABLE ═══ -->
+<section class="sec" style="background:var(--bg-light)">
+  <div class="sec-in">
+    <div class="sec-hdr">
+      <div class="stag">2026 Market Data</div>
+      <h2>Critical Minerals — Demand & Supply Outlook 2026–2035</h2>
+      <p>KDMine's proprietary demand model integrating IEA NZE, BloombergNEF EVO, and Wood Mackenzie battery demand forecasts.</p>
+    </div>
+    <div class="demand-wrap">
+      <table class="demand-table">
+        <thead>
+          <tr>
+            <th>Mineral</th><th>2026 Demand (kt)</th><th>2035 Demand (kt)</th><th>CAGR</th><th>Top Producer</th><th>Supply Risk</th><th>KDMine Coverage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><div class="dt-mineral"><div class="dt-dot" style="background:#7c3aed"></div>Lithium (LCE)</div></td><td>980</td><td>3,850</td><td class="dt-growth">+16.4%</td><td>🇦🇺 Australia (47%)</td><td><span class="dt-risk" style="background:#dc2626">Critical</span></td><td>✅ Full Coverage</td></tr>
+          <tr><td><div class="dt-mineral"><div class="dt-dot" style="background:#1a56db"></div>Cobalt</div></td><td>210</td><td>420</td><td class="dt-growth">+8.0%</td><td>🇨🇩 DRC (72%)</td><td><span class="dt-risk" style="background:#dc2626">Critical</span></td><td>✅ Full Coverage</td></tr>
+          <tr><td><div class="dt-mineral"><div class="dt-dot" style="background:#059669"></div>Nickel (battery grade)</div></td><td>650</td><td>2,100</td><td class="dt-growth">+13.9%</td><td>🇮🇩 Indonesia (54%)</td><td><span class="dt-risk" style="background:#d97706">High</span></td><td>✅ Full Coverage</td></tr>
+          <tr><td><div class="dt-mineral"><div class="dt-dot" style="background:#dc2626"></div>NdPr Oxide (REE)</div></td><td>68</td><td>310</td><td class="dt-growth">+18.2%</td><td>🇨🇳 China (85%)</td><td><span class="dt-risk" style="background:#dc2626">Critical</span></td><td>✅ Full Coverage</td></tr>
+          <tr><td><div class="dt-mineral"><div class="dt-dot" style="background:#d97706"></div>Copper</div></td><td>28,500</td><td>42,000</td><td class="dt-growth">+4.4%</td><td>🇨🇱 Chile (28%)</td><td><span class="dt-risk" style="background:#f59e0b">Medium</span></td><td>✅ Full Coverage</td></tr>
+          <tr><td><div class="dt-mineral"><div class="dt-dot" style="background:#0d9488"></div>Graphite (natural)</div></td><td>1,200</td><td>7,400</td><td class="dt-growth">+22.4%</td><td>🇨🇳 China (79%)</td><td><span class="dt-risk" style="background:#dc2626">Critical</span></td><td>✅ Full Coverage</td></tr>
+          <tr><td><div class="dt-mineral"><div class="dt-dot" style="background:#64748b"></div>Manganese (battery)</div></td><td>180</td><td>680</td><td class="dt-growth">+15.9%</td><td>🇿🇦 South Africa (35%)</td><td><span class="dt-risk" style="background:#d97706">High</span></td><td>✅ Full Coverage</td></tr>
+          <tr><td><div class="dt-mineral"><div class="dt-dot" style="background:#ea580c"></div>Platinum (H₂ fuel cell)</div></td><td>8.2</td><td>18.5</td><td class="dt-growth">+9.5%</td><td>🇿🇦 South Africa (72%)</td><td><span class="dt-risk" style="background:#d97706">High</span></td><td>✅ Full Coverage</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:.76rem;color:var(--text-light);margin-top:10px;text-align:right">Source: KDMine proprietary model integrating IEA NZE 2026, BloombergNEF EVO 2026, Wood Mackenzie Battery Metals 2026. All figures in 2026 USD.</p>
+  </div>
+</section>
+
+<!-- ═══ SUPPLY CHAIN ═══ -->
+<section class="sec" style="background:#fff">
+  <div class="sec-in">
+    <div class="sec-hdr">
+      <div class="stag">Value Chain</div>
+      <h2>Critical Minerals Value Chain — KDMine Coverage</h2>
+      <p>KDMine provides advisory at every stage of the critical minerals value chain — from exploration through to battery-grade product and recycling.</p>
+    </div>
+    <div class="chain-grid">
+      <div class="cstep"><div class="cstep-num">1</div><div class="cstep-ic">🔍</div><h4>Exploration & Resource</h4><p>Target generation, drill programme design, resource estimation, JORC/NI 43-101 reporting</p></div>
+      <div class="cstep"><div class="cstep-num">2</div><div class="cstep-ic">⛏️</div><h4>Mining & Extraction</h4><p>Mine design, production scheduling, CAPEX/OPEX estimation, environmental permitting</p></div>
+      <div class="cstep"><div class="cstep-num">3</div><div class="cstep-ic">🏭</div><h4>Processing & Refining</h4><p>Flowsheet development, hydromet design, battery-grade product specification, pilot plant</p></div>
+      <div class="cstep"><div class="cstep-num">4</div><div class="cstep-ic">🔗</div><h4>Offtake & Marketing</h4><p>Offtake agreement structuring, pricing mechanism design, customer qualification, logistics</p></div>
+      <div class="cstep"><div class="cstep-num">5</div><div class="cstep-ic">♻️</div><h4>Recycling & Circular Economy</h4><p>Battery recycling feasibility, black mass processing, secondary supply modelling</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ JURISDICTIONS ═══ -->
+<section class="sec" style="background:var(--bg-light)">
+  <div class="sec-in">
+    <div class="sec-hdr">
+      <div class="stag">Key Jurisdictions</div>
+      <h2>Critical Minerals Jurisdictions — KDMine Active Projects</h2>
+      <p>KDMine has active critical mineral advisory mandates across 18 countries — covering the full spectrum of producing, emerging, and frontier jurisdictions.</p>
+    </div>
+    <div class="jur-grid">
+      <div class="jcard">
+        <div class="jcard-top"><div class="jcard-flag">🇮🇷</div><div><h3>Iran</h3><div class="jcard-sub">Emerging critical minerals producer</div></div></div>
+        <div class="jcard-minerals"><span class="jm-tag" style="background:#d97706">Cu</span><span class="jm-tag" style="background:#dc2626">REE</span><span class="jm-tag" style="background:#64748b">Mn</span><span class="jm-tag" style="background:#059669">Cr</span></div>
+        <div class="jcard-desc">Iran holds significant copper (world's 10th largest reserves), chromite, manganese, and emerging REE deposits. KDMine advises on feasibility, processing, and offtake for Iranian critical mineral projects.</div>
+      </div>
+      <div class="jcard">
+        <div class="jcard-top"><div class="jcard-flag">🇦🇺</div><div><h3>Australia</h3><div class="jcard-sub">World's #1 lithium producer</div></div></div>
+        <div class="jcard-minerals"><span class="jm-tag" style="background:#7c3aed">Li</span><span class="jm-tag" style="background:#dc2626">REE</span><span class="jm-tag" style="background:#ea580c">PGM</span><span class="jm-tag" style="background:#d97706">Cu</span></div>
+        <div class="jcard-desc">Australia produces 47% of global lithium (spodumene). KDMine advises on spodumene-to-LiOH conversion feasibility, REE project development in WA, and PGM exploration in the Yilgarn Craton.</div>
+      </div>
+      <div class="jcard">
+        <div class="jcard-top"><div class="jcard-flag">🇨🇱</div><div><h3>Chile / Argentina</h3><div class="jcard-sub">Lithium Triangle — brine deposits</div></div></div>
+        <div class="jcard-minerals"><span class="jm-tag" style="background:#7c3aed">Li</span><span class="jm-tag" style="background:#d97706">Cu</span><span class="jm-tag" style="background:#64748b">Mn</span></div>
+        <div class="jcard-desc">The Lithium Triangle holds 58% of global lithium resources. KDMine provides brine resource evaluation, DLE (Direct Lithium Extraction) feasibility, and copper porphyry project advisory in the Atacama region.</div>
+      </div>
+      <div class="jcard">
+        <div class="jcard-top"><div class="jcard-flag">🇮🇩</div><div><h3>Indonesia</h3><div class="jcard-sub">World's #1 nickel producer</div></div></div>
+        <div class="jcard-minerals"><span class="jm-tag" style="background:#059669">Ni</span><span class="jm-tag" style="background:#1a56db">Co</span><span class="jm-tag" style="background:#d97706">Cu</span></div>
+        <div class="jcard-desc">Indonesia produces 54% of global nickel. KDMine advises on HPAL laterite feasibility, NiSO₄ battery-grade product development, and supply chain due diligence for Indonesian nickel projects.</div>
+      </div>
+      <div class="jcard">
+        <div class="jcard-top"><div class="jcard-flag">🇰🇿</div><div><h3>Kazakhstan / Central Asia</h3><div class="jcard-sub">Emerging critical minerals hub</div></div></div>
+        <div class="jcard-minerals"><span class="jm-tag" style="background:#d97706">Cu</span><span class="jm-tag" style="background:#dc2626">REE</span><span class="jm-tag" style="background:#7c3aed">Li</span><span class="jm-tag" style="background:#64748b">Mn</span></div>
+        <div class="jcard-desc">Kazakhstan holds significant copper, REE, and emerging lithium brine resources. KDMine advises on resource evaluation, feasibility studies, and supply chain integration for Central Asian critical mineral projects.</div>
+      </div>
+      <div class="jcard">
+        <div class="jcard-top"><div class="jcard-flag">🇿🇦</div><div><h3>Sub-Saharan Africa</h3><div class="jcard-sub">PGMs, Mn, Co, graphite</div></div></div>
+        <div class="jcard-minerals"><span class="jm-tag" style="background:#ea580c">PGM</span><span class="jm-tag" style="background:#64748b">Mn</span><span class="jm-tag" style="background:#1a56db">Co</span><span class="jm-tag" style="background:#0d9488">Gr</span></div>
+        <div class="jcard-desc">Southern and East Africa host world-class PGM (South Africa), manganese (South Africa, Gabon), cobalt (DRC), and graphite (Tanzania, Mozambique) deposits. KDMine has active advisory mandates across 6 African countries.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="sec" style="background:#fff">
+  <div class="sec-in">
+    <div class="faq-in">
+      <div class="sec-hdr">
+        <div class="stag">Common Questions</div>
+        <h2>Critical Minerals FAQ</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q" onclick="tgFaq(this)"><span>Which minerals are classified as "critical" and why?</span><div class="faq-ic">+</div></div>
+          <div class="faq-a">A mineral is classified as "critical" when it is economically important AND faces significant supply risk. The EU's Critical Raw Materials Act (CRMA 2023) lists 34 critical raw materials including lithium, cobalt, nickel, REEs, graphite, manganese, and PGMs. The US DOE and IEA maintain similar lists. The key criteria are: (1) high economic importance to clean energy and defence applications, (2) high supply concentration risk (e.g., China produces 85% of REEs, DRC produces 72% of cobalt), and (3) limited substitutability in key applications. KDMine covers all minerals on the EU, US, and IEA critical minerals lists.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="tgFaq(this)"><span>How will battery chemistry evolution affect critical mineral demand?</span><div class="faq-ic">+</div></div>
+          <div class="faq-a">Battery chemistry is evolving rapidly and will significantly reshape critical mineral demand. Key trends: (1) LFP (LiFePO₄) growth reduces cobalt and nickel demand but increases lithium and graphite demand. LFP now represents 45% of EV battery production. (2) LMFP (lithium manganese iron phosphate) is emerging as a high-energy LFP variant, driving manganese demand. (3) Solid-state batteries (2028–2032 commercialisation) will increase lithium demand but may reduce graphite demand. (4) Sodium-ion batteries could partially substitute lithium for stationary storage. KDMine's demand model tracks 12 battery chemistries to 2040.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="tgFaq(this)"><span>What is Direct Lithium Extraction (DLE) and is it commercially proven?</span><div class="faq-ic">+</div></div>
+          <div class="faq-a">Direct Lithium Extraction (DLE) is a group of technologies that selectively extract lithium from brines without the traditional 18-month evaporation pond process. DLE technologies include ion exchange (IX), adsorption (Li-selective sorbents), and membrane-based methods. Commercial status as of 2026: Lilac Solutions and EnergySource have demonstrated commercial-scale IX DLE. Standard Lithium's SiFT process is in advanced pilot. Livent (now Arcadium) operates commercial DLE at Fenix, Argentina. DLE offers 80–90% lithium recovery (vs. 40–50% for evaporation ponds), 90% smaller footprint, and year-round operation. KDMine provides DLE technology selection, feasibility, and CAPEX/OPEX estimation for brine projects.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="tgFaq(this)"><span>How do we structure a critical minerals offtake agreement?</span><div class="faq-ic">+</div></div>
+          <div class="faq-a">Critical mineral offtake agreements typically include: (1) Product specification — battery-grade vs. technical-grade, with detailed chemistry specs (e.g., LiOH ≥56.5%, Na ≤0.006%). (2) Pricing mechanism — index-linked (Fastmarkets, Benchmark Mineral Intelligence), fixed price, or hybrid formula with floor/cap. (3) Volume — take-or-pay vs. take-and-pay, with annual quantity schedules. (4) Term — typically 5–10 years for battery-grade products, with options to extend. (5) Responsible sourcing — OECD Due Diligence, RMI RMAP audit requirements increasingly standard. KDMine advises on all aspects of offtake structuring and has supported 15+ critical mineral offtake negotiations.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="tgFaq(this)"><span>What is the EU Critical Raw Materials Act and how does it affect mining projects?</span><div class="faq-ic">+</div></div>
+          <div class="faq-a">The EU Critical Raw Materials Act (CRMA), in force since May 2024, sets binding targets: by 2030, the EU must extract at least 10% of its annual consumption of strategic raw materials domestically, process at least 40% domestically, and recycle at least 25%. It also limits single-country supply to 65% for any strategic raw material. For mining projects, the CRMA creates: (1) Fast-track permitting (24 months for extraction, 12 months for processing) for Strategic Projects. (2) Access to EU funding and financing support. (3) Mandatory supply chain due diligence for EU buyers. KDMine helps projects achieve EU Strategic Project status and navigate CRMA compliance requirements.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="cta-sec">
+  <div class="cta-in">
+    <div style="display:inline-block;background:rgba(251,146,60,.2);color:#fed7aa;font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:16px;border:1px solid rgba(251,146,60,.3)">Critical Minerals Advisory</div>
+    <h2 data-en="Ready to Unlock Your Critical Minerals Project?" data-fa="آماده‌اید پروژه مواد معدنی حیاتی خود را باز کنید؟">Ready to Unlock Your Critical Minerals Project?</h2>
+    <p data-en="Contact KDMine Group for specialist critical minerals advisory — from resource evaluation and processing feasibility to offtake strategy and EU CRMA compliance. We cover all 8 critical minerals essential to the energy transition." data-fa="با KDMine Group برای مشاوره تخصصی مواد معدنی حیاتی تماس بگیرید — از ارزیابی منابع و امکان‌سنجی فرآوری تا استراتژی قرارداد فروش و انطباق با CRMA اتحادیه اروپا.">Contact KDMine Group for specialist critical minerals advisory — from resource evaluation and processing feasibility to offtake strategy and EU CRMA compliance. We cover all 8 critical minerals essential to the energy transition.</p>
+    <div class="cta-acts">
+      <a href="../contact.html" class="bcp">⚡ Request Critical Minerals Advisory →</a>
+      <a href="../tools/market-dashboard.html" class="bco">📊 View Market Dashboard</a>
+    </div>
+    <div style="margin-top:32px;display:flex;gap:32px;justify-content:center;flex-wrap:wrap">
+      <div style="text-align:center"><div style="font-size:1.6rem;font-weight:800;color:#fed7aa">30+</div><div style="font-size:.72rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.5px">Projects Advised</div></div>
+      <div style="text-align:center"><div style="font-size:1.6rem;font-weight:800;color:#fed7aa">8</div><div style="font-size:.72rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.5px">Minerals Covered</div></div>
+      <div style="text-align:center"><div style="font-size:1.6rem;font-weight:800;color:#fed7aa">18</div><div style="font-size:.72rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.5px">Countries Active</div></div>
+      <div style="text-align:center"><div style="font-size:1.6rem;font-weight:800;color:#fed7aa">$45B</div><div style="font-size:.72rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.5px">CAPEX Advised</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="footer-in">
+    <div>
+      <div style="display:flex;align-items:center;gap:12px">
+        <img src="https://cdn.grapesjs.com/workspaces/cmgvbwak408ja13nsemkia83b/assets/7e057c43-5d96-4c3a-a8fc-8bd5f6589a93__kavianpremiumbadgelogo.svg" alt="KDMine" style="width:44px;height:44px;border-radius:10px">
+        <div>
+          <div style="font-size:1.1rem;font-weight:800;color:#fff">KDMine Group</div>
+          <div style="font-size:.7rem;color:rgba(255,255,255,.45);font-weight:600">Mining Engineering & Economics</div>
+        </div>
+      </div>
+      <p class="fb-desc">Data-driven mining engineering platform — from feasibility to ESG and AI, for global mining projects.</p>
+      <div class="fb-socs">
+        <a href="#" class="fb-s">in</a><a href="#" class="fb-s">𝕏</a><a href="#" class="fb-s">▶</a><a href="#" class="fb-s">✉</a>
+      </div>
+    </div>
+    <div class="fc"><h4>Services</h4>
+      <a href="feasibility.html">Feasibility Studies</a>
+      <a href="cost-estimation.html">CAPEX/OPEX</a>
+      <a href="plant-design.html">Plant Design</a>
+      <a href="critical-minerals.html">Critical Minerals</a>
+      <a href="esg-decarbonization.html">ESG & Decarbonization</a>
+      <a href="digital-mining.html">Digital Mining & AI</a>
+    </div>
+    <div class="fc"><h4>Tools</h4>
+      <a href="../tools/cost-calculator.html">Cost Calculator</a>
+      <a href="../tools/equipment-database.html">Equipment Database</a>
+      <a href="../tools/monte-carlo.html">Monte Carlo</a>
+      <a href="../tools/market-dashboard.html">Market Dashboard</a>
+    </div>
+    <div class="fc"><h4>Resources</h4>
+      <a href="../resources.html">Resource Library</a>
+      <a href="../blog.html">Blog & Insights</a>
+      <a href="../portfolio.html">Portfolio</a>
+      <a href="../about.html">About Us</a>
+    </div>
+    <div class="fc"><h4>Contact</h4>
+      <a href="../contact.html">Get in Touch</a>
+      <a href="../register.html">Free Registration</a>
+      <a href="mailto:info@kdmine.com">info@kdmine.com</a>
+      <a href="tel:+982112345678">+98 21 1234 5678</a>
+    </div>
+  </div>
+  <div class="footer-bot">
+    <span>© 2026 KDMine Group. All rights reserved.</span>
+    <div class="fb-lnks"><a href="../privacy.html">Privacy Policy</a><a href="../terms.html">Terms of Service</a><a href="../sitemap.html">Sitemap</a></div>
+  </div>
+</footer>
+
+<!-- ═══ JAVASCRIPT ═══ -->
+<script>
+/* ── LANG ── */
+let lang='en';
+function applyLang(l){
+  lang=l;
+  const fa=l==='fa';
+  document.documentElement.setAttribute('lang',l);
+  document.documentElement.setAttribute('dir',fa?'rtl':'ltr');
+  document.body.style.fontFamily=fa?"'B Nazanin',Tahoma,Arial,sans-serif":"'Segoe UI',system-ui,sans-serif";
+  document.getElementById('lt-txt').textContent=fa?'EN | English':'FA | فارسی';
+  document.querySelectorAll('[data-en][data-fa]').forEach(el=>{
+    const v=el.getAttribute('data-'+l);
+    if(v!==null){
+      if(el.tagName==='INPUT'||el.tagName==='TEXTAREA')el.placeholder=v;
+      else el.innerHTML=v;
+    }
+  });
+  try{localStorage.setItem('kdmine_lang',l);}catch(e){}
+}
+function tgLang(){applyLang(lang==='en'?'fa':'en');}
+window.addEventListener('DOMContentLoaded',()=>{
+  try{const s=localStorage.getItem('kdmine_lang');if(s&&s!=='en')applyLang(s);}catch(e){}
+});
+
+/* ── MENU ── */
+function tgMenu(){
+  const nav=document.getElementById('mainNav');
+  const o=nav.classList.toggle('open');
+  const sp=document.querySelectorAll('.mbt span');
+  sp[0].style.transform=o?'translateY(7px) rotate(45deg)':'';
+  sp[1].style.opacity=o?'0':'1';
+  sp[2].style.transform=o?'translateY(-7px) rotate(-45deg)':'';
+}
+document.addEventListener('click',e=>{
+  const nav=document.getElementById('mainNav');
+  const btn=document.querySelector('.mbt');
+  if(nav&&btn&&!nav.contains(e.target)&&!btn.contains(e.target)){
+    nav.classList.remove('open');
+    document.querySelectorAll('.mbt span').forEach(s=>{s.style.transform='';s.style.opacity='1';});
+  }
+});
+
+/* ── SCROLL TO TOP ── */
+window.addEventListener('scroll',()=>{
+  const s=document.getElementById('sttBtn');
+  if(s)s.classList.toggle('vis',window.scrollY>400);
+});
+
+/* ── FAQ ── */
+function tgFaq(btn){
+  const item=btn.closest('.faq-item');
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+  if(!isOpen)item.classList.add('open');
+}
+
+/* ── SCROLL ANIMATIONS ── */
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.style.opacity='1';
+      e.target.style.transform='translateY(0) scale(1)';
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:0.07});
+
+/* ── MINERAL BAR ANIMATIONS ── */
+const barObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.mcard-bar-fill').forEach(bar=>{
+        const w=bar.style.width;
+        bar.style.width='0';
+        setTimeout(()=>{bar.style.width=w;},150);
+      });
+      barObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.2});
+
+/* ── STAT COUNTER ── */
+const statObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const n=e.target.querySelector('.stat-n');
+      if(n&&!n.dataset.animated){
+        n.dataset.animated='1';
+        const raw=n.textContent.trim();
+        const num=parseFloat(raw.replace(/[^0-9.]/g,''));
+        if(!isNaN(num)&&num>0){
+          const suffix=raw.replace(/[0-9.]/g,'');
+          let cur=0;const steps=60;const inc=num/steps;
+          const t=setInterval(()=>{
+            cur+=inc;
+            if(cur>=num){cur=num;clearInterval(t);}
+            n.textContent=(Number.isInteger(num)?Math.floor(cur):cur.toFixed(1))+suffix;
+          },1800/steps);
+        }
+      }
+      statObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.5});
+
+window.addEventListener('DOMContentLoaded',()=>{
+  /* card scroll animations */
+  [
+    ...document.querySelectorAll('.mcard'),
+    ...document.querySelectorAll('.scard'),
+    ...document.querySelectorAll('.jcard'),
+    ...document.querySelectorAll('.cstep')
+  ].forEach((el,i)=>{
+    el.style.opacity='0';
+    el.style.transform='translateY(22px) scale(0.97)';
+    el.style.transition=`opacity 0.42s ease ${(i%6)*0.07}s, transform 0.42s ease ${(i%6)*0.07}s`;
+    io.observe(el);
+  });
+
+  /* mineral bar animations */
+  const mineralSec=document.querySelector('.mineral-grid');
+  if(mineralSec) barObs.observe(mineralSec);
+
+  /* stat counters */
+  document.querySelectorAll('.stats-in > div').forEach(el=>statObs.observe(el));
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ESG & Decarbonization — KDMine Group</title>
+<style>
+:root{--primary:#0f2d5e;--secondary:#1a56db;--green:#059669;--teal:#0d9488;--emerald:#10b981;--text-dark:#0f172a;--text-mid:#334155;--text-light:#64748b;--bg-light:#f8fafc;--border:#e2e8f0;--s1:0 1px 3px rgba(0,0,0,.07);--s2:0 4px 12px rgba(0,0,0,.10);--s3:0 12px 30px rgba(0,0,0,.12);--s4:0 20px 50px rgba(0,0,0,.15);--r1:8px;--r2:14px;--r3:20px;--tr:all .3s cubic-bezier(.4,0,.2,1)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,sans-serif;line-height:1.7;color:var(--text-dark);background:#fff;overflow-x:hidden}
+img{max-width:100%;display:block}a{text-decoration:none;color:inherit}
+[dir="rtl"] body{font-family:'B Nazanin',Tahoma,Arial,sans-serif}
+.lt{position:fixed;top:20px;right:20px;z-index:1100;background:#fff;padding:8px 16px;border-radius:50px;box-shadow:var(--s2);cursor:pointer;font-weight:700;font-size:.82rem;border:2px solid var(--border);transition:var(--tr);color:var(--primary);display:flex;align-items:center;gap:6px}
+[dir="rtl"] .lt{right:auto;left:20px}
+.stt{position:fixed;bottom:26px;right:26px;z-index:999;width:42px;height:42px;background:var(--green);color:#fff;border-radius:50%;border:none;cursor:pointer;font-size:1.1rem;box-shadow:var(--s3);opacity:0;pointer-events:none;transition:var(--tr);display:flex;align-items:center;justify-content:center}
+.stt.vis{opacity:1;pointer-events:all}
+.topbar{background:var(--primary);color:rgba(255,255,255,.8);font-size:.8rem;padding:7px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.topbar a{color:rgba(255,255,255,.8)}.topbar a:hover{color:#fff}.tb-r{display:flex;gap:20px}
+.hdr{background:rgba(255,255,255,.98);backdrop-filter:blur(12px);position:sticky;top:0;z-index:1000;box-shadow:var(--s2);border-bottom:1px solid var(--border)}
+.hdr-in{max-width:1400px;margin:0 auto;padding:13px 40px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.logo{display:flex;align-items:center;gap:13px}.logo img{width:50px;height:50px;border-radius:11px}
+.logo h1{font-size:1.3rem;color:var(--primary);font-weight:800}.logo p{font-size:.72rem;color:var(--text-light);font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.nav{display:flex;gap:4px;align-items:center}
+.nl{color:var(--text-mid);font-weight:600;font-size:.9rem;padding:8px 13px;border-radius:var(--r1);transition:var(--tr)}
+.nl:hover,.nl.active{color:var(--secondary);background:rgba(26,86,219,.06)}
+.nl.dd{padding-right:20px;position:relative}.nl.dd::after{content:"▾";position:absolute;right:7px;top:50%;transform:translateY(-50%);font-size:.65rem}
+.ddw{position:relative}.ddm{position:absolute;top:calc(100% + 8px);left:0;background:#fff;border-radius:var(--r2);min-width:270px;box-shadow:var(--s4);border:1px solid var(--border);opacity:0;visibility:hidden;transform:translateY(-8px);transition:var(--tr);z-index:200}
+.ddw:hover .ddm{opacity:1;visibility:visible;transform:translateY(0)}
+.ddi{display:flex;align-items:center;gap:10px;padding:11px 18px;color:var(--text-mid);font-size:.86rem;font-weight:500;transition:var(--tr)}.ddi:hover{background:var(--bg-light);color:var(--secondary)}.ddi-ic{font-size:1rem;width:20px;text-align:center}
+.bcta{background:linear-gradient(135deg,var(--secondary),#1d4ed8);color:#fff;padding:10px 22px;border-radius:50px;font-weight:700;font-size:.88rem;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(26,86,219,.35);transition:var(--tr);display:inline-flex;align-items:center;gap:7px}
+.bcta:hover{transform:translateY(-2px)}
+.mbt{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:10px}.mbt span{width:24px;height:2.5px;background:var(--text-dark);border-radius:2px;transition:var(--tr)}
+/* HERO */
+.svc-hero{background:linear-gradient(135deg,#052e16 0%,#064e3b 50%,#065f46 100%);color:#fff;padding:120px 40px 90px;position:relative;overflow:hidden}
+.hero-leaves{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(16,185,129,.07) 1px,transparent 1px);background-size:35px 35px;pointer-events:none}
+.hero-glow{position:absolute;top:-150px;right:-150px;width:600px;height:600px;background:radial-gradient(circle,rgba(16,185,129,.18) 0%,transparent 65%);pointer-events:none}
+.svc-hero-in{max-width:1400px;margin:0 auto;position:relative;z-index:1;display:grid;grid-template-columns:1fr 400px;gap:60px;align-items:center}
+.breadcrumb{display:flex;gap:8px;align-items:center;font-size:.82rem;color:rgba(255,255,255,.55);margin-bottom:18px}
+.breadcrumb a{color:rgba(255,255,255,.65)}.breadcrumb a:hover{color:#fff}.breadcrumb span{color:rgba(255,255,255,.35)}
+.hero-stag{display:inline-block;background:rgba(16,185,129,.2);color:#6ee7b7;font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:14px;border:1px solid rgba(16,185,129,.3)}
+.svc-hero h1{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:800;line-height:1.2;margin-bottom:18px}
+.svc-hero h1 span{color:#6ee7b7}
+.svc-hero p{font-size:1rem;opacity:.82;line-height:1.8;margin-bottom:28px;max-width:580px}
+.hero-acts{display:flex;gap:12px;flex-wrap:wrap}
+.btn-w{background:#fff;color:#052e16;padding:13px 26px;border-radius:50px;font-weight:700;font-size:.92rem;border:none;cursor:pointer;transition:var(--tr);display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 16px rgba(0,0,0,.2)}
+.btn-w:hover{transform:translateY(-2px)}
+.btn-o{background:transparent;color:#fff;padding:13px 26px;border-radius:50px;font-weight:700;font-size:.92rem;border:1.5px solid rgba(255,255,255,.35);cursor:pointer;transition:var(--tr);display:inline-flex;align-items:center;gap:8px}
+.btn-o:hover{background:rgba(255,255,255,.1)}
+/* HERO METRICS */
+.hero-metrics{display:flex;flex-direction:column;gap:12px}
+.hm-card{background:rgba(255,255,255,.07);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.12);border-radius:var(--r2);padding:16px 20px;display:flex;align-items:center;gap:14px}
+.hm-ic{width:42px;height:42px;border-radius:var(--r1);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.hm-n{font-size:1.4rem;font-weight:800;color:#fff}
+.hm-l{font-size:.72rem;color:rgba(255,255,255,.6)}
+/* SECTIONS */
+.sec{padding:80px 40px}
+.sec-in{max-width:1400px;margin:0 auto}
+.sec-hdr{text-align:center;margin-bottom:52px}
+.stag{display:inline-block;background:rgba(5,150,105,.08);color:var(--green);font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:12px}
+.sec-hdr h2{font-size:clamp(1.7rem,3.5vw,2.6rem);font-weight:800;color:var(--primary);margin-bottom:12px}
+.sec-hdr p{font-size:.96rem;color:var(--text-light);max-width:680px;margin:0 auto}
+/* SERVICE CARDS */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.scard{background:#fff;border-radius:var(--r2);padding:28px;border:1px solid var(--border);box-shadow:var(--s1);transition:var(--tr);position:relative;overflow:hidden}
+.scard::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--sc-color,var(--green))}
+.scard:hover{transform:translateY(-5px);box-shadow:var(--s3);border-color:transparent}
+.scard-ic{width:52px;height:52px;border-radius:var(--r1);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:16px}
+.scard h3{font-size:1rem;font-weight:800;color:var(--text-dark);margin-bottom:8px}
+.scard p{font-size:.84rem;color:var(--text-light);line-height:1.7;margin-bottom:14px}
+.scard-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}
+.scard-tag{font-size:.65rem;font-weight:700;padding:3px 9px;border-radius:50px;background:var(--bg-light);border:1px solid var(--border);color:var(--text-mid)}
+.scard-feats{display:flex;flex-direction:column;gap:4px}
+.sf{display:flex;align-items:center;gap:7px;font-size:.8rem;color:var(--text-mid)}
+.sf::before{content:'✓';color:var(--green);font-weight:800;font-size:.75rem;flex-shrink:0}
+/* FRAMEWORKS */
+.fw-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.fwcard{background:#fff;border-radius:var(--r2);padding:22px;border:1px solid var(--border);box-shadow:var(--s1);transition:var(--tr);text-align:center}
+.fwcard:hover{transform:translateY(-4px);box-shadow:var(--s3)}
+.fwcard-ic{font-size:2rem;margin-bottom:10px}
+.fwcard h3{font-size:.9rem;font-weight:800;color:var(--text-dark);margin-bottom:6px}
+.fwcard p{font-size:.8rem;color:var(--text-light);line-height:1.65;margin-bottom:10px}
+.fwcard-badge{display:inline-block;font-size:.65rem;font-weight:700;padding:3px 10px;border-radius:50px;color:#fff}
+/* DECARBONIZATION PATHWAY */
+.path-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.pcard{background:#fff;border-radius:var(--r2);padding:24px;border:1px solid var(--border);box-shadow:var(--s1);transition:var(--tr);position:relative}
+.pcard:hover{transform:translateY(-4px);box-shadow:var(--s3)}
+.pcard-phase{font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--green);background:rgba(5,150,105,.08);padding:3px 10px;border-radius:50px;display:inline-block;margin-bottom:10px;border:1px solid rgba(5,150,105,.2)}
+.pcard-yr{font-size:1.4rem;font-weight:800;color:var(--primary);margin-bottom:6px}
+.pcard h3{font-size:.9rem;font-weight:800;color:var(--text-dark);margin-bottom:8px}
+.pcard-items{display:flex;flex-direction:column;gap:5px}
+.pi{font-size:.8rem;color:var(--text-mid);display:flex;align-items:flex-start;gap:6px}
+.pi::before{content:'→';color:var(--green);font-weight:800;flex-shrink:0;margin-top:2px}
+.pcard-target{margin-top:12px;padding-top:12px;border-top:1px solid var(--border);font-size:.78rem;font-weight:700;color:var(--green)}
+/* SCOPE TABLE */
+.scope-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.scope-card{border-radius:var(--r2);padding:26px;border:2px solid var(--border);transition:var(--tr)}
+.scope-card:hover{transform:translateY(-3px);box-shadow:var(--s3)}
+.scope-num{font-size:2.5rem;font-weight:900;margin-bottom:6px}
+.scope-name{font-size:.9rem;font-weight:800;color:var(--text-dark);margin-bottom:10px}
+.scope-desc{font-size:.84rem;color:var(--text-light);line-height:1.7;margin-bottom:14px}
+.scope-items{display:flex;flex-direction:column;gap:5px}
+.si{font-size:.8rem;color:var(--text-mid);display:flex;align-items:center;gap:7px}
+.si::before{content:'•';font-weight:800;flex-shrink:0}
+/* REPORTING STANDARDS */
+.std-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.stdcard{background:#fff;border-radius:var(--r2);padding:20px 22px;border:1px solid var(--border);box-shadow:var(--s1);display:flex;align-items:center;gap:14px;transition:var(--tr)}
+.stdcard:hover{transform:translateY(-3px);box-shadow:var(--s2)}
+.std-ic{width:44px;height:44px;border-radius:var(--r1);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.std-name{font-size:.92rem;font-weight:800;color:var(--text-dark)}
+.std-desc{font-size:.78rem;color:var(--text-light);margin-top:2px}
+/* FAQ */
+.faq-in{max-width:900px;margin:0 auto}
+.faq-list{display:flex;flex-direction:column;gap:10px;margin-top:40px}
+.faq-item{background:#fff;border-radius:var(--r2);border:1px solid var(--border);overflow:hidden}
+.faq-item.open{box-shadow:var(--s2)}
+.faq-q{padding:18px 22px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-weight:700;font-size:.94rem;color:var(--text-dark);gap:12px}
+.faq-q:hover{color:var(--green)}
+.faq-ic{width:28px;height:28px;border-radius:50%;background:var(--bg-light);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.8rem;flex-shrink:0;transition:var(--tr)}
+.faq-item.open .faq-ic{background:var(--green);color:#fff;border-color:var(--green);transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;padding:0 22px;font-size:.88rem;color:var(--text-mid);line-height:1.8}
+.faq-item.open .faq-a{max-height:400px;padding:0 22px 18px}
+/* STATS STRIP */
+.stats-strip{background:linear-gradient(135deg,#052e16,#065f46);padding:60px 40px;color:#fff}
+.stats-in{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:30px;text-align:center}
+.stat-n{font-size:2.2rem;font-weight:800;color:#6ee7b7}
+.stat-l{font-size:.78rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.5px;margin-top:4px}
+/* CTA */
+.cta-sec{padding:100px 40px;background:linear-gradient(135deg,#052e16,#064e3b,#065f46);color:#fff;text-align:center;position:relative;overflow:hidden}
+.cta-sec::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(16,185,129,.06) 1px,transparent 1px);background-size:35px 35px}
+.cta-in{max-width:700px;margin:0 auto;position:relative;z-index:1}
+.cta-sec h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;margin-bottom:14px}
+.cta-sec p{font-size:.98rem;opacity:.8;margin-bottom:36px;line-height:1.75}
+.cta-acts{display:flex;gap:13px;justify-content:center;flex-wrap:wrap}
+.bcp{background:linear-gradient(135deg,var(--green),var(--teal));color:#fff;padding:14px 30px;border-radius:50px;font-weight:700;font-size:.96rem;border:none;cursor:pointer;box-shadow:0 6px 20px rgba(5,150,105,.4);transition:var(--tr);display:inline-flex;align-items:center;gap:8px}
+.bcp:hover{transform:translateY(-3px)}
+.bco{background:transparent;color:#fff;padding:14px 30px;border-radius:50px;font-weight:700;font-size:.96rem;border:1.5px solid rgba(255,255,255,.35);cursor:pointer;transition:var(--tr);display:inline-flex;align-items:center;gap:8px}
+.bco:hover{background:rgba(255,255,255,.1)}
+/* FOOTER */
+.footer{background:#0a1628;color:#fff;padding:68px 40px 26px}
+.footer-in{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:36px;margin-bottom:46px}
+.fb-desc{font-size:.84rem;color:rgba(255,255,255,.5);line-height:1.75;margin-top:13px;margin-bottom:17px}
+.fb-socs{display:flex;gap:8px}
+.fb-s{width:34px;height:34px;background:rgba(255,255,255,.08);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.86rem;transition:var(--tr);color:rgba(255,255,255,.52)}.fb-s:hover{background:var(--secondary);color:#fff}
+.fc h4{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.45);margin-bottom:15px}
+.fc a{display:block;color:rgba(255,255,255,.66);font-size:.84rem;padding:4px 0;transition:var(--tr)}.fc a:hover{color:#fff}
+.footer-bot{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding-top:22px;border-top:1px solid rgba(255,255,255,.08);font-size:.78rem;color:rgba(255,255,255,.36);flex-wrap:wrap;gap:10px}
+.fb-lnks{display:flex;gap:18px}.fb-lnks a{color:rgba(255,255,255,.36)}.fb-lnks a:hover{color:rgba(255,255,255,.75)}
+@media(max-width:1100px){.svc-hero-in{grid-template-columns:1fr}.hero-metrics{display:grid;grid-template-columns:1fr 1fr}.svc-grid{grid-template-columns:1fr 1fr}.fw-grid{grid-template-columns:1fr 1fr}.path-grid{grid-template-columns:1fr 1fr}.scope-grid{grid-template-columns:1fr}.std-grid{grid-template-columns:1fr 1fr}.stats-in{grid-template-columns:repeat(3,1fr)}.footer-in{grid-template-columns:1fr 1fr 1fr}}
+@media(max-width:768px){.topbar{display:none}.mbt{display:flex}.nav{position:fixed;top:78px;right:-100%;width:80%;max-width:290px;height:calc(100vh - 78px);background:#fff;flex-direction:column;padding:28px;box-shadow:var(--s4);transition:right .3s ease;align-items:flex-start;overflow-y:auto;z-index:999}.nav.open{right:0}.ddm{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:none;background:var(--bg-light);margin-top:5px}.svc-hero,.sec,.stats-strip,.cta-sec,.footer{padding-left:22px;padding-right:22px}.svc-grid,.fw-grid,.path-grid,.std-grid{grid-template-columns:1fr}.stats-in{grid-template-columns:repeat(2,1fr)}.footer-in{grid-template-columns:1fr 1fr}.footer-bot{flex-direction:column;text-align:center}.hdr-in{padding:13px 20px}}
+</style>
+</head>
+<body>
+<button class="lt" onclick="tgLang()">🌐 <span id="lt-txt">FA | فارسی</span></button>
+<button class="stt" id="sttBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<div class="topbar">
+  <div>📧 info@kdmine.com &nbsp;|&nbsp; 📞 +98 21 1234 5678 &nbsp;|&nbsp; 🕐 Sat–Wed 08:00–18:00 IRST</div>
+  <div class="tb-r"><a href="../register.html">🔐 Client Login</a><a href="../register.html">📊 Dashboard</a></div>
+</div>
+<header class="hdr">
+  <div class="hdr-in">
+    <div class="logo">
+      <img src="https://cdn.grapesjs.com/workspaces/cmgvbwak408ja13nsemkia83b/assets/7e057c43-5d96-4c3a-a8fc-8bd5f6589a93__kavianpremiumbadgelogo.svg" alt="KDMine">
+      <div><h1 data-en="KDMine Group" data-fa="کاویان توسعه معدن">KDMine Group</h1><p data-en="Mining Engineering & Economics" data-fa="مهندسی و اقتصاد معدن">Mining Engineering & Economics</p></div>
+    </div>
+    <button class="mbt" onclick="tgMenu()"><span></span><span></span><span></span></button>
+    <nav class="nav" id="mainNav">
+      <div class="ddw"><a href="../index.html#services" class="nl dd active">Services</a>
+        <div class="ddm">
+          <a href="feasibility.html" class="ddi"><span class="ddi-ic">📋</span><span>Feasibility Studies</span></a>
+          <a href="cost-estimation.html" class="ddi"><span class="ddi-ic">💰</span><span>CAPEX/OPEX Estimation</span></a>
+          <a href="plant-design.html" class="ddi"><span class="ddi-ic">🏭</span><span>Process Plant Design</span></a>
+          <a href="critical-minerals.html" class="ddi"><span class="ddi-ic">⚡</span><span>Critical Minerals</span></a>
+          <a href="esg-decarbonization.html" class="ddi" style="color:var(--secondary);background:var(--bg-light)"><span class="ddi-ic">🌱</span><span>ESG & Decarbonization</span></a>
+          <a href="digital-mining.html" class="ddi"><span class="ddi-ic">🤖</span><span>Digital Mining & AI</span></a>
+        </div>
+      </div>
+      <div class="ddw"><a href="../index.html#tools" class="nl dd">Tools</a>
+        <div class="ddm">
+          <a href="../tools/cost-calculator.html" class="ddi"><span class="ddi-ic">🧮</span><span>Cost Calculator</span></a>
+          <a href="../tools/equipment-database.html" class="ddi"><span class="ddi-ic">🗃️</span><span>Equipment Database</span></a>
+          <a href="../tools/monte-carlo.html" class="ddi"><span class="ddi-ic">📉</span><span>Monte Carlo Simulator</span></a>
+          <a href="../tools/market-dashboard.html" class="ddi"><span class="ddi-ic">🌍</span><span>Market Dashboard</span></a>
+        </div>
+      </div>
+      <a href="../resources.html" class="nl">Resources</a>
+      <a href="../portfolio.html" class="nl">Portfolio</a>
+      <a href="../about.html" class="nl">About</a>
+      <a href="../contact.html" class="nl">Contact</a>
+      <a href="../register.html" class="bcta">Get Started →</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ═══ HERO ═══ -->
+<section class="svc-hero">
+  <div class="hero-leaves"></div>
+  <div class="hero-glow"></div>
+  <div class="svc-hero-in">
+    <div>
+      <div class="breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="../index.html#services">Services</a><span>/</span><span>ESG & Decarbonization</span></div>
+      <div class="hero-stag">GHG · TCFD · IFC PS · Net Zero · Carbon Credits · GISTM</div>
+      <h1>Mining <span>ESG & Decarbonization</span> Advisory</h1>
+      <p data-en="KDMine Group delivers end-to-end ESG strategy, GHG accounting, decarbonization roadmaps, and sustainability reporting for mining projects — aligned with IFC Performance Standards, TCFD, GRI, and ISSB frameworks. We help miners access green finance, satisfy lender ESG requirements, and build credible net-zero pathways." data-fa="KDMine Group استراتژی ESG کامل، حسابداری GHG، نقشه‌راه‌های کاهش کربن و گزارش‌دهی پایداری برای پروژه‌های معدنی ارائه می‌دهد — هم‌راستا با استانداردهای عملکرد IFC، TCFD، GRI و چارچوب‌های ISSB.">KDMine Group delivers end-to-end ESG strategy, GHG accounting, decarbonization roadmaps, and sustainability reporting for mining projects — aligned with IFC Performance Standards, TCFD, GRI, and ISSB frameworks. We help miners access green finance, satisfy lender ESG requirements, and build credible net-zero pathways.</p>
+      <div class="hero-acts">
+        <a href="../contact.html" class="btn-w">🌱 Request ESG Assessment →</a>
+        <a href="../resources.html" class="btn-o">📥 Download ESG Framework</a>
+      </div>
+    </div>
+    <div class="hero-metrics">
+      <div class="hm-card">
+        <div class="hm-ic" style="background:rgba(16,185,129,.15)">🌍</div>
+        <div><div class="hm-n">45+</div><div class="hm-l">ESG Assessments Completed</div></div>
+      </div>
+      <div class="hm-card">
+        <div class="hm-ic" style="background:rgba(16,185,129,.15)">♻️</div>
+        <div><div class="hm-n">12 MtCO₂e</div><div class="hm-l">GHG Reductions Facilitated</div></div>
+      </div>
+      <div class="hm-card">
+        <div class="hm-ic" style="background:rgba(16,185,129,.15)">💚</div>
+        <div><div class="hm-n">$3.2B</div><div class="hm-l">Green Finance Unlocked</div></div>
+      </div>
+      <div class="hm-card">
+        <div class="hm-ic" style="background:rgba(16,185,129,.15)">📋</div>
+        <div><div class="hm-n">100%</div><div class="hm-l">IFC PS Compliance Rate</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stats-in">
+    <div><div class="stat-n">45+</div><div class="stat-l">ESG Assessments</div></div>
+    <div><div class="stat-n">12 Mt</div><div class="stat-l">CO₂e Reductions Facilitated</div></div>
+    <div><div class="stat-n">$3.2B</div><div class="stat-l">Green Finance Unlocked</div></div>
+    <div><div class="stat-n">8</div><div class="stat-l">ESG Frameworks Covered</div></div>
+    <div><div class="stat-n">2030</div><div class="stat-l">Net-Zero Target Support</div></div>
+  </div>
+</div>
+
+<!-- ═══ SERVICES ═══ -->
+<section class="sec" style="background:var(--bg-light)">
+  <div class="sec-in">
+    <div class="sec-hdr">
+      <div class="stag">ESG Service Portfolio</div>
+      <h2 data-en="Comprehensive ESG & Sustainability Services" data-fa="خدمات جامع ESG و پایداری">Comprehensive ESG & Sustainability Services</h2>
+      <p data-en="Six integrated ESG service areas covering the full lifecycle of mining project sustainability — from pre-feasibility screening to operational reporting and net-zero transition planning." data-fa="شش حوزه خدمات ESG یکپارچه که چرخه کامل پایداری پروژه معدنی را پوشش می‌دهد — از غربالگری پیش‌امکان‌سنجی تا گزارش‌دهی عملیاتی و برنامه‌ریزی انتقال به صفر خالص.">Six integrated ESG service areas covering the full lifecycle of mining project sustainability — from pre-feasibility screening to operational reporting and net-zero transition planning.</p>
+    </div>
+    <div class="svc-grid">
+
+      <div class="scard" style="--sc-color:#059669">
+        <div class="scard-ic" style="background:rgba(5,150,105,.1)">🌍</div>
+        <h3>Environmental & Social Impact Assessment (ESIA)</h3>
+        <p data-en="Full ESIA aligned with IFC Performance Standards (PS1–PS8), Equator Principles, and host-country regulations. Covers baseline studies, impact prediction, mitigation hierarchy, and stakeholder engagement." data-fa="ESIA کامل هم‌راستا با استانداردهای عملکرد IFC (PS1–PS8)، اصول استوا و مقررات کشور میزبان. شامل مطالعات خط پایه، پیش‌بینی تأثیر، سلسله‌مراتب کاهش و تعامل ذینفعان.">Full ESIA aligned with IFC Performance Standards (PS1–PS8), Equator Principles, and host-country regulations. Covers baseline studies, impact prediction, mitigation hierarchy, and stakeholder engagement.</p>
+        <div class="scard-tags"><span class="scard-tag">IFC PS1–PS8</span><span class="scard-tag">Equator Principles</span><span class="scard-tag">ESIA</span></div>
+        <div class="scard-feats">
+          <div class="sf">12-month environmental baseline programme</div>
+          <div class="sf">Biodiversity & ecosystem services assessment</div>
+          <div class="sf">Community health, safety & security (CHSS)</div>
+          <div class="sf">Grievance mechanism design</div>
+        </div>
+      </div>
+
+      <div class="scard" style="--sc-color:#0d9488">
+        <div class="scard-ic" style="background:rgba(13,148,136,.1)">📊</div>
+        <h3>GHG Accounting & Carbon Footprint</h3>
+        <p data-en="Scope 1, 2, and 3 GHG inventory development per GHG Protocol Corporate Standard. Includes mine-to-market lifecycle assessment (LCA), carbon intensity benchmarking, and third-party verification support." data-fa="توسعه موجودی GHG دامنه ۱، ۲ و ۳ طبق استاندارد شرکتی GHG Protocol. شامل ارزیابی چرخه عمر (LCA) از معدن تا بازار، معیارسنجی شدت کربن و پشتیبانی تأیید شخص ثالث.">Scope 1, 2, and 3 GHG inventory development per GHG Protocol Corporate Standard. Includes mine-to-market lifecycle assessment (LCA), carbon intensity benchmarking, and third-party verification support.</p>
+        <div class="scard-tags"><span class="scard-tag">GHG Protocol</span><span class="scard-tag">ISO 14064</span><span class="scard-tag">LCA</span><span class="scard-tag">Scope 3</span></div>
+        <div class="scard-feats">
+          <div class="sf">Full Scope 1/2/3 inventory</div>
+          <div class="sf">Mine-to-market LCA (cradle-to-gate)</div>
+          <div class="sf">Carbon intensity vs. industry benchmarks</div>
+          <div class="sf">Third-party verification preparation</div>
+        </div>
+      </div>
+
+      <div class="scard" style="--sc-color:#10b981">
+        <div class="scard-ic" style="background:rgba(16,185,129,.1)">🛣️</div>
+        <h3>Decarbonization Roadmap & Net-Zero Strategy</h3>
+        <p data-en="Science-based decarbonization pathway aligned with 1.5°C scenarios. Covers electrification of mining fleet, renewable energy integration (solar+BESS), process efficiency improvements, and carbon offset strategy." data-fa="مسیر کاهش کربن مبتنی بر علم هم‌راستا با سناریوهای ۱.۵ درجه سانتیگراد. شامل برق‌رسانی ناوگان معدنی، یکپارچه‌سازی انرژی تجدیدپذیر (خورشیدی+BESS)، بهبود کارایی فرآیند و استراتژی جبران کربن.">Science-based decarbonization pathway aligned with 1.5°C scenarios. Covers electrification of mining fleet, renewable energy integration (solar+BESS), process efficiency improvements, and carbon offset strategy.</p>
+        <div class="scard-tags"><span class="scard-tag">SBTi</span><span class="scard-tag">Net Zero</span><span class="scard-tag">Solar+BESS</span><span class="scard-tag">EV Fleet</span></div>
+        <div class="scard-feats">
+          <div class="sf">SBTi-aligned emission reduction targets</div>
+          <div class="sf">EV haul truck transition business case</div>
+          <div class="sf">Solar+BESS feasibility & LCOE analysis</div>
+          <div class="sf">Carbon credit procurement strategy</div>
+        </div>
+      </div>
+
+      <div class="scard" style="--sc-color:#f59e0b">
+        <div class="scard-ic" style="background:rgba(245,158,11,.1)">💧</div>
+        <h3>Water Stewardship & Tailings Management</h3>
+        <p data-en="Water balance modelling, water risk assessment (AQUEDUCT), and tailings management plan aligned with Global Industry Standard on Tailings Management (GISTM). Covers TSF design, stability analysis, and closure planning." data-fa="مدل‌سازی تراز آب، ارزیابی ریسک آب (AQUEDUCT) و طرح مدیریت باطله هم‌راستا با استاندارد جهانی صنعت مدیریت باطله (GISTM). شامل طراحی TSF، تحلیل پایداری و برنامه‌ریزی بستن معدن.">Water balance modelling, water risk assessment (AQUEDUCT), and tailings management plan aligned with Global Industry Standard on Tailings Management (GISTM). Covers TSF design, stability analysis, and closure planning.</p>
+        <div class="scard-tags"><span class="scard-tag">GISTM</span><span class="scard-tag">AQUEDUCT</span><span class="scard-tag">TSF</span><span class="scard-tag">MAC</span></div>
+        <div class="scard-feats">
+          <div class="sf">LOM water balance model</div>
+          <div class="sf">GISTM-aligned tailings management plan</div>
+          <div class="sf">TSF stability analysis (static & seismic)</div>
+          <div class="sf">Mine closure & rehabilitation plan</div>
+        </div>
+      </div>
+
+      <div class="scard" style="--sc-color:#1a56db">
+        <div class="scard-ic" style="background:rgba(26,86,219,.1)">📋</div>
+        <h3>ESG Reporting & Disclosure</h3>
+        <p data-en="Sustainability report preparation aligned with GRI Standards, ISSB (IFRS S1/S2), TCFD, and CDP. Includes ESG data management system design, KPI dashboard, and investor-grade disclosure package." data-fa="آماده‌سازی گزارش پایداری هم‌راستا با استانداردهای GRI، ISSB (IFRS S1/S2)، TCFD و CDP. شامل طراحی سیستم مدیریت داده ESG، داشبورد KPI و بسته افشای درجه سرمایه‌گذار.">Sustainability report preparation aligned with GRI Standards, ISSB (IFRS S1/S2), TCFD, and CDP. Includes ESG data management system design, KPI dashboard, and investor-grade disclosure package.</p>
+        <div class="scard-tags"><span class="scard-tag">GRI</span><span class="scard-tag">ISSB</span><span class="scard-tag">TCFD</span><span class="scard-tag">CDP</span></div>
+        <div class="scard-feats">
+          <div class="sf">Annual sustainability report (GRI-aligned)</div>
+          <div class="sf">TCFD climate risk disclosure</div>
+          <div class="sf">ISSB IFRS S1/S2 transition support</div>
+          <div class="sf">ESG rating improvement strategy</div>
+        </div>
+      </div>
+
+      <div class="scard" style="--sc-color:#7c3aed">
+        <div class="scard-ic" style="background:rgba(124,58,237,.1)">💰</div>
+        <h3>Green Finance & ESG Due Diligence</h3>
+        <p data-en="Support for accessing green bonds, sustainability-linked loans (SLL), and IFC/EBRD/ADB project finance. Includes lender ESG due diligence preparation, E&S Action Plan (ESAP), and ongoing monitoring & reporting (M&R) framework." data-fa="پشتیبانی برای دسترسی به اوراق قرضه سبز، وام‌های مرتبط با پایداری (SLL) و تأمین مالی پروژه IFC/EBRD/ADB. شامل آماده‌سازی بررسی دقیق ESG وام‌دهنده، طرح اقدام E&S (ESAP) و چارچوب پایش و گزارش‌دهی (M&R) مستمر.">Support for accessing green bonds, sustainability-linked loans (SLL), and IFC/EBRD/ADB project finance. Includes lender ESG due diligence preparation, E&S Action Plan (ESAP), and ongoing monitoring & reporting (M&R) framework.</p>
+        <div class="scard-tags"><span class="scard-tag">Green Bond</span><span class="scard-tag">SLL</span><span class="scard-tag">IFC</span><span class="scard-tag">EBRD</span></div>
+        <div class="scard-feats">
+          <div class="sf">Green bond framework development</div>
+          <div class="sf">E&S Action Plan (ESAP) preparation</div>
+          <div class="sf">IFC/EBRD lender E&S due diligence</div>
+          <div class="sf">Ongoing M&R framework design</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SCOPE EMISSIONS ═══ -->
+<section class="sec" style="background:#fff">
+  <div class="sec-in">
+    <div class="sec-hdr">
+      <div class="stag">GHG Accounting</div>
+      <h2>Scope 1, 2 & 3 Emissions in Mining</h2>
+      <p>KDMine quantifies all three GHG scopes for mining operations — providing a complete carbon inventory that satisfies lender, regulator, and investor requirements.</p>
+    </div>
+    <div class="scope-grid">
+      <div class="scope-card" style="background:rgba(239,68,68,.04);border-color:rgba(239,68,68,.2)">
+        <div class="scope-num" style="color:#dc2626">S1</div>
+        <div class="scope-name">Scope 1 — Direct Emissions</div>
+        <div class="scope-desc">GHG emissions from sources owned or controlled by the mining operation. Typically the largest scope for open pit mines due to diesel fleet.</div>
+        <div class="scope-items">
+          <div class="si" style="--c:#dc2626"><span>Diesel haul trucks & excavators</span></div>
+          <div class="si"><span>Diesel generators & power plant</span></div>
+          <div class="si"><span>Drilling & blasting (ANFO)</span></div>
+          <div class="si"><span>Process plant combustion (lime kilns)</span></div>
+          <div class="si"><span>Fugitive methane (coal mines)</span></div>
+          <div class="si"><span>Tailings pond CH₄ & N₂O</span></div>
+        </div>
+        <div style="margin-top:14px;padding:10px 14px;background:rgba(239,68,68,.06);border-radius:var(--r1);font-size:.78rem;font-weight:700;color:#dc2626">Typical: 60–75% of total mine GHG</div>
+      </div>
+      <div class="scope-card" style="background:rgba(245,158,11,.04);border-color:rgba(245,158,11,.2)">
+        <div class="scope-num" style="color:#d97706">S2</div>
+        <div class="scope-name">Scope 2 — Indirect Energy Emissions</div>
+        <div class="scope-desc">GHG emissions from purchased electricity, heat, steam, or cooling consumed by the mining operation. Varies significantly by grid carbon intensity.</div>
+        <div class="scope-items">
+          <div class="si"><span>Grid electricity (process plant)</span></div>
+          <div class="si"><span>Grid electricity (mine infrastructure)</span></div>
+          <div class="si"><span>Purchased steam (HPAL plants)</span></div>
+          <div class="si"><span>Market-based vs. location-based methods</span></div>
+          <div class="si"><span>Renewable Energy Certificates (RECs)</span></div>
+          <div class="si"><span>Power Purchase Agreements (PPAs)</span></div>
+        </div>
+        <div style="margin-top:14px;padding:10px 14px;background:rgba(245,158,11,.06);border-radius:var(--r1);font-size:.78rem;font-weight:700;color:#d97706">Typical: 15–30% of total mine GHG</div>
+      </div>
+      <div class="scope-card" style="background:rgba(26,86,219,.04);border-color:rgba(26,86,219,.2)">
+        <div class="scope-num" style="color:#1a56db">S3</div>
+        <div class="scope-name">Scope 3 — Value Chain Emissions</div>
+        <div class="scope-desc">All other indirect GHG emissions in the mine's value chain — upstream (purchased goods, capital equipment) and downstream (product processing, end use).</div>
+        <div class="scope-items">
+          <div class="si"><span>Purchased reagents & explosives</span></div>
+          <div class="si"><span>Capital equipment manufacturing</span></div>
+          <div class="si"><span>Employee commuting & business travel</span></div>
+          <div class="si"><span>Concentrate transport & smelting</span></div>
+          <div class="si"><span>End-use of sold metals</span></div>
+          <div class="si"><span>Waste disposal & tailings</span></div>
+        </div>
+        <div style="margin-top:14px;padding:10px 14px;background:rgba(26,86,219,.06);border-radius:var(--r1);font-size:.78rem;font-weight:700;color:#1a56db">Typical: 5–15% of total mine GHG</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DECARBONIZATION PATHWAY ═══ -->
+<section class="sec" style="background:var(--bg-light)">
+  <div class="sec-in">
+    <div class="sec-hdr">
+      <div class="stag">Net-Zero Roadmap</div>
+      <h2>Mining Decarbonization Pathway to 2040</h2>
+      <p>KDMine's phased decarbonization framework — from quick-win efficiency measures to full fleet electrification and renewable energy transition.</p>
+    </div>
+    <div class="path-grid">
+      <div class="pcard">
+        <div class="pcard-phase">Phase 1</div>
+        <div class="pcard-yr">2024–2026</div>
+        <h3>Measure & Baseline</h3>
+        <div class="pcard-items">
+          <div class="pi">Full GHG inventory (S1/S2/S3)</div>
+          <div class="pi">Energy audit & efficiency baseline</div>
+          <div class="pi">Carbon intensity benchmarking</div>
+          <div class="pi">SBTi target setting</div>
+          <div class="pi">Quick-win identification (lighting, HVAC)</div>
+        </div>
+        <div class="pcard-target">Target: −10% vs. baseline</div>
+      </div>
+      <div class="pcard">
+        <div class="pcard-phase">Phase 2</div>
+        <div class="pcard-yr">2026–2028</div>
+        <h3>Efficiency & Renewables</h3>
+        <div class="pcard-items">
+          <div class="pi">Solar+BESS installation (20–40 MW)</div>
+          <div class="pi">Diesel displacement: 30–50%</div>
+          <div class="pi">Process plant energy optimisation</div>
+          <div class="pi">Trolley assist for haul trucks</div>
+          <div class="pi">Green procurement policy</div>
+        </div>
+        <div class="pcard-target">Target: −35% vs. baseline</div>
+      </div>
+      <div class="pcard">
+        <div class="pcard-phase">Phase 3</div>
+        <div class="pcard-yr">2028–2032</div>
+        <h3>Fleet Electrification</h3>
+        <div class="pcard-items">
+          <div class="pi">EV haul truck pilot (5–10 units)</div>
+          <div class="pi">Electric LHD & drill fleet</div>
+          <div class="pi">Charging infrastructure deployment</div>
+          <div class="pi">Green hydrogen feasibility study</div>
+          <div class="pi">PPA for 100% renewable electricity</div>
+        </div>
+        <div class="pcard-target">Target: −60% vs. baseline</div>
+      </div>
+      <div class="pcard">
+        <div class="pcard-phase">Phase 4</div>
+        <div class="pcard-yr">2032–2040</div>
+        <h3>Net Zero & Offsets</h3>
+        <div class="pcard-items">
+          <div class="pi">Full fleet electrification</div>
+          <div class="pi">Green hydrogen for hard-to-abate</div>
+          <div class="pi">High-quality carbon offset procurement</div>
+          <div class="pi">Nature-based solutions (NbS)</div>
+          <div class="pi">Net-zero certification</div>
+        </div>
+        <div class="pcard-target">Target: Net Zero by 2040</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FRAMEWORKS ═══ -->
+<section class="sec" style="background:#fff">
+  <div class="sec-in">
+    <div class="sec-hdr">
+      <div class="stag">Standards & Frameworks</div>
+      <h2>ESG Frameworks & Reporting Standards</h2>
+      <p>KDMine covers all major ESG frameworks required by international lenders, stock exchanges, and institutional investors.</p>
+    </div>
+    <div class="fw-grid">
+      <div class="fwcard"><div class="fwcard-ic">🏦</div><h3>IFC Performance Standards</h3><p>PS1–PS8 compliance for multilateral lender financing. Full ESAP development and ongoing M&R.</p><span class="fwcard-badge" style="background:#059669">Lender Standard</span></div>
+      <div class="fwcard"><div class="fwcard-ic">🌡️</div><h3>TCFD</h3><p>Task Force on Climate-related Financial Disclosures. Physical & transition risk scenario analysis (1.5°C, 2°C, 4°C).</p><span class="fwcard-badge" style="background:#0d9488">Climate Risk</span></div>
+      <div class="fwcard"><div class="fwcard-ic">📊</div><h3>GRI Standards</h3><p>Global Reporting Initiative. Full GRI-aligned sustainability report including GRI 13 (Mining Sector Standard).</p><span class="fwcard-badge" style="background:#1a56db">Reporting</span></div>
+      <div class="fwcard"><div class="fwcard-ic">📐</div><h3>ISSB / IFRS S1 & S2</h3><p>International Sustainability Standards Board. Mandatory disclosure support for listed companies.</p><span class="fwcard-badge" style="background:#7c3aed">Mandatory</span></div>
+      <div class="fwcard"><div class="fwcard-ic">🎯</div><h3>SBTi</h3><p>Science Based Targets initiative. Net-zero target validation and 1.5°C-aligned emission reduction pathway.</p><span class="fwcard-badge" style="background:#d97706">Net Zero</span></div>
+      <div class="fwcard"><div class="fwcard-ic">💧</div><h3>GISTM</h3><p>Global Industry Standard on Tailings Management. Mandatory for ICMM members and IFC-financed projects.</p><span class="fwcard-badge" style="background:#ef4444">Tailings</span></div>
+      <div class="fwcard"><div class="fwcard-ic">🌿</div><h3>CDP</h3><p>Carbon Disclosure Project. Climate, water, and forests questionnaire preparation and submission support.</p><span class="fwcard-badge" style="background:#10b981">Disclosure</span></div>
+      <div class="fwcard"><div class="fwcard-ic">⚖️</div><h3>Equator Principles</h3><p>EP4 compliance for project finance transactions above $10M. Required by 130+ financial institutions.</p><span class="fwcard-badge" style="background:#64748b">Finance</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ REPORTING STANDARDS ═══ -->
+<section class="sec" style="background:var(--bg-light)">
+  <div class="sec-in">
+    <div class="sec-hdr">
+      <div class="stag">Mining-Specific ESG</div>
+      <h2>Mining Industry ESG Standards & Initiatives</h2>
+      <p>Beyond general ESG frameworks, KDMine covers mining-specific standards required by ICMM members, stock exchanges, and responsible sourcing programmes.</p>
+    </div>
+    <div class="std-grid">
+      <div class="stdcard"><div class="std-ic" style="background:rgba(5,150,105,.1)">🏔️</div><div><div class="std-name">ICMM 10 Principles</div><div class="std-desc">International Council on Mining & Metals — member commitment framework covering all ESG dimensions</div></div></div>
+      <div class="stdcard"><div class="std-ic" style="background:rgba(26,86,219,.1)">🔵</div><div><div class="std-name">TSM (Towards Sustainable Mining)</div><div class="std-desc">MAC's performance framework — mandatory for Canadian miners, adopted in 8 countries</div></div></div>
+      <div class="stdcard"><div class="std-ic" style="background:rgba(245,158,11,.1)">⭐</div><div><div class="std-name">RMI Responsible Minerals</div><div class="std-desc">Responsible Minerals Initiative — RMAP audit support for cobalt, tin, tantalum, tungsten, gold</div></div></div>
+      <div class="stdcard"><div class="std-ic" style="background:rgba(124,58,237,.1)">💎</div><div><div class="std-name">LBMA Responsible Gold</div><div class="std-desc">London Bullion Market Association responsible sourcing guidance for gold producers</div></div></div>
+      <div class="stdcard"><div class="std-ic" style="background:rgba(13,148,136,.1)">🌊</div><div><div class="std-name">Alliance for Water Stewardship</div><div class="std-desc">AWS Standard certification support — water risk assessment and stewardship planning</div></div></div>
+      <div class="stdcard"><div class="std-ic" style="background:rgba(220,38,38,.1)">🛡️</div><div><div class="std-name">Voluntary Principles (VPs)</div><div class="std-desc">Voluntary Principles on Security and Human Rights — implementation and reporting support</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="sec" style="background:#fff">
+  <div class="sec-in">
+    <div class="faq-in">
+      <div class="sec-hdr">
+        <div class="stag">Common Questions</div>
+        <h2>ESG & Decarbonization FAQ</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q" onclick="tgFaq(this)"><span>What ESG documents do lenders like IFC or EBRD require?</span><div class="faq-ic">+</div></div>
+          <div class="faq-a">IFC and EBRD require an Environmental and Social Impact Assessment (ESIA) aligned with IFC Performance Standards PS1–PS8, an Environmental and Social Management Plan (ESMP), a Stakeholder Engagement Plan (SEP), and an ongoing Monitoring & Reporting (M&R) framework. For projects with significant tailings, a GISTM-aligned Tailings Management Plan is also required. KDMine prepares all these documents and supports the lender's independent E&S consultant review process.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="tgFaq(this)"><span>How do we calculate our mine's carbon footprint?</span><div class="faq-ic">+</div></div>
+          <div class="faq-a">KDMine uses the GHG Protocol Corporate Standard to calculate Scope 1 (direct), Scope 2 (purchased electricity), and Scope 3 (value chain) emissions. For Scope 1, we use activity data (fuel consumption, explosives use) multiplied by IPCC emission factors. For Scope 2, we apply both location-based (grid emission factor) and market-based (PPA/REC-adjusted) methods. Scope 3 covers 15 categories per GHG Protocol, with focus on purchased goods, capital equipment, and downstream processing. The result is a verified GHG inventory ready for CDP, TCFD, or ISSB disclosure.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="tgFaq(this)"><span>What is the business case for decarbonizing a mine?</span><div class="faq-ic">+</div></div>
+          <div class="faq-a">The business case for mining decarbonization is increasingly compelling: (1) Access to lower-cost green finance — sustainability-linked loans typically offer 15–25 bps interest rate reduction for meeting ESG targets. (2) Diesel cost reduction — solar+BESS can displace 30–50% of diesel at $0.08–0.12/kWh vs. $0.25–0.45/kWh for diesel generation. (3) Carbon pricing risk — 45+ jurisdictions now have carbon pricing; early action reduces future liability. (4) Customer requirements — steel, battery, and EV manufacturers increasingly require low-carbon supply chains. (5) Investor pressure — ESG ratings directly impact cost of equity capital.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="tgFaq(this)"><span>How long does an IFC-compliant ESIA take?</span><div class="faq-ic">+</div></div>
+          <div class="faq-a">A full IFC PS-compliant ESIA for a greenfield mining project typically takes 18–24 months, including a 12-month environmental and social baseline data collection programme. The timeline includes: baseline studies (12 months), impact assessment and ESMP preparation (3–4 months), public disclosure and consultation (minimum 120 days for Category A projects), and lender review (2–3 months). KDMine can accelerate timelines by deploying parallel workstreams and leveraging existing baseline data where available.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="tgFaq(this)"><span>Can we access green bonds or sustainability-linked loans for mining?</span><div class="faq-ic">+</div></div>
+          <div class="faq-a">Yes — green finance for mining is growing rapidly. Green bonds can finance specific green assets (solar plant, EV fleet, water recycling). Sustainability-linked loans (SLLs) tie interest rates to ESG KPIs (e.g., GHG intensity reduction, water recycling rate, LTIFR). KDMine prepares the Green Bond Framework (aligned with ICMA Green Bond Principles), selects appropriate KPIs for SLLs, and supports second-party opinion (SPO) from providers like Sustainalytics or V.E. We have supported $3.2B in green finance transactions for mining clients.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="cta-sec">
+  <div class="cta-in">
+    <div style="display:inline-block;background:rgba(16,185,129,.2);color:#6ee7b7;font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:16px;border:1px solid rgba(16,185,129,.3)">Start Your ESG Journey</div>
+    <h2 data-en="Ready to Build a Credible ESG Strategy?" data-fa="آماده‌اید یک استراتژی ESG معتبر بسازید؟">Ready to Build a Credible ESG Strategy?</h2>
+    <p data-en="Contact KDMine Group for a free ESG Maturity Assessment. We'll identify your highest-priority ESG gaps, map the required frameworks, and deliver a prioritised action plan — within 10 business days." data-fa="با KDMine Group تماس بگیرید تا یک ارزیابی بلوغ ESG رایگان دریافت کنید. ما شکاف‌های ESG با اولویت بالا را شناسایی می‌کنیم، چارچوب‌های مورد نیاز را ترسیم می‌کنیم و یک برنامه اقدام اولویت‌بندی‌شده را در ۱۰ روز کاری ارائه می‌دهیم.">Contact KDMine Group for a free ESG Maturity Assessment. We'll identify your highest-priority ESG gaps, map the required frameworks, and deliver a prioritised action plan — within 10 business days.</p>
+    <div class="cta-acts">
+      <a href="../contact.html" class="bcp">🌱 Request Free ESG Assessment →</a>
+      <a href="../resources.html" class="bco">📥 Download ESG Framework Guide</a>
+    </div>
+    <div style="margin-top:32px;display:flex;gap:32px;justify-content:center;flex-wrap:wrap">
+      <div style="text-align:center"><div style="font-size:1.6rem;font-weight:800;color:#6ee7b7">45+</div><div style="font-size:.72rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.5px">ESG Assessments</div></div>
+      <div style="text-align:center"><div style="font-size:1.6rem;font-weight:800;color:#6ee7b7">12 Mt</div><div style="font-size:.72rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.5px">CO₂e Reductions</div></div>
+      <div style="text-align:center"><div style="font-size:1.6rem;font-weight:800;color:#6ee7b7">$3.2B</div><div style="font-size:.72rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.5px">Green Finance</div></div>
+      <div style="text-align:center"><div style="font-size:1.6rem;font-weight:800;color:#6ee7b7">8</div><div style="font-size:.72rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.5px">Frameworks Covered</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="footer-in">
+    <div>
+      <div style="display:flex;align-items:center;gap:12px">
+        <img src="https://cdn.grapesjs.com/workspaces/cmgvbwak408ja13nsemkia83b/assets/7e057c43-5d96-4c3a-a8fc-8bd5f6589a93__kavianpremiumbadgelogo.svg" alt="KDMine" style="width:44px;height:44px;border-radius:10px">
+        <div>
+          <div style="font-size:1.1rem;font-weight:800;color:#fff">KDMine Group</div>
+          <div style="font-size:.7rem;color:rgba(255,255,255,.45);font-weight:600">Mining Engineering & Economics</div>
+        </div>
+      </div>
+      <p class="fb-desc">Data-driven mining engineering platform — from feasibility to ESG and AI, for global mining projects.</p>
+      <div class="fb-socs">
+        <a href="#" class="fb-s">in</a><a href="#" class="fb-s">𝕏</a><a href="#" class="fb-s">▶</a><a href="#" class="fb-s">✉</a>
+      </div>
+    </div>
+    <div class="fc"><h4>Services</h4>
+      <a href="feasibility.html">Feasibility Studies</a>
+      <a href="cost-estimation.html">CAPEX/OPEX</a>
+      <a href="plant-design.html">Plant Design</a>
+      <a href="critical-minerals.html">Critical Minerals</a>
+      <a href="esg-decarbonization.html">ESG & Decarbonization</a>
+      <a href="digital-mining.html">Digital Mining & AI</a>
+    </div>
+    <div class="fc"><h4>Tools</h4>
+      <a href="../tools/cost-calculator.html">Cost Calculator</a>
+      <a href="../tools/equipment-database.html">Equipment Database</a>
+      <a href="../tools/monte-carlo.html">Monte Carlo</a>
+      <a href="../tools/market-dashboard.html">Market Dashboard</a>
+    </div>
+    <div class="fc"><h4>Resources</h4>
+      <a href="../resources.html">Resource Library</a>
+      <a href="../blog.html">Blog & Insights</a>
+      <a href="../portfolio.html">Portfolio</a>
+      <a href="../about.html">About Us</a>
+    </div>
+    <div class="fc"><h4>Contact</h4>
+      <a href="../contact.html">Get in Touch</a>
+      <a href="../register.html">Free Registration</a>
+      <a href="mailto:info@kdmine.com">info@kdmine.com</a>
+      <a href="tel:+982112345678">+98 21 1234 5678</a>
+    </div>
+  </div>
+  <div class="footer-bot">
+    <span>© 2026 KDMine Group. All rights reserved.</span>
+    <div class="fb-lnks"><a href="../privacy.html">Privacy Policy</a><a href="../terms.html">Terms of Service</a><a href="../sitemap.html">Sitemap</a></div>
+  </div>
+</footer>
+
+<!-- ═══ JAVASCRIPT ═══ -->
+<script>
+/* ── LANG ── */
+let lang='en';
+function applyLang(l){
+  lang=l;
+  const fa=l==='fa';
+  document.documentElement.setAttribute('lang',l);
+  document.documentElement.setAttribute('dir',fa?'rtl':'ltr');
+  document.body.style.fontFamily=fa?"'B Nazanin',Tahoma,Arial,sans-serif":"'Segoe UI',system-ui,sans-serif";
+  document.getElementById('lt-txt').textContent=fa?'EN | English':'FA | فارسی';
+  document.querySelectorAll('[data-en][data-fa]').forEach(el=>{
+    const v=el.getAttribute('data-'+l);
+    if(v!==null){
+      if(el.tagName==='INPUT'||el.tagName==='TEXTAREA')el.placeholder=v;
+      else el.innerHTML=v;
+    }
+  });
+  try{localStorage.setItem('kdmine_lang',l);}catch(e){}
+}
+function tgLang(){applyLang(lang==='en'?'fa':'en');}
+window.addEventListener('DOMContentLoaded',()=>{
+  try{const s=localStorage.getItem('kdmine_lang');if(s&&s!=='en')applyLang(s);}catch(e){}
+});
+
+/* ── MENU ── */
+function tgMenu(){
+  const nav=document.getElementById('mainNav');
+  const o=nav.classList.toggle('open');
+  const sp=document.querySelectorAll('.mbt span');
+  sp[0].style.transform=o?'translateY(7px) rotate(45deg)':'';
+  sp[1].style.opacity=o?'0':'1';
+  sp[2].style.transform=o?'translateY(-7px) rotate(-45deg)':'';
+}
+document.addEventListener('click',e=>{
+  const nav=document.getElementById('mainNav');
+  const btn=document.querySelector('.mbt');
+  if(nav&&btn&&!nav.contains(e.target)&&!btn.contains(e.target)){
+    nav.classList.remove('open');
+    document.querySelectorAll('.mbt span').forEach(s=>{s.style.transform='';s.style.opacity='1';});
+  }
+});
+
+/* ── SCROLL TO TOP ── */
+window.addEventListener('scroll',()=>{
+  const s=document.getElementById('sttBtn');
+  if(s)s.classList.toggle('vis',window.scrollY>400);
+});
+
+/* ── FAQ ── */
+function tgFaq(btn){
+  const item=btn.closest('.faq-item');
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+  if(!isOpen)item.classList.add('open');
+}
+
+/* ── SCROLL ANIMATIONS ── */
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.style.opacity='1';
+      e.target.style.transform='translateY(0) scale(1)';
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:0.07});
+
+/* ── STAT COUNTER ── */
+const statObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const n=e.target.querySelector('.stat-n');
+      if(n&&!n.dataset.animated){
+        n.dataset.animated='1';
+        const raw=n.textContent.trim();
+        const num=parseFloat(raw.replace(/[^0-9.]/g,''));
+        if(!isNaN(num)){
+          const suffix=raw.replace(String(num),'').replace(num.toString(),'');
+          let cur=0;const steps=60;const inc=num/steps;
+          const t=setInterval(()=>{
+            cur+=inc;
+            if(cur>=num){cur=num;clearInterval(t);}
+            n.textContent=(Number.isInteger(num)?Math.floor(cur):cur.toFixed(1))+suffix;
+          },1800/steps);
+        }
+      }
+      statObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.5});
+
+window.addEventListener('DOMContentLoaded',()=>{
+  /* card animations */
+  [
+    ...document.querySelectorAll('.scard'),
+    ...document.querySelectorAll('.fwcard'),
+    ...document.querySelectorAll('.pcard'),
+    ...document.querySelectorAll('.scope-card'),
+    ...document.querySelectorAll('.stdcard'),
+    ...document.querySelectorAll('.hm-card')
+  ].forEach((el,i)=>{
+    el.style.opacity='0';
+    el.style.transform='translateY(22px) scale(0.97)';
+    el.style.transition=`opacity 0.42s ease ${(i%6)*0.07}s, transform 0.42s ease ${(i%6)*0.07}s`;
+    io.observe(el);
+  });
+  /* stat counters */
+  document.querySelectorAll('.stats-in > div').forEach(el=>statObs.observe(el));
+});
+</script>
+</body>
+</html>      

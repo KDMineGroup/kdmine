@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Register / Login — KDMine Group</title>
+<style>
+:root{--primary:#0f2d5e;--secondary:#1a56db;--accent:#3b82f6;--gold:#f59e0b;--text-dark:#0f172a;--text-mid:#334155;--text-light:#64748b;--bg-light:#f8fafc;--border:#e2e8f0;--s1:0 1px 3px rgba(0,0,0,.07);--s2:0 4px 12px rgba(0,0,0,.10);--s3:0 12px 30px rgba(0,0,0,.12);--s4:0 20px 50px rgba(0,0,0,.15);--r1:8px;--r2:14px;--tr:all .3s cubic-bezier(.4,0,.2,1)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,sans-serif;line-height:1.7;color:var(--text-dark);background:#fff;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+.lt{position:fixed;top:20px;right:20px;z-index:1100;background:#fff;padding:8px 16px;border-radius:50px;box-shadow:var(--s2);cursor:pointer;font-weight:700;font-size:.82rem;border:2px solid var(--border);transition:var(--tr);color:var(--primary);display:flex;align-items:center;gap:6px}
+.lt:hover{border-color:var(--secondary)}
+.auth-wrap{min-height:100vh;background:linear-gradient(135deg,#0a1f44 0%,#0f2d5e 50%,#1a56db 100%);display:flex;align-items:center;justify-content:center;padding:40px 20px;position:relative;overflow:hidden}
+.auth-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:60px 60px}
+.auth-card{background:#fff;border-radius:24px;padding:48px 44px;max-width:500px;width:100%;box-shadow:0 30px 80px rgba(0,0,0,.35);position:relative;z-index:1}
+.auth-logo{display:flex;align-items:center;gap:12px;margin-bottom:32px;justify-content:center}
+.auth-logo img{width:52px;height:52px;border-radius:12px;box-shadow:var(--s2)}
+.auth-logo-txt h2{font-size:1.3rem;font-weight:800;color:var(--primary)}
+.auth-logo-txt p{font-size:.72rem;color:var(--text-light);font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.auth-tabs{display:flex;background:var(--bg-light);border-radius:12px;padding:4px;margin-bottom:28px;gap:4px}
+.auth-tab{flex:1;padding:10px;text-align:center;border-radius:9px;font-weight:700;font-size:.88rem;cursor:pointer;transition:var(--tr);color:var(--text-light);border:none;background:transparent}
+.auth-tab.active{background:#fff;color:var(--secondary);box-shadow:var(--s2)}
+.form-panel{display:none}.form-panel.active{display:block}
+.fg{margin-bottom:18px}
+.fg label{display:block;font-size:.75rem;font-weight:700;color:var(--text-mid);margin-bottom:6px;text-transform:uppercase;letter-spacing:.4px}
+.fg input,.fg select{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:var(--r1);font-size:.9rem;color:var(--text-dark);background:#fff;transition:var(--tr);outline:none;font-family:inherit}
+.fg input:focus,.fg select:focus{border-color:var(--secondary);box-shadow:0 0 0 3px rgba(26,86,219,.1)}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.submit-btn{width:100%;padding:14px;background:linear-gradient(135deg,var(--secondary),#1d4ed8);color:#fff;border:none;border-radius:var(--r1);font-size:.96rem;font-weight:700;cursor:pointer;transition:var(--tr);margin-top:8px;font-family:inherit}
+.submit-btn:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(26,86,219,.4)}
+.auth-divider{text-align:center;color:var(--text-light);font-size:.82rem;margin:18px 0;position:relative}
+.auth-divider::before,.auth-divider::after{content:'';position:absolute;top:50%;width:42%;height:1px;background:var(--border)}
+.auth-divider::before{left:0}.auth-divider::after{right:0}
+.social-btn{width:100%;padding:11px;border:1.5px solid var(--border);border-radius:var(--r1);background:#fff;font-size:.88rem;font-weight:600;cursor:pointer;transition:var(--tr);display:flex;align-items:center;justify-content:center;gap:10px;color:var(--text-dark);margin-bottom:10px;font-family:inherit}
+.social-btn:hover{border-color:var(--secondary);background:var(--bg-light)}
+.auth-note{font-size:.78rem;color:var(--text-light);text-align:center;margin-top:18px}
+.auth-note a{color:var(--secondary);font-weight:600}
+.plan-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:4px}
+.plan{border:2px solid var(--border);border-radius:12px;padding:14px 10px;text-align:center;cursor:pointer;transition:var(--tr)}
+.plan:hover,.plan.sel{border-color:var(--secondary);background:rgba(26,86,219,.04)}
+.plan-name{font-weight:800;font-size:.9rem;color:var(--text-dark)}
+.plan-price{font-size:1.1rem;font-weight:800;color:var(--secondary);margin:4px 0}
+.plan-feat{font-size:.7rem;color:var(--text-light)}
+.pwd-bar{height:4px;border-radius:2px;margin-top:6px;transition:var(--tr);background:#e2e8f0}
+.back-link{display:inline-flex;align-items:center;gap:7px;color:rgba(255,255,255,.75);font-size:.85rem;font-weight:600;position:absolute;top:24px;left:40px;z-index:2;transition:var(--tr)}
+.back-link:hover{color:#fff}
+.success-msg{background:linear-gradient(135deg,#ecfdf5,#d1fae5);border:1px solid #6ee7b7;border-radius:12px;padding:16px 20px;text-align:center;color:#065f46;font-weight:600;font-size:.9rem;display:none;margin-top:16px}
+@media(max-width:520px){.auth-card{padding:32px 22px}.fg-row{grid-template-columns:1fr}.plan-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<button class="lt" onclick="tgLang()" aria-label="Toggle language">🌐 <span id="lt-txt">FA | فارسی</span></button>
+<div class="auth-wrap">
+  <div class="auth-bg"></div>
+  <a href="index.html" class="back-link">← Back to Home</a>
+  <div class="auth-card">
+    <div class="auth-logo">
+      <img src="https://cdn.grapesjs.com/workspaces/cmgvbwak408ja13nsemkia83b/assets/7e057c43-5d96-4c3a-a8fc-8bd5f6589a93__kavianpremiumbadgelogo.svg" alt="KDMine">
+      <div class="auth-logo-txt">
+        <h2 data-en="KDMine Group" data-fa="کاویان توسعه معدن">KDMine Group</h2>
+        <p data-en="Mining Engineering & Economics Platform" data-fa="پلتفرم مهندسی و اقتصاد معدن">Mining Engineering & Economics Platform</p>
+      </div>
+    </div>
+    <div class="auth-tabs">
+      <button class="auth-tab active" onclick="switchTab('login')" data-en="🔐 Sign In" data-fa="🔐 ورود">🔐 Sign In</button>
+      <button class="auth-tab" onclick="switchTab('register')" data-en="🚀 Register Free" data-fa="🚀 ثبت‌نام رایگان">🚀 Register Free</button>
+    </div>
+
+    <!-- LOGIN PANEL -->
+    <div class="form-panel active" id="panel-login">
+      <div class="fg">
+        <label data-en="Email Address" data-fa="آدرس ایمیل">Email Address</label>
+        <input type="email" placeholder="your@company.com" id="loginEmail">
+      </div>
+      <div class="fg">
+        <label data-en="Password" data-fa="رمز عبور">Password</label>
+        <input type="password" placeholder="••••••••" id="loginPwd">
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+        <label style="display:flex;align-items:center;gap:7px;font-size:.82rem;cursor:pointer;color:var(--text-mid)">
+          <input type="checkbox" style="width:auto"> <span data-en="Remember me" data-fa="مرا به خاطر بسپار">Remember me</span>
+        </label>
+        <a href="#" style="font-size:.82rem;color:var(--secondary);font-weight:600" data-en="Forgot password?" data-fa="فراموشی رمز عبور؟">Forgot password?</a>
+      </div>
+      <button class="submit-btn" onclick="handleLogin()" data-en="🔐 Sign In to KDMine" data-fa="🔐 ورود به KDMine">🔐 Sign In to KDMine</button>
+      <div class="auth-divider" data-en="or continue with" data-fa="یا ادامه با">or continue with</div>
+      <button class="social-btn">🔵 <span data-en="Continue with LinkedIn" data-fa="ادامه با LinkedIn">Continue with LinkedIn</span></button>
+      <button class="social-btn">⬛ <span data-en="Continue with Microsoft" data-fa="ادامه با Microsoft">Continue with Microsoft</span></button>
+      <p class="auth-note" data-en="Don't have an account? <a href='#' onclick='switchTab(\"register\")'>Register free →</a>" data-fa="حساب کاربری ندارید؟ <a href='#' onclick='switchTab(\"register\")'>ثبت‌نام رایگان ←</a>">Don't have an account? <a href='#' onclick='switchTab("register")'>Register free →</a></p>
+      <div class="success-msg" id="loginSuccess">✅ Login successful! Redirecting to dashboard...</div>
+    </div>
+
+    <!-- REGISTER PANEL -->
+    <div class="form-panel" id="panel-register">
+      <div class="fg-row">
+        <div class="fg"><label data-en="First Name" data-fa="نام">First Name</label><input type="text" placeholder="John"></div>
+        <div class="fg"><label data-en="Last Name" data-fa="نام خانوادگی">Last Name</label><input type="text" placeholder="Smith"></div>
+      </div>
+      <div class="fg"><label data-en="Work Email" data-fa="ایمیل کاری">Work Email</label><input type="email" placeholder="john@company.com"></div>
+      <div class="fg"><label data-en="Company / Organization" data-fa="شرکت / سازمان">Company / Organization</label><input type="text" placeholder="Mining Corp Ltd."></div>
+      <div class="fg">
+        <label data-en="Your Role" data-fa="نقش شما">Your Role</label>
+        <select>
+          <option data-en="Select your role" data-fa="نقش خود را انتخاب کنید">Select your role</option>
+          <option>Mining Engineer</option><option>Project Manager</option>
+          <option>Financial Analyst / Investor</option><option>ESG / Sustainability Manager</option>
+          <option>Geologist / Resource Geologist</option><option>Process Engineer</option>
+          <option>EPC Contractor</option><option>Other</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label data-en="Select Plan" data-fa="انتخاب طرح">Select Plan</label>
+        <div class="plan-grid">
+          <div class="plan sel" onclick="selPlan(this)"><div class="plan-name">Free</div><div class="plan-price">$0</div><div class="plan-feat">Basic tools</div></div>
+          <div class="plan" onclick="selPlan(this)"><div class="plan-name">Pro</div><div class="plan-price">$49<span style="font-size:.7rem">/mo</span></div><div class="plan-feat">All tools + DB</div></div>
+          <div class="plan" onclick="selPlan(this)"><div class="plan-name">Enterprise</div><div class="plan-price">Custom</div><div class="plan-feat">Full platform</div></div>
+        </div>
+      </div>
+      <div class="fg">
+        <label data-en="Create Password" data-fa="ایجاد رمز عبور">Create Password</label>
+        <input type="password" placeholder="Min. 8 characters" id="regPwd" oninput="checkPwd(this)">
+        <div class="pwd-bar" id="pwdBar"></div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:16px;font-size:.82rem;color:var(--text-mid)">
+        <input type="checkbox" id="agreeChk" style="width:auto;margin-top:4px">
+        <span data-en="I agree to the <a href='terms.html' style='color:var(--secondary)'>Terms of Service</a> and <a href='privacy.html' style='color:var(--secondary)'>Privacy Policy</a>" data-fa="با <a href='terms.html' style='color:var(--secondary)'>شرایط خدمات</a> و <a href='privacy.html' style='color:var(--secondary)'>سیاست حریم خصوصی</a> موافقم">I agree to the <a href='terms.html' style='color:var(--secondary)'>Terms of Service</a> and <a href='privacy.html' style='color:var(--secondary)'>Privacy Policy</a></span>
+      </div>
+      <button class="submit-btn" onclick="handleRegister()" data-en="🚀 Create Free Account" data-fa="🚀 ایجاد حساب رایگان">🚀 Create Free Account</button>
+      <p class="auth-note" data-en="Already have an account? <a href='#' onclick='switchTab(\"login\")'>Sign in →</a>" data-fa="قبلاً ثبت‌نام کرده‌اید؟ <a href='#' onclick='switchTab(\"login\")'>ورود ←</a>">Already have an account? <a href='#' onclick='switchTab("login")'>Sign in →</a></p>
+      <div class="success-msg" id="regSuccess">✅ Account created! Check your email for verification link.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+let lang='en';
+function applyLang(l){lang=l;const fa=l==='fa';document.documentElement.setAttribute('lang',l);document.documentElement.setAttribute('dir',fa?'rtl':'ltr');document.body.style.fontFamily=fa?"'B Nazanin',Tahoma,Arial,sans-serif":"'Segoe UI',system-ui,sans-serif";document.getElementById('lt-txt').textContent=fa?'EN | English':'FA | فارسی';document.querySelectorAll('[data-en][data-fa]').forEach(el=>{const v=el.getAttribute('data-'+l);if(v!==null){if(el.tagName==='INPUT'||el.tagName==='TEXTAREA')el.placeholder=v;else if(el.tagName==='OPTION')el.textContent=v;else el.innerHTML=v;}});try{localStorage.setItem('kdmine_lang',l);}catch(e){}}
+function tgLang(){applyLang(lang==='en'?'fa':'en');}
+window.addEventListener('DOMContentLoaded',()=>{try{const s=localStorage.getItem('kdmine_lang');if(s&&s!=='en')applyLang(s);}catch(e){}});
+function switchTab(t){
+  document.querySelectorAll('.auth-tab').forEach((b,i)=>b.classList.toggle('active',(t==='login'&&i===0)||(t==='register'&&i===1)));
+  document.querySelectorAll('.form-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('panel-'+t).classList.add('active');
+}
+function selPlan(el){document.querySelectorAll('.plan').forEach(p=>p.classList.remove('sel'));el.classList.add('sel');}
+function checkPwd(inp){
+  const v=inp.value,bar=document.getElementById('pwdBar');
+  let s=0;if(v.length>7)s++;if(/[A-Z]/.test(v))s++;if(/[0-9]/.test(v))s++;if(/[^A-Za-z0-9]/.test(v))s++;
+  const cols=['#ef4444','#f59e0b','#10b981','#059669'];
+  bar.style.width=(s*25)+'%';bar.style.background=cols[s-1]||'#e2e8f0';
+}
+function handleLogin(){
+  const e=document.getElementById('loginEmail').value,p=document.getElementById('loginPwd').value;
+  if(!e||!p){alert('Please fill in all fields.');return;}
+  const s=document.getElementById('loginSuccess');s.style.display='block';
+  setTimeout(()=>{window.location.href='index.html';},1800);
+}
+function handleRegister(){
+  if(!document.getElementById('agreeChk').checked){alert('Please agree to the Terms of Service.');return;}
+  const s=document.getElementById('regSuccess');s.style.display='block';
+}
+</script>
+</body>
+</html>

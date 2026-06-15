@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Contact Us — KDMine Group</title>
+<style>
+:root{--primary:#0f2d5e;--secondary:#1a56db;--accent:#3b82f6;--gold:#f59e0b;--success:#059669;--text-dark:#0f172a;--text-mid:#334155;--text-light:#64748b;--bg-light:#f8fafc;--border:#e2e8f0;--s1:0 1px 3px rgba(0,0,0,.07);--s2:0 4px 12px rgba(0,0,0,.10);--s3:0 12px 30px rgba(0,0,0,.12);--s4:0 20px 50px rgba(0,0,0,.15);--r1:8px;--r2:14px;--r3:20px;--tr:all .3s cubic-bezier(.4,0,.2,1)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,sans-serif;line-height:1.7;color:var(--text-dark);background:#fff;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inherit}
+[dir="rtl"] body{font-family:'B Nazanin',Tahoma,Arial,sans-serif}
+.lt{position:fixed;top:20px;right:20px;z-index:1100;background:#fff;padding:8px 16px;border-radius:50px;box-shadow:var(--s2);cursor:pointer;font-weight:700;font-size:.82rem;border:2px solid var(--border);transition:var(--tr);color:var(--primary);display:flex;align-items:center;gap:6px}
+[dir="rtl"] .lt{right:auto;left:20px}
+.stt{position:fixed;bottom:26px;right:26px;z-index:999;width:42px;height:42px;background:var(--secondary);color:#fff;border-radius:50%;border:none;cursor:pointer;font-size:1.1rem;box-shadow:var(--s3);transition:var(--tr);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none}
+.stt.vis{opacity:1;pointer-events:all}[dir="rtl"] .stt{right:auto;left:26px}
+.topbar{background:var(--primary);color:rgba(255,255,255,.8);font-size:.8rem;padding:7px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.topbar a{color:rgba(255,255,255,.8)}.topbar a:hover{color:#fff}.tb-r{display:flex;gap:20px}
+.hdr{background:rgba(255,255,255,.98);backdrop-filter:blur(12px);position:sticky;top:0;z-index:1000;box-shadow:var(--s2);border-bottom:1px solid var(--border)}
+.hdr-in{max-width:1400px;margin:0 auto;padding:13px 40px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.logo{display:flex;align-items:center;gap:13px}.logo img{width:50px;height:50px;border-radius:11px;box-shadow:var(--s1)}
+.logo h1{font-size:1.3rem;color:var(--primary);font-weight:800}.logo p{font-size:.72rem;color:var(--text-light);font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.nav{display:flex;gap:4px;align-items:center}
+.nl{color:var(--text-mid);font-weight:600;font-size:.9rem;padding:8px 13px;border-radius:var(--r1);transition:var(--tr)}
+.nl:hover,.nl.active{color:var(--secondary);background:rgba(26,86,219,.06)}
+.nl.dd{padding-right:20px;position:relative}.nl.dd::after{content:"▾";position:absolute;right:7px;top:50%;transform:translateY(-50%);font-size:.65rem}
+.ddw{position:relative}.ddm{position:absolute;top:calc(100% + 8px);left:0;background:#fff;border-radius:var(--r2);min-width:270px;box-shadow:var(--s4);border:1px solid var(--border);opacity:0;visibility:hidden;transform:translateY(-8px);transition:var(--tr);z-index:200}
+.ddw:hover .ddm{opacity:1;visibility:visible;transform:translateY(0)}
+.ddi{display:flex;align-items:center;gap:10px;padding:11px 18px;color:var(--text-mid);font-size:.86rem;font-weight:500;transition:var(--tr)}.ddi:hover{background:var(--bg-light);color:var(--secondary)}.ddi-ic{font-size:1rem;width:20px;text-align:center}
+.bcta{background:linear-gradient(135deg,var(--secondary),#1d4ed8);color:#fff;padding:10px 22px;border-radius:50px;font-weight:700;font-size:.88rem;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(26,86,219,.35);transition:var(--tr);display:inline-flex;align-items:center;gap:7px}
+.bcta:hover{transform:translateY(-2px)}
+.mbt{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:10px}.mbt span{width:24px;height:2.5px;background:var(--text-dark);border-radius:2px;transition:var(--tr)}
+/* PAGE HERO */
+.page-hero{background:linear-gradient(135deg,#0a1f44 0%,#0f2d5e 50%,#1a56db 100%);color:#fff;padding:110px 40px 80px;position:relative;overflow:hidden}
+.page-hero-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:60px 60px}
+.page-hero-in{max-width:900px;margin:0 auto;position:relative;z-index:1;text-align:center}
+.stag{display:inline-block;background:rgba(26,86,219,.1);color:var(--secondary);font-size:.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:12px}
+.page-hero .stag{background:rgba(255,255,255,.14);color:rgba(255,255,255,.9)}
+.page-hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:800;margin-bottom:18px;line-height:1.2}
+.page-hero p{font-size:1.05rem;opacity:.85;max-width:700px;margin:0 auto}
+.breadcrumb{display:flex;gap:8px;align-items:center;justify-content:center;font-size:.82rem;color:rgba(255,255,255,.6);margin-bottom:20px}
+.breadcrumb a{color:rgba(255,255,255,.7)}.breadcrumb a:hover{color:#fff}.breadcrumb span{color:rgba(255,255,255,.4)}
+/* CONTACT LAYOUT */
+.contact-sec{padding:88px 40px}
+.contact-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1.6fr;gap:56px;align-items:start}
+/* INFO CARDS */
+.info-cards{display:flex;flex-direction:column;gap:16px}
+.ic{background:#fff;border:1px solid var(--border);border-radius:var(--r2);padding:22px;box-shadow:var(--s1);display:flex;align-items:flex-start;gap:16px;transition:var(--tr)}
+.ic:hover{box-shadow:var(--s3);transform:translateY(-3px)}
+.ic-ico{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:#fff;flex-shrink:0}
+.ic-ico.blue{background:linear-gradient(135deg,#1a56db,#3b82f6)}
+.ic-ico.green{background:linear-gradient(135deg,#059669,#10b981)}
+.ic-ico.gold{background:linear-gradient(135deg,#d97706,#f59e0b)}
+.ic-ico.teal{background:linear-gradient(135deg,#0d9488,#14b8a6)}
+.ic-body h4{font-size:.92rem;font-weight:700;color:var(--text-dark);margin-bottom:4px}
+.ic-body p{font-size:.84rem;color:var(--text-light);line-height:1.6}
+.ic-body a{color:var(--secondary);font-weight:600;font-size:.84rem}
+/* OFFICES */
+.offices{margin-top:28px}
+.offices h3{font-size:.88rem;font-weight:700;color:var(--text-mid);text-transform:uppercase;letter-spacing:.6px;margin-bottom:14px}
+.office-list{display:flex;flex-direction:column;gap:10px}
+.off{background:var(--bg-light);border-radius:var(--r1);padding:12px 16px;border:1px solid var(--border)}
+.off-city{font-size:.88rem;font-weight:700;color:var(--text-dark);margin-bottom:2px}
+.off-addr{font-size:.78rem;color:var(--text-light)}
+/* FORM */
+.form-card{background:#fff;border-radius:var(--r2);padding:40px;box-shadow:var(--s3);border:1px solid var(--border)}
+.form-card h2{font-size:1.4rem;font-weight:800;color:var(--text-dark);margin-bottom:6px}
+.form-card p{font-size:.88rem;color:var(--text-light);margin-bottom:28px}
+.fg{margin-bottom:18px}
+.fg label{display:block;font-size:.75rem;font-weight:700;color:var(--text-mid);margin-bottom:6px;text-transform:uppercase;letter-spacing:.4px}
+.fg input,.fg select,.fg textarea{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:var(--r1);font-size:.9rem;color:var(--text-dark);background:#fff;transition:var(--tr);outline:none;font-family:inherit}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--secondary);box-shadow:0 0 0 3px rgba(26,86,219,.1)}
+.fg textarea{resize:vertical;min-height:130px}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.service-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.chip{padding:6px 14px;border:1.5px solid var(--border);border-radius:50px;font-size:.78rem;font-weight:600;cursor:pointer;transition:var(--tr);color:var(--text-mid);background:#fff}
+.chip:hover,.chip.sel{background:var(--secondary);color:#fff;border-color:var(--secondary)}
+.submit-btn{width:100%;padding:14px;background:linear-gradient(135deg,var(--secondary),#1d4ed8);color:#fff;border:none;border-radius:var(--r1);font-size:.96rem;font-weight:700;cursor:pointer;transition:var(--tr);margin-top:8px;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px}
+.submit-btn:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(26,86,219,.4)}
+.form-note{font-size:.76rem;color:var(--text-light);text-align:center;margin-top:12px}
+.success-banner{background:linear-gradient(135deg,#ecfdf5,#d1fae5);border:1px solid #6ee7b7;border-radius:var(--r2);padding:20px 24px;text-align:center;display:none;margin-top:20px}
+.success-banner h4{color:#065f46;font-size:1rem;font-weight:700;margin-bottom:6px}
+.success-banner p{color:#047857;font-size:.86rem}
+/* MAP */
+.map-sec{background:var(--bg-light);padding:0}
+.map-placeholder{width:100%;height:380px;background:linear-gradient(135deg,#0f2d5e,#1a56db);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.map-overlay{text-align:center;color:#fff;z-index:1}
+.map-overlay h3{font-size:1.4rem;font-weight:800;margin-bottom:8px}
+.map-overlay p{font-size:.9rem;opacity:.8;margin-bottom:20px}
+.map-pins{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+.map-pin{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(8px);padding:8px 16px;border-radius:50px;font-size:.82rem;font-weight:600;color:#fff}
+/* FAQ */
+.faq-sec{padding:88px 40px}
+.faq-inner{max-width:900px;margin:0 auto}
+.sec-hd{text-align:center;margin-bottom:48px}
+.sec-hd h2{font-size:clamp(1.8rem,4vw,2.5rem);color:var(--text-dark);font-weight:800;margin-bottom:12px}
+.sec-hd p{font-size:.98rem;color:var(--text-light);max-width:700px;margin:0 auto}
+.faq-item{border:1px solid var(--border);border-radius:var(--r2);margin-bottom:12px;overflow:hidden;transition:var(--tr)}
+.faq-item.open{box-shadow:var(--s2)}
+.faq-q{padding:18px 22px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-weight:700;font-size:.94rem;color:var(--text-dark);background:#fff;transition:var(--tr)}
+.faq-q:hover{background:var(--bg-light)}
+.faq-item.open .faq-q{background:var(--bg-light);color:var(--secondary)}
+.faq-arrow{font-size:.8rem;transition:var(--tr);color:var(--text-light)}
+.faq-item.open .faq-arrow{transform:rotate(180deg);color:var(--secondary)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s ease;padding:0 22px;font-size:.88rem;color:var(--text-light);line-height:1.75;background:#fff}
+.faq-item.open .faq-a{max-height:300px;padding:0 22px 18px}
+/* FOOTER */
+.footer{background:#0a1628;color:#fff;padding:68px 40px 26px}
+.footer-in{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:36px;margin-bottom:46px}
+.fb-desc{font-size:.84rem;color:rgba(255,255,255,.5);line-height:1.75;margin-top:13px;margin-bottom:17px}
+.fb-socs{display:flex;gap:8px}
+.fb-s{width:34px;height:34px;background:rgba(255,255,255,.08);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.86rem;transition:var(--tr);color:rgba(255,255,255,.52)}.fb-s:hover{background:var(--secondary);color:#fff}
+.fc h4{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.45);margin-bottom:15px}
+.fc a{display:block;color:rgba(255,255,255,.66);font-size:.84rem;padding:4px 0;transition:var(--tr)}.fc a:hover{color:#fff}
+.footer-bot{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding-top:22px;border-top:1px solid rgba(255,255,255,.08);font-size:.78rem;color:rgba(255,255,255,.36);flex-wrap:wrap;gap:10px}
+.fb-lnks{display:flex;gap:18px}.fb-lnks a{color:rgba(255,255,255,.36)}.fb-lnks a:hover{color:rgba(255,255,255,.75)}
+@media(max-width:1100px){.contact-inner{grid-template-columns:1fr}.footer-in{grid-template-columns:1fr 1fr 1fr}}
+@media(max-width:768px){.topbar{display:none}.mbt{display:flex}.nav{position:fixed;top:78px;right:-100%;width:80%;max-width:290px;height:calc(100vh - 78px);background:#fff;flex-direction:column;padding:28px;box-shadow:var(--s4);transition:right .3s ease;align-items:flex-start;overflow-y:auto;z-index:999}.nav.open{right:0}.ddm{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:none;background:var(--bg-light);margin-top:5px}.contact-sec,.faq-sec,.footer{padding:58px 22px}.fg-row{grid-template-columns:1fr}.form-card{padding:26px 20px}.footer-in{grid-template-columns:1fr 1fr}.footer-bot{flex-direction:column;text-align:center}.hdr-in{padding:13px 20px}}
+</style>
+</head>
+<body>
+<button class="lt" onclick="tgLang()">🌐 <span id="lt-txt">FA | فارسی</span></button>
+<button class="stt" id="sttBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<div class="topbar">
+  <div>📧 info@kdmine.com &nbsp;|&nbsp; 📞 +98 21 1234 5678 &nbsp;|&nbsp; 🕐 <span data-en="Sat–Wed 08:00–18:00 IRST" data-fa="شنبه تا چهارشنبه ۸–۱۸">Sat–Wed 08:00–18:00 IRST</span></div>
+  <div class="tb-r"><a href="register.html">🔐 <span data-en="Client Login" data-fa="ورود مشتری">Client Login</span></a><a href="register.html">📊 <span data-en="Dashboard" data-fa="داشبورد">Dashboard</span></a></div>
+</div>
+
+<header class="hdr">
+  <div class="hdr-in">
+    <div class="logo">
+      <img src="https://cdn.grapesjs.com/workspaces/cmgvbwak408ja13nsemkia83b/assets/7e057c43-5d96-4c3a-a8fc-8bd5f6589a93__kavianpremiumbadgelogo.svg" alt="KDMine">
+      <div><h1 data-en="KDMine Group" data-fa="کاویان توسعه معدن">KDMine Group</h1><p data-en="Mining Engineering & Economics Platform" data-fa="پلتفرم مهندسی و اقتصاد معدن">Mining Engineering & Economics Platform</p></div>
+    </div>
+    <button class="mbt" onclick="tgMenu()"><span></span><span></span><span></span></button>
+    <nav class="nav" id="mainNav">
+      <div class="ddw"><a href="index.html#services" class="nl dd" data-en="Services" data-fa="خدمات">Services</a>
+        <div class="ddm">
+          <a href="services/feasibility.html" class="ddi"><span class="ddi-ic">📋</span><span data-en="Feasibility Studies" data-fa="مطالعات امکان‌سنجی">Feasibility Studies</span></a>
+          <a href="services/cost-estimation.html" class="ddi"><span class="ddi-ic">💰</span><span data-en="CAPEX/OPEX Estimation" data-fa="تخمین CAPEX/OPEX">CAPEX/OPEX Estimation</span></a>
+          <a href="services/plant-design.html" class="ddi"><span class="ddi-ic">🏭</span><span data-en="Process Plant Design" data-fa="طراحی کارخانه">Process Plant Design</span></a>
+          <a href="services/critical-minerals.html" class="ddi"><span class="ddi-ic">⚡</span><span data-en="Critical Minerals" data-fa="مواد معدنی حیاتی">Critical Minerals</span></a>
+          <a href="services/esg-decarbonization.html" class="ddi"><span class="ddi-ic">🌱</span><span data-en="ESG & Decarbonization" data-fa="ESG و کربن‌زدایی">ESG & Decarbonization</span></a>
+          <a href="services/digital-mining.html" class="ddi"><span class="ddi-ic">🤖</span><span data-en="Digital Mining & AI" data-fa="معدن دیجیتال">Digital Mining & AI</span></a>
+        </div>
+      </div>
+      <div class="ddw"><a href="index.html#tools" class="nl dd" data-en="Tools" data-fa="ابزارها">Tools</a>
+        <div class="ddm">
+          <a href="tools/cost-calculator.html" class="ddi"><span class="ddi-ic">🧮</span><span>Cost Calculator</span></a>
+          <a href="tools/equipment-database.html" class="ddi"><span class="ddi-ic">🗃️</span><span>Equipment Database</span></a>
+          <a href="tools/monte-carlo.html" class="ddi"><span class="ddi-ic">📉</span><span>Monte Carlo Simulator</span></a>
+          <a href="tools/market-dashboard.html" class="ddi"><span class="ddi-ic">🌍</span><span>Market Dashboard</span></a>
+          <a href="tools/esg-calculator.html" class="ddi"><span class="ddi-ic">🌱</span><span>ESG Calculator</span></a>
+        </div>
+      </div>
+      <a href="resources.html" class="nl" data-en="Resources" data-fa="منابع">Resources</a>
+      <a href="portfolio.html" class="nl" data-en="Portfolio" data-fa="نمونه کارها">Portfolio</a>
+      <a href="about.html" class="nl" data-en="About" data-fa="درباره ما">About</a>
+      <a href="contact.html" class="nl active" data-en="Contact" data-fa="تماس">Contact</a>
+      <a href="register.html" class="bcta" data-en="Get Started →" data-fa="شروع کنید ←">Get Started →</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-in">
+    <div class="breadcrumb"><a href="index.html" data-en="Home" data-fa="خانه">Home</a><span>/</span><span data-en="Contact" data-fa="تماس">Contact</span></div>
+    <div class="stag" data-en="Get In Touch" data-fa="با ما در تماس باشید">Get In Touch</div>
+    <h1 data-en="Talk to a Mining Engineering Expert" data-fa="با یک متخصص مهندسی معدن صحبت کنید">Talk to a Mining Engineering Expert</h1>
+    <p data-en="Whether you need a Class 5 screening estimate or a bankable BFS, our team is ready to help. Response within 24 hours guaranteed." data-fa="چه به تخمین غربالگری کلاس ۵ نیاز داشته باشید یا BFS بانکی، تیم ما آماده کمک است. پاسخ در ۲۴ ساعت تضمین‌شده.">Whether you need a Class 5 screening estimate or a bankable BFS, our team is ready to help. Response within 24 hours guaranteed.</p>
+  </div>
+</section>
+
+<!-- CONTACT MAIN -->
+<section class="contact-sec">
+  <div class="contact-inner">
+
+    <!-- LEFT: INFO -->
+    <div>
+      <div class="info-cards">
+        <div class="ic">
+          <div class="ic-ico blue">📧</div>
+          <div class="ic-body">
+            <h4 data-en="Email Us" data-fa="ایمیل به ما">Email Us</h4>
+            <p data-en="General enquiries & project proposals" data-fa="سوالات عمومی و پیشنهادات پروژه">General enquiries & project proposals</p>
+            <a href="mailto:info@kdmine.com">info@kdmine.com</a><br>
+            <a href="mailto:projects@kdmine.com">projects@kdmine.com</a>
+          </div>
+        </div>
+        <div class="ic">
+          <div class="ic-ico green">📞</div>
+          <div class="ic-body">
+            <h4 data-en="Call Us" data-fa="با ما تماس بگیرید">Call Us</h4>
+            <p data-en="Sat–Wed 08:00–18:00 IRST (UTC+3:30)" data-fa="شنبه تا چهارشنبه ۸ تا ۱۸ (IRST)">Sat–Wed 08:00–18:00 IRST (UTC+3:30)</p>
+            <a href="tel:+982112345678">+98 21 1234 5678</a><br>
+            <a href="tel:+971501234567">+971 50 123 4567 (Dubai)</a>
+          </div>
+        </div>
+        <div class="ic">
+          <div class="ic-ico gold">💬</div>
+          <div class="ic-body">
+            <h4 data-en="Live Chat" data-fa="چت زنده">Live Chat</h4>
+            <p data-en="Available during business hours for quick questions" data-fa="در ساعات کاری برای سوالات سریع در دسترس است">Available during business hours for quick questions</p>
+            <a href="#" onclick="alert('Live chat coming soon!')">Start Chat →</a>
+          </div>
+        </div>
+        <div class="ic">
+          <div class="ic-ico teal">📅</div>
+          <div class="ic-body">
+            <h4 data-en="Schedule a Meeting" data-fa="برنامه‌ریزی جلسه">Schedule a Meeting</h4>
+            <p data-en="Book a 30-min free consultation with our engineering team" data-fa="یک مشاوره رایگان ۳۰ دقیقه‌ای با تیم مهندسی ما رزرو کنید">Book a 30-min free consultation with our engineering team</p>
+            <a href="#" onclick="alert('Calendar booking coming soon!')">Book Now →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="offices" style="margin-top:28px">
+        <h3 style="font-size:.82rem;font-weight:700;color:var(--text-mid);text-transform:uppercase;letter-spacing:.6px;margin-bottom:14px" data-en="Our Global Offices" data-fa="دفاتر جهانی ما">Our Global Offices</h3>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="background:var(--bg-light);border-radius:var(--r1);padding:12px 16px;border:1px solid var(--border)">
+            <div style="font-size:.88rem;font-weight:700;color:var(--text-dark)">🇮🇷 Tehran, Iran <span style="font-size:.72rem;background:rgba(26,86,219,.1);color:var(--secondary);padding:2px 8px;border-radius:50px;font-weight:700;margin-left:6px" data-en="HQ" data-fa="دفتر مرکزی">HQ</span></div>
+            <div style="font-size:.78rem;color:var(--text-light);margin-top:3px" data-en="Unit 12, Saadat Abad Business Tower, Tehran" data-fa="واحد ۱۲، برج تجاری سعادت‌آباد، تهران">Unit 12, Saadat Abad Business Tower, Tehran</div>
+          </div>
+          <div style="background:var(--bg-light);border-radius:var(--r1);padding:12px 16px;border:1px solid var(--border)">
+            <div style="font-size:.88rem;font-weight:700;color:var(--text-dark)">🇦🇪 Dubai, UAE</div>
+            <div style="font-size:.78rem;color:var(--text-light);margin-top:3px">DIFC Gate Village, Building 10, Dubai</div>
+          </div>
+          <div style="background:var(--bg-light);border-radius:var(--r1);padding:12px 16px;border:1px solid var(--border)">
+            <div style="font-size:.88rem;font-weight:700;color:var(--text-dark)">🇦🇺 Perth, Australia</div>
+            <div style="font-size:.78rem;color:var(--text-light);margin-top:3px">Level 8, 140 St Georges Terrace, Perth WA</div>
+          </div>
+          <div style="background:var(--bg-light);border-radius:var(--r1);padding:12px 16px;border:1px solid var(--border)">
+            <div style="font-size:.88rem;font-weight:700;color:var(--text-dark)">🇨🇦 Vancouver, Canada</div>
+            <div style="font-size:.78rem;color:var(--text-light);margin-top:3px">Suite 2200, 885 West Georgia St, Vancouver</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: FORM -->
+    <div class="form-card">
+      <h2 data-en="Send Us a Message" data-fa="برای ما پیام بفرستید">Send Us a Message</h2>
+      <p data-en="Fill in the form below and one of our senior engineers will respond within 24 hours." data-fa="فرم زیر را پر کنید و یکی از مهندسان ارشد ما ظرف ۲۴ ساعت پاسخ خواهد داد.">Fill in the form below and one of our senior engineers will respond within 24 hours.</p>
+
+      <div class="fg-row">
+        <div class="fg"><label data-en="First Name *" data-fa="نام *">First Name *</label><input type="text" id="fName" placeholder="John"></div>
+        <div class="fg"><label data-en="Last Name *" data-fa="نام خانوادگی *">Last Name *</label><input type="text" id="fLast" placeholder="Smith"></div>
+      </div>
+      <div class="fg-row">
+        <div class="fg"><label data-en="Work Email *" data-fa="ایمیل کاری *">Work Email *</label><input type="email" id="fEmail" placeholder="john@company.com"></div>
+        <div class="fg"><label data-en="Phone" data-fa="تلفن">Phone</label><input type="tel" id="fPhone" placeholder="+1 (555) 000-0000"></div>
+      </div>
+      <div class="fg-row">
+        <div class="fg"><label data-en="Company" data-fa="شرکت">Company</label><input type="text" id="fCompany" placeholder="Mining Corp Ltd."></div>
+        <div class="fg">
+          <label data-en="Country" data-fa="کشور">Country</label>
+          <select id="fCountry">
+            <option data-en="Select country" data-fa="کشور را انتخاب کنید">Select country</option>
+            <option>Iran</option><option>Australia</option><option>Canada</option><option>Chile</option>
+            <option>Kazakhstan</option><option>UAE</option><option>South Africa</option><option>USA</option>
+            <option>UK</option><option>Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="fg">
+        <label data-en="Service of Interest" data-fa="خدمت مورد نظر">Service of Interest</label>
+        <div class="service-chips">
+          <span class="chip" onclick="tgChip(this)" data-en="Feasibility Study" data-fa="مطالعه امکان‌سنجی">Feasibility Study</span>
+          <span class="chip" onclick="tgChip(this)" data-en="CAPEX/OPEX Estimate" data-fa="تخمین CAPEX/OPEX">CAPEX/OPEX Estimate</span>
+          <span class="chip" onclick="tgChip(this)" data-en="Plant Design" data-fa="طراحی کارخانه">Plant Design</span>
+          <span class="chip" onclick="tgChip(this)" data-en="ESG Strategy" data-fa="استراتژی ESG">ESG Strategy</span>
+          <span class="chip" onclick="tgChip(this)" data-en="Digital Twin / AI" data-fa="دوقلوی دیجیتال / هوش مصنوعی">Digital Twin / AI</span>
+          <span class="chip" onclick="tgChip(this)" data-en="Critical Minerals" data-fa="مواد معدنی حیاتی">Critical Minerals</span>
+          <span class="chip" onclick="tgChip(this)" data-en="Risk Analysis" data-fa="تحلیل ریسک">Risk Analysis</span>
+          <span class="chip" onclick="tgChip(this)" data-en="Other" data-fa="سایر">Other</span>
+        </div>
+      </div>
+      <div class="fg">
+        <label data-en="Estimate Class Required" data-fa="کلاس تخمین مورد نیاز">Estimate Class Required</label>
+        <select id="fClass">
+          <option data-en="Not sure / General enquiry" data-fa="مطمئن نیستم / سوال عمومی">Not sure / General enquiry</option>
+          <option data-en="Class 5 — Order of Magnitude (±50%)" data-fa="کلاس ۵ — مرتبه بزرگی (±۵۰٪)">Class 5 — Order of Magnitude (±50%)</option>
+          <option data-en="Class 4 — Pre-Feasibility (±30%)" data-fa="کلاس ۴ — پیش‌امکان‌سنجی (±۳۰٪)">Class 4 — Pre-Feasibility (±30%)</option>
+          <option data-en="Class 3 — Bankable Feasibility (±20%)" data-fa="کلاس ۳ — امکان‌سنجی بانکی (±۲۰٪)">Class 3 — Bankable Feasibility (±20%)</option>
+          <option data-en="Class 1–2 — Definitive Estimate (±10–15%)" data-fa="کلاس ۱–۲ — تخمین قطعی (±۱۰–۱۵٪)">Class 1–2 — Definitive Estimate (±10–15%)</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label data-en="Project Description / Message *" data-fa="توضیحات پروژه / پیام *">Project Description / Message *</label>
+        <textarea id="fMsg" placeholder="Briefly describe your project — commodity, location, throughput, current stage, and what you need from KDMine Group..."></textarea>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:16px;font-size:.82rem;color:var(--text-mid)">
+        <input type="checkbox" id="fAgree" style="width:auto;margin-top:4px">
+        <span data-en="I agree to KDMine Group's <a href='privacy.html' style='color:var(--secondary)'>Privacy Policy</a> and consent to being contacted." data-fa="با <a href='privacy.html' style='color:var(--secondary)'>سیاست حریم خصوصی</a> KDMine Group موافقم و رضایت دارم با من تماس گرفته شود.">I agree to KDMine Group's <a href='privacy.html' style='color:var(--secondary)'>Privacy Policy</a> and consent to being contacted.</span>
+      </div>
+      <button class="submit-btn" onclick="submitForm()">
+        📨 <span data-en="Send Message — We'll Reply in 24hrs" data-fa="ارسال پیام — پاسخ در ۲۴ ساعت">Send Message — We'll Reply in 24hrs</span>
+      </button>
+      <p class="form-note" data-en="🔒 Your information is encrypted and never shared with third parties." data-fa="🔒 اطلاعات شما رمزگذاری شده و هرگز با اشخاص ثالث به اشتراک گذاشته نمی‌شود.">🔒 Your information is encrypted and never shared with third parties.</p>
+      <div class="success-banner" id="successBanner">
+        <h4 data-en="✅ Message Sent Successfully!" data-fa="✅ پیام با موفقیت ارسال شد!">✅ Message Sent Successfully!</h4>
+        <p data-en="Thank you for contacting KDMine Group. A senior engineer will respond within 24 business hours." data-fa="از تماس شما با KDMine Group متشکریم. یک مهندس ارشد ظرف ۲۴ ساعت کاری پاسخ خواهد داد.">Thank you for contacting KDMine Group. A senior engineer will respond within 24 business hours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP PLACEHOLDER -->
+<div class="map-sec">
+  <div class="map-placeholder">
+    <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:40px 40px"></div>
+    <div class="map-overlay">
+      <h3 data-en="🌍 Global Presence" data-fa="🌍 حضور جهانی">🌍 Global Presence</h3>
+      <p data-en="Offices and active projects across 30+ countries worldwide" data-fa="دفاتر و پروژه‌های فعال در ۳۰+ کشور جهان">Offices and active projects across 30+ countries worldwide</p>
+      <div class="map-pins">
+        <span class="map-pin">📍 Tehran HQ</span>
+        <span class="map-pin">📍 Dubai</span>
+        <span class="map-pin">📍 Perth</span>
+        <span class="map-pin">📍 Vancouver</span>
+        <span class="map-pin">📍 Santiago</span>
+        <span class="map-pin">📍 Almaty</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<section class="faq-sec">
+  <div class="faq-inner">
+    <div class="sec-hd">
+      <div class="stag" data-en="FAQ" data-fa="سوالات متداول">FAQ</div>
+      <h2 data-en="Frequently Asked Questions" data-fa="سوالات متداول">Frequently Asked Questions</h2>
+      <p data-en="Quick answers to the most common questions about our services and process" data-fa="پاسخ‌های سریع به رایج‌ترین سوالات درباره خدمات و فرآیند ما">Quick answers to the most common questions about our services and process</p>
+    </div>
+    <div id="faqList">
+      <div class="faq-item">
+        <div class="faq-q" onclick="tgFaq(this)"><span data-en="How long does a Class 5 estimate take?" data-fa="تخمین کلاس ۵ چقدر طول می‌کشد؟">How long does a Class 5 estimate take?</span><span class="faq-arrow">▼</span></div>
+        <div class="faq-a" data-en="A Class 5 order-of-magnitude estimate typically takes 3–7 business days depending on project complexity and data availability. We use our proprietary 5,000+ equipment database and CostMine benchmarks to deliver rapid, reliable screening estimates." data-fa="یک تخمین مرتبه بزرگی کلاس ۵ معمولاً ۳ تا ۷ روز کاری بسته به پیچیدگی پروژه و در دسترس بودن داده طول می‌کشد.">A Class 5 order-of-magnitude estimate typically takes 3–7 business days depending on project complexity and data availability. We use our proprietary 5,000+ equipment database and CostMine benchmarks to deliver rapid, reliable screening estimates.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="tgFaq(this)"><span data-en="What information do you need to start a feasibility study?" data-fa="برای شروع مطالعه امکان‌سنجی به چه اطلاعاتی نیاز دارید؟">What information do you need to start a feasibility study?</span><span class="faq-arrow">▼</span></div>
+        <div class="faq-a" data-en="For a Class 4–5 estimate, we need basic project parameters: commodity type, location, estimated throughput, ore grade, and mining method. For Class 1–3 bankable studies, we require geological resource reports, metallurgical testwork, geotechnical data, and environmental baseline studies." data-fa="برای تخمین کلاس ۴–۵، به پارامترهای اولیه پروژه نیاز داریم: نوع کالا، موقعیت، توان عملیاتی تخمینی، عیار کانسنگ و روش استخراج.">For a Class 4–5 estimate, we need basic project parameters: commodity type, location, estimated throughput, ore grade, and mining method. For Class 1–3 bankable studies, we require geological resource reports, metallurgical testwork, geotechnical data, and environmental baseline studies.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="tgFaq(this)"><span data-en="Do you work with junior mining companies and explorers?" data-fa="آیا با شرکت‌های معدنی کوچک و اکتشافگران کار می‌کنید؟">Do you work with junior mining companies and explorers?</span><span class="faq-arrow">▼</span></div>
+        <div class="faq-a" data-en="Absolutely. We work with the full spectrum — from junior explorers needing a quick Class 5 screening estimate to attract investors, through to major producers requiring Class 1 definitive estimates for construction decisions. Our modular service approach means you only pay for what you need." data-fa="قطعاً. ما با طیف کامل کار می‌کنیم — از اکتشافگران کوچک که به تخمین غربالگری کلاس ۵ برای جذب سرمایه‌گذاران نیاز دارند تا تولیدکنندگان بزرگ که به تخمین‌های قطعی کلاس ۱ نیاز دارند.">Absolutely. We work with the full spectrum — from junior explorers needing a quick Class 5 screening estimate to attract investors, through to major producers requiring Class 1 definitive estimates for construction decisions.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="tgFaq(this)"><span data-en="Are your estimates NI 43-101 and JORC compliant?" data-fa="آیا تخمین‌های شما با NI 43-101 و JORC مطابقت دارند؟">Are your estimates NI 43-101 and JORC compliant?</span><span class="faq-arrow">▼</span></div>
+        <div class="faq-a" data-en="Yes. Our Class 3 and above feasibility studies are prepared in accordance with NI 43-101 (Canadian Securities Administrators) and JORC (Australasian Joint Ore Reserves Committee) standards, making them suitable for stock exchange filings and institutional investor presentations." data-fa="بله. مطالعات امکان‌سنجی کلاس ۳ و بالاتر ما مطابق با استانداردهای NI 43-101 و JORC تهیه می‌شوند و برای ارائه به بورس اوراق بهادار و سرمایه‌گذاران نهادی مناسب هستند.">Yes. Our Class 3 and above feasibility studies are prepared in accordance with NI 43-101 and JORC standards, making them suitable for stock exchange filings and institutional investor presentations.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="tgFaq(this)"><span data-en="What is your fee structure?" data-fa="ساختار هزینه شما چگونه است؟">What is your fee structure?</span><span class="faq-arrow">▼</span></div>
+        <div class="faq-a" data-en="Fees are project-specific and depend on estimate class, project complexity, commodity, and location. Class 5 screening estimates start from $5,000 USD. Class 3 bankable feasibility studies typically range from $150,000–$500,000+ depending on scope. Contact us for a tailored proposal." data-fa="هزینه‌ها خاص پروژه هستند و به کلاس تخمین، پیچیدگی پروژه، کالا و موقعیت بستگی دارند. تخمین‌های غربالگری کلاس ۵ از ۵۰۰۰ دلار شروع می‌شوند.">Fees are project-specific and depend on estimate class, project complexity, commodity, and location. Class 5 screening estimates start from $5,000 USD. Contact us for a tailored proposal.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="tgFaq(this)"><span data-en="Do you offer services in Persian / Farsi?" data-fa="آیا خدمات به زبان فارسی ارائه می‌دهید؟">Do you offer services in Persian / Farsi?</span><span class="faq-arrow">▼</span></div>
+        <div class="faq-a" data-en="Yes. KDMine Group is fully bilingual in English and Persian (Farsi). All reports, deliverables, and client communications can be provided in either language. Our Tehran headquarters team is fully Persian-speaking." data-fa="بله. KDMine Group کاملاً دوزبانه در انگلیسی و فارسی است. تمام گزارش‌ها، تحویلی‌ها و ارتباطات مشتری می‌توانند به هر دو زبان ارائه شوند.">Yes. KDMine Group is fully bilingual in English and Persian (Farsi). All reports, deliverables, and client communications can be provided in either language. Our Tehran headquarters team is fully Persian-speaking.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-in">
+    <div>
+      <div style="display:flex;align-items:center;gap:12px">
+        <img src="https://cdn.grapesjs.com/workspaces/cmgvbwak408ja13nsemkia83b/assets/7e057c43-5d96-4c3a-a8fc-8bd5f6589a93__kavianpremiumbadgelogo.svg" alt="KDMine" style="width:44px;height:44px;border-radius:10px">
+        <div><div style="font-size:1.1rem;font-weight:800;color:#fff" data-en="KDMine Group" data-fa="کاویان توسعه معدن">KDMine Group</div><div style="font-size:.7rem;color:rgba(255,255,255,.45);font-weight:600" data-en="Mining Engineering & Economics" data-fa="مهندسی و اقتصاد معدن">Mining Engineering & Economics</div></div>
+      </div>
+      <p class="fb-desc" data-en="Data-driven mining engineering platform — from feasibility to ESG and AI, for global mining projects." data-fa="پلتفرم مهندسی معدن داده‌محور — از امکان‌سنجی تا ESG و هوش مصنوعی.">Data-driven mining engineering platform — from feasibility to ESG and AI, for global mining projects.</p>
+      <div class="fb-socs"><a href="#" class="fb-s">in</a><a href="#" class="fb-s">𝕏</a><a href="#" class="fb-s">▶</a><a href="#" class="fb-s">✉</a></div>
+    </div>
+    <div class="fc"><h4 data-en="Engineering" data-fa="مهندسی">Engineering</h4>
+      <a href="services/feasibility.html">Feasibility Studies</a>
+      <a href="services/plant-design.html">Plant Design</a>
+      <a href="services/geotechnical.html">Geotechnical</a>
+      <a href="services/hydrometallurgy.html">Hydrometallurgy</a>
+    </div>
+    <div class="fc"><h4 data-en="Economics" data-fa="اقتصاد">Economics</h4>
+      <a href="services/cost-estimation.html">CAPEX/OPEX</a>
+      <a href="services/economic-modelling.html">Financial Modelling</a>
+      <a href="services/risk-analysis.html">Risk Analysis</a>
+      <a href="services/market-intelligence.html">Market Intelligence</a>
+    </div>
+    <div class="fc"><h4 data-en="ESG & Digital" data-fa="ESG و دیجیتال">ESG & Digital</h4>
+      <a href="services/esg-decarbonization.html">ESG & Decarbonization</a>
+      <a href="services/digital-mining.html">Digital Mining & AI</a>
+      <a href="services/critical-minerals.html">Critical Minerals</a>
+      <a href="services/tailings-water.html">Tailings & Water</a>
+    </div>
+    <div class="fc"><h4 data-en="Company" data-fa="شرکت">Company</h4>
+      <a href="about.html">About Us</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="blog.html">Blog & Insights</a>
+      <a href="contact.html">Contact</a>
+      <a href="register.html">Free Registration</a>
+    </div>
+  </div>
+  <div class="footer-bot">
+    <span data-en="© 2026 KDMine Group. All rights reserved." data-fa="© ۲۰۲۶ کاویان توسعه معدن. تمامی حقوق محفوظ است.">© 2026 KDMine Group. All rights reserved.</span>
+    <div class="fb-lnks"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="sitemap.html">Sitemap</a></div>
+  </div>
+</footer>
+
+<script>
+let lang='en';
+function applyLang(l){lang=l;const fa=l==='fa';document.documentElement.setAttribute('lang',l);document.documentElement.setAttribute('dir',fa?'rtl':'ltr');document.body.style.fontFamily=fa?"'B Nazanin',Tahoma,Arial,sans-serif":"'Segoe UI',system-ui,sans-serif";document.getElementById('lt-txt').textContent=fa?'EN | English':'FA | فارسی';document.querySelectorAll('[data-en][data-fa]').forEach(el=>{const v=el.getAttribute('data-'+l);if(v!==null){if(el.tagName==='INPUT'||el.tagName==='TEXTAREA')el.placeholder=v;else if(el.tagName==='OPTION')el.textContent=v;else el.innerHTML=v;}});try{localStorage.setItem('kdmine_lang',l);}catch(e){}}
+function tgLang(){applyLang(lang==='en'?'fa':'en');}
+window.addEventListener('DOMContentLoaded',()=>{try{const s=localStorage.getItem('kdmine_lang');if(s&&s!=='en')applyLang(s);}catch(e){}});
+function tgMenu(){const nav=document.getElementById('mainNav');const o=nav.classList.toggle('open');const sp=document.querySelectorAll('.mbt span');sp[0].style.transform=o?'translateY(7px) rotate(45deg)':'';sp[1].style.opacity=o?'0':'1';sp[2].style.transform=o?'translateY(-7px) rotate(-45deg)':'';}
+document.addEventListener('click',e=>{const nav=document.getElementById('mainNav');const btn=document.querySelector('.mbt');if(nav&&btn&&!nav.contains(e.target)&&!btn.contains(e.target)){nav.classList.remove('open');document.querySelectorAll('.mbt span').forEach(s=>{s.style.transform='';s.style.opacity='1';});}});
+window.addEventListener('scroll',()=>{const s=document.getElementById('sttBtn');if(s)s.classList.toggle('vis',window.scrollY>400);});
+function tgChip(el){el.classList.toggle('sel');}
+function tgFaq(btn){
+  const item=btn.closest('.faq-item');
+  const wasOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+  if(!wasOpen)item.classList.add('open');
+}
+function submitForm(){
+  const name=document.getElementById('fName').value;
+  const email=document.getElementById('fEmail').value;
+  const msg=document.getElementById('fMsg').value;
+  const agree=document.getElementById('fAgree').checked;
+  if(!name||!email||!msg){alert(lang==='fa'?'لطفاً فیلدهای الزامی را پر کنید.':'Please fill in all required fields.');return;}
+  if(!agree){alert(lang==='fa'?'لطفاً با سیاست حریم خصوصی موافقت کنید.':'Please agree to the Privacy Policy.');return;}
+  document.getElementById('successBanner').style.display='block';
+  document.getElementById('successBanner').scrollIntoView({behavior:'smooth',block:'center'});
+}
+</script>
+</body>
+</html>

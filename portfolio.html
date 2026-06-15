@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Portfolio — KDMine Group</title>
+<style>
+:root{--primary:#0f2d5e;--secondary:#1a56db;--accent:#3b82f6;--gold:#f59e0b;--success:#059669;--teal:#0d9488;--text-dark:#0f172a;--text-mid:#334155;--text-light:#64748b;--bg-light:#f8fafc;--border:#e2e8f0;--s1:0 1px 3px rgba(0,0,0,.07);--s2:0 4px 12px rgba(0,0,0,.10);--s3:0 12px 30px rgba(0,0,0,.12);--s4:0 20px 50px rgba(0,0,0,.15);--r1:8px;--r2:14px;--r3:20px;--tr:all .3s cubic-bezier(.4,0,.2,1)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,sans-serif;line-height:1.7;color:var(--text-dark);background:#fff;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inherit}
+[dir="rtl"] body{font-family:'B Nazanin',Tahoma,Arial,sans-serif}
+.lt{position:fixed;top:20px;right:20px;z-index:1100;background:#fff;padding:8px 16px;border-radius:50px;box-shadow:var(--s2);cursor:pointer;font-weight:700;font-size:.82rem;border:2px solid var(--border);transition:var(--tr);color:var(--primary);display:flex;align-items:center;gap:6px}
+[dir="rtl"] .lt{right:auto;left:20px}
+.stt{position:fixed;bottom:26px;right:26px;z-index:999;width:42px;height:42px;background:var(--secondary);color:#fff;border-radius:50%;border:none;cursor:pointer;font-size:1.1rem;box-shadow:var(--s3);transition:var(--tr);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none}
+.stt.vis{opacity:1;pointer-events:all}[dir="rtl"] .stt{right:auto;left:26px}
+.topbar{background:var(--primary);color:rgba(255,255,255,.8);font-size:.8rem;padding:7px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.topbar a{color:rgba(255,255,255,.8)}.topbar a:hover{color:#fff}.tb-r{display:flex;gap:20px}
+.hdr{background:rgba(255,255,255,.98);backdrop-filter:blur(12px);position:sticky;top:0;z-index:1000;box-shadow:var(--s2);border-bottom:1px solid var(--border)}
+.hdr-in{max-width:1400px;margin:0 auto;padding:13px 40px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.logo{display:flex;align-items:center;gap:13px}.logo img{width:50px;height:50px;border-radius:11px;box-shadow:var(--s1)}
+.logo h1{font-size:1.3rem;color:var(--primary);font-weight:800}.logo p{font-size:.72rem;color:var(--text-light);font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.nav{display:flex;gap:4px;align-items:center}
+.nl{color:var(--text-mid);font-weight:600;font-size:.9rem;padding:8px 13px;border-radius:var(--r1);transition:var(--tr)}
+.nl:hover,.nl.active{color:var(--secondary);background:rgba(26,86,219,.06)}
+.nl.dd{padding-right:20px;position:relative}.nl.dd::after{content:"▾";position:absolute;right:7px;top:50%;transform:translateY(-50%);font-size:.65rem}
+.ddw{position:relative}.ddm{position:absolute;top:calc(100% + 8px);left:0;background:#fff;border-radius:var(--r2);min-width:270px;box-shadow:var(--s4);border:1px solid var(--border);opacity:0;visibility:hidden;transform:translateY(-8px);transition:var(--tr);z-index:200}
+.ddw:hover .ddm{opacity:1;visibility:visible;transform:translateY(0)}
+.ddi{display:flex;align-items:center;gap:10px;padding:11px 18px;color:var(--text-mid);font-size:.86rem;font-weight:500;transition:var(--tr)}.ddi:hover{background:var(--bg-light);color:var(--secondary)}.ddi-ic{font-size:1rem;width:20px;text-align:center}
+.bcta{background:linear-gradient(135deg,var(--secondary),#1d4ed8);color:#fff;padding:10px 22px;border-radius:50px;font-weight:700;font-size:.88rem;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(26,86,219,.35);transition:var(--tr);display:inline-flex;align-items:center;gap:7px}
+.bcta:hover{transform:translateY(-2px)}
+.mbt{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:10px}.mbt span{width:24px;height:2.5px;background:var(--text-dark);border-radius:2px;transition:var(--tr)}
+/* PAGE HERO */
+.page-hero{background:linear-gradient(135deg,#0a1f44 0%,#0f2d5e 50%,#1a56db 100%);color:#fff;padding:110px 40px 80px;position:relative;overflow:hidden}
+.page-hero-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:60px 60px}
+.page-hero-in{max-width:900px;margin:0 auto;position:relative;z-index:1;text-align:center}
+.stag{display:inline-block;background:rgba(26,86,219,.1);color:var(--secondary);font-size:.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:12px}
+.page-hero .stag{background:rgba(255,255,255,.14);color:rgba(255,255,255,.9)}
+.page-hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:800;margin-bottom:18px;line-height:1.2}
+.page-hero p{font-size:1.05rem;opacity:.85;max-width:700px;margin:0 auto}
+.breadcrumb{display:flex;gap:8px;align-items:center;justify-content:center;font-size:.82rem;color:rgba(255,255,255,.6);margin-bottom:20px}
+.breadcrumb a{color:rgba(255,255,255,.7)}.breadcrumb a:hover{color:#fff}.breadcrumb span{color:rgba(255,255,255,.4)}
+/* STATS BAR */
+.stats-bar{background:var(--primary)}
+.stats-inner{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr)}
+.sb{text-align:center;padding:22px 16px;border-right:1px solid rgba(255,255,255,.1)}
+.sb:last-child{border-right:none}
+.sb .sn{font-size:1.7rem;font-weight:800;color:#fff}.sb .sn span{font-size:1rem;color:#93c5fd}
+.sb .sl{font-size:.7rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.5px;margin-top:3px}
+/* FILTER */
+.filter-sec{padding:40px 40px 0;background:#fff}
+.filter-inner{max-width:1400px;margin:0 auto}
+.filter-bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
+.filter-label{font-size:.78rem;font-weight:700;color:var(--text-mid);text-transform:uppercase;letter-spacing:.5px;margin-right:6px}
+.ftab{padding:8px 18px;border-radius:50px;border:2px solid var(--border);background:#fff;color:var(--text-mid);font-size:.82rem;font-weight:700;cursor:pointer;transition:var(--tr)}
+.ftab:hover,.ftab.active{background:var(--secondary);color:#fff;border-color:var(--secondary)}
+.search-bar{display:flex;gap:12px;margin-top:16px;margin-bottom:0}
+.search-input{flex:1;padding:11px 16px;border:1.5px solid var(--border);border-radius:var(--r1);font-size:.9rem;outline:none;font-family:inherit;transition:var(--tr)}
+.search-input:focus{border-color:var(--secondary);box-shadow:0 0 0 3px rgba(26,86,219,.1)}
+.sort-sel{padding:11px 14px;border:1.5px solid var(--border);border-radius:var(--r1);font-size:.88rem;outline:none;font-family:inherit;color:var(--text-dark);background:#fff;cursor:pointer}
+/* PORTFOLIO GRID */
+.portfolio-sec{padding:40px 40px 88px}
+.portfolio-inner{max-width:1400px;margin:0 auto}
+.results-count{font-size:.84rem;color:var(--text-light);margin-bottom:22px}
+.results-count span{font-weight:700;color:var(--text-dark)}
+.pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:24px}
+/* PROJECT CARD */
+.pc{background:#fff;border-radius:var(--r2);border:1px solid var(--border);box-shadow:var(--s1);overflow:hidden;transition:var(--tr);display:flex;flex-direction:column}
+.pc:hover{transform:translateY(-6px);box-shadow:var(--s4);border-color:transparent}
+.pc-img{height:200px;overflow:hidden;position:relative}
+.pc-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.pc:hover .pc-img img{transform:scale(1.06)}
+.pc-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 30%,rgba(15,45,94,.75))}
+.pc-badges{position:absolute;top:12px;left:12px;display:flex;gap:6px;flex-wrap:wrap}
+.pc-badge{font-size:.65rem;font-weight:800;padding:3px 10px;border-radius:50px;text-transform:uppercase;letter-spacing:.4px}
+.badge-blue{background:rgba(26,86,219,.9);color:#fff}
+.badge-gold{background:rgba(245,158,11,.9);color:#fff}
+.badge-green{background:rgba(5,150,105,.9);color:#fff}
+.badge-purple{background:rgba(124,58,237,.9);color:#fff}
+.badge-teal{background:rgba(13,148,136,.9);color:#fff}
+.badge-red{background:rgba(220,38,38,.9);color:#fff}
+.pc-status{position:absolute;bottom:12px;right:12px;font-size:.68rem;font-weight:700;padding:4px 10px;border-radius:50px}
+.status-complete{background:rgba(5,150,105,.9);color:#fff}
+.status-ongoing{background:rgba(245,158,11,.9);color:#fff}
+.status-study{background:rgba(59,130,246,.9);color:#fff}
+.pc-body{padding:22px;flex:1;display:flex;flex-direction:column}
+.pc-meta{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+.pc-country{font-size:.75rem;font-weight:700;color:var(--text-light);display:flex;align-items:center;gap:4px}
+.pc-year{font-size:.72rem;color:var(--text-light);background:var(--bg-light);padding:2px 8px;border-radius:50px;border:1px solid var(--border)}
+.pc-class{font-size:.68rem;font-weight:700;color:var(--secondary);background:rgba(26,86,219,.08);padding:2px 8px;border-radius:50px}
+.pc h3{font-size:1rem;font-weight:800;color:var(--text-dark);margin-bottom:8px;line-height:1.4}
+.pc-desc{font-size:.84rem;color:var(--text-light);line-height:1.7;margin-bottom:14px;flex:1}
+.pc-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.pk{background:var(--bg-light);border-radius:var(--r1);padding:10px 8px;text-align:center;border:1px solid var(--border)}
+.pk-v{font-size:.95rem;font-weight:800;color:var(--secondary);line-height:1}
+.pk-l{font-size:.62rem;color:var(--text-light);margin-top:3px;text-transform:uppercase;letter-spacing:.3px}
+.pc-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px}
+.ptag{background:var(--bg-light);color:var(--text-mid);font-size:.67rem;font-weight:600;padding:3px 9px;border-radius:50px;border:1px solid var(--border)}
+.pc-footer{display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid var(--border);margin-top:auto}
+.pc-lnk{color:var(--secondary);font-weight:700;font-size:.84rem;display:inline-flex;align-items:center;gap:5px;transition:var(--tr)}
+.pc-lnk:hover{gap:10px}
+.pc-aace{font-size:.72rem;font-weight:700;color:var(--text-light);background:var(--bg-light);padding:4px 10px;border-radius:50px;border:1px solid var(--border)}
+/* FEATURED */
+.featured-card{background:linear-gradient(135deg,#0f2d5e,#1a56db);border-radius:var(--r3);padding:40px;color:#fff;margin-bottom:32px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;position:relative;overflow:hidden}
+.featured-card::before{content:'FEATURED';position:absolute;top:20px;right:20px;background:rgba(255,255,255,.15);color:rgba(255,255,255,.9);font-size:.65rem;font-weight:800;padding:4px 12px;border-radius:50px;letter-spacing:1px}
+.fc-content .stag{background:rgba(255,255,255,.15);color:rgba(255,255,255,.9);margin-bottom:14px}
+.fc-content h2{font-size:1.6rem;font-weight:800;margin-bottom:12px;line-height:1.3}
+.fc-content p{font-size:.9rem;opacity:.85;line-height:1.75;margin-bottom:20px}
+.fc-kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:20px}
+.fck{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:var(--r1);padding:14px;text-align:center}
+.fck-v{font-size:1.4rem;font-weight:800;color:#fff}.fck-l{font-size:.68rem;color:rgba(255,255,255,.6);margin-top:3px;text-transform:uppercase;letter-spacing:.4px}
+.fc-img{border-radius:var(--r2);overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.fc-img img{width:100%;height:280px;object-fit:cover}
+.fc-tags{display:flex;gap:6px;flex-wrap:wrap}
+.fctag{background:rgba(255,255,255,.12);color:rgba(255,255,255,.85);font-size:.7rem;font-weight:600;padding:4px 10px;border-radius:50px}
+.fc-btn{background:#fff;color:var(--primary);padding:11px 24px;border-radius:50px;font-weight:700;font-size:.88rem;border:none;cursor:pointer;transition:var(--tr);display:inline-flex;align-items:center;gap:7px;margin-top:16px}
+.fc-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.25)}
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:2000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:var(--tr)}
+.modal-overlay.open{opacity:1;visibility:visible}
+.modal{background:#fff;border-radius:var(--r3);max-width:720px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 40px 100px rgba(0,0,0,.4);transform:translateY(20px);transition:var(--tr)}
+.modal-overlay.open .modal{transform:translateY(0)}
+.modal-img{height:260px;overflow:hidden;position:relative}
+.modal-img img{width:100%;height:100%;object-fit:cover}
+.modal-close{position:absolute;top:16px;right:16px;width:36px;height:36px;background:rgba(0,0,0,.5);color:#fff;border:none;border-radius:50%;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:var(--tr)}
+.modal-close:hover{background:rgba(0,0,0,.8)}
+.modal-body{padding:32px}
+.modal-body h2{font-size:1.4rem;font-weight:800;color:var(--text-dark);margin-bottom:8px}
+.modal-meta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.modal-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:20px 0}
+.mk{background:var(--bg-light);border-radius:var(--r1);padding:14px;text-align:center;border:1px solid var(--border)}
+.mk-v{font-size:1.1rem;font-weight:800;color:var(--secondary)}.mk-l{font-size:.65rem;color:var(--text-light);margin-top:3px;text-transform:uppercase;letter-spacing:.3px}
+.modal-section h4{font-size:.88rem;font-weight:700;color:var(--text-dark);margin-bottom:8px;text-transform:uppercase;letter-spacing:.4px}
+.modal-section p{font-size:.88rem;color:var(--text-light);line-height:1.75;margin-bottom:16px}
+.modal-section ul{padding-left:18px;margin-bottom:16px}
+.modal-section ul li{font-size:.86rem;color:var(--text-light);line-height:1.7;margin-bottom:4px}
+/* CTA */
+.cta-sec{padding:88px 40px;background:linear-gradient(135deg,#eff6ff,#dbeafe);text-align:center}
+.cta-in{max-width:700px;margin:0 auto}
+.cta-sec h2{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800;color:var(--primary);margin-bottom:14px}
+.cta-sec p{font-size:.98rem;color:var(--text-light);margin-bottom:32px}
+.cta-acts{display:flex;gap:13px;justify-content:center;flex-wrap:wrap}
+.bcp{background:linear-gradient(135deg,var(--secondary),#1d4ed8);color:#fff;padding:14px 30px;border-radius:50px;font-weight:700;font-size:.96rem;border:none;cursor:pointer;box-shadow:0 6px 20px rgba(26,86,219,.35);transition:var(--tr);display:inline-flex;align-items:center;gap:8px}
+.bcp:hover{transform:translateY(-3px)}
+.bco{background:#fff;color:var(--secondary);padding:14px 30px;border-radius:50px;font-weight:700;font-size:.96rem;border:2px solid var(--secondary);cursor:pointer;transition:var(--tr);display:inline-flex;align-items:center;gap:8px}
+.bco:hover{background:var(--secondary);color:#fff;transform:translateY(-3px)}
+/* FOOTER */
+.footer{background:#0a1628;color:#fff;padding:68px 40px 26px}
+.footer-in{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:36px;margin-bottom:46px}
+.fb-desc{font-size:.84rem;color:rgba(255,255,255,.5);line-height:1.75;margin-top:13px;margin-bottom:17px}
+.fb-socs{display:flex;gap:8px}
+.fb-s{width:34px;height:34px;background:rgba(255,255,255,.08);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.86rem;transition:var(--tr);color:rgba(255,255,255,.52)}.fb-s:hover{background:var(--secondary);color:#fff}
+.fc-ft h4{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.45);margin-bottom:15px}
+.fc-ft a{display:block;color:rgba(255,255,255,.66);font-size:.84rem;padding:4px 0;transition:var(--tr)}.fc-ft a:hover{color:#fff}
+.footer-bot{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding-top:22px;border-top:1px solid rgba(255,255,255,.08);font-size:.78rem;color:rgba(255,255,255,.36);flex-wrap:wrap;gap:10px}
+.fb-lnks{display:flex;gap:18px}.fb-lnks a{color:rgba(255,255,255,.36)}.fb-lnks a:hover{color:rgba(255,255,255,.75)}
+@media(max-width:1100px){.featured-card{grid-template-columns:1fr}.fc-img{display:none}.footer-in{grid-template-columns:1fr 1fr 1fr}.stats-inner{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:768px){.topbar{display:none}.mbt{display:flex}.nav{position:fixed;top:78px;right:-100%;width:80%;max-width:290px;height:calc(100vh - 78px);background:#fff;flex-direction:column;padding:28px;box-shadow:var(--s4);transition:right .3s ease;align-items:flex-start;overflow-y:auto;z-index:999}.nav.open{right:0}.ddm{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:none;background:var(--bg-light);margin-top:5px}.page-hero,.filter-sec,.portfolio-sec,.cta-sec,.footer{padding-left:22px;padding-right:22px}.pg{grid-template-columns:1fr}.modal-kpis{grid-template-columns:repeat(2,1fr)}.footer-in{grid-template-columns:1fr 1fr}.footer-bot{flex-direction:column;text-align:center}.hdr-in{padding:13px 20px}.stats-inner{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<button class="lt" onclick="tgLang()">🌐 <span id="lt-txt">FA | فارسی</span></button>
+<button class="stt" id="sttBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<div class="topbar">
+  <div>📧 info@kdmine.com &nbsp;|&nbsp; 📞 +98 21 1234 5678 &nbsp;|&nbsp; 🕐 Sat–Wed 08:00–18:00 IRST</div>
+  <div class="tb-r"><a href="register.html">🔐 Client Login</a><a href="register.html">📊 Dashboard</a></div>
+</div>
+
+<header class="hdr">
+  <div class="hdr-in">
+    <div class="logo">
+      <img src="https://cdn.grapesjs.com/workspaces/cmgvbwak408ja13nsemkia83b/assets/7e057c43-5d96-4c3a-a8fc-8bd5f6589a93__kavianpremiumbadgelogo.svg" alt="KDMine">
+      <div><h1 data-en="KDMine Group" data-fa="کاویان توسعه معدن">KDMine Group</h1><p data-en="Mining Engineering & Economics Platform" data-fa="پلتفرم مهندسی و اقتصاد معدن">Mining Engineering & Economics Platform</p></div>
+    </div>
+    <button class="mbt" onclick="tgMenu()"><span></span><span></span><span></span></button>
+    <nav class="nav" id="mainNav">
+      <div class="ddw"><a href="index.html#services" class="nl dd" data-en="Services" data-fa="خدمات">Services</a>
+        <div class="ddm">
+          <a href="services/feasibility.html" class="ddi"><span class="ddi-ic">📋</span><span>Feasibility Studies</span></a>
+          <a href="services/cost-estimation.html" class="ddi"><span class="ddi-ic">💰</span><span>CAPEX/OPEX Estimation</span></a>
+          <a href="services/plant-design.html" class="ddi"><span class="ddi-ic">🏭</span><span>Process Plant Design</span></a>
+          <a href="services/critical-minerals.html" class="ddi"><span class="ddi-ic">⚡</span><span>Critical Minerals</span></a>
+          <a href="services/esg-decarbonization.html" class="ddi"><span class="ddi-ic">🌱</span><span>ESG & Decarbonization</span></a>
+          <a href="services/digital-mining.html" class="ddi"><span class="ddi-ic">🤖</span><span>Digital Mining & AI</span></a>
+        </div>
+      </div>
+      <div class="ddw"><a href="index.html#tools" class="nl dd" data-en="Tools" data-fa="ابزارها">Tools</a>
+        <div class="ddm">
+          <a href="tools/cost-calculator.html" class="ddi"><span class="ddi-ic">🧮</span><span>Cost Calculator</span></a>
+          <a href="tools/equipment-database.html" class="ddi"><span class="ddi-ic">🗃️</span><span>Equipment Database</span></a>
+          <a href="tools/monte-carlo.html" class="ddi"><span class="ddi-ic">📉</span><span>Monte Carlo Simulator</span></a>
+          <a href="tools/market-dashboard.html" class="ddi"><span class="ddi-ic">🌍</span><span>Market Dashboard</span></a>
+        </div>
+      </div>
+      <a href="resources.html" class="nl" data-en="Resources" data-fa="منابع">Resources</a>
+      <a href="portfolio.html" class="nl active" data-en="Portfolio" data-fa="نمونه کارها">Portfolio</a>
+      <a href="about.html" class="nl" data-en="About" data-fa="درباره ما">About</a>
+      <a href="contact.html" class="nl" data-en="Contact" data-fa="تماس">Contact</a>
+      <a href="register.html" class="bcta" data-en="Get Started →" data-fa="شروع کنید ←">Get Started →</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-in">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span data-en="Portfolio" data-fa="نمونه کارها">Portfolio</span></div>
+    <div class="stag" data-en="Project Portfolio" data-fa="پورتفولیو پروژه‌ها">Project Portfolio</div>
+    <h1 data-en="150+ Global Mining Projects Delivered" data-fa="بیش از ۱۵۰ پروژه معدنی جهانی تحویل‌شده">150+ Global Mining Projects Delivered</h1>
+    <p data-en="From Class 5 screening estimates to bankable BFS — copper, gold, lithium, iron ore, and critical minerals projects across 30+ countries, all AACE-compliant." data-fa="از تخمین‌های غربالگری کلاس ۵ تا BFS بانکی — پروژه‌های مس، طلا، لیتیوم، سنگ آهن و مواد معدنی حیاتی در ۳۰+ کشور، همه منطبق با AACE.">From Class 5 screening estimates to bankable BFS — copper, gold, lithium, iron ore, and critical minerals projects across 30+ countries, all AACE-compliant.</p>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="sb"><div class="sn">150<span>+</span></div><div class="sl" data-en="Total Projects" data-fa="کل پروژه‌ها">Total Projects</div></div>
+    <div class="sb"><div class="sn">$2.4<span>B+</span></div><div class="sl" data-en="Value Estimated" data-fa="ارزش تخمین‌زده‌شده">Value Estimated</div></div>
+    <div class="sb"><div class="sn">30<span>+</span></div><div class="sl" data-en="Countries" data-fa="کشورها">Countries</div></div>
+    <div class="sb"><div class="sn">98<span>%</span></div><div class="sl" data-en="On-Time Delivery" data-fa="تحویل به‌موقع">On-Time Delivery</div></div>
+    <div class="sb"><div class="sn">7</div><div class="sl" data-en="Commodities" data-fa="کالاها">Commodities</div></div>
+  </div>
+</div>
+
+<!-- FILTERS -->
+<div class="filter-sec">
+  <div class="filter-inner">
+    <div class="filter-bar">
+      <span class="filter-label" data-en="Filter by:" data-fa="فیلتر بر اساس:">Filter by:</span>
+      <button class="ftab active" onclick="filterProjects('all',this)" data-en="All Projects" data-fa="همه پروژه‌ها">All Projects</button>
+      <button class="ftab" onclick="filterProjects('copper',this)" data-en="Copper" data-fa="مس">Copper</button>
+      <button class="ftab" onclick="filterProjects('gold',this)" data-en="Gold" data-fa="طلا">Gold</button>
+      <button class="ftab" onclick="filterProjects('lithium',this)" data-en="Lithium" data-fa="لیتیوم">Lithium</button>
+      <button class="ftab" onclick="filterProjects('iron',this)" data-en="Iron Ore" data-fa="سنگ آهن">Iron Ore</button>
+      <button class="ftab" onclick="filterProjects('nickel',this)" data-en="Nickel" data-fa="نیکل">Nickel</button>
+      <button class="ftab" onclick="filterProjects('esg',this)" data-en="ESG / Digital" data-fa="ESG / دیجیتال">ESG / Digital</button>
+    </div>
+    <div class="search-bar">
+      <input class="search-input" type="text" id="searchInput" placeholder="Search projects by name, country, or commodity..." oninput="searchProjects()">
+      <select class="sort-sel" id="sortSel" onchange="sortProjects()">
+        <option value="newest" data-en="Newest First" data-fa="جدیدترین اول">Newest First</option>
+        <option value="capex" data-en="Largest CAPEX" data-fa="بزرگترین CAPEX">Largest CAPEX</option>
+        <option value="alpha" data-en="A–Z" data-fa="الف–ی">A–Z</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<!-- PORTFOLIO GRID -->
+<section class="portfolio-sec">
+  <div class="portfolio-inner">
+    <div class="results-count" id="resultsCount"><span id="countNum">12</span> <span data-en="projects found" data-fa="پروژه یافت شد">projects found</span></div>
+
+    <!-- FEATURED PROJECT -->
+    <div class="featured-card" id="featuredCard">
+      <div class="fc-content">
+        <div class="stag" data-en="⭐ Featured Project" data-fa="⭐ پروژه ویژه">⭐ Featured Project</div>
+        <h2 data-en="Sar Cheshmeh Copper Expansion — Iran" data-fa="توسعه مس سرچشمه — ایران">Sar Cheshmeh Copper Expansion — Iran</h2>
+        <p data-en="Bankable Class 3 feasibility study for a 120 ktpd open pit copper mine expansion including heap leach, SX-EW circuit upgrade, and comprehensive ESG strategy. Delivered within 8 months." data-fa="مطالعه امکان‌سنجی بانکی کلاس ۳ برای توسعه معدن مس روباز ۱۲۰ هزار تن در روز شامل Heap Leach، ارتقاء مدار SX-EW و استراتژی جامع ESG. تحویل در ۸ ماه.">Bankable Class 3 feasibility study for a 120 ktpd open pit copper mine expansion including heap leach, SX-EW circuit upgrade, and comprehensive ESG strategy. Delivered within 8 months.</p>
+        <div class="fc-kpis">
+          <div class="fck"><div class="fck-v">$1.2B</div><div class="fck-l" data-en="Total CAPEX" data-fa="کل CAPEX">Total CAPEX</div></div>
+          <div class="fck"><div class="fck-v">120 ktpd</div><div class="fck-l" data-en="Throughput" data-fa="توان عملیاتی">Throughput</div></div>
+          <div class="fck"><div class="fck-v">25 yrs</div><div class="fck-l" data-en="Mine Life" data-fa="عمر معدن">Mine Life</div></div>
+          <div class="fck"><div class="fck-v">Class 3</div><div class="fck-l" data-en="AACE Class" data-fa="کلاس AACE">AACE Class</div></div>
+        </div>
+        <div class="fc-tags">
+          <span class="fctag">Open Pit</span><span class="fctag">Heap Leach</span><span class="fctag">SX-EW</span><span class="fctag">ESG Strategy</span><span class="fctag">AACE Class 3</span>
+        </div>
+        <button class="fc-btn" onclick="openModal('p1')">📋 <span data-en="View Full Case Study →" data-fa="مشاهده مطالعه موردی کامل ←">View Full Case Study →</span></button>
+      </div>
+      <div class="fc-img">
+        <img src="https://thumbs.dreamstime.com/b/aerial-view-massive-open-pit-copper-mine-industrial-terraces-extraction-operations-large-trucks-navigate-roads-deep-395303962.jpg" alt="Sar Cheshmeh">
+      </div>
+    </div>
+
+    <!-- PROJECT CARDS GRID -->
+    <div class="pg" id="projectGrid">
+
+      <!-- P1 -->
+      <div class="pc" data-cat="copper" data-name="Atacama Copper Project" data-capex="850" data-year="2025">
+        <div class="pc-img">
+          <img src="https://thumbs.dreamstime.com/b/aerial-view-massive-open-pit-copper-mine-industrial-terraces-extraction-operations-large-trucks-navigate-roads-deep-395303962.jpg" alt="Atacama Copper" loading="lazy">
+          <div class="pc-overlay"></div>
+          <div class="pc-badges"><span class="pc-badge badge-blue">Copper</span><span class="pc-badge badge-green">Open Pit</span></div>
+          <span class="pc-status status-complete" data-en="Completed" data-fa="تکمیل‌شده">Completed</span>
+        </div>
+        <div class="pc-body">
+          <div class="pc-meta">
+            <span class="pc-country">🇨🇱 Chile</span>
+            <span class="pc-year">2025</span>
+            <span class="pc-class">AACE Class 2</span>
+          </div>
+          <h3 data-en="Atacama Copper Project — Class 2 Control Estimate" data-fa="پروژه مس آتاکاما — تخمین کنترل کلاس ۲">Atacama Copper Project — Class 2 Control Estimate</h3>
+          <p class="pc-desc" data-en="Definitive CAPEX/OPEX control estimate for 85 ktpd open pit copper mine with flotation plant, tailings storage facility, and 35 MW solar hybrid power system." data-fa="تخمین کنترل قطعی CAPEX/OPEX برای معدن مس روباز ۸۵ هزار تن در روز با کارخانه فلوتاسیون، مخزن باطله و سیستم برق هیبریدی خورشیدی ۳۵ مگاوات.">Definitive CAPEX/OPEX control estimate for 85 ktpd open pit copper mine with flotation plant, tailings storage facility, and 35 MW solar hybrid power system.</p>
+          <div class="pc-kpis">
+            <div class="pk"><div class="pk-v">$850M</div><div class="pk-l">CAPEX</div></div>
+            <div class="pk"><div class="pk-v">85 ktpd</div><div class="pk-l" data-en="Throughput" data-fa="ظرفیت">Throughput</div></div>
+            <div class="pk"><div class="pk-v">18 yrs</div><div class="pk-l" data-en="LOM" data-fa="عمر معدن">LOM</div></div>
+          </div>
+          <div class="pc-tags"><span class="ptag">Flotation</span><span class="ptag">TSF Design</span><span class="ptag">Solar Hybrid</span><span class="ptag">AACE Class 2</span></div>
+          <div class="pc-footer">
+            <a href="#" class="pc-lnk" onclick="openModal('p1');return false;" data-en="View Details →" data-fa="مشاهده جزئیات ←">View Details →</a>
+            <span class="pc-aace">±15%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- P2 -->
+      <div class="pc" data-cat="gold" data-name="West African Gold BFS" data-capex="420" data-year="2024">
+        <div class="pc-img">
+          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&q=80" alt="West Africa Gold" loading="lazy">
+          <div class="pc-overlay"></div>
+          <div class="pc-badges"><span class="pc-badge badge-gold">Gold</span><span class="pc-badge badge-blue">BFS</span></div>
+          <span class="pc-status status-complete" data-en="Completed" data-fa="تکمیل‌شده">Completed</span>
+        </div>
+        <div class="pc-body">
+          <div class="pc-meta"><span class="pc-country">🇬🇭 Ghana</span><span class="pc-year">2024</span><span class="pc-class">AACE Class 3</span></div>
+          <h3 data-en="West African Gold BFS — CIL Processing Plant" data-fa="BFS طلای غرب آفریقا — کارخانه CIL">West African Gold BFS — CIL Processing Plant</h3>
+          <p class="pc-desc" data-en="Bankable feasibility study for 5 Mtpa open pit gold mine with CIL processing circuit. Includes NI 43-101 compliant resource estimate, LOM schedule, and ESG baseline." data-fa="مطالعه امکان‌سنجی بانکی برای معدن طلای روباز ۵ میلیون تن در سال با مدار پردازش CIL. شامل تخمین منابع منطبق با NI 43-101، برنامه LOM و پایه ESG.">Bankable feasibility study for 5 Mtpa open pit gold mine with CIL processing circuit. Includes NI 43-101 compliant resource estimate, LOM schedule, and ESG baseline.</p>
+          <div class="pc-kpis">
+            <div class="pk"><div class="pk-v">$420M</div><div class="pk-l">CAPEX</div></div>
+            <div class="pk"><div class="pk-v">5 Mtpa</div><div class="pk-l">Throughput</div></div>
+            <div class="pk"><div class="pk-v">12 yrs</div><div class="pk-l">LOM</div></div>
+          </div>
+          <div class="pc-tags"><span class="ptag">CIL</span><span class="ptag">NI 43-101</span><span class="ptag">LOM Schedule</span><span class="ptag">ESG Baseline</span></div>
+          <div class="pc-footer">
+            <a href="#" class="pc-lnk" onclick="openModal('p2');return false;" data-en="View Details →" data-fa="مشاهده جزئیات ←">View Details →</a>
+            <span class="pc-aace">±20%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- P3 -->
+      <div class="pc" data-cat="lithium" data-name="Lithium Brine Project" data-capex="680" data-year="2025">
+        <div class="pc-img">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80" alt="Lithium Brine" loading="lazy">
+          <div class="pc-overlay"></div>
+          <div class="pc-badges"><span class="pc-badge badge-purple">Lithium</span><span class="pc-badge badge-teal">Critical Mineral</span></div>
+          <span class="pc-status status-ongoing" data-en="Ongoing" data-fa="در حال اجرا">Ongoing</span>
+        </div>
+        <div class="pc-body">
+          <div class="pc-meta"><span class="pc-country">🇦🇷 Argentina</span><span class="pc-year">2025</span><span class="pc-class">AACE Class 4</span></div>
+          <h3 data-en="Puna Lithium Brine — Pre-Feasibility Study" data-fa="پیش‌امکان‌سنجی لیتیوم آب‌شور پونا">Puna Lithium Brine — Pre-Feasibility Study</h3>
+          <p class="pc-desc" data-en="Pre-feasibility study for high-purity lithium carbonate production from Puna plateau brine. Covers DLE technology assessment, SOP by-product recovery, and EV battery supply chain analysis." data-fa="پیش‌امکان‌سنجی برای تولید کربنات لیتیوم با خلوص بالا از آب‌شور فلات پونا. شامل ارزیابی فناوری DLE، بازیابی محصول جانبی SOP و تحلیل زنجیره تامین باتری EV.">Pre-feasibility study for high-purity lithium carbonate production from Puna plateau brine. Covers DLE technology assessment, SOP by-product recovery, and EV battery supply chain analysis.</p>
+          <div class="pc-kpis">
+            <div class="pk"><div class="pk-v">$680M</div><div class="pk-l">CAPEX</div></div>
+            <div class="pk"><div class="pk-v">25 ktpa</div><div class="pk-l">LCE Output</div></div>
+            <div class="pk"><div class="pk-v">20 yrs</div><div class="pk-l">LOM</div></div>
+          </div>
+          <div class="pc-tags"><span class="ptag">DLE Technology</span><span class="ptag">Brine</span><span class="ptag">EV Battery</span><span class="ptag">IEA 2025</span></div>
+          <div class="pc-footer">
+            <a href="#" class="pc-lnk" onclick="openModal('p3');return false;" data-en="View Details →" data-fa="مشاهده جزئیات ←">View Details →</a>
+            <span class="pc-aace">±30%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- P4 -->
+      <div class="pc" data-cat="iron" data-name="Pilbara Iron Ore Expansion" data-capex="1100" data-year="2024">
+        <div class="pc-img">
+          <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=700&q=80" alt="Iron Ore" loading="lazy">
+          <div class="pc-overlay"></div>
+          <div class="pc-badges"><span class="pc-badge badge-red">Iron Ore</span><span class="pc-badge badge-blue">Expansion</span></div>
+          <span class="pc-status status-complete" data-en="Completed" data-fa="تکمیل‌شده">Completed</span>
+        </div>
+        <div class="pc-body">
+          <div class="pc-meta"><span class="pc-country">🇦🇺 Australia</span><span class="pc-year">2024</span><span class="pc-class">AACE Class 2</span></div>
+          <h3 data-en="Pilbara Iron Ore Expansion — 240 Mtpa" data-fa="توسعه سنگ آهن پیلبارا — ۲۴۰ میلیون تن در سال">Pilbara Iron Ore Expansion — 240 Mtpa</h3>
+          <p class="pc-desc" data-en="CAPEX/OPEX control estimate for major iron ore mine expansion including crushing, screening, rail infrastructure, and port upgrade. Scope 1/2 carbon reduction roadmap included." data-fa="تخمین کنترل CAPEX/OPEX برای توسعه بزرگ معدن سنگ آهن شامل خردایش، غربال‌بندی، زیرساخت ریلی و ارتقاء بندر. نقشه راه کاهش کربن Scope 1/2 شامل شده.">CAPEX/OPEX control estimate for major iron ore mine expansion including crushing, screening, rail infrastructure, and port upgrade. Scope 1/2 carbon reduction roadmap included.</p>
+          <div class="pc-kpis">
+            <div class="pk"><div class="pk-v">$1.1B</div><div class="pk-l">CAPEX</div></div>
+            <div class="pk"><div class="pk-v">240 Mtpa</div><div class="pk-l">Throughput</div></div>
+            <div class="pk"><div class="pk-v">30 yrs</div><div class="pk-l">LOM</div></div>
+          </div>
+          <div class="pc-tags"><span class="ptag">Crushing</span><span class="ptag">Rail Infra</span><span class="ptag">Port Upgrade</span><span class="ptag">Net Zero</span></div>
+          <div class="pc-footer">
+            <a href="#" class="pc-lnk" onclick="openModal('p4');return false;" data-en="View Details →" data-fa="مشاهده جزئیات ←">View Details →</a>
+            <span class="pc-aace">±15%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- P5 -->
+      <div class="pc" data-cat="nickel" data-name="Nickel Cobalt HPAL" data-capex="920" data-year="2025">
+        <div class="pc-img">
+          <img src="https://www.geologyforinvestors.com/wp-content/uploads/2022/05/heap-leaching.jpg" alt="Nickel HPAL" loading="lazy">
+          <div class="pc-overlay"></div>
+          <div class="pc-badges"><span class="pc-badge badge-teal">Nickel</span><span class="pc-badge badge-purple">HPAL</span></div>
+          <span class="pc-status status-study" data-en="In Study" data-fa="در مطالعه">In Study</span>
+        </div>
+        <div class="pc-body">
+          <div class="pc-meta"><span class="pc-country">🇮🇩 Indonesia</span><span class="pc-year">2025</span><span class="pc-class">AACE Class 3</span></div>
+          <h3 data-en="Sulawesi Nickel-Cobalt HPAL — Bankable BFS" data-fa="BFS بانکی نیکل-کبالت HPAL سولاوسی">Sulawesi Nickel-Cobalt HPAL — Bankable BFS</h3>
+          <p class="pc-desc" data-en="Bankable feasibility study for laterite nickel-cobalt project using HPAL technology. Includes mixed hydroxide precipitate (MHP) refining, EV battery precursor supply chain, and IFC social performance standards." data-fa="مطالعه امکان‌سنجی بانکی برای پروژه نیکل-کبالت لاتریت با فناوری HPAL. شامل تصفیه رسوب هیدروکسید مخلوط (MHP)، زنجیره تامین پیش‌ساز باتری EV و استانداردهای عملکرد اجتماعی IFC.">Bankable feasibility study for laterite nickel-cobalt project using HPAL technology. Includes MHP refining, EV battery precursor supply chain, and IFC social performance standards.</p>
+          <div class="pc-kpis">
+            <div class="pk"><div class="pk-v">$920M</div><div class="pk-l">CAPEX</div></div>
+            <div class="pk"><div class="pk-v">40 ktpa</div><div class="pk-l">Ni Output</div></div>
+            <div class="pk"><div class="pk-v">22 yrs</div><div class="pk-l">LOM</div></div>
+          </div>
+          <div class="pc-tags"><span class="ptag">HPAL</span><span class="ptag">MHP</span><span class="ptag">EV Battery</span><span class="ptag">IFC Standards</span></div>
+          <div class="pc-footer">
+            <a href="#" class="pc-lnk" onclick="openModal('p5');return false;" data-en="View Details →" data-fa="مشاهده جزئیات ←">View Details →</a>
+            <span class="pc-aace">±20%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- P6 -->
+      <div class="pc" data-cat="esg" data-name="Digital Twin Copper Smelter" data-capex="45" data-year="2025">
+        <div class="pc-img">
+          <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=700&q=80" alt="Digital Twin" loading="lazy">
+          <div class="pc-overlay"></div>
+          <div class="pc-badges"><span class="pc-badge badge-purple">Digital Twin</span><span class="pc-badge badge-green">AI/ML</span></div>
+          <span class="pc-status status-complete" data-en="Completed" data-fa="تکمیل‌شده">Completed</span>
+        </div>
+        <div class="pc-body">
+          <div class="pc-meta"><span class="pc-country">🇮🇷 Iran</span><span class="pc-year">2025</span><span class="pc-class">Digital</span></div>
+          <h3 data-en="AI Digital Twin — Copper Smelter OPEX Reduction" data-fa="دوقلوی دیجیتال هوش مصنوعی — کاهش OPEX کوره ذوب مس">AI Digital Twin — Copper Smelter OPEX Reduction</h3>
+          <p class="pc-desc" data-en="Full Digital Twin implementation for 400 ktpa copper smelter. AI predictive maintenance reduced unplanned downtime by 22%. Energy optimization module cut power consumption by 14%. ROI achieved in 8 months." data-fa="پیاده‌سازی کامل دوقلوی دیجیتال برای کوره ذوب مس ۴۰۰ هزار تن در سال. نگهداری پیش‌بینانه هوش مصنوعی توقفات برنامه‌ریزی‌نشده را ۲۲٪ کاهش داد. ماژول بهینه‌سازی انرژی مصرف برق را ۱۴٪ کاهش داد.">Full Digital Twin implementation for 400 ktpa copper smelter. AI predictive maintenance reduced unplanned downtime by 22%. Energy optimization cut power consumption by 14%. ROI achieved in 8 months.</p>
+          <div class="pc-kpis">
+            <div class="pk"><div class="pk-v">22%</div><div class="pk-l" data-en="Downtime ↓" data-fa="توقف ↓">Downtime ↓</div></div>
+            <div class="pk"><div class="pk-v">14%</div><div class="pk-l" data-en="Energy ↓" data-fa="انرژی ↓">Energy ↓</div></div>
+            <div class="pk"><div class="pk-v">8 mo</div><div class="pk-l">ROI</div></div>
+          </div>
+          <div class="pc-tags"><span class="ptag">Digital Twin</span><span class="ptag">AI/ML</span><span class="ptag">Predictive Maint.</span><span class="ptag">SCADA</span></div>
+          <div class="pc-footer">
+            <a href="#" class="pc-lnk" onclick="openModal('p6');return false;" data-en="View Details →" data-fa="مشاهده جزئیات ←">View Details →</a>
+            <span class="pc-aace">Digital</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- P7 -->
+      <div class="pc" data-cat="gold" data-name="Central Asian Gold Underground" data-capex="310" data-year="2023">
+        <div class="pc-img">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&q=80" alt="Underground Gold" loading="lazy">
+          <div class="pc-overlay"></div>
+          <div class="pc-badges"><span class="pc-badge badge-gold">Gold</span><span class="pc-badge badge-blue">Underground</span></div>
+          <span class="pc-status status-complete" data-en="Completed" data-fa="تکمیل‌شده">Completed</span>
+      <div class="pc" data-cat="gold" data-name="Central Asian Gold Underground" data-capex="310" data-year="2023">
+        <div class="pc-img">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&q=80" alt="Underground Gold" loading="lazy">
+          <div class="pc-overlay"></div>
+          <div class="pc-badges"><span class="pc-badge badge-gold">Gold</span><span class="pc-badge badge-blue">Underground</span></div>
+          <span class="pc-status status-complete" data-en="Completed" data-fa="تکمیل‌شده">Completed</span>
+        </div>
+        <div class="pc-body">
+          <div class="pc-meta"><span class="pc-country">🇰🇿 Kazakhstan</span><span class="pc-year">2023</span><span class="pc-class">AACE Class 3</span></div>
+          <h3 data-en="Altai Underground Gold — Cut & Fill BFS" data-fa="طلای زیرزمینی آلتای — BFS Cut & Fill">Altai Underground Gold — Cut & Fill BFS</h3>
+          <p class="pc-desc" data-en="Bankable feasibility for 1.2 Mtpa underground gold mine using cut-and-fill stoping. Includes ventilation design, paste backfill plant, and JORC-compliant resource model with 3.1 Moz Au." data-fa="امکان‌سنجی بانکی برای معدن طلای زیرزمینی ۱.۲ میلیون تن در سال با روش Cut & Fill. شامل طراحی تهویه، کارخانه پرکردن خمیری و مدل منابع منطبق با JORC با ۳.۱ میلیون اونس طلا.">Bankable feasibility for 1.2 Mtpa underground gold mine using cut-and-fill stoping. Includes ventilation design, paste backfill plant, and JORC-compliant resource model with 3.1 Moz Au.</p>
+          <div class="pc-kpis">
+            <div class="pk"><div class="pk-v">$310M</div><div class="pk-l">CAPEX</div></div>
+            <div class="pk"><div class="pk-v">3.1 Moz</div><div class="pk-l">Au Resource</div></div>
+            <div class="pk"><div class="pk-v">15 yrs</div><div class="pk-l">LOM</div></div>
+          </div>
+          <div class="pc-tags"><span class="ptag">Cut & Fill</span><span class="ptag">JORC</span><span class="ptag">Paste Backfill</span><span class="ptag">Ventilation</span></div>
+          <div class="pc-footer">
+            <a href="#" class="pc-lnk" onclick="openModal('p7');return false;" data-en="View Details →" data-fa="مشاهده جزئیات ←">View Details →</a>
+            <span class="pc-aace">±20%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- P8 -->
+      <div class="pc" data-cat="esg" data-name="ESG Green Loan Advisory" data-capex="200" data-year="2024">
+        <div class="pc-img">
+          <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=700&q=80" alt="ESG Green Finance" loading="lazy">
+          <div class="pc-overlay"></div>
+          <div class="pc-badges"><span class="pc-badge badge-green">ESG</span><span class="pc-badge badge-teal">Green Finance</span></div>
+          <span class="pc-status status-complete" data-en="Completed" data-fa="تکمیل‌شده">Completed</span>
+        </div>
+        <div class="pc-body">
+          <div class="pc-meta"><span class="pc-country">🇨🇱 Chile</span><span class="pc-year">2024</span><span class="pc-class">ESG Advisory</span></div>
+          <h3 data-en="$200M Green Loan Advisory — Net Zero Roadmap" data-fa="مشاوره وام سبز ۲۰۰ میلیون دلاری — نقشه راه Net Zero">$200M Green Loan Advisory — Net Zero Roadmap</h3>
+          <p class="pc-desc" data-en="Comprehensive ESG strategy and GRI/TCFD reporting package that secured a $200M green loan at 40bps below market rate. Scope 1/2/3 carbon footprint assessment, Net Zero 2040 roadmap, and IFC Performance Standards compliance." data-fa="استراتژی جامع ESG و بسته گزارش‌دهی GRI/TCFD که وام سبز ۲۰۰ میلیون دلاری با ۴۰ واحد پایه زیر نرخ بازار را تأمین کرد. ارزیابی ردپای کربن Scope 1/2/3 و نقشه راه Net Zero 2040.">Comprehensive ESG strategy and GRI/TCFD reporting package that secured a $200M green loan at 40bps below market rate. Scope 1/2/3 carbon footprint assessment and Net Zero 2040 roadmap.</p>
+          <div class="pc-kpis">
+            <div class="pk"><div class="pk-v">$200M</div><div class="pk-l">Green Loan</div></div>
+            <div class="pk"><div class="pk-v">40bps</div><div class="pk-l" data-en="Below Market" data-fa="زیر بازار">Below Market</div></div>
+            <div class="pk"><div class="pk-v">2040</div><div class="pk-l">Net Zero</div></div>
+          </div>
+          <div class="pc-tags"><span class="ptag">GRI/TCFD</span><span class="ptag">Scope 1/2/3</span><span class="ptag">Net Zero</span><span class="ptag">IFC Standards</span></div>
+          <div class="pc-footer">
+            <a href="#" class="pc-lnk" onclick="openModal('p8');return false;" data-en="View Details →" data-fa="مشاهده جزئیات ←">View Details →</a>
+            <span class="pc-aace">ESG</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- P9 -->
+      <div class="pc" data-cat="copper" data-name="Iran Copper Heap Leach" data-capex="290" data-year="2023">
+        <div class="pc-img">
+          <img src="https://www.ramenvalves.com/wp-content/uploads/2024/11/Mineral-Processing-Aitik.jpg" alt="Heap Leach" loading="lazy">
+          <div class="pc-overlay"></div>
+          <div class="pc-badges"><span class="pc-badge badge-blue">Copper</span><span class="pc-badge badge-teal">Heap Leach</span></div>
+          <span class="pc-status status-complete" data-en="Completed" data-fa="تکمیل‌شده">Completed</span>
+        </div>
+        <div class="pc-body">
+          <div class="pc-meta"><span class="pc-country">🇮🇷 Iran</span><span class="pc-year">2023</span><span class="pc-class">AACE Class 3</span></div>
+          <h3 data-en="Kerman Copper Heap Leach — SX-EW BFS" data-fa="Heap Leach مس کرمان — BFS SX-EW">Kerman Copper Heap Leach — SX-EW BFS</h3>
+          <p class="pc-desc" data-en="Bankable feasibility study for 30 ktpd heap leach copper operation with SX-EW cathode production. Estimate accuracy within 12% of final EPC contract value — exceptional Class 3 performance." data-fa="مطالعه امکان‌سنجی بانکی برای عملیات Heap Leach مس ۳۰ هزار تن در روز با تولید کاتد SX-EW. دقت تخمین در محدوده ۱۲٪ از ارزش نهایی قرارداد EPC.">Bankable feasibility study for 30 ktpd heap leach copper operation with SX-EW cathode production. Estimate accuracy within 12% of final EPC contract value — exceptional Class 3 performance.</p>
+          <div class="pc-kpis">
+            <div class="pk"><div class="pk-v">$290M</div><div class="pk-l">CAPEX</div></div>
+            <div class="pk"><div class="pk-v">30 ktpd</div><div class="pk-l">Throughput</div></div>
+            <div class="pk"><div class="pk-v">±12%</div><div class="pk-l" data-en="Accuracy" data-fa="دقت">Accuracy</div></div>
+          </div>
+          <div class="pc-tags"><span class="ptag">Heap Leach</span><span class="ptag">SX-EW</span><span class="ptag">Cathode</span><span class="ptag">AACE Class 3</span></div>
+          <div class="pc-footer">
+            <a href="#" class="pc-lnk" onclick="openModal('p9');return false;" data-en="View Details →" data-fa="مشاهده جزئیات ←">View Details →</a>
+            <span class="pc-aace">±20%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- P10 -->
+      <div class="pc" data-cat="lithium" data-name="Andean Lithium Spodumene" data-capex="540" data-year="2025">
+        <div class="pc-img">
+          <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=700&q=80" alt="Lithium Spodumene" loading="lazy">
+          <div class="pc-overlay"></div>
+          <div class="pc-badges"><span class="pc-badge badge-purple">Lithium</span><span class="pc-badge badge-green">Spodumene</span></div>
+          <span class="pc-status status-study" data-en="In Study" data-fa="در مطالعه">In Study</span>
+        </div>
+        <div class="pc-body">
+          <div class="pc-meta"><span class="pc-country">🇧🇷 Brazil</span><span class="pc-year">2025</span><span class="pc-class">AACE Class 4</span></div>
+          <h3 data-en="Minas Gerais Spodumene — Pre-Feasibility" data-fa="پیش‌امکان‌سنجی اسپودومن مینا جرایس">Minas Gerais Spodumene — Pre-Feasibility</h3>
+          <p class="pc-desc" data-en="Pre-feasibility study for hard-rock lithium spodumene project with DMS and flotation processing to 6% Li₂O concentrate. Includes renewable energy integration and community engagement framework." data-fa="پیش‌امکان‌سنجی برای پروژه لیتیوم اسپودومن سنگ سخت با پردازش DMS و فلوتاسیون به کنسانتره ۶٪ Li₂O. شامل یکپارچه‌سازی انرژی تجدیدپذیر و چارچوب مشارکت جامعه.">Pre-feasibility study for hard-rock lithium spodumene project with DMS and flotation processing to 6% Li₂O concentrate. Includes renewable energy integration and community engagement framework.</p>
+          <div class="pc-kpis">
+            <div class="pk"><div class="pk-v">$540M</div><div class="pk-l">CAPEX</div></div>
+            <div class="pk"><div class="pk-v">3 Mtpa</div><div class="pk-l">Throughput</div></div>
+            <div class="pk"><div class="pk-v">18 yrs</div><div class="pk-l">LOM</div></div>
+          </div>
+          <div class="pc-tags"><span class="ptag">Spodumene</span><span class="ptag">DMS</span><span class="ptag">Flotation</span><span class="ptag">Renewable Energy</span></div>
+          <div class="pc-footer">
+            <a href="#" class="pc-lnk" onclick="openModal('p10');return false;" data-en="View Details →" data-fa="مشاهده جزئیات ←">View Details →</a>
+            <span class="pc-aace">±30%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- P11 -->
+      <div class="pc" data-cat="nickel" data-name="Nickel Laterite DSO" data-capex="180" data-year="2024">
+        <div class="pc-img">
+          <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=700&q=80" alt="Nickel Laterite" loading="lazy">
+          <div class="pc-overlay"></div>
+          <div class="pc-badges"><span class="pc-badge badge-teal">Nickel</span><span class="pc-badge badge-blue">Laterite</span></div>
+          <span class="pc-status status-complete" data-en="Completed" data-fa="تکمیل‌شده">Completed</span>
+        </div>
+        <div class="pc-body">
+          <div class="pc-meta"><span class="pc-country">🇵🇭 Philippines</span><span class="pc-year">2024</span><span class="pc-class">AACE Class 4</span></div>
+          <h3 data-en="Palawan Nickel Laterite — DSO Screening Study" data-fa="مطالعه غربالگری لاتریت نیکل پالاوان — DSO">Palawan Nickel Laterite — DSO Screening Study</h3>
+          <p class="pc-desc" data-en="Class 4 pre-feasibility for direct shipping ore (DSO) nickel laterite operation. Covers mining, crushing, stockpile, and port infrastructure. Environmental permitting pathway and social impact assessment included." data-fa="پیش‌امکان‌سنجی کلاس ۴ برای عملیات سنگ معدن حمل مستقیم (DSO) لاتریت نیکل. شامل استخراج، خردایش، انبار و زیرساخت بندری. مسیر مجوز زیست‌محیطی و ارزیابی تأثیر اجتماعی.">Class 4 pre-feasibility for direct shipping ore (DSO) nickel laterite operation. Covers mining, crushing, stockpile, and port infrastructure. Environmental permitting pathway and social impact assessment included.</p>
+          <div class="pc-kpis">
+            <div class="pk"><div class="pk-v">$180M</div><div class="pk-l">CAPEX</div></div>
+            <div class="pk"><div class="pk-v">5 Mtpa</div><div class="pk-l">DSO Output</div></div>
+            <div class="pk"><div class="pk-v">10 yrs</div><div class="pk-l">LOM</div></div>
+          </div>
+          <div class="pc-tags"><span class="ptag">DSO</span><span class="ptag">Laterite</span><span class="ptag">Port Infra</span><span class="ptag">EIA</span></div>
+          <div class="pc-footer">
+            <a href="#" class="pc-lnk" onclick="openModal('p11');return false;" data-en="View Details →" data-fa="مشاهده جزئیات ←">View Details →</a>
+            <span class="pc-aace">±30%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- P12 -->
+      <div class="pc" data-cat="esg" data-name="Solar Hybrid Mine Power" data-capex="95" data-year="2025">
+        <div class="pc-img">
+          <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=700&q=80" alt="Solar Mine Power" loading="lazy">
+          <div class="pc-overlay"></div>
+          <div class="pc-badges"><span class="pc-badge badge-green">Renewable</span><span class="pc-badge badge-gold">Solar/BESS</span></div>
+          <span class="pc-status status-complete" data-en="Completed" data-fa="تکمیل‌شده">Completed</span>
+        </div>
+        <div class="pc-body">
+          <div class="pc-meta"><span class="pc-country">🇿🇦 South Africa</span><span class="pc-year">2025</span><span class="pc-class">Energy Study</span></div>
+          <h3 data-en="Limpopo Mine Solar-BESS Hybrid — 45 MW" data-fa="هیبرید خورشیدی-BESS معدن لیمپوپو — ۴۵ مگاوات">Limpopo Mine Solar-BESS Hybrid — 45 MW</h3>
+          <p class="pc-desc" data-en="Full LCOE study and CAPEX estimate for 45 MW solar PV + 20 MWh BESS hybrid power system replacing diesel generation at remote platinum mine. 35% energy cost reduction achieved. Scope 1 emissions cut by 28%." data-fa="مطالعه کامل LCOE و تخمین CAPEX برای سیستم برق هیبریدی ۴۵ مگاوات خورشیدی + ۲۰ مگاوات ساعت BESS جایگزین تولید دیزل در معدن پلاتین دورافتاده. کاهش ۳۵٪ هزینه انرژی. کاهش ۲۸٪ انتشار Scope 1.">Full LCOE study and CAPEX estimate for 45 MW solar PV + 20 MWh BESS hybrid power system replacing diesel generation at remote platinum mine. 35% energy cost reduction. Scope 1 emissions cut by 28%.</p>
+          <div class="pc-kpis">
+            <div class="pk"><div class="pk-v">$95M</div><div class="pk-l">CAPEX</div></div>
+            <div class="pk"><div class="pk-v">35%</div><div class="pk-l" data-en="Energy Saving" data-fa="صرفه‌جویی انرژی">Energy Saving</div></div>
+            <div class="pk"><div class="pk-v">28%</div><div class="pk-l" data-en="CO₂ Reduction" data-fa="کاهش CO₂">CO₂ Reduction</div></div>
+          </div>
+          <div class="pc-tags"><span class="ptag">Solar PV</span><span class="ptag">BESS</span><span class="ptag">LCOE</span><span class="ptag">Scope 1 Reduction</span></div>
+          <div class="pc-footer">
+            <a href="#" class="pc-lnk" onclick="openModal('p12');return false;" data-en="View Details →" data-fa="مشاهده جزئیات ←">View Details →</a>
+            <span class="pc-aace">Energy</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /pg -->
+  </div><!-- /portfolio-inner -->
+</section>
+
+<!-- ═══ PROJECT DETAIL MODAL ═══ -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+  <div class="modal" id="modalBox">
+    <div class="modal-img">
+      <img id="modalImg" src="" alt="">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div id="modalBadges" style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px"></div>
+      <h2 id="modalTitle"></h2>
+      <div class="modal-meta" id="modalMeta"></div>
+      <div class="modal-kpis" id="modalKpis"></div>
+      <div class="modal-section">
+        <h4 data-en="Project Overview" data-fa="مرور پروژه">Project Overview</h4>
+        <p id="modalDesc"></p>
+      </div>
+      <div class="modal-section">
+        <h4 data-en="Key Deliverables" data-fa="تحویلی‌های کلیدی">Key Deliverables</h4>
+        <ul id="modalDeliverables"></ul>
+      </div>
+      <div class="modal-section">
+        <h4 data-en="KDMine Services Applied" data-fa="خدمات KDMine اعمال‌شده">KDMine Services Applied</h4>
+        <div id="modalServices" style="display:flex;gap:6px;flex-wrap:wrap"></div>
+      </div>
+      <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap">
+        <a href="contact.html" style="background:linear-gradient(135deg,#1a56db,#1d4ed8);color:#fff;padding:12px 24px;border-radius:50px;font-weight:700;font-size:.88rem;display:inline-flex;align-items:center;gap:7px" data-en="📋 Request Similar Study →" data-fa="📋 درخواست مطالعه مشابه ←">📋 Request Similar Study →</a>
+        <button onclick="closeModal()" style="background:#f8fafc;color:#334155;padding:12px 24px;border-radius:50px;font-weight:700;font-size:.88rem;border:1.5px solid #e2e8f0;cursor:pointer" data-en="← Back to Portfolio" data-fa="← بازگشت به پورتفولیو">← Back to Portfolio</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="cta-sec">
+  <div class="cta-in">
+    <div class="stag" data-en="Start Your Project" data-fa="پروژه خود را شروع کنید">Start Your Project</div>
+    <h2 data-en="Ready to Add Your Project to Our Portfolio?" data-fa="آماده‌اید پروژه خود را به پورتفولیوی ما اضافه کنید؟">Ready to Add Your Project to Our Portfolio?</h2>
+    <p data-en="Join 150+ global mining companies that trust KDMine Group for precision AACE-compliant estimates, bankable feasibility studies, and ESG strategies." data-fa="به ۱۵۰+ شرکت معدنی جهانی بپیوندید که به KDMine Group برای تخمین‌های دقیق منطبق با AACE، مطالعات امکان‌سنجی بانکی و استراتژی‌های ESG اعتماد می‌کنند.">Join 150+ global mining companies that trust KDMine Group for precision AACE-compliant estimates, bankable feasibility studies, and ESG strategies.</p>
+    <div class="cta-acts">
+      <a href="contact.html" class="bcp">📋 <span data-en="Request a Proposal →" data-fa="درخواست پیشنهاد ←">Request a Proposal →</span></a>
+      <a href="register.html" class="bco">🚀 <span data-en="Start Free Trial" data-fa="شروع آزمایش رایگان">Start Free Trial</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-in">
+    <div>
+      <div style="display:flex;align-items:center;gap:12px">
+        <img src="https://cdn.grapesjs.com/workspaces/cmgvbwak408ja13nsemkia83b/assets/7e057c43-5d96-4c3a-a8fc-8bd5f6589a93__kavianpremiumbadgelogo.svg" alt="KDMine" style="width:44px;height:44px;border-radius:10px">
+        <div><div style="font-size:1.1rem;font-weight:800;color:#fff" data-en="KDMine Group" data-fa="کاویان توسعه معدن">KDMine Group</div><div style="font-size:.7rem;color:rgba(255,255,255,.45);font-weight:600">Mining Engineering & Economics</div></div>
+      </div>
+      <p class="fb-desc" data-en="Data-driven mining engineering platform — from feasibility to ESG and AI, for global mining projects." data-fa="پلتفرم مهندسی معدن داده‌محور — از امکان‌سنجی تا ESG و هوش مصنوعی.">Data-driven mining engineering platform — from feasibility to ESG and AI, for global mining projects.</p>
+      <div class="fb-socs"><a href="#" class="fb-s">in</a><a href="#" class="fb-s">𝕏</a><a href="#" class="fb-s">▶</a><a href="#" class="fb-s">✉</a></div>
+    </div>
+    <div class="fc-ft"><h4>Engineering</h4>
+      <a href="services/feasibility.html">Feasibility Studies</a>
+      <a href="services/plant-design.html">Plant Design</a>
+      <a href="services/geotechnical.html">Geotechnical</a>
+      <a href="services/hydrometallurgy.html">Hydrometallurgy</a>
+    </div>
+    <div class="fc-ft"><h4>Economics</h4>
+      <a href="services/cost-estimation.html">CAPEX/OPEX</a>
+      <a href="services/economic-modelling.html">Financial Modelling</a>
+      <a href="services/risk-analysis.html">Risk Analysis</a>
+      <a href="services/market-intelligence.html">Market Intelligence</a>
+    </div>
+    <div class="fc-ft"><h4>ESG & Digital</h4>
+      <a href="services/esg-decarbonization.html">ESG & Decarbonization</a>
+      <a href="services/digital-mining.html">Digital Mining & AI</a>
+      <a href="services/critical-minerals.html">Critical Minerals</a>
+    </div>
+    <div class="fc-ft"><h4>Company</h4>
+      <a href="about.html">About Us</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="blog.html">Blog & Insights</a>
+      <a href="contact.html">Contact</a>
+      <a href="register.html">Free Registration</a>
+    </div>
+  </div>
+  <div class="footer-bot">
+    <span data-en="© 2026 KDMine Group. All rights reserved." data-fa="© ۲۰۲۶ کاویان توسعه معدن. تمامی حقوق محفوظ است.">© 2026 KDMine Group. All rights reserved.</span>
+    <div class="fb-lnks"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="sitemap.html">Sitemap</a></div>
+  </div>
+</footer>
+
+<!-- ═══ JAVASCRIPT ═══ -->
+<script>
+/* ── LANG ── */
+let lang='en';
+function applyLang(l){lang=l;const fa=l==='fa';document.documentElement.setAttribute('lang',l);document.documentElement.setAttribute('dir',fa?'rtl':'ltr');document.body.style.fontFamily=fa?"'B Nazanin',Tahoma,Arial,sans-serif":"'Segoe UI',system-ui,sans-serif";document.getElementById('lt-txt').textContent=fa?'EN | English':'FA | فارسی';document.querySelectorAll('[data-en][data-fa]').forEach(el=>{const v=el.getAttribute('data-'+l);if(v!==null){if(el.tagName==='INPUT'||el.tagName==='TEXTAREA')el.placeholder=v;else if(el.tagName==='OPTION')el.textContent=v;else el.innerHTML=v;}});try{localStorage.setItem('kdmine_lang',l);}catch(e){}}
+function tgLang(){applyLang(lang==='en'?'fa':'en');}
+window.addEventListener('DOMContentLoaded',()=>{try{const s=localStorage.getItem('kdmine_lang');if(s&&s!=='en')applyLang(s);}catch(e){}});
+
+/* ── MENU ── */
+function tgMenu(){const nav=document.getElementById('mainNav');const o=nav.classList.toggle('open');const sp=document.querySelectorAll('.mbt span');sp[0].style.transform=o?'translateY(7px) rotate(45deg)':'';sp[1].style.opacity=o?'0':'1';sp[2].style.transform=o?'translateY(-7px) rotate(-45deg)':'';}
+document.addEventListener('click',e=>{const nav=document.getElementById('mainNav');const btn=document.querySelector('.mbt');if(nav&&btn&&!nav.contains(e.target)&&!btn.contains(e.target)){nav.classList.remove('open');document.querySelectorAll('.mbt span').forEach(s=>{s.style.transform='';s.style.opacity='1';});}});
+window.addEventListener('scroll',()=>{const s=document.getElementById('sttBtn');if(s)s.classList.toggle('vis',window.scrollY>400);});
+
+/* ── PROJECT DATA ── */
+const PROJECTS={
+  p1:{
+    title:'Atacama Copper Project — Class 2 Control Estimate',
+    title_fa:'پروژه مس آتاکاما — تخمین کنترل کلاس ۲',
+    img:'https://thumbs.dreamstime.com/b/aerial-view-massive-open-pit-copper-mine-industrial-terraces-extraction-operations-large-trucks-navigate-roads-deep-395303962.jpg',
+    country:'🇨🇱 Chile',year:'2025',aace:'AACE Class 2',status:'Completed',
+    kpis:[{v:'$850M',l:'Total CAPEX'},{v:'85 ktpd',l:'Throughput'},{v:'18 yrs',l:'Mine Life'},{v:'±15%',l:'Accuracy'}],
+    desc:'Definitive CAPEX/OPEX control estimate for 85 ktpd open pit copper mine with flotation plant, tailings storage facility (TSF), and 35 MW solar hybrid power system. Estimate was within ±13% of final EPC tender prices.',
+    desc_fa:'تخمین کنترل قطعی CAPEX/OPEX برای معدن مس روباز ۸۵ هزار تن در روز با کارخانه فلوتاسیون، مخزن باطله (TSF) و سیستم برق هیبریدی خورشیدی ۳۵ مگاوات.',
+    deliverables:['Class 2 CAPEX/OPEX estimate report','Equipment list with 2025 CostMine pricing','TSF design and cost breakdown','Solar-BESS hybrid power LCOE study','Monte Carlo P80 contingency analysis','AACE 47R-11 compliance certificate'],
+    services:['CAPEX/OPEX Estimation','Equipment Selection','TSF Design','Renewable Energy','Monte Carlo Simulation']
+  },
+  p2:{
+    title:'West African Gold BFS — CIL Processing Plant',
+    title_fa:'BFS طلای غرب آفریقا — کارخانه CIL',
+    img:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&q=80',
+    country:'🇬🇭 Ghana',year:'2024',aace:'AACE Class 3',status:'Completed',
+    kpis:[{v:'$420M',l:'Total CAPEX'},{v:'5 Mtpa',l:'Throughput'},{v:'12 yrs',l:'Mine Life'},{v:'2.1 Moz',l:'Au Resource'}],
+    desc:'Bankable feasibility study for 5 Mtpa open pit gold mine with CIL processing circuit. Includes NI 43-101 compliant resource estimate, full LOM schedule, ESG baseline assessment, and financial model with NPV/IRR sensitivity analysis.',
+    desc_fa:'مطالعه امکان‌سنجی بانکی برای معدن طلای روباز ۵ میلیون تن در سال با مدار پردازش CIL. شامل تخمین منابع منطبق با NI 43-101، برنامه کامل LOM، ارزیابی پایه ESG و مدل مالی با تحلیل حساسیت NPV/IRR.',
+    deliverables:['NI 43-101 compliant resource estimate','Bankable BFS report (Class 3)','CIL circuit design and mass balance','LOM production schedule','Financial model (DCF/NPV/IRR)','ESG baseline and permitting roadmap'],
+    services:['Feasibility Studies','Plant Design','Financial Modelling','ESG Strategy','Risk Analysis']
+  },
+  p3:{
+    title:'Puna Lithium Brine — Pre-Feasibility Study',
+    title_fa:'پیش‌امکان‌سنجی لیتیوم آب‌شور پونا',
+    img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80',
+    country:'🇦🇷 Argentina',year:'2025',aace:'AACE Class 4',status:'Ongoing',
+    kpis:[{v:'$680M',l:'Est. CAPEX'},{v:'25 ktpa',l:'LCE Output'},{v:'20 yrs',l:'Mine Life'},{v:'±30%',l:'Accuracy'}],
+    desc:'Pre-feasibility study for high-purity lithium carbonate production from Puna plateau brine using Direct Lithium Extraction (DLE) technology. Covers SOP by-product recovery, EV battery supply chain analysis, and IEA Critical Minerals 2025 market assessment.',
+    desc_fa:'پیش‌امکان‌سنجی برای تولید کربنات لیتیوم با خلوص بالا از آب‌شور فلات پونا با فناوری استخراج مستقیم لیتیوم (DLE). شامل بازیابی محصول جانبی SOP، تحلیل زنجیره تامین باتری EV و ارزیابی بازار مواد معدنی حیاتی IEA 2025.',
+    deliverables:['DLE technology assessment and selection','Class 4 CAPEX/OPEX estimate','Lithium carbonate process design','EV battery supply chain analysis','IEA Critical Minerals market report','Environmental and social baseline'],
+    services:['Critical Minerals','Plant Design','CAPEX/OPEX Estimation','Market Intelligence','ESG Strategy']
+  },
+  p4:{
+    title:'Pilbara Iron Ore Expansion — 240 Mtpa',
+    title_fa:'توسعه سنگ آهن پیلبارا — ۲۴۰ میلیون تن در سال',
+    img:'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=700&q=80',
+    country:'🇦🇺 Australia',year:'2024',aace:'AACE Class 2',status:'Completed',
+    kpis:[{v:'$1.1B',l:'Total CAPEX'},{v:'240 Mtpa',l:'Throughput'},{v:'30 yrs',l:'Mine Life'},{v:'Net Zero',l:'2040 Target'}],
+    desc:'CAPEX/OPEX control estimate for major iron ore mine expansion including primary/secondary crushing, wet screening, 180 km rail infrastructure upgrade, and Pilbara port capacity expansion. Scope 1/2 carbon reduction roadmap and Net Zero 2040 strategy included.',
+    desc_fa:'تخمین کنترل CAPEX/OPEX برای توسعه بزرگ معدن سنگ آهن شامل خردایش اولیه/ثانویه، غربال‌بندی مرطوب، ارتقاء زیرساخت ریلی ۱۸۰ کیلومتری و توسعه ظرفیت بندر پیلبارا.',
+    deliverables:['Class 2 CAPEX/OPEX control estimate','Rail and port infrastructure cost model','Crushing and screening plant design','Net Zero 2040 decarbonization roadmap','Scope 1/2/3 carbon footprint assessment','AACE 47R-11 compliance documentation'],
+    services:['CAPEX/OPEX Estimation','ESG & Decarbonization','Plant Design','EPC Procurement','Financial Modelling']
+  },
+  p5:{
+    title:'Sulawesi Nickel-Cobalt HPAL — Bankable BFS',
+    title_fa:'BFS بانکی نیکل-کبالت HPAL سولاوسی',
+    img:'https://www.geologyforinvestors.com/wp-content/uploads/2022/05/heap-leaching.jpg',
+    country:'🇮🇩 Indonesia',year:'2025',aace:'AACE Class 3',status:'In Study',
+    kpis:[{v:'$920M',l:'Est. CAPEX'},{v:'40 ktpa',l:'Ni Output'},{v:'22 yrs',l:'Mine Life'},{v:'MHP',l:'Product'}],
+    desc:'Bankable feasibility study for laterite nickel-cobalt project using High Pressure Acid Leach (HPAL) technology producing Mixed Hydroxide Precipitate (MHP) for EV battery precursor market. Includes IFC Performance Standards social assessment and FPIC process for local communities.',
+    desc_fa:'مطالعه امکان‌سنجی بانکی برای پروژه نیکل-کبالت لاتریت با فناوری HPAL تولیدکننده MHP برای بازار پیش‌ساز باتری EV. شامل ارزیابی اجتماعی استانداردهای IFC و فرآیند FPIC برای جوامع محلی.',
+    deliverables:['HPAL process design and mass balance','Class 3 bankable CAPEX/OPEX estimate','MHP product specification and market study','IFC Performance Standards social assessment','FPIC community engagement framework','EV battery supply chain integration plan'],
+    services:['Feasibility Studies','Hydrometallurgy','Critical Minerals','Social Performance','Market Intelligence']
+  },
+  p6:{
+    title:'AI Digital Twin — Copper Smelter OPEX Reduction',
+    title_fa:'دوقلوی دیجیتال هوش مصنوعی — کاهش OPEX کوره ذوب مس',
+    img:'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=700&q=80',
+    country:'🇮🇷 Iran',year:'2025',aace:'Digital Implementation',status:'Completed',
+    kpis:[{v:'22%',l:'Downtime Reduction'},{v:'14%',l:'Energy Saving'},{v:'8 mo',l:'ROI Period'},{v:'$12M',l:'Annual Saving'}],
+    desc:'Full Digital Twin implementation for 400 ktpa copper smelter. AI-powered predictive maintenance system reduced unplanned downtime by 22% in year 1. Energy optimization ML module cut power consumption by 14%. Real-time SCADA integration with IoT sensor network of 2,400+ data points.',
+    desc_fa:'پیاده‌سازی کامل دوقلوی دیجیتال برای کوره ذوب مس ۴۰۰ هزار تن در سال. سیستم نگهداری پیش‌بینانه مبتنی بر هوش مصنوعی توقفات برنامه‌ریزی‌نشده را ۲۲٪ کاهش داد. ماژول ML بهینه‌سازی انرژی مصرف برق را ۱۴٪ کاهش داد.',
+    deliverables:['Digital Twin platform deployment','AI predictive maintenance model','Energy optimization ML algorithm','SCADA/IoT integration (2,400+ sensors)','Real-time dashboard and reporting','12-month performance validation report'],
+    services:['Digital Mining & AI','Digital Twin','SCADA Integration','Predictive Maintenance','Energy Optimization']
+  },
+  p7:{
+    title:'Altai Underground Gold — Cut & Fill BFS',
+    title_fa:'طلای زیرزمینی آلتای — BFS Cut & Fill',
+    img:'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&q=80',
+    country:'🇰🇿 Kazakhstan',year:'2023',aace:'AACE Class 3',status:'Completed',
+    kpis:[{v:'$310M',l:'Total CAPEX'},{v:'3.1 Moz',l:'Au Resource'},{v:'15 yrs',l:'Mine Life'},{v:'1.2 Mtpa',l:'Throughput'}],
+    desc:'Bankable feasibility for 1.2 Mtpa underground gold mine using cut-and-fill stoping with paste backfill. Includes ventilation network design, shaft sinking cost model, JORC-compliant resource model, and full LOM production schedule with NPV optimization.',
+    desc_fa:'امکان‌سنجی بانکی برای معدن طلای زیرزمینی ۱.۲ میلیون تن در سال با روش Cut & Fill و پرکردن خمیری. شامل طراحی شبکه تهویه، مدل هزینه حفاری شفت، مدل منابع JORC و برنامه کامل تولید LOM.',
+    deliverables:['JORC-compliant resource model','Underground mine design (Cut & Fill)','Paste backfill plant design','Ventilation network design','Class 3 bankable CAPEX/OPEX','LOM schedule with NPV optimization'],
+    services:['Feasibility Studies','Geotechnical & Mine Design','Financial Modelling','Risk Analysis','CAPEX/OPEX Estimation']
+  },
+  p8:{
+    title:'$200M Green Loan Advisory — Net Zero Roadmap',
+    title_fa:'مشاوره وام سبز ۲۰۰ میلیون دلاری — نقشه راه Net Zero',
+    img:'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=700&q=80',
+    country:'🇨🇱 Chile',year:'2024',aace:'ESG Advisory',status:'Completed',
+    kpis:[{v:'$200M',l:'Green Loan Secured'},{v:'40bps',l:'Below Market Rate'},{v:'2040',l:'Net Zero Target'},{v:'Scope 1/2/3',l:'Carbon Assessed'}],
+    desc:'Comprehensive ESG strategy and GRI/TCFD reporting package that secured a $200M green loan at 40 basis points below market rate. Full Scope 1/2/3 carbon footprint assessment, Net Zero 2040 roadmap with milestones, and IFC Performance Standards compliance package for lender due diligence.',
+    desc_fa:'استراتژی جامع ESG و بسته گزارش‌دهی GRI/TCFD که وام سبز ۲۰۰ میلیون دلاری با ۴۰ واحد پایه زیر نرخ بازار را تأمین کرد. ارزیابی کامل ردپای کربن Scope 1/2/3 و نقشه راه Net Zero 2040.',
+    deliverables:['GRI Standards ESG report','TCFD climate risk disclosure','Scope 1/2/3 carbon footprint assessment','Net Zero 2040 roadmap with milestones','IFC Performance Standards compliance package','Green loan framework documentation'],
+    services:['ESG & Decarbonization','Carbon Footprint Assessment','GRI/TCFD Reporting','Net Zero Strategy','Green Finance Advisory']
+  },
+  p9:{
+    title:'Kerman Copper Heap Leach — SX-EW BFS',
+    title_fa:'Heap Leach مس کرمان — BFS SX-EW',
+    img:'https://www.ramenvalves.com/wp-content/uploads/2024/11/Mineral-Processing-Aitik.jpg',
+    country:'🇮🇷 Iran',year:'2023',aace:'AACE Class 3',status:'Completed',
+    kpis:[{v:'$290M',l:'Total CAPEX'},{v:'30 ktpd',l:'Throughput'},{v:'±12%',l:'Final Accuracy'},{v:'20 yrs',l:'Mine Life'}],
+    desc:'Bankable feasibility study for 30 ktpd heap leach copper operation with SX-EW cathode production. Final estimate accuracy of ±12% against EPC contract value — exceptional performance for a Class 3 study. Includes TSF design, water management plan, and community development program.',
+    desc_fa:'مطالعه امکان‌سنجی بانکی برای عملیات Heap Leach مس ۳۰ هزار تن در روز با تولید کاتد SX-EW. دقت تخمین نهایی ±۱۲٪ در مقابل ارزش قرارداد EPC — عملکرد استثنایی برای مطالعه کلاس ۳.',
+    deliverables:['Heap leach pad design and cost model','SX-EW plant design and CAPEX','TSF design per MAC GISTM','Water management plan','Community development program','Class 3 bankable BFS report'],
+    services:['Feasibility Studies','Hydrometallurgy','Plant Design','Tailings & Water','Social Performance']
+  },
+  p10:{
+    title:'Minas Gerais Spodumene — Pre-Feasibility',
+    title_fa:'پیش‌امکان‌سنجی اسپودومن مینا جرایس',
+    img:'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=700&q=80',
+    country:'🇧🇷 Brazil',year:'2025',aace:'AACE Class 4',status:'In Study',
+    kpis:[{v:'$540M',l:'Est. CAPEX'},{v:'3 Mtpa',l:'Throughput'},{v:'18 yrs',l:'Mine Life'},{v:'6% Li₂O',l:'Concentrate'}],
+    desc:'Pre-feasibility study for hard-rock lithium spodumene project with DMS and flotation processing to 6% Li₂O concentrate. Includes renewable energy integration (solar + wind), community engagement framework, and long-term offtake market analysis for battery-grade lithium.',
+    desc_fa:'پیش‌امکان‌سنجی برای پروژه لیتیوم اسپودومن سنگ سخت با پردازش DMS و فلوتاسیون به کنسانتره ۶٪ Li₂O. شامل یکپارچه‌سازی انرژی تجدیدپذیر، چارچوب مشارکت جامعه و تحلیل بازار offtake بلندمدت.',
+    deliverables:['DMS and flotation circuit design','Class 4 CAPEX/OPEX estimate','Renewable energy integration study','Community engagement framework','Li₂O concentrate market analysis','Environmental permitting pathway'],
+    services:['Critical Minerals','Plant Design','CAPEX/OPEX Estimation','Renewable Energy','Social Performance']
+  },
+  p11:{
+    title:'Palawan Nickel Laterite — DSO Screening Study',
+    title_fa:'مطالعه غربالگری لاتریت نیکل پالاوان — DSO',
+    img:'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=700&q=80',
+    country:'🇵🇭 Philippines',year:'2024',aace:'AACE Class 4',status:'Completed',
+    kpis:[{v:'$180M',l:'Est. CAPEX'},{v:'5 Mtpa',l:'DSO Output'},{v:'10 yrs',l:'Mine Life'},{v:'1.8%',l:'Ni Grade'}],
+    desc:'Class 4 pre-feasibility for direct shipping ore (DSO) nickel laterite operation. Covers open pit mining, primary crushing, stockpile management, and barge-loading port infrastructure. Environmental permitting pathway and social impact assessment per IFC Performance Standards included.',
+    desc_fa:'پیش‌امکان‌سنجی کلاس ۴ برای عملیات DSO لاتریت نیکل. شامل استخراج روباز، خردایش اولیه، مدیریت انبار و زیرساخت بندری بارگیری با کشتی. مسیر مجوز زیست‌محیطی و ارزیابی تأثیر اجتماعی.',
+    deliverables:['Open pit mine design and schedule','Primary crushing and stockpile design','Port and barge infrastructure cost','Environmental Impact Assessment (EIA)','Social Impact Assessment (SIA)','Class 4 CAPEX/OPEX estimate'],
+    services:['Feasibility Studies','CAPEX/OPEX Estimation','Social Performance','Tailings & Water','EPC Procurement']
+  },
+  p12:{
+    title:'Limpopo Mine Solar-BESS Hybrid — 45 MW',
+    title_fa:'هیبرید خورشیدی-BESS معدن لیمپوپو — ۴۵ مگاوات',
+    img:'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=700&q=80',
+    country:'🇿🇦 South Africa',year:'2025',aace:'Energy Study',status:'Completed',
+    kpis:[{v:'$95M',l:'CAPEX'},{v:'35%',l:'Energy Cost Saving'},{v:'28%',l:'CO₂ Reduction'},{v:'6.2 yr',l:'Payback'}],
+    desc:'Full LCOE study and CAPEX estimate for 45 MW solar PV + 20 MWh BESS hybrid power system replacing diesel generation at remote platinum mine. 35% energy cost reduction and 28% Scope 1 emission cut achieved. Includes grid connection study and battery degradation financial model.',
+    desc_fa:'مطالعه کامل LCOE و تخمین CAPEX برای سیستم برق هیبریدی ۴۵ مگاوات خورشیدی + ۲۰ مگاوات ساعت BESS جایگزین تولید دیزل در معدن پلاتین دورافتاده. کاهش ۳۵٪ هزینه انرژی و کاهش ۲۸٪ انتشار Scope 1.',
+    deliverables:['Solar PV + BESS system design','LCOE financial model','Grid connection feasibility study','Diesel displacement analysis','Scope 1 emission reduction report','Battery degradation and lifecycle model'],
+    services:['Renewable Energy','ESG & Decarbonization','CAPEX/OPEX Estimation','Financial Modelling','Energy Optimization']
+  }
+};
+
+/* ── FILTER & SEARCH ── */
+let activeFilter='all';
+function filterProjects(cat,btn){
+  activeFilter=cat;
+  document.querySelectorAll('.ftab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  applyFilters();
+}
+function searchProjects(){applyFilters();}
+function sortProjects(){applyFilters();}
+function applyFilters(){
+  const q=document.getElementById('searchInput').value.toLowerCase();
+  const sort=document.getElementById('sortSel').value;
+  let cards=[...document.querySelectorAll('#projectGrid .pc')];
+  // filter
+  cards.forEach(c=>{
+    const cat=c.getAttribute('data-cat');
+    const name=c.getAttribute('data-name').toLowerCase();
+    const txt=c.innerText.toLowerCase();
+    const catOk=activeFilter==='all'||cat===activeFilter;
+    const qOk=!q||name.includes(q)||txt.includes(q);
+    c.style.display=(catOk&&qOk)?'flex':'none';
+  });
+  // sort
+  const grid=document.getElementById('projectGrid');
+  const visible=[...grid.querySelectorAll('.pc')].filter(c=>c.style.display!=='none');
+  if(sort==='newest') visible.sort((a,b)=>parseInt(b.dataset.year)-parseInt(a.dataset.year));
+  else if(sort==='capex') visible.sort((a,b)=>parseInt(b.dataset.capex)-parseInt(a.dataset.capex));
+  else if(sort==='alpha') visible.sort((a,b)=>a.dataset.name.localeCompare(b.dataset.name));
+  visible.forEach(c=>grid.appendChild(c));
+  // count
+  const cnt=visible.length;
+  document.getElementById('countNum').textContent=cnt;
+}
+
+/* ── MODAL ── */
+function openModal(id){
+  const p=PROJECTS[id];if(!p)return;
+  const fa=lang==='fa';
+  document.getElementById('modalImg').src=p.img;
+  document.getElementById('modalTitle').textContent=fa&&p.title_fa?p.title_fa:p.title;
+  document.getElementById('modalDesc').textContent=fa&&p.desc_fa?p.desc_fa:p.desc;
+  // badges
+  const bd=document.getElementById('modalBadges');
+  bd.innerHTML=`<span style="background:rgba(26,86,219,.1);color:#1a56db;font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:50px">${p.country}</span><span style="background:rgba(26,86,219,.1);color:#1a56db;font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:50px">${p.year}</span><span style="background:rgba(26,86,219,.1);color:#1a56db;font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:50px">${p.aace}</span><span style="background:${p.status==='Completed'?'rgba(5,150,105,.1)':p.status==='Ongoing'?'rgba(245,158,11,.1)':'rgba(59,130,246,.1)'};color:${p.status==='Completed'?'#059669':p.status==='Ongoing'?'#d97706':'#1a56db'};font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:50px">${p.status}</span>`;
+  // kpis
+  document.getElementById('modalKpis').innerHTML=p.kpis.map(k=>`<div class="mk"><div class="mk-v">${k.v}</div><div class="mk-l">${k.l}</div></div>`).join('');
+  // deliverables
+  document.getElementById('modalDeliverables').innerHTML=p.deliverables.map(d=>`<li>${d}</li>`).join('');
+  // services
+  document.getElementById('modalServices').innerHTML=p.services.map(s=>`<span style="background:#f1f5f9;color:#334155;font-size:.75rem;font-weight:600;padding:4px 12px;border-radius:50px;border:1px solid #e2e8f0">${s}</span>`).join('');
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow='';}
+function closeModalOutside(e){if(e.target===document.getElementById('modalOverlay'))closeModal();}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+
+/* ── SCROLL ANIMATIONS ── */
+const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0) scale(1)';io.unobserve(e.target);}});},{threshold:0.07});
+window.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('.pc,.sb').forEach((el,i)=>{el.style.opacity='0';el.style.transform='translateY(28px) scale(0.97)';el.style.transition=`opacity 0.5s ease ${(i%8)*0.055}s, transform 0.5s ease ${(i%8)*0.055}s`;io.observe(el);});
+});
+</script>

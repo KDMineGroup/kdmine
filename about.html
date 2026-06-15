@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>About Us — KDMine Group</title>
+<style>
+:root{--primary:#0f2d5e;--secondary:#1a56db;--accent:#3b82f6;--gold:#f59e0b;--text-dark:#0f172a;--text-mid:#334155;--text-light:#64748b;--bg-light:#f8fafc;--border:#e2e8f0;--s1:0 1px 3px rgba(0,0,0,.07);--s2:0 4px 12px rgba(0,0,0,.10);--s3:0 12px 30px rgba(0,0,0,.12);--s4:0 20px 50px rgba(0,0,0,.15);--r1:8px;--r2:14px;--r3:20px;--tr:all .3s cubic-bezier(.4,0,.2,1)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,sans-serif;line-height:1.7;color:var(--text-dark);background:#fff;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inherit}
+[dir="rtl"] body{font-family:'B Nazanin',Tahoma,Arial,sans-serif}
+.lt{position:fixed;top:20px;right:20px;z-index:1100;background:#fff;padding:8px 16px;border-radius:50px;box-shadow:var(--s2);cursor:pointer;font-weight:700;font-size:.82rem;border:2px solid var(--border);transition:var(--tr);color:var(--primary);display:flex;align-items:center;gap:6px}
+[dir="rtl"] .lt{right:auto;left:20px}
+.stt{position:fixed;bottom:26px;right:26px;z-index:999;width:42px;height:42px;background:var(--secondary);color:#fff;border-radius:50%;border:none;cursor:pointer;font-size:1.1rem;box-shadow:var(--s3);transition:var(--tr);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none}
+.stt.vis{opacity:1;pointer-events:all}[dir="rtl"] .stt{right:auto;left:26px}
+.topbar{background:var(--primary);color:rgba(255,255,255,.8);font-size:.8rem;padding:7px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.topbar a{color:rgba(255,255,255,.8)}.topbar a:hover{color:#fff}.tb-r{display:flex;gap:20px}
+.hdr{background:rgba(255,255,255,.98);backdrop-filter:blur(12px);position:sticky;top:0;z-index:1000;box-shadow:var(--s2);border-bottom:1px solid var(--border)}
+.hdr-in{max-width:1400px;margin:0 auto;padding:13px 40px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.logo{display:flex;align-items:center;gap:13px}.logo img{width:50px;height:50px;border-radius:11px;box-shadow:var(--s1)}
+.logo h1{font-size:1.3rem;color:var(--primary);font-weight:800}.logo p{font-size:.72rem;color:var(--text-light);font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.nav{display:flex;gap:4px;align-items:center}
+.nl{color:var(--text-mid);font-weight:600;font-size:.9rem;padding:8px 13px;border-radius:var(--r1);transition:var(--tr)}
+.nl:hover{color:var(--secondary);background:rgba(26,86,219,.06)}
+.nl.dd{padding-right:20px;position:relative}.nl.dd::after{content:"▾";position:absolute;right:7px;top:50%;transform:translateY(-50%);font-size:.65rem}
+.ddw{position:relative}.ddm{position:absolute;top:calc(100% + 8px);left:0;background:#fff;border-radius:var(--r2);min-width:270px;box-shadow:var(--s4);border:1px solid var(--border);opacity:0;visibility:hidden;transform:translateY(-8px);transition:var(--tr);z-index:200}
+.ddw:hover .ddm{opacity:1;visibility:visible;transform:translateY(0)}
+.ddi{display:flex;align-items:center;gap:10px;padding:11px 18px;color:var(--text-mid);font-size:.86rem;font-weight:500;transition:var(--tr)}.ddi:hover{background:var(--bg-light);color:var(--secondary)}.ddi-ic{font-size:1rem;width:20px;text-align:center}
+.bcta{background:linear-gradient(135deg,var(--secondary),#1d4ed8);color:#fff;padding:10px 22px;border-radius:50px;font-weight:700;font-size:.88rem;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(26,86,219,.35);transition:var(--tr);display:inline-flex;align-items:center;gap:7px}
+.bcta:hover{transform:translateY(-2px)}
+.mbt{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:10px}.mbt span{width:24px;height:2.5px;background:var(--text-dark);border-radius:2px;transition:var(--tr)}
+/* PAGE HERO */
+.page-hero{background:linear-gradient(135deg,#0a1f44 0%,#0f2d5e 50%,#1a56db 100%);color:#fff;padding:110px 40px 80px;position:relative;overflow:hidden}
+.page-hero-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:60px 60px}
+.page-hero-in{max-width:900px;margin:0 auto;position:relative;z-index:1;text-align:center}
+.stag{display:inline-block;background:rgba(26,86,219,.1);color:var(--secondary);font-size:.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:12px}
+.page-hero .stag{background:rgba(255,255,255,.14);color:rgba(255,255,255,.9)}
+.page-hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:800;margin-bottom:18px;line-height:1.2}
+.page-hero p{font-size:1.05rem;opacity:.85;max-width:700px;margin:0 auto 28px}
+.breadcrumb{display:flex;gap:8px;align-items:center;justify-content:center;font-size:.82rem;color:rgba(255,255,255,.6);margin-bottom:20px}
+.breadcrumb a{color:rgba(255,255,255,.7)}.breadcrumb a:hover{color:#fff}.breadcrumb span{color:rgba(255,255,255,.4)}
+/* SECTIONS */
+.sec{padding:88px 40px}.sec-alt{background:var(--bg-light)}
+.sec-hd{text-align:center;margin-bottom:56px}
+.sec-hd h2{font-size:clamp(1.8rem,4vw,2.5rem);color:var(--text-dark);font-weight:800;margin-bottom:12px}
+.sec-hd p{font-size:.98rem;color:var(--text-light);max-width:700px;margin:0 auto}
+/* MISSION */
+.mission-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.mission-img{border-radius:var(--r3);overflow:hidden;box-shadow:var(--s4)}.mission-img img{width:100%;height:420px;object-fit:cover}
+.mission-content h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;color:var(--text-dark);margin-bottom:16px;line-height:1.25}
+.mission-content p{color:var(--text-light);font-size:.95rem;line-height:1.85;margin-bottom:14px}
+.mp{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:var(--bg-light);border-radius:var(--r1);border-left:3px solid var(--secondary);margin-bottom:10px}
+[dir="rtl"] .mp{border-left:none;border-right:3px solid var(--secondary)}
+.mp-ico{font-size:1.2rem;flex-shrink:0;margin-top:2px}.mp-txt h4{font-size:.9rem;font-weight:700;color:var(--text-dark);margin-bottom:3px}.mp-txt p{font-size:.82rem;color:var(--text-light);line-height:1.6}
+/* VALUES */
+.values-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
+.val-card{background:#fff;border-radius:var(--r2);padding:28px;border:1px solid var(--border);box-shadow:var(--s1);transition:var(--tr);text-align:center}
+.val-card:hover{transform:translateY(-6px);box-shadow:var(--s3)}
+.val-ico{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin:0 auto 16px}
+.val-ico.blue{background:linear-gradient(135deg,#eff6ff,#dbeafe)}.val-ico.green{background:linear-gradient(135deg,#ecfdf5,#d1fae5)}
+.val-ico.gold{background:linear-gradient(135deg,#fffbeb,#fef3c7)}.val-ico.purple{background:linear-gradient(135deg,#f5f3ff,#ede9fe)}
+.val-card h3{font-size:1rem;font-weight:700;color:var(--text-dark);margin-bottom:8px}.val-card p{font-size:.85rem;color:var(--text-light);line-height:1.7}
+/* TEAM */
+.team-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.team-card{background:#fff;border-radius:var(--r2);overflow:hidden;border:1px solid var(--border);box-shadow:var(--s1);transition:var(--tr);text-align:center}
+.team-card:hover{transform:translateY(-6px);box-shadow:var(--s3)}
+.team-avatar-ph{width:100%;height:200px;display:flex;align-items:center;justify-content:center;font-size:3.5rem;color:#fff}
+.team-body{padding:20px}
+.team-name{font-size:1rem;font-weight:800;color:var(--text-dark);margin-bottom:4px}
+.team-role{font-size:.75rem;color:var(--secondary);font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px}
+.team-bio{font-size:.82rem;color:var(--text-light);line-height:1.65;margin-bottom:14px}
+.team-socs{display:flex;gap:8px;justify-content:center}
+.ts{width:30px;height:30px;background:var(--bg-light);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.8rem;color:var(--text-mid);transition:var(--tr)}.ts:hover{background:var(--secondary);color:#fff}
+/* STATS BAR */
+.stats-sec{background:var(--primary);padding:70px 40px}
+.stats-in{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.stat-item{text-align:center;padding:28px 20px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:var(--r2)}
+.stat-n{font-size:2.4rem;font-weight:800;color:#fff;line-height:1}.stat-n sup{font-size:1.1rem;color:#93c5fd}
+.stat-l{font-size:.75rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.5px;margin-top:6px}
+/* TIMELINE */
+.timeline-wrap{max-width:900px;margin:0 auto;position:relative;padding:0 20px}
+.timeline-wrap::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--secondary),var(--accent));transform:translateX(-50%)}
+.tl-item{display:grid;grid-template-columns:1fr 40px 1fr;gap:20px;margin-bottom:40px;align-items:start}
+.tl-left{text-align:right;padding-top:10px}[dir="rtl"] .tl-left{text-align:left}
+.tl-right{padding-top:10px}
+.tl-center{display:flex;flex-direction:column;align-items:center;gap:6px}
+.tl-dot{width:16px;height:16px;background:var(--secondary);border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 3px var(--secondary);flex-shrink:0}
+.tl-line{flex:1;width:2px;background:rgba(26,86,219,.2)}
+.tl-year{background:linear-gradient(135deg,var(--secondary),var(--accent));color:#fff;font-weight:800;font-size:.85rem;padding:5px 14px;border-radius:50px;display:inline-block;margin-bottom:8px}
+.tl-card{background:#fff;border-radius:var(--r2);padding:18px 20px;border:1px solid var(--border);box-shadow:var(--s2)}
+.tl-card h4{font-size:.92rem;font-weight:700;color:var(--text-dark);margin-bottom:5px}.tl-card p{font-size:.82rem;color:var(--text-light);line-height:1.6}
+/* PARTNERS */
+.partners-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px}
+.partner{background:#fff;border:1px solid var(--border);border-radius:var(--r2);padding:20px;text-align:center;transition:var(--tr)}
+.partner:hover{border-color:var(--secondary);box-shadow:var(--s2)}
+.partner-ico{font-size:2rem;margin-bottom:8px}.partner-name{font-size:.82rem;font-weight:700;color:var(--text-mid)}
+/* CTA */
+.cta-sec{padding:88px 40px;background:linear-gradient(135deg,#eff6ff,#dbeafe);text-align:center}
+.cta-in{max-width:700px;margin:0 auto}
+.cta-sec h2{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800;color:var(--primary);margin-bottom:14px}
+.cta-sec p{font-size:.98rem;color:var(--text-light);margin-bottom:32px}
+.cta-acts{display:flex;gap:13px;justify-content:center;flex-wrap:wrap}
+.bcp{background:linear-gradient(135deg,var(--secondary),#1d4ed8);color:#fff;padding:14px 30px;border-radius:50px;font-weight:700;font-size:.96rem;border:none;cursor:pointer;box-shadow:0 6px 20px rgba(26,86,219,.35);transition:var(--tr);display:inline-flex;align-items:center;gap:8px}
+.bcp:hover{transform:translateY(-3px)}
+.bco{background:#fff;color:var(--secondary);padding:14px 30px;border-radius:50px;font-weight:700;font-size:.96rem;border:2px solid var(--secondary);cursor:pointer;transition:var(--tr);display:inline-flex;align-items:center;gap:8px}
+.bco:hover{background:var(--secondary);color:#fff;transform:translateY(-3px)}
+/* FOOTER */
+.footer{background:#0a1628;color:#fff;padding:68px 40px 26px}
+.footer-in{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:36px;margin-bottom:46px}
+.fb-desc{font-size:.84rem;color:rgba(255,255,255,.5);line-height:1.75;margin-top:13px;margin-bottom:17px}
+.fb-socs{display:flex;gap:8px}
+.fb-s{width:34px;height:34px;background:rgba(255,255,255,.08);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.86rem;transition:var(--tr);color:rgba(255,255,255,.52)}.fb-s:hover{background:var(--secondary);color:#fff}
+.fc h4{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.45);margin-bottom:15px}
+.fc a{display:block;color:rgba(255,255,255,.66);font-size:.84rem;padding:4px 0;transition:var(--tr)}.fc a:hover{color:#fff}
+.footer-bot{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding-top:22px;border-top:1px solid rgba(255,255,255,.08);font-size:.78rem;color:rgba(255,255,255,.36);flex-wrap:wrap;gap:10px}
+.fb-lnks{display:flex;gap:18px}.fb-lnks a{color:rgba(255,255,255,.36)}.fb-lnks a:hover{color:rgba(255,255,255,.75)}
+@media(max-width:1100px){.mission-grid{grid-template-columns:1fr}.stats-in{grid-template-columns:repeat(2,1fr)}.footer-in{grid-template-columns:1fr 1fr 1fr}}
+@media(max-width:768px){.topbar{display:none}.mbt{display:flex}.nav{position:fixed;top:78px;right:-100%;width:80%;max-width:290px;height:calc(100vh - 78px);background:#fff;flex-direction:column;padding:28px;box-shadow:var(--s4);transition:right .3s ease;align-items:flex-start;overflow-y:auto;z-index:999}.nav.open{right:0}.ddm{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:none;background:var(--bg-light);margin-top:5px}.sec,.page-hero,.stats-sec,.cta-sec,.footer{padding:58px 22px}.timeline-wrap::before{left:20px}.tl-item{grid-template-columns:1fr}.tl-left,.tl-center{display:none}.footer-in{grid-template-columns:1fr 1fr}.footer-bot{flex-direction:column;text-align:center}.hdr-in{padding:13px 20px}}
+</style>
+</head>
+<body>
+<button class="lt" onclick="tgLang()">🌐 <span id="lt-txt">FA | فارسی</span></button>
+<button class="stt" id="sttBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<div class="topbar">
+  <div>📧 info@kdmine.com &nbsp;|&nbsp; 📞 +98 21 1234 5678 &nbsp;|&nbsp; 🕐 Sat–Wed 08:00–18:00 IRST</div>
+  <div class="tb-r"><a href="register.html">🔐 Client Login</a><a href="register.html">📊 Dashboard</a></div>
+</div>
+<header class="hdr">
+  <div class="hdr-in">
+    <div class="logo">
+      <img src="https://cdn.grapesjs.com/workspaces/cmgvbwak408ja13nsemkia83b/assets/7e057c43-5d96-4c3a-a8fc-8bd5f6589a93__kavianpremiumbadgelogo.svg" alt="KDMine">
+      <div><h1 data-en="KDMine Group" data-fa="کاویان توسعه معدن">KDMine Group</h1><p data-en="Mining Engineering & Economics Platform" data-fa="پلتفرم مهندسی و اقتصاد معدن">Mining Engineering & Economics Platform</p></div>
+    </div>
+    <button class="mbt" onclick="tgMenu()"><span></span><span></span><span></span></button>
+    <nav class="nav" id="mainNav">
+      <div class="ddw"><a href="index.html#services" class="nl dd" data-en="Services" data-fa="خدمات">Services</a>
+        <div class="ddm">
+          <a href="services/feasibility.html" class="ddi"><span class="ddi-ic">📋</span><span>Feasibility Studies</span></a>
+          <a href="services/cost-estimation.html" class="ddi"><span class="ddi-ic">💰</span><span>CAPEX/OPEX Estimation</span></a>
+          <a href="services/plant-design.html" class="ddi"><span class="ddi-ic">🏭</span><span>Process Plant Design</span></a>
+          <a href="services/esg-decarbonization.html" class="ddi"><span class="ddi-ic">🌱</span><span>ESG & Decarbonization</span></a>
+          <a href="services/digital-mining.html" class="ddi"><span class="ddi-ic">🤖</span><span>Digital Mining & AI</span></a>
+        </div>
+      </div>
+      <div class="ddw"><a href="index.html#tools" class="nl dd" data-en="Tools" data-fa="ابزارها">Tools</a>
+        <div class="ddm">
+          <a href="tools/cost-calculator.html" class="ddi"><span class="ddi-ic">🧮</span><span>Cost Calculator</span></a>
+          <a href="tools/equipment-database.html" class="ddi"><span class="ddi-ic">🗃️</span><span>Equipment Database</span></a>
+          <a href="tools/monte-carlo.html" class="ddi"><span class="ddi-ic">📉</span><span>Monte Carlo Simulator</span></a>
+          <a href="tools/market-dashboard.html" class="ddi"><span class="ddi-ic">🌍</span><span>Market Dashboard</span></a>
+        </div>
+      </div>
+      <a href="resources.html" class="nl" data-en="Resources" data-fa="منابع">Resources</a>
+      <a href="portfolio.html" class="nl" data-en="Portfolio" data-fa="نمونه کارها">Portfolio</a>
+      <a href="about.html" class="nl" style="color:var(--secondary)" data-en="About" data-fa="درباره ما">About</a>
+      <a href="contact.html" class="nl" data-en="Contact" data-fa="تماس">Contact</a>
+      <a href="register.html" class="bcta" data-en="Get Started →" data-fa="شروع کنید ←">Get Started →</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-in">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>About Us</span></div>
+    <div class="stag" data-en="Our Story" data-fa="داستان ما">Our Story</div>
+    <h1 data-en="15 Years of Mining Engineering Excellence" data-fa="۱۵ سال تعالی در مهندسی معدن">15 Years of Mining Engineering Excellence</h1>
+    <p data-en="KDMine Group is a global leader in mining engineering, economics, and digital transformation — delivering bankable feasibility studies, AACE-compliant cost estimates, and ESG strategies for 150+ projects across 30+ countries." data-fa="KDMine Group رهبر جهانی در مهندسی معدن، اقتصاد و تحول دیجیتال — ارائه مطالعات امکان‌سنجی بانکی، تخمین‌های هزینه منطبق با AACE و استراتژی‌های ESG برای ۱۵۰+ پروژه در ۳۰+ کشور.">KDMine Group is a global leader in mining engineering, economics, and digital transformation — delivering bankable feasibility studies, AACE-compliant cost estimates, and ESG strategies for 150+ projects across 30+ countries.</p>
+  </div>
+</section>
+
+<div class="stats-sec">
+  <div class="stats-in">
+    <div class="stat-item"><div class="stat-n" id="s1">150<sup>+</sup></div><div class="stat-l" data-en="Global Projects" data-fa="پروژه بین‌المللی">Global Projects</div></div>
+    <div class="stat-item"><div class="stat-n" id="s2">30<sup>+</sup></div><div class="stat-l" data-en="Countries Served" data-fa="کشورهای خدمت‌رسانی‌شده">Countries Served</div></div>
+    <div class="stat-item"><div class="stat-n" id="s3">$2.4<sup>B+</sup></div><div class="stat-l" data-en="Project Value Estimated" data-fa="ارزش پروژه تخمین‌زده‌شده">Project Value Estimated</div></div>
+    <div class="stat-item"><div class="stat-n" id="s4">98<sup>%</sup></div><div class="stat-l" data-en="Client Satisfaction" data-fa="رضایت مشتریان">Client Satisfaction</div></div>
+  </div>
+</div>
+
+<section class="sec">
+  <div class="mission-grid">
+    <div class="mission-img"><img src="https://thumbs.dreamstime.com/b/aerial-view-massive-open-pit-copper-mine-industrial-terraces-extraction-operations-large-trucks-navigate-roads-deep-395303962.jpg" alt="Open Pit Mine" loading="lazy"></div>
+    <div class="mission-content">
+      <div class="stag" data-en="Our Mission" data-fa="مأموریت ما">Our Mission</div>
+      <h2 data-en="Transforming Mining Through Precision Engineering & Data Intelligence" data-fa="تحول معدن از طریق مهندسی دقیق و هوش داده">Transforming Mining Through Precision Engineering & Data Intelligence</h2>
+      <p data-en="Founded in 2010, KDMine Group was established with a singular vision: to bring world-class engineering precision, economic rigor, and digital innovation to the global mining industry. We bridge the gap between traditional mining practices and the demands of modern investors, regulators, and communities." data-fa="KDMine Group در سال ۲۰۱۰ با یک چشم‌انداز منحصربه‌فرد تأسیس شد: آوردن دقت مهندسی جهانی، قوت اقتصادی و نوآوری دیجیتال به صنعت معدن جهانی.">Founded in 2010, KDMine Group was established with a singular vision: to bring world-class engineering precision, economic rigor, and digital innovation to the global mining industry.</p>
+      <p data-en="Our multidisciplinary team of 80+ engineers, economists, geologists, and ESG specialists delivers integrated solutions from concept screening through to construction and operations — always AACE-compliant, always bankable." data-fa="تیم چندرشته‌ای ما متشکل از ۸۰+ مهندس، اقتصاددان، زمین‌شناس و متخصص ESG، راهکارهای یکپارچه از غربالگری مفهوم تا ساخت و بهره‌برداری ارائه می‌دهد.">Our multidisciplinary team of 80+ engineers, economists, geologists, and ESG specialists delivers integrated solutions — always AACE-compliant, always bankable.</p>
+      <div style="margin-top:24px">
+        <div class="mp"><div class="mp-ico">🎯</div><div class="mp-txt"><h4 data-en="AACE-Compliant Estimates" data-fa="تخمین‌های منطبق با AACE">AACE-Compliant Estimates</h4><p data-en="All cost estimates follow AACE 47R-11 Class 1–5 methodology with real-time cost indices." data-fa="تمام تخمین‌های هزینه از روش‌شناسی AACE 47R-11 کلاس ۱–۵ پیروی می‌کنند.">All cost estimates follow AACE 47R-11 Class 1–5 methodology with real-time cost indices.</p></div></div>
+        <div class="mp"><div class="mp-ico">🌍</div><div class="mp-txt"><h4 data-en="Global Reach, Local Expertise" data-fa="دسترسی جهانی، تخصص محلی">Global Reach, Local Expertise</h4><p data-en="Operations across 30+ countries with deep regional knowledge and local regulatory understanding." data-fa="فعالیت در ۳۰+ کشور با دانش منطقه‌ای عمیق و درک مقررات محلی.">Operations across 30+ countries with deep regional knowledge and local regulatory understanding.</p></div></div>
+        <div class="mp"><div class="mp-ico">🌱</div><div class="mp-txt"><h4 data-en="ESG & Net Zero Leadership" data-fa="رهبری ESG و Net Zero">ESG & Net Zero Leadership</h4><p data-en="Integrated sustainability strategies, GRI/TCFD reporting, and Net Zero roadmaps for every project." data-fa="استراتژی‌های پایداری یکپارچه، گزارش‌دهی GRI/TCFD و نقشه راه Net Zero برای هر پروژه.">Integrated sustainability strategies, GRI/TCFD reporting, and Net Zero roadmaps for every project.</p></div></div>
+        <div class="mp"><div class="mp-ico">🤖</div><div class="mp-txt"><h4 data-en="AI & Digital Twin Innovation" data-fa="نوآوری هوش مصنوعی و دوقلوی دیجیتال">AI & Digital Twin Innovation</h4><p data-en="Proprietary AI tools and Digital Twin platforms reducing OPEX by up to 18% for our clients." data-fa="ابزارهای هوش مصنوعی اختصاصی و پلتفرم‌های دوقلوی دیجیتال با کاهش OPEX تا ۱۸٪.">Proprietary AI tools and Digital Twin platforms reducing OPEX by up to 18% for our clients.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-alt">
+  <div class="sec-hd">
+    <div class="stag" data-en="Our Values" data-fa="ارزش‌های ما">Our Values</div>
+    <h2 data-en="What Drives Everything We Do" data-fa="آنچه همه کارهای ما را هدایت می‌کند">What Drives Everything We Do</h2>
+    <p data-en="Our core values guide every project, every estimate, and every client relationship" data-fa="ارزش‌های اصلی ما هر پروژه، هر تخمین و هر رابطه مشتری را هدایت می‌کنند">Our core values guide every project, every estimate, and every client relationship</p>
+  </div>
+  <div class="values-grid">
+    <div class="val-card"><div class="val-ico blue">🎯</div><h3 data-en="Precision" data-fa="دقت">Precision</h3><p data-en="Every estimate, every design, every recommendation is backed by rigorous data analysis and industry-leading AACE methodologies." data-fa="هر تخمین، هر طراحی و هر توصیه با تحلیل دقیق داده و روش‌های پیشرو AACE پشتیبانی می‌شود.">Every estimate, every design, every recommendation is backed by rigorous data analysis and industry-leading AACE methodologies.</p></div>
+    <div class="val-card"><div class="val-ico green">🌱</div><h3 data-en="Sustainability" data-fa="پایداری">Sustainability</h3><p data-en="We believe mining can and must be a force for good — environmentally responsible, socially inclusive, and economically sound for future generations." data-fa="ما معتقدیم معدن می‌تواند و باید نیروی خوبی باشد — از نظر زیست‌محیطی مسئولانه، از نظر اجتماعی فراگیر و از نظر اقتصادی سالم.">We believe mining can and must be a force for good — environmentally responsible, socially inclusive, and economically sound.</p></div>
+    <div class="val-card"><div class="val-ico gold">💡</div><h3 data-en="Innovation" data-fa="نوآوری">Innovation</h3><p data-en="From AI-powered Digital Twins to Monte Carlo risk simulation, we continuously push the boundaries of what's possible in mining engineering." data-fa="از دوقلوهای دیجیتال مبتنی بر هوش مصنوعی تا شبیه‌سازی ریسک مونت کارلو، مرزهای ممکن را مداوم گسترش می‌دهیم.">From AI-powered Digital Twins to Monte Carlo risk simulation, we continuously push the boundaries of what's possible.</p></div>
+    <div class="val-card"><div class="val-ico purple">🤝</div><h3 data-en="Integrity" data-fa="صداقت">Integrity</h3><p data-en="We provide honest, independent assessments — even when the news isn't what clients want to hear. Bankable means trustworthy, always." data-fa="ما ارزیابی‌های صادقانه و مستقل ارائه می‌دهیم — حتی زمانی که اخبار آن چیزی نیست که مشتریان می‌خواهند بشنوند.">We provide honest, independent assessments — even when the news isn't what clients want to hear. Bankable means trustworthy.</p></div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="sec-hd">
+    <div class="stag" data-en="Leadership Team" data-fa="تیم رهبری">Leadership Team</div>
+    <h2 data-en="Meet Our Expert Team" data-fa="با تیم متخصص ما آشنا شوید">Meet Our Expert Team</h2>
+    <p data-en="80+ engineers, economists, geologists, and ESG specialists across 6 global offices" data-fa="۸۰+ مهندس، اقتصاددان، زمین‌شناس و متخصص ESG در ۶ دفتر جهانی">80+ engineers, economists, geologists, and ESG specialists across 6 global offices</p>
+  </div>
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-avatar-ph" style="background:linear-gradient(135deg,#0f2d5e,#1a56db)">👨‍💼</div>
+      <div class="team-body">
+        <div class="team-name">Dr. Kavian Dehghani</div>
+        <div class="team-role" data-en="Founder & CEO" data-fa="بنیان‌گذار و مدیرعامل">Founder & CEO</div>
+        <div class="team-bio" data-en="25+ years in mining engineering. PhD Mining Engineering, University of Queensland. Former VP at Rio Tinto. Specialist in open pit optimization and AACE cost estimation." data-fa="۲۵+ سال در مهندسی معدن. دکترا مهندسی معدن، دانشگاه کوئینزلند. معاون سابق Rio Tinto. متخصص بهینه‌سازی پیت باز و تخمین هزینه AACE.">25+ years in mining engineering. PhD Mining Engineering, University of Queensland. Former VP at Rio Tinto.</div>
+        <div class="team-socs"><a href="#" class="ts">in</a><a href="#" class="ts">✉</a></div>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar-ph" style="background:linear-gradient(135deg,#0d9488,#14b8a6)">👩‍💼</div>
+      <div class="team-body">
+        <div class="team-name">Dr. Sarah Mitchell</div>
+        <div class="team-role" data-en="Chief Engineering Officer" data-fa="مدیر ارشد مهندسی">Chief Engineering Officer</div>
+        <div class="team-bio" data-en="20+ years in process plant design. MSc Metallurgical Engineering, Imperial College London. Expert in flotation, CIL/CIP, and SX-EW circuit design." data-fa="۲۰+ سال در طراحی کارخانه فرآوری. کارشناسی ارشد مهندسی متالورژی، Imperial College London. متخصص فلوتاسیون، CIL/CIP و SX-EW.">20+ years in process plant design. MSc Metallurgical Engineering, Imperial College London. Expert in flotation, CIL/CIP, and SX-EW circuit design.</div>
+        <div class="team-socs"><a href="#" class="ts">in</a><a href="#" class="ts">✉</a></div>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar-ph" style="background:linear-gradient(135deg,#d97706,#f59e0b)">👨‍💻</div>
+      <div class="team-body">
+        <div class="team-name">James Thornton</div>
+        <div class="team-role" data-en="Head of Economics & Finance" data-fa="رئیس اقتصاد و مالی">Head of Economics & Finance</div>
+        <div class="team-bio" data-en="18 years in mining project finance. CFA Charterholder. Specialist in DCF modelling, Monte Carlo simulation, and bankable feasibility economics for major and junior miners." data-fa="۱۸ سال در مالی پروژه‌های معدنی. دارنده CFA. متخصص مدل‌سازی DCF، شبیه‌سازی مونت کارلو و اقتصاد امکان‌سنجی بانکی.">18 years in mining project finance. CFA Charterholder. Specialist in DCF modelling, Monte Carlo simulation, and bankable feasibility economics.</div>
+        <div class="team-socs"><a href="#" class="ts">in</a><a href="#" class="ts">✉</a></div>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar-ph" style="background:linear-gradient(135deg,#059669,#10b981)">👩‍🔬</div>
+      <div class="team-body">
+        <div class="team-name">Dr. Leila Ahmadi</div>
+        <div class="team-role" data-en="ESG & Sustainability Director" data-fa="مدیر ESG و پایداری">ESG & Sustainability Director</div>
+        <div class="team-bio" data-en="15 years in environmental management and ESG strategy. PhD Environmental Engineering. Expert in GRI/TCFD reporting, Net Zero roadmaps, and carbon credit valuation." data-fa="۱۵ سال در مدیریت محیط زیست و استراتژی ESG. دکترا مهندسی محیط زیست. متخصص گزارش‌دهی GRI/TCFD و نقشه راه Net Zero.">15 years in environmental management and ESG strategy. PhD Environmental Engineering. Expert in GRI/TCFD reporting and Net Zero roadmaps.</div>
+        <div class="team-socs"><a href="#" class="ts">in</a><a href="#" class="ts">✉</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-alt">
+  <div class="sec-hd">
+    <div class="stag" data-en="Our Journey" data-fa="مسیر ما">Our Journey</div>
+    <h2 data-en="Company Milestones" data-fa="نقاط عطف شرکت">Company Milestones</h2>
+    <p data-en="Key moments that shaped KDMine Group into the global mining engineering leader it is today" data-fa="لحظات کلیدی که KDMine Group را به رهبر جهانی مهندسی معدن تبدیل کرد">Key moments that shaped KDMine Group into the global mining engineering leader it is today</p>
+  </div>
+  <div class="timeline-wrap">
+    <div class="tl-item">
+      <div class="tl-left"><span class="tl-year">2010</span></div>
+      <div class="tl-center"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-right"><div class="tl-card"><h4 data-en="Company Founded in Tehran" data-fa="تأسیس شرکت در تهران">Company Founded in Tehran</h4><p data-en="KDMine Group established with a team of 5 mining engineers, focused on CAPEX/OPEX estimation for Iranian mining projects." data-fa="KDMine Group با تیمی از ۵ مهندس معدن تأسیس شد، با تمرکز بر تخمین CAPEX/OPEX برای پروژه‌های معدنی ایران.">KDMine Group established with a team of 5 mining engineers, focused on CAPEX/OPEX estimation for Iranian mining projects.</p></div></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-card"><h4 data-en="International Expansion" data-fa="گسترش بین‌المللی">International Expansion</h4><p data-en="First international project in Kazakhstan. Expanded team to 20 professionals. Opened Dubai regional office." data-fa="اولین پروژه بین‌المللی در قزاقستان. گسترش تیم به ۲۰ متخصص. افتتاح دفتر منطقه‌ای دبی.">First international project in Kazakhstan. Expanded team to 20 professionals. Opened Dubai regional office.</p></div></div>
+      <div class="tl-center"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-right"><span class="tl-year">2014</span></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><span class="tl-year">2017</span></div>
+      <div class="tl-center"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-right"><div class="tl-card"><h4 data-en="AACE Certification & CostMine Partnership" data-fa="گواهینامه AACE و مشارکت با CostMine">AACE Certification & CostMine Partnership</h4><p data-en="Achieved AACE International certification. Signed exclusive CostMine database partnership. Delivered first Class 1 bankable BFS." data-fa="دریافت گواهینامه AACE International. امضای مشارکت انحصاری با پایگاه داده CostMine. تحویل اولین BFS بانکی کلاس ۱.">Achieved AACE International certification. Signed exclusive CostMine database partnership. Delivered first Class 1 bankable BFS.</p></div></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-card"><h4 data-en="Digital Mining & AI Division Launched" data-fa="راه‌اندازی بخش معدن دیجیتال و هوش مصنوعی">Digital Mining & AI Division Launched</h4><p data-en="Launched proprietary Digital Twin platform. First AI predictive maintenance deployment at copper mine in Chile. Team grew to 60 professionals." data-fa="راه‌اندازی پلتفرم دوقلوی دیجیتال اختصاصی. اولین استقرار نگهداری پیش‌بینانه هوش مصنوعی در معدن مس شیلی.">Launched proprietary Digital Twin platform. First AI predictive maintenance deployment at copper mine in Chile.</p></div></div>
+      <div class="tl-center"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-right"><span class="tl-year">2020</span></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><span class="tl-year">2023</span></div>
+      <div class="tl-center"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-right"><div class="tl-card"><h4 data-en="Critical Minerals & ESG Centre of Excellence" data-fa="مرکز تعالی مواد معدنی حیاتی و ESG">Critical Minerals & ESG Centre of Excellence</h4><p data-en="Established dedicated Critical Minerals division for Li, Co, Ni, REE. Delivered $200M green loan advisory. 100+ projects milestone reached." data-fa="تأسیس بخش اختصاصی مواد معدنی حیاتی. مشاوره وام سبز ۲۰۰ میلیون دلاری. رسیدن به نقطه عطف ۱۰۰+ پروژه.">Established dedicated Critical Minerals division. Delivered $200M green loan advisory. 100+ projects milestone reached.</p></div></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-card"><h4 data-en="KDMine Platform v2026 Launch" data-fa="راه‌اندازی پلتفرم KDMine نسخه ۲۰۲۶">KDMine Platform v2026 Launch</h4><p data-en="Launched fully integrated web platform with 5,000+ equipment database, real-time cost indices, Monte Carlo simulator, ESG calculator, and bilingual EN/FA interface." data-fa="راه‌اندازی پلتفرم وب یکپارچه با پایگاه داده ۵۰۰۰+ تجهیز، شاخص‌های هزینه بلادرنگ، شبیه‌ساز مونت کارلو و رابط دوزبانه EN/FA.">Launched fully integrated web platform with 5,000+ equipment database, real-time cost indices, Monte Carlo simulator, and bilingual EN/FA interface.</p></div></div>
+      <div class="tl-center"><div class="tl-dot"></div></div>
+      <div class="tl-right"><span class="tl-year">2026</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="sec-hd">
+    <div class="stag" data-en="Standards & Partners" data-fa="استانداردها و شرکا">Standards & Partners</div>
+    <h2 data-en="Trusted Standards & Global Partners" data-fa="استانداردهای معتبر و شرکای جهانی">Trusted Standards & Global Partners</h2>
+    <p data-en="We work with the world's leading standards bodies, data providers, and technology partners" data-fa="ما با پیشروترین نهادهای استانداردسازی، ارائه‌دهندگان داده و شرکای فناوری جهان همکاری می‌کنیم">We work with the world's leading standards bodies, data providers, and technology partners</p>
+  </div>
+  <div class="partners-grid">
+    <div class="partner"><div class="partner-ico">🏆</div><div class="partner-name">AACE International</div></div>
+    <div class="partner"><div class="partner-ico">📊</div><div class="partner-name">CostMine Database</div></div>
+    <div class="partner"><div class="partner-ico">🌱</div><div class="partner-name">GRI Standards</div></div>
+    <div class="partner"><div class="partner-ico">⚡</div><div class="partner-name">IEA Critical Minerals</div></div>
+    <div class="partner"><div class="partner-ico">🔒</div><div class="partner-name">ISO 9001:2015</div></div>
+    <div class="partner"><div class="partner-ico">🌍</div><div class="partner-name">IFC Performance Standards</div></div>
+    <div class="partner"><div class="partner-ico">📋</div><div class="partner-name">NI 43-101 / JORC</div></div>
+    <div class="partner"><div class="partner-ico">🤖</div><div class="partner-name">AI & Digital Twin Tech</div></div>
+  </div>
+</section>
+
+<section class="cta-sec">
+  <div class="cta-in">
+    <div class="stag" data-en="Work With Us" data-fa="با ما کار کنید">Work With Us</div>
+    <h2 data-en="Ready to Partner with KDMine Group?" data-fa="آماده همکاری با KDMine Group هستید؟">Ready to Partner with KDMine Group?</h2>
+    <p data-en="Join 150+ global mining projects that trust KDMine Group for precision engineering, economics, and digital transformation." data-fa="به ۱۵۰+ پروژه معدنی جهانی بپیوندید که به KDMine Group برای مهندسی دقیق، اقتصاد و تحول دیجیتال اعتماد می‌کنند.">Join 150+ global mining projects that trust KDMine Group for precision engineering, economics, and digital transformation.</p>
+    <div class="cta-acts">
+      <a href="register.html" class="bcp">🚀 <span data-en="Start Free Trial →" data-fa="شروع آزمایش رایگان ←">Start Free Trial →</span></a>
+      <a href="contact.html" class="bco">📞 <span data-en="Talk to an Expert" data-fa="صحبت با متخصص">Talk to an Expert</span></a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-in">
+    <div>
+      <div style="display:flex;align-items:center;gap:12px">
+        <img src="https://cdn.grapesjs.com/workspaces/cmgvbwak408ja13nsemkia83b/assets/7e057c43-5d96-4c3a-a8fc-8bd5f6589a93__kavianpremiumbadgelogo.svg" alt="KDMine" style="width:44px;height:44px;border-radius:10px">
+        <div><div style="font-size:1.1rem;font-weight:800;color:#fff" data-en="KDMine Group" data-fa="کاویان توسعه معدن">KDMine Group</div><div style="font-size:.7rem;color:rgba(255,255,255,.45);font-weight:600" data-en="Mining Engineering & Economics" data-fa="مهندسی و اقتصاد معدن">Mining Engineering & Economics</div></div>
+      </div>
+      <p class="fb-desc" data-en="Data-driven mining engineering platform — from feasibility to ESG and AI, for global mining projects." data-fa="پلتفرم مهندسی معدن داده‌محور — از امکان‌سنجی تا ESG و هوش مصنوعی.">Data-driven mining engineering platform — from feasibility to ESG and AI, for global mining projects.</p>
+      <div class="fb-socs"><a href="#" class="fb-s">in</a><a href="#" class="fb-s">𝕏</a><a href="#" class="fb-s">▶</a><a href="#" class="fb-s">✉</a></div>
+    </div>
+    <div class="fc"><h4 data-en="Engineering" data-fa="مهندسی">Engineering</h4>
+      <a href="services/feasibility.html" data-en="Feasibility Studies" data-fa="مطالعات امکان‌سنجی">Feasibility Studies</a>
+      <a href="services/plant-design.html" data-en="Plant Design" data-fa="طراحی کارخانه">Plant Design</a>
+      <a href="services/geotechnical.html" data-en="Geotechnical" data-fa="ژئوتکنیک">Geotechnical</a>
+      <a href="services/hydrometallurgy.html" data-en="Hydrometallurgy" data-fa="هیدرومتالورژی">Hydrometallurgy</a>
+    </div>
+    <div class="fc"><h4 data-en="Economics" data-fa="اقتصاد">Economics</h4>
+      <a href="services/cost-estimation.html" data-en="CAPEX/OPEX" data-fa="تخمین CAPEX/OPEX">CAPEX/OPEX</a>
+      <a href="services/economic-modelling.html" data-en="Financial Modelling" data-fa="مدل‌سازی مالی">Financial Modelling</a>
+      <a href="services/risk-analysis.html" data-en="Risk Analysis" data-fa="تحلیل ریسک">Risk Analysis</a>
+      <a href="services/market-intelligence.html" data-en="Market Intelligence" data-fa="هوش بازار">Market Intelligence</a>
+    </div>
+    <div class="fc"><h4 data-en="ESG & Digital" data-fa="ESG و دیجیتال">ESG & Digital</h4>
+      <a href="services/esg-decarbonization.html" data-en="ESG & Decarbonization" data-fa="ESG و کربن‌زدایی">ESG & Decarbonization</a>
+      <a href="services/digital-mining.html" data-en="Digital Mining & AI" data-fa="معدن دیجیتال">Digital Mining & AI</a>
+      <a href="services/critical-minerals.html" data-en="Critical Minerals" data-fa="مواد معدنی حیاتی">Critical Minerals</a>
+    </div>
+    <div class="fc"><h4 data-en="Company" data-fa="شرکت">Company</h4>
+      <a href="about.html" data-en="About Us" data-fa="درباره ما">About Us</a>
+      <a href="portfolio.html" data-en="Portfolio" data-fa="نمونه کارها">Portfolio</a>
+      <a href="blog.html" data-en="Blog & Insights" data-fa="وبلاگ">Blog & Insights</a>
+      <a href="contact.html" data-en="Contact" data-fa="تماس">Contact</a>
+      <a href="register.html" data-en="Free Registration" data-fa="ثبت‌نام رایگان">Free Registration</a>
+    </div>
+  </div>
+  <div class="footer-bot">
+    <span data-en="© 2026 KDMine Group. All rights reserved." data-fa="© ۲۰۲۶ کاویان توسعه معدن. تمامی حقوق محفوظ است.">© 2026 KDMine Group. All rights reserved.</span>
+    <div class="fb-lnks"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="sitemap.html">Sitemap</a></div>

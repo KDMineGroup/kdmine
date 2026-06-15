@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Resources Library — KDMine Group</title>
+<style>
+:root{--primary:#0f2d5e;--secondary:#1a56db;--accent:#3b82f6;--gold:#f59e0b;--success:#059669;--teal:#0d9488;--text-dark:#0f172a;--text-mid:#334155;--text-light:#64748b;--bg-light:#f8fafc;--border:#e2e8f0;--s1:0 1px 3px rgba(0,0,0,.07);--s2:0 4px 12px rgba(0,0,0,.10);--s3:0 12px 30px rgba(0,0,0,.12);--s4:0 20px 50px rgba(0,0,0,.15);--r1:8px;--r2:14px;--r3:20px;--tr:all .3s cubic-bezier(.4,0,.2,1)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,sans-serif;line-height:1.7;color:var(--text-dark);background:#fff;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inherit}
+[dir="rtl"] body{font-family:'B Nazanin',Tahoma,Arial,sans-serif}
+.lt{position:fixed;top:20px;right:20px;z-index:1100;background:#fff;padding:8px 16px;border-radius:50px;box-shadow:var(--s2);cursor:pointer;font-weight:700;font-size:.82rem;border:2px solid var(--border);transition:var(--tr);color:var(--primary);display:flex;align-items:center;gap:6px}
+[dir="rtl"] .lt{right:auto;left:20px}
+.stt{position:fixed;bottom:26px;right:26px;z-index:999;width:42px;height:42px;background:var(--secondary);color:#fff;border-radius:50%;border:none;cursor:pointer;font-size:1.1rem;box-shadow:var(--s3);transition:var(--tr);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none}
+.stt.vis{opacity:1;pointer-events:all}[dir="rtl"] .stt{right:auto;left:26px}
+.topbar{background:var(--primary);color:rgba(255,255,255,.8);font-size:.8rem;padding:7px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.topbar a{color:rgba(255,255,255,.8)}.topbar a:hover{color:#fff}.tb-r{display:flex;gap:20px}
+.hdr{background:rgba(255,255,255,.98);backdrop-filter:blur(12px);position:sticky;top:0;z-index:1000;box-shadow:var(--s2);border-bottom:1px solid var(--border)}
+.hdr-in{max-width:1400px;margin:0 auto;padding:13px 40px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.logo{display:flex;align-items:center;gap:13px}.logo img{width:50px;height:50px;border-radius:11px;box-shadow:var(--s1)}
+.logo h1{font-size:1.3rem;color:var(--primary);font-weight:800}.logo p{font-size:.72rem;color:var(--text-light);font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.nav{display:flex;gap:4px;align-items:center}
+.nl{color:var(--text-mid);font-weight:600;font-size:.9rem;padding:8px 13px;border-radius:var(--r1);transition:var(--tr)}
+.nl:hover,.nl.active{color:var(--secondary);background:rgba(26,86,219,.06)}
+.nl.dd{padding-right:20px;position:relative}.nl.dd::after{content:"▾";position:absolute;right:7px;top:50%;transform:translateY(-50%);font-size:.65rem}
+.ddw{position:relative}.ddm{position:absolute;top:calc(100% + 8px);left:0;background:#fff;border-radius:var(--r2);min-width:270px;box-shadow:var(--s4);border:1px solid var(--border);opacity:0;visibility:hidden;transform:translateY(-8px);transition:var(--tr);z-index:200}
+.ddw:hover .ddm{opacity:1;visibility:visible;transform:translateY(0)}
+.ddi{display:flex;align-items:center;gap:10px;padding:11px 18px;color:var(--text-mid);font-size:.86rem;font-weight:500;transition:var(--tr)}.ddi:hover{background:var(--bg-light);color:var(--secondary)}.ddi-ic{font-size:1rem;width:20px;text-align:center}
+.bcta{background:linear-gradient(135deg,var(--secondary),#1d4ed8);color:#fff;padding:10px 22px;border-radius:50px;font-weight:700;font-size:.88rem;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(26,86,219,.35);transition:var(--tr);display:inline-flex;align-items:center;gap:7px}
+.bcta:hover{transform:translateY(-2px)}
+.mbt{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:10px}.mbt span{width:24px;height:2.5px;background:var(--text-dark);border-radius:2px;transition:var(--tr)}
+/* HERO */
+.page-hero{background:linear-gradient(135deg,#0a1f44 0%,#0f2d5e 50%,#1a56db 100%);color:#fff;padding:110px 40px 80px;position:relative;overflow:hidden}
+.page-hero-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:60px 60px}
+.page-hero-in{max-width:900px;margin:0 auto;position:relative;z-index:1;text-align:center}
+.stag{display:inline-block;background:rgba(26,86,219,.1);color:var(--secondary);font-size:.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:12px}
+.page-hero .stag{background:rgba(255,255,255,.14);color:rgba(255,255,255,.9)}
+.page-hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:800;margin-bottom:18px;line-height:1.2}
+.page-hero p{font-size:1.05rem;opacity:.85;max-width:700px;margin:0 auto}
+.breadcrumb{display:flex;gap:8px;align-items:center;justify-content:center;font-size:.82rem;color:rgba(255,255,255,.6);margin-bottom:20px}
+.breadcrumb a{color:rgba(255,255,255,.7)}.breadcrumb a:hover{color:#fff}.breadcrumb span{color:rgba(255,255,255,.4)}
+/* STATS STRIP */
+.stats-strip{background:var(--primary);display:flex;justify-content:center}
+.stats-strip-in{max-width:1400px;width:100%;display:grid;grid-template-columns:repeat(4,1fr)}
+.ss{text-align:center;padding:20px 16px;border-right:1px solid rgba(255,255,255,.1)}
+.ss:last-child{border-right:none}
+.ss-n{font-size:1.6rem;font-weight:800;color:#fff}.ss-n span{font-size:.95rem;color:#93c5fd}
+.ss-l{font-size:.68rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.5px;margin-top:3px}
+/* SEARCH & FILTER */
+.res-filter{padding:44px 40px 0;background:#fff}
+.res-filter-in{max-width:1400px;margin:0 auto}
+.res-search-row{display:flex;gap:12px;margin-bottom:22px;flex-wrap:wrap}
+.res-s-inp{flex:1;min-width:260px;padding:12px 18px;border:1.5px solid var(--border);border-radius:var(--r1);font-size:.92rem;outline:none;font-family:inherit;transition:var(--tr)}
+.res-s-inp:focus{border-color:var(--secondary);box-shadow:0 0 0 3px rgba(26,86,219,.1)}
+.res-sel{padding:12px 14px;border:1.5px solid var(--border);border-radius:var(--r1);font-size:.88rem;outline:none;font-family:inherit;color:var(--text-dark);background:#fff;cursor:pointer}
+.ftabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;align-items:center}
+.fl{font-size:.78rem;font-weight:700;color:var(--text-mid);text-transform:uppercase;letter-spacing:.5px;margin-right:4px}
+.ftab{padding:7px 16px;border-radius:50px;border:2px solid var(--border);background:#fff;color:var(--text-mid);font-size:.8rem;font-weight:700;cursor:pointer;transition:var(--tr)}
+.ftab:hover,.ftab.active{background:var(--secondary);color:#fff;border-color:var(--secondary)}
+/* RESOURCE SECTIONS */
+.res-sec{padding:48px 40px 100px}
+.res-sec-in{max-width:1400px;margin:0 auto}
+.res-count{font-size:.84rem;color:var(--text-light);margin-bottom:28px}
+.res-count span{font-weight:700;color:var(--text-dark)}
+/* CATEGORY HEADER */
+.cat-hdr{display:flex;align-items:center;gap:14px;margin-bottom:20px;padding-bottom:14px;border-bottom:2px solid var(--border)}
+.cat-hdr-ic{width:44px;height:44px;border-radius:var(--r1);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.cat-hdr h2{font-size:1.2rem;font-weight:800;color:var(--text-dark)}
+.cat-hdr p{font-size:.84rem;color:var(--text-light)}
+.cat-hdr .cnt{margin-left:auto;background:var(--bg-light);border:1px solid var(--border);color:var(--text-light);font-size:.72rem;font-weight:700;padding:4px 12px;border-radius:50px}
+/* RESOURCE GRID */
+.rg{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;margin-bottom:52px}
+/* RESOURCE CARD */
+.rc{background:#fff;border:1px solid var(--border);border-radius:var(--r2);padding:22px;box-shadow:var(--s1);transition:var(--tr);display:flex;flex-direction:column;gap:14px;cursor:pointer;position:relative;overflow:hidden}
+.rc::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--rc-color,var(--secondary))}
+.rc:hover{transform:translateY(-4px);box-shadow:var(--s3);border-color:transparent}
+.rc-top{display:flex;align-items:flex-start;gap:14px}
+.rc-icon{width:46px;height:46px;border-radius:var(--r1);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+.rc-info{flex:1}
+.rc-type{font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.rc-title{font-size:.95rem;font-weight:800;color:var(--text-dark);line-height:1.4}
+.rc-desc{font-size:.83rem;color:var(--text-light);line-height:1.7}
+.rc-meta{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.rc-tag{font-size:.68rem;font-weight:600;padding:3px 9px;border-radius:50px;background:var(--bg-light);border:1px solid var(--border);color:var(--text-mid)}
+.rc-size{font-size:.72rem;color:var(--text-light);margin-left:auto}
+.rc-btn{display:inline-flex;align-items:center;gap:7px;padding:9px 18px;border-radius:50px;font-size:.82rem;font-weight:700;transition:var(--tr);border:none;cursor:pointer;font-family:inherit;width:fit-content}
+.rc-btn-dl{background:linear-gradient(135deg,var(--secondary),#1d4ed8);color:#fff;box-shadow:0 3px 10px rgba(26,86,219,.3)}
+.rc-btn-dl:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(26,86,219,.4)}
+.rc-btn-view{background:var(--bg-light);color:var(--secondary);border:1.5px solid var(--secondary)!important}
+.rc-btn-view:hover{background:var(--secondary);color:#fff}
+.rc-locked{position:absolute;top:14px;right:14px;background:rgba(245,158,11,.12);color:#d97706;font-size:.65rem;font-weight:800;padding:3px 9px;border-radius:50px;border:1px solid rgba(245,158,11,.3)}
+.rc-free{position:absolute;top:14px;right:14px;background:rgba(5,150,105,.1);color:#059669;font-size:.65rem;font-weight:800;padding:3px 9px;border-radius:50px;border:1px solid rgba(5,150,105,.25)}
+/* FEATURED RESOURCE */
+.feat-res{background:linear-gradient(135deg,#0f2d5e,#1a56db);border-radius:var(--r3);padding:40px;color:#fff;margin-bottom:40px;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center}
+.fr-badge{display:inline-block;background:rgba(255,255,255,.15);color:rgba(255,255,255,.9);font-size:.68rem;font-weight:800;padding:3px 12px;border-radius:50px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px}
+.feat-res h2{font-size:1.5rem;font-weight:800;margin-bottom:10px;line-height:1.3}
+.feat-res p{font-size:.9rem;opacity:.82;line-height:1.7;margin-bottom:18px}
+.fr-stats{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:20px}
+.fr-stat{text-align:center}.fr-stat-n{font-size:1.3rem;font-weight:800;color:#fff}.fr-stat-l{font-size:.68rem;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.4px}
+.fr-btns{display:flex;gap:10px;flex-wrap:wrap}
+.fr-btn-w{background:#fff;color:var(--primary);padding:11px 24px;border-radius:50px;font-weight:700;font-size:.88rem;border:none;cursor:pointer;transition:var(--tr);display:inline-flex;align-items:center;gap:7px}
+.fr-btn-w:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.2)}
+.fr-btn-o{background:transparent;color:#fff;padding:11px 24px;border-radius:50px;font-weight:700;font-size:.88rem;border:1.5px solid rgba(255,255,255,.4);cursor:pointer;transition:var(--tr);display:inline-flex;align-items:center;gap:7px}
+.fr-btn-o:hover{background:rgba(255,255,255,.1)}
+.fr-img{width:200px;height:160px;background:rgba(255,255,255,.1);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;font-size:5rem;flex-shrink:0}
+/* MODAL */
+.res-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:2000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:var(--tr)}
+.res-overlay.open{opacity:1;visibility:visible}
+.res-modal{background:#fff;border-radius:var(--r3);max-width:640px;width:100%;box-shadow:0 40px 100px rgba(0,0,0,.4);transform:translateY(20px);transition:var(--tr);overflow:hidden}
+.res-overlay.open .res-modal{transform:translateY(0)}
+.res-modal-hdr{padding:28px 28px 20px;border-bottom:1px solid var(--border);display:flex;gap:16px;align-items:flex-start}
+.res-modal-ic{width:56px;height:56px;border-radius:var(--r1);display:flex;align-items:center;justify-content:center;font-size:1.8rem;flex-shrink:0}
+.res-modal-hdr h2{font-size:1.15rem;font-weight:800;color:var(--text-dark);line-height:1.3;margin-bottom:6px}
+.res-modal-close{margin-left:auto;width:34px;height:34px;background:var(--bg-light);border:1px solid var(--border);border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:var(--tr)}
+.res-modal-close:hover{background:#fee2e2;color:#dc2626}
+.res-modal-body{padding:24px 28px}
+.res-modal-body p{font-size:.9rem;color:var(--text-mid);line-height:1.75;margin-bottom:16px}
+.res-modal-body ul{padding-left:18px;margin-bottom:16px}
+.res-modal-body ul li{font-size:.88rem;color:var(--text-mid);line-height:1.7;margin-bottom:4px}
+.res-modal-meta{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+.rmm{background:var(--bg-light);border-radius:var(--r1);padding:12px;border:1px solid var(--border)}
+.rmm-l{font-size:.68rem;font-weight:700;color:var(--text-light);text-transform:uppercase;letter-spacing:.4px;margin-bottom:3px}
+.rmm-v{font-size:.88rem;font-weight:700;color:var(--text-dark)}
+.res-modal-footer{padding:20px 28px;border-top:1px solid var(--border);display:flex;gap:10px;flex-wrap:wrap}
+/* REGISTER GATE */
+.reg-gate{background:linear-gradient(135deg,#eff6ff,#dbeafe);border:1.5px solid #bfdbfe;border-radius:var(--r2);padding:28px;text-align:center;margin-top:8px}
+.reg-gate h3{font-size:1rem;font-weight:800;color:var(--primary);margin-bottom:8px}
+.reg-gate p{font-size:.86rem;color:var(--text-light);margin-bottom:16px}
+/* CTA */
+.cta-sec{padding:88px 40px;background:linear-gradient(135deg,#eff6ff,#dbeafe);text-align:center}
+.cta-in{max-width:700px;margin:0 auto}
+.cta-sec h2{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800;color:var(--primary);margin-bottom:14px}
+.cta-sec p{font-size:.98rem;color:var(--text-light);margin-bottom:32px}
+.cta-acts{display:flex;gap:13px;justify-content:center;flex-wrap:wrap}
+.bcp{background:linear-gradient(135deg,var(--secondary),#1d4ed8);color:#fff;padding:14px 30px;border-radius:50px;font-weight:700;font-size:.96rem;border:none;cursor:pointer;box-shadow:0 6px 20px rgba(26,86,219,.35);transition:var(--tr);display:inline-flex;align-items:center;gap:8px}
+.bcp:hover{transform:translateY(-3px)}
+.bco{background:#fff;color:var(--secondary);padding:14px 30px;border-radius:50px;font-weight:700;font-size:.96rem;border:2px solid var(--secondary);cursor:pointer;transition:var(--tr);display:inline-flex;align-items:center;gap:8px}
+.bco:hover{background:var(--secondary);color:#fff;transform:translateY(-3px)}
+/* FOOTER */
+.footer{background:#0a1628;color:#fff;padding:68px 40px 26px}
+.footer-in{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:36px;margin-bottom:46px}
+.fb-desc{font-size:.84rem;color:rgba(255,255,255,.5);line-height:1.75;margin-top:13px;margin-bottom:17px}
+.fb-socs{display:flex;gap:8px}
+.fb-s{width:34px;height:34px;background:rgba(255,255,255,.08);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.86rem;transition:var(--tr);color:rgba(255,255,255,.52)}.fb-s:hover{background:var(--secondary);color:#fff}
+.fc h4{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.45);margin-bottom:15px}
+.fc a{display:block;color:rgba(255,255,255,.66);font-size:.84rem;padding:4px 0;transition:var(--tr)}.fc a:hover{color:#fff}
+.footer-bot{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding-top:22px;border-top:1px solid rgba(255,255,255,.08);font-size:.78rem;color:rgba(255,255,255,.36);flex-wrap:wrap;gap:10px}
+.fb-lnks{display:flex;gap:18px}.fb-lnks a{color:rgba(255,255,255,.36)}.fb-lnks a:hover{color:rgba(255,255,255,.75)}
+@media(max-width:1100px){.feat-res{grid-template-columns:1fr}.fr-img{display:none}.footer-in{grid-template-columns:1fr 1fr 1fr}.stats-strip-in{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){.topbar{display:none}.mbt{display:flex}.nav{position:fixed;top:78px;right:-100%;width:80%;max-width:290px;height:calc(100vh - 78px);background:#fff;flex-direction:column;padding:28px;box-shadow:var(--s4);transition:right .3s ease;align-items:flex-start;overflow-y:auto;z-index:999}.nav.open{right:0}.ddm{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:none;background:var(--bg-light);margin-top:5px}.res-filter,.res-sec,.cta-sec,.footer{padding-left:22px;padding-right:22px}.rg{grid-template-columns:1fr}.footer-in{grid-template-columns:1fr 1fr}.footer-bot{flex-direction:column;text-align:center}.hdr-in{padding:13px 20px}.res-modal-meta{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<button class="lt" onclick="tgLang()">🌐 <span id="lt-txt">FA | فارسی</span></button>
+<button class="stt" id="sttBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<div class="topbar">
+  <div>📧 info@kdmine.com &nbsp;|&nbsp; 📞 +98 21 1234 5678 &nbsp;|&nbsp; 🕐 Sat–Wed 08:00–18:00 IRST</div>
+  <div class="tb-r"><a href="register.html">🔐 Client Login</a><a href="register.html">📊 Dashboard</a></div>
+</div>
+
+<header class="hdr">
+  <div class="hdr-in">
+    <div class="logo">
+      <img src="https://cdn.grapesjs.com/workspaces/cmgvbwak408ja13nsemkia83b/assets/7e057c43-5d96-4c3a-a8fc-8bd5f6589a93__kavianpremiumbadgelogo.svg" alt="KDMine">
+      <div><h1 data-en="KDMine Group" data-fa="کاویان توسعه معدن">KDMine Group</h1><p data-en="Mining Engineering & Economics Platform" data-fa="پلتفرم مهندسی و اقتصاد معدن">Mining Engineering & Economics Platform</p></div>
+    </div>
+    <button class="mbt" onclick="tgMenu()"><span></span><span></span><span></span></button>
+    <nav class="nav" id="mainNav">
+      <div class="ddw"><a href="index.html#services" class="nl dd" data-en="Services" data-fa="خدمات">Services</a>
+        <div class="ddm">
+          <a href="services/feasibility.html" class="ddi"><span class="ddi-ic">📋</span><span>Feasibility Studies</span></a>
+          <a href="services/cost-estimation.html" class="ddi"><span class="ddi-ic">💰</span><span>CAPEX/OPEX Estimation</span></a>
+          <a href="services/plant-design.html" class="ddi"><span class="ddi-ic">🏭</span><span>Process Plant Design</span></a>
+          <a href="services/critical-minerals.html" class="ddi"><span class="ddi-ic">⚡</span><span>Critical Minerals</span></a>
+          <a href="services/esg-decarbonization.html" class="ddi"><span class="ddi-ic">🌱</span><span>ESG & Decarbonization</span></a>
+          <a href="services/digital-mining.html" class="ddi"><span class="ddi-ic">🤖</span><span>Digital Mining & AI</span></a>
+        </div>
+      </div>
+      <div class="ddw"><a href="index.html#tools" class="nl dd" data-en="Tools" data-fa="ابزارها">Tools</a>
+        <div class="ddm">
+          <a href="tools/cost-calculator.html" class="ddi"><span class="ddi-ic">🧮</span><span>Cost Calculator</span></a>
+          <a href="tools/equipment-database.html" class="ddi"><span class="ddi-ic">🗃️</span><span>Equipment Database</span></a>
+          <a href="tools/monte-carlo.html" class="ddi"><span class="ddi-ic">📉</span><span>Monte Carlo Simulator</span></a>
+          <a href="tools/market-dashboard.html" class="ddi"><span class="ddi-ic">🌍</span><span>Market Dashboard</span></a>
+        </div>
+      </div>
+      <a href="resources.html" class="nl active" data-en="Resources" data-fa="منابع">Resources</a>
+      <a href="portfolio.html" class="nl" data-en="Portfolio" data-fa="نمونه کارها">Portfolio</a>
+      <a href="about.html" class="nl" data-en="About" data-fa="درباره ما">About</a>
+      <a href="contact.html" class="nl" data-en="Contact" data-fa="تماس">Contact</a>
+      <a href="register.html" class="bcta" data-en="Get Started →" data-fa="شروع کنید ←">Get Started →</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-in">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Resources</span></div>
+    <div class="stag" data-en="Knowledge Library" data-fa="کتابخانه دانش">Knowledge Library</div>
+    <h1 data-en="Mining Resources & Technical Library" data-fa="منابع معدنی و کتابخانه فنی">Mining Resources & Technical Library</h1>
+    <p data-en="Download AACE templates, CAPEX/OPEX models, ESG frameworks, equipment databases, and technical guides — curated by KDMine Group's senior engineers for global mining professionals." data-fa="قالب‌های AACE، مدل‌های CAPEX/OPEX، چارچوب‌های ESG، پایگاه‌های داده تجهیزات و راهنماهای فنی را دانلود کنید — تنظیم‌شده توسط مهندسان ارشد KDMine Group برای متخصصان معدن جهانی.">Download AACE templates, CAPEX/OPEX models, ESG frameworks, equipment databases, and technical guides — curated by KDMine Group's senior engineers for global mining professionals.</p>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stats-strip-in">
+    <div class="ss"><div class="ss-n">120<span>+</span></div><div class="ss-l" data-en="Resources" data-fa="منابع">Resources</div></div>
+    <div class="ss"><div class="ss-n">48</div><div class="ss-l" data-en="Free Downloads" data-fa="دانلود رایگان">Free Downloads</div></div>
+    <div class="ss"><div class="ss-n">8,400<span>+</span></div><div class="ss-l" data-en="Downloads/Month" data-fa="دانلود در ماه">Downloads/Month</div></div>
+    <div class="ss"><div class="ss-n">2026</div><div class="ss-l" data-en="Last Updated" data-fa="آخرین به‌روزرسانی">Last Updated</div></div>
+  </div>
+</div>
+
+<!-- FILTER -->
+<div class="res-filter">
+  <div class="res-filter-in">
+    <div class="res-search-row">
+      <input class="res-s-inp" type="text" id="resSearch" placeholder="Search resources by title, type, or topic..." oninput="filterRes()">
+      <select class="res-sel" id="resSel" onchange="filterRes()">
+        <option value="all" data-en="All Types" data-fa="همه انواع">All Types</option>
+        <option value="excel" data-en="Excel Templates" data-fa="قالب‌های اکسل">Excel Templates</option>
+        <option value="pdf" data-en="PDF Guides" data-fa="راهنماهای PDF">PDF Guides</option>
+        <option value="report" data-en="Reports" data-fa="گزارش‌ها">Reports</option>
+        <option value="checklist" data-en="Checklists" data-fa="چک‌لیست‌ها">Checklists</option>
+        <option value="dataset" data-en="Datasets" data-fa="مجموعه داده‌ها">Datasets</option>
+      </select>
+    </div>
+    <div class="ftabs">
+      <span class="fl" data-en="Category:" data-fa="دسته‌بندی:">Category:</span>
+      <button class="ftab active" onclick="filterCat('all',this)" data-en="All" data-fa="همه">All</button>
+      <button class="ftab" onclick="filterCat('cost',this)" data-en="Cost Estimation" data-fa="تخمین هزینه">Cost Estimation</button>
+      <button class="ftab" onclick="filterCat('equipment',this)" data-en="Equipment" data-fa="تجهیزات">Equipment</button>
+      <button class="ftab" onclick="filterCat('esg',this)" data-en="ESG" data-fa="ESG">ESG</button>
+      <button class="ftab" onclick="filterCat('financial',this)" data-en="Financial Models" data-fa="مدل‌های مالی">Financial Models</button>
+      <button class="ftab" onclick="filterCat('standards',this)" data-en="Standards" data-fa="استانداردها">Standards</button>
+      <button class="ftab" onclick="filterCat('market',this)" data-en="Market Data" data-fa="داده‌های بازار">Market Data</button>
+    </div>
+  </div>
+</div>
+
+<!-- RESOURCES MAIN -->
+<section class="res-sec">
+  <div class="res-sec-in">
+
+    <!-- FEATURED -->
+    <div class="feat-res" id="featRes">
+      <div>
+        <span class="fr-badge" data-en="⭐ Featured Resource" data-fa="⭐ منبع ویژه">⭐ Featured Resource</span>
+        <h2 data-en="2026 Mining CAPEX/OPEX Master Template — AACE Class 3/4/5" data-fa="قالب اصلی CAPEX/OPEX معدن ۲۰۲۶ — AACE کلاس ۳/۴/۵">2026 Mining CAPEX/OPEX Master Template — AACE Class 3/4/5</h2>
+        <p data-en="The most comprehensive Excel-based CAPEX/OPEX estimation template for open pit mining projects. Includes equipment sizing, CostMine 2025 pricing, Monte Carlo contingency module, and AACE 47R-11 compliance checklist. Used by 1,200+ engineers globally." data-fa="جامع‌ترین قالب تخمین CAPEX/OPEX مبتنی بر اکسل برای پروژه‌های معدن روباز. شامل اندازه‌گیری تجهیزات، قیمت‌گذاری CostMine 2025، ماژول اقتضایی مونت کارلو و چک‌لیست انطباق AACE 47R-11.">The most comprehensive Excel-based CAPEX/OPEX estimation template for open pit mining projects. Includes equipment sizing, CostMine 2025 pricing, Monte Carlo contingency module, and AACE 47R-11 compliance checklist. Used by 1,200+ engineers globally.</p>
+        <div class="fr-stats">
+          <div class="fr-stat"><div class="fr-stat-n">42</div><div class="fr-stat-l" data-en="Worksheets" data-fa="برگه‌ها">Worksheets</div></div>
+          <div class="fr-stat"><div class="fr-stat-n">1,200+</div><div class="fr-stat-l" data-en="Downloads" data-fa="دانلود">Downloads</div></div>
+          <div class="fr-stat"><div class="fr-stat-n">June 2026</div><div class="fr-stat-l" data-en="Updated" data-fa="به‌روزرسانی">Updated</div></div>
+          <div class="fr-stat"><div class="fr-stat-n">Free</div><div class="fr-stat-l" data-en="For Members" data-fa="برای اعضا">For Members</div></div>
+        </div>
+        <div class="fr-btns">
+          <button class="fr-btn-w" onclick="openRes('r1')">📥 <span data-en="Download Template →" data-fa="دانلود قالب ←">Download Template →</span></button>
+          <button class="fr-btn-o" onclick="openRes('r1')">👁 <span data-en="Preview Contents" data-fa="پیش‌نمایش محتوا">Preview Contents</span></button>
+        </div>
+      </div>
+      <div class="fr-img">📊</div>
+    </div>
+
+    <!-- COUNT -->
+    <div class="res-count"><span id="resCount">24</span> <span data-en="resources found" data-fa="منبع یافت شد">resources found</span></div>
+
+    <!-- ═══ COST ESTIMATION ═══ -->
+    <div class="cat-section" data-cat="cost" id="secCost">
+      <div class="cat-hdr">
+        <div class="cat-hdr-ic" style="background:rgba(26,86,219,.1)">💰</div>
+        <div><h2 data-en="Cost Estimation Templates & Guides" data-fa="قالب‌ها و راهنماهای تخمین هزینه">Cost Estimation Templates & Guides</h2><p data-en="AACE-compliant CAPEX/OPEX models, checklists, and reference guides" data-fa="مدل‌های CAPEX/OPEX منطبق با AACE، چک‌لیست‌ها و راهنماهای مرجع">AACE-compliant CAPEX/OPEX models, checklists, and reference guides</p></div>
+        <span class="cnt">7 resources</span>
+      </div>
+      <div class="rg">
+
+        <div class="rc" style="--rc-color:#1a56db" data-cat="cost" data-type="excel" data-title="CAPEX OPEX Master Template" onclick="openRes('r1')">
+          <span class="rc-free" data-en="FREE" data-fa="رایگان">FREE</span>
+          <div class="rc-top">
+            <div class="rc-icon" style="background:rgba(26,86,219,.1)">📊</div>
+            <div class="rc-info">
+              <div class="rc-type" style="color:#1a56db">Excel Template</div>
+              <div class="rc-title" data-en="2026 Mining CAPEX/OPEX Master Template — AACE Class 3/4/5" data-fa="قالب اصلی CAPEX/OPEX معدن ۲۰۲۶ — AACE کلاس ۳/۴/۵">2026 Mining CAPEX/OPEX Master Template — AACE Class 3/4/5</div>
+            </div>
+          </div>
+          <p class="rc-desc" data-en="42-worksheet Excel model covering all CAPEX/OPEX line items for open pit mining. Includes CostMine 2025 pricing, Monte Carlo module, and AACE 47R-11 compliance." data-fa="مدل اکسل ۴۲ برگه‌ای که تمام اقلام CAPEX/OPEX برای معدن روباز را پوشش می‌دهد. شامل قیمت‌گذاری CostMine 2025، ماژول مونت کارلو و انطباق AACE 47R-11.">42-worksheet Excel model covering all CAPEX/OPEX line items for open pit mining. Includes CostMine 2025 pricing, Monte Carlo module, and AACE 47R-11 compliance.</p>
+          <div class="rc-meta"><span class="rc-tag">Excel</span><span class="rc-tag">AACE</span><span class="rc-tag">CAPEX</span><span class="rc-size">4.8 MB</span></div>
+          <button class="rc-btn rc-btn-dl" onclick="event.stopPropagation();openRes('r1')">📥 <span data-en="Download Free" data-fa="دانلود رایگان">Download Free</span></button>
+        </div>
+
+        <div class="rc" style="--rc-color:#1a56db" data-cat="cost" data-type="excel" data-title="OPEX Benchmarking Tool 2026" onclick="openRes('r2')">
+          <span class="rc-free" data-en="FREE" data-fa="رایگان">FREE</span>
+          <div class="rc-top">
+            <div class="rc-icon" style="background:rgba(26,86,219,.1)">📈</div>
+            <div class="rc-info">
+              <div class="rc-type" style="color:#1a56db">Excel Template</div>
+              <div class="rc-title" data-en="OPEX Benchmarking Tool 2026 — By Commodity & Region" data-fa="ابزار معیارسنجی OPEX 2026 — بر اساس کالا و منطقه">OPEX Benchmarking Tool 2026 — By Commodity & Region</div>
+            </div>
+          </div>
+          <p class="rc-desc" data-en="Compare your project OPEX against 2026 global benchmarks for copper, gold, iron ore, and lithium. Includes regional adjustment factors and inflation indices." data-fa="OPEX پروژه خود را با معیارهای جهانی ۲۰۲۶ برای مس، طلا، سنگ آهن و لیتیوم مقایسه کنید. شامل ضرایب تعدیل منطقه‌ای و شاخص‌های تورم.">Compare your project OPEX against 2026 global benchmarks for copper, gold, iron ore, and lithium. Includes regional adjustment factors and inflation indices.</p>
+          <div class="rc-meta"><span class="rc-tag">Excel</span><span class="rc-tag">OPEX</span><span class="rc-tag">Benchmarks</span><span class="rc-size">2.1 MB</span></div>
+          <button class="rc-btn rc-btn-dl" onclick="event.stopPropagation();openRes('r2')">📥 <span data-en="Download Free" data-fa="دانلود رایگان">Download Free</span></button>
+        </div>
+
+        <div class="rc" style="--rc-color:#1a56db" data-cat="cost" data-type="checklist" data-title="AACE 47R-11 Compliance Checklist" onclick="openRes('r3')">
+          <span class="rc-free" data-en="FREE" data-fa="رایگان">FREE</span>
+          <div class="rc-top">
+            <div class="rc-icon" style="background:rgba(26,86,219,.1)">✅</div>
+            <div class="rc-info">
+              <div class="rc-type" style="color:#1a56db">Checklist PDF</div>
+              <div class="rc-title" data-en="AACE 47R-11 Compliance Checklist for Mining Estimates" data-fa="چک‌لیست انطباق AACE 47R-11 برای تخمین‌های معدنی">AACE 47R-11 Compliance Checklist for Mining Estimates</div>
+            </div>
+          </div>
+          <p class="rc-desc" data-en="68-point checklist to verify your mining CAPEX estimate complies with AACE 47R-11. Covers basis of estimate, scope definition, pricing, contingency, and documentation." data-fa="چک‌لیست ۶۸ نکته‌ای برای تأیید انطباق تخمین CAPEX معدنی شما با AACE 47R-11. شامل مبنای تخمین، تعریف محدوده، قیمت‌گذاری، اقتضایی و مستندسازی.">68-point checklist to verify your mining CAPEX estimate complies with AACE 47R-11. Covers basis of estimate, scope definition, pricing, contingency, and documentation.</p>
+          <div class="rc-meta"><span class="rc-tag">PDF</span><span class="rc-tag">AACE</span><span class="rc-tag">Checklist</span><span class="rc-size">0.4 MB</span></div>
+          <button class="rc-btn rc-btn-dl" onclick="event.stopPropagation();openRes('r3')">📥 <span data-en="Download Free" data-fa="دانلود رایگان">Download Free</span></button>
+        </div>
+
+        <div class="rc" style="--rc-color:#1a56db" data-cat="cost" data-type="excel" data-title="Monte Carlo CAPEX Simulator" onclick="openRes('r4')">
+          <span class="rc-locked" data-en="MEMBERS" data-fa="اعضا">MEMBERS</span>
+          <div class="rc-top">
+            <div class="rc-icon" style="background:rgba(26,86,219,.1)">🎲</div>
+            <div class="rc-info">
+              <div class="rc-type" style="color:#1a56db">Excel Model</div>
+              <div class="rc-title" data-en="Monte Carlo CAPEX Simulator — P50/P80/P90 Output" data-fa="شبیه‌ساز CAPEX مونت کارلو — خروجی P50/P80/P90">Monte Carlo CAPEX Simulator — P50/P80/P90 Output</div>
+            </div>
+          </div>
+          <p class="rc-desc" data-en="10,000-iteration Monte Carlo simulation model for mining CAPEX contingency analysis. PERT/triangular/lognormal distributions, correlation matrix, and automated P50/P80/P90 reporting." data-fa="مدل شبیه‌سازی مونت کارلو ۱۰,۰۰۰ تکراری برای تحلیل اقتضایی CAPEX معدنی. توزیع‌های PERT/مثلثی/لگ‌نرمال، ماتریس همبستگی و گزارش‌دهی خودکار P50/P80/P90.">10,000-iteration Monte Carlo simulation model for mining CAPEX contingency analysis. PERT/triangular/lognormal distributions, correlation matrix, and automated P50/P80/P90 reporting.</p>
+          <div class="rc-meta"><span class="rc-tag">Excel</span><span class="rc-tag">Monte Carlo</span><span class="rc-tag">Risk</span><span class="rc-size">3.2 MB</span></div>
+          <button class="rc-btn rc-btn-view" onclick="event.stopPropagation();openRes('r4')">🔐 <span data-en="Members Only" data-fa="فقط اعضا">Members Only</span></button>
+        </div>
+
+        <div class="rc" style="--rc-color:#1a56db" data-cat="cost" data-type="pdf" data-title="Cost Escalation Indices 2026" onclick="openRes('r5')">
+          <span class="rc-free" data-en="FREE" data-fa="رایگان">FREE</span>
+          <div class="rc-top">
+            <div class="rc-icon" style="background:rgba(26,86,219,.1)">📉</div>
+            <div class="rc-info">
+              <div class="rc-type" style="color:#1a56db">PDF Report</div>
+              <div class="rc-title" data-en="Mining Cost Escalation Indices 2023–2026 by Category" data-fa="شاخص‌های تشدید هزینه معدن ۲۰۲۳–۲۰۲۶ بر اساس دسته">Mining Cost Escalation Indices 2023–2026 by Category</div>
+            </div>
+          </div>
+          <p class="rc-desc" data-en="Equipment, labour, energy, and materials cost escalation indices for mining projects 2023–2026. Includes regional breakdowns for Australia, Americas, Africa, and Central Asia." data-fa="شاخص‌های تشدید هزینه تجهیزات، نیروی کار، انرژی و مواد برای پروژه‌های معدنی ۲۰۲۳–۲۰۲۶. شامل تفکیک منطقه‌ای برای استرالیا، آمریکا، آفریقا و آسیای مرکزی.">Equipment, labour, energy, and materials cost escalation indices for mining projects 2023–2026. Includes regional breakdowns for Australia, Americas, Africa, and Central Asia.</p>
+          <div class="rc-meta"><span class="rc-tag">PDF</span><span class="rc-tag">Escalation</span><span class="rc-tag">2026</span><span class="rc-size">1.8 MB</span></div>
+          <button class="rc-btn rc-btn-dl" onclick="event.stopPropagation();openRes('r5')">📥 <span data-en="Download Free" data-fa="دانلود رایگان">Download Free</span></button>
+        </div>
+
+        <div class="rc" style="--rc-color:#1a56db" data-cat="cost" data-type="pdf" data-title="Basis of Estimate Template Mining" onclick="openRes('r6')">
+          <span class="rc-free" data-en="FREE" data-fa="رایگان">FREE</span>
+          <div class="rc-top">
+            <div class="rc-icon" style="background:rgba(26,86,219,.1)">📄</div>
+            <div class="rc-info">
+              <div class="rc-type" style="color:#1a56db">Word Template</div>
+              <div class="rc-title" data-en="Basis of Estimate (BoE) Template — Mining Projects" data-fa="قالب مبنای تخمین (BoE) — پروژه‌های معدنی">Basis of Estimate (BoE) Template — Mining Projects</div>
+            </div>
+          </div>
+          <p class="rc-desc" data-en="Professional Basis of Estimate document template for AACE Class 3–5 mining estimates. Covers scope inclusions/exclusions, pricing basis, contingency methodology, and assumptions register." data-fa="قالب سند مبنای تخمین حرفه‌ای برای تخمین‌های معدنی AACE کلاس ۳–۵. شامل موارد شامل/مستثنی محدوده، مبنای قیمت‌گذاری، روش‌شناسی اقتضایی و ثبت فرضیات.">Professional Basis of Estimate document template for AACE Class 3–5 mining estimates. Covers scope inclusions/exclusions, pricing basis, contingency methodology, and assumptions register.</p>
+          <div class="rc-meta"><span class="rc-tag">Word</span><span class="rc-tag">BoE</span><span class="rc-tag">Template</span><span class="rc-size">0.6 MB</span></div>
+          <button class="rc-btn rc-btn-dl" onclick="event.stopPropagation();openRes('r6')">📥 <span data-en="Download Free" data-fa="دانلود رایگان">Download Free</span></button>
+        </div>
+
+        <div class="rc" style="--rc-color:#1a56db" data-cat="cost" data-type="excel" data-title="Owner Cost Model Mining" onclick="openRes('r7')">
+          <span class="rc-locked" data-en="MEMBERS" data-fa="اعضا">MEMBERS</span>
+          <div class="rc-top">
+            <div class="rc-icon" style="background:rgba(26,86,219,.1)">🏗️</div>
+            <div class="rc-info">
+              <div class="rc-type" style="color:#1a56db">Excel Model</div>
+              <div class="rc-title" data-en="Owner's Cost Model — Mining Project Development" data-fa="مدل هزینه مالک — توسعه پروژه معدنی">Owner's Cost Model — Mining Project Development</div>
+            </div>
+          </div>
+          <p class="rc-desc" data-en="Comprehensive owner's cost model covering EPCM fees, owner's team, permitting, land access, community, insurance, and commissioning costs for mining projects." data-fa="مدل جامع هزینه مالک شامل هزینه‌های EPCM، تیم مالک، مجوزدهی، دسترسی به زمین، جامعه، بیمه و هزینه‌های راه‌اندازی برای پروژه‌های معدنی.">Comprehensive owner's cost model covering EPCM fees, owner's team, permitting, land access, community, insurance, and commissioning costs for mining projects.</p>
+          <div class="rc-meta"><span class="rc-tag">Excel</span><span class="rc-tag">Owner's Cost</span><span class="rc-tag">EPCM</span><span class="rc-size">2.4 MB</span></div>
+          <button class="rc-btn rc-btn-view" onclick="event.stopPropagation();openRes('r7')">🔐 <span data-en="Members Only" data-fa="فقط اعضا">Members Only</span></button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ═══ EQUIPMENT ═══ -->
+    <div class="cat-section" data-cat="equipment" id="secEquip">
+      <div class="cat-hdr">
+        <div class="cat-hdr-ic" style="background:rgba(13,148,136,.1)">⚙️</div>
+        <div><h2 data-en="Equipment Databases & Sizing Tools" data-fa="پایگاه‌های داده تجهیزات و ابزارهای اندازه‌گیری">Equipment Databases & Sizing Tools</h2><p data-en="2026 equipment pricing, sizing calculators, and selection guides" data-fa="قیمت‌گذاری تجهیزات ۲۰۲۶، ماشین‌حساب‌های اندازه‌گیری و راهنماهای انتخاب">2026 equipment pricing, sizing calculators, and selection guides</p></div>
+        <span class="cnt">5 resources</span>
+      </div>
+      <div class="rg">
+
+        <div class="rc" style="--rc-color:#0d9488" data-cat="equipment" data-type="excel" data-title="Mining Equipment Cost Database 2026" onclick="openRes('r8')">
+          <span class="rc-locked" data-en="MEMBERS" data-fa="اعضا">MEMBERS</span>
+          <div class="rc-top">
+            <div class="rc-icon" style="background:rgba(13,148,136,.1)">🗃️</div>
+            <div class="rc-info">
+              <div class="rc-type" style="color:#0d9488">Excel Database</div>
+              <div class="rc-title" data-en="Mining Equipment Cost Database 2026 — 850+ Items" data-fa="پایگاه داده هزینه تجهیزات معدنی ۲۰۲۶ — ۸۵۰+ قلم">Mining Equipment Cost Database 2026 — 850+ Items</div>
+            </div>
+          </div>
+          <p class="rc-desc" data-en="850+ mining equipment items with 2026 purchase prices, installation factors, operating costs, and lead times. Covers mobile fleet, processing plant, and infrastructure equipment." data-fa="۸۵۰+ قلم تجهیزات معدنی با قیمت‌های خرید ۲۰۲۶، ضرایب نصب، هزینه‌های عملیاتی و زمان‌های تحویل. شامل ناوگان متحرک، کارخانه فرآوری و تجهیزات زیرساختی.">850+ mining equipment items with 2026 purchase prices, installation factors, operating costs, and lead times. Covers mobile fleet, processing plant, and infrastructure equipment.</p>
+          <div class="rc-meta"><span class="rc-tag">Excel</span><span class="rc-tag">Equipment</span><span class="rc-tag">2026 Pricing</span><span class="rc-size">8.4 MB</span></div>
+          <button class="rc-btn rc-btn-view" onclick="event.stopPropagation();openRes('r8')">🔐 <span data-en="Members Only" data-fa="فقط اعضا">Members Only</span></button>
+        </div>
+
+        <div class="rc" style="--rc-color:#0d9488" data-cat="equipment" data-type="excel" data-title="Haul Truck Fleet Sizing Calculator" onclick="openRes('r9')">
+          <span class="rc-free" data-en="FREE" data-fa="رایگان">FREE</span>
+          <div class="rc-top">
+            <div class="rc-icon" style="background:rgba(13,148,136,.1)">🚛</div>
+            <div class="rc-info">
+              <div class="rc-type" style="color:#0d9488">Excel Calculator</div>
+              <div class="rc-title" data-en="Haul Truck Fleet Sizing Calculator — Open Pit" data-fa="ماشین‌حساب اندازه‌گیری ناوگان کامیون حمل — معدن روباز">Haul Truck Fleet Sizing Calculator — Open Pit</div>
+            </div>
+          </div>
+          <p class="rc-desc" data-en="Calculate required haul truck fleet size based on production rate, haul distance, cycle time, and availability. Includes Caterpillar 793/797, Komatsu 930E, and Liebherr T 284 specs." data-fa="اندازه ناوگان کامیون حمل مورد نیاز را بر اساس نرخ تولید، فاصله حمل، زمان چرخه و در دسترس بودن محاسبه کنید.">Calculate required haul truck fleet size based on production rate, haul distance, cycle time, and availability. Includes Cat 793/797, Komatsu 930E, and Liebherr T 284 specs.</p>
+          <div class="rc-meta"><span class="rc-tag">Excel</span><span class="rc-tag">Fleet Sizing</span><span class="rc-tag">Haul Trucks</span><span class="rc-size">1.2 MB</span></div>
+          <button class="rc-btn rc-btn-dl" onclick="event.stopPropagation();openRes('r9')">📥 <span data-en="Download Free" data-fa="دانلود رایگان">Download Free</span></button>
+        </div>
+
+        <div class="rc" style="--rc-color:#0d9488" data-cat="equipment" data-type="excel" data-title="SAG Ball Mill Sizing Calculator" onclick="openRes('r10')">
+          <span class="rc-free" data-en="FREE" data-fa="رایگان">FREE</span>
+          <div class="rc-top">
+            <div class="rc-icon" style="background:rgba(13,148,136,.1)">⚙️</div>
+            <div class="rc-info">
+              <div class="rc-type" style="color:#0d9488">Excel Calculator</div>
+              <div class="rc-title" data-en="SAG & Ball Mill Sizing Calculator — Bond/Barratt Method" data-fa="ماشین‌حساب اندازه‌گیری SAG و آسیاب گلوله‌ای — روش Bond/Barratt">SAG & Ball Mill Sizing Calculator — Bond/Barratt Method</div>
+            </div>
+          </div>
+          <p class="rc-desc" data-en="Size SAG and ball mills using Bond Work Index and Barratt correction factors. Outputs mill dimensions, installed power, and capital cost estimate using 2026 vendor pricing." data-fa="SAG و آسیاب‌های گلوله‌ای را با استفاده از شاخص کار Bond و ضرایب تصحیح Barratt اندازه‌گیری کنید. خروجی‌ها شامل ابعاد آسیاب، توان نصب‌شده و تخمین هزینه سرمایه.">Size SAG and ball mills using Bond Work Index and Barratt correction factors. Outputs mill dimensions, installed power, and capital cost estimate using 2026 vendor pricing.</p>
+          <div class="rc-meta"><span class="rc-tag">Excel</span><span class="rc-tag">SAG Mill</span><span class="rc-tag">Grinding</span><span class="rc-size">1.6 MB</span></div>
+          <button class="rc-btn rc-btn-dl" onclick="event.stopPropagation();openRes('r10')">📥 <span data-en="Download Free" data-fa="دانلود رایگان">Download Free</span></button>
+        </div>
+
+        <div class="rc" style="--rc-color:#0d9488" data-cat="equipment" data-type="excel" data-title="Process Plant Equipment List Template" onclick="openRes('r11')">
+          <span class="rc-locked" data-en="MEMBERS" data-fa="اعضا">MEMBERS</span>
+          <div class="rc-top">
+            <div class="rc-icon" style="background:rgba(13,148,136,.1)">🏭</div>
+            <div class="rc-info">
+              <div class="rc-type" style="color:#0d9488">Excel Template</div>
+              <div class="rc-title" data-en="Process Plant Equipment List — Flotation/CIL/HPGR/SX-EW" data-fa="لیست تجهیزات کارخانه فرآوری — فلوتاسیون/CIL/HPGR/SX-EW">Process Plant Equipment List — Flotation/CIL/HPGR/SX-EW</div>
+            </div>
+          </div>
+          <p class="rc-desc" data-en="Comprehensive equipment list templates for flotation, CIL gold, HPGR grinding, and SX-EW copper circuits. Includes tag numbers, specifications, and 2026 budget prices." data-fa="قالب‌های لیست تجهیزات جامع برای مدارهای فلوتاسیون، طلای CIL، آسیاب HPGR و مس SX-EW. شامل شماره تگ، مشخصات و قیمت‌های بودجه ۲۰۲۶.">Comprehensive equipment list templates for flotation, CIL gold, HPGR grinding, and SX-EW copper circuits. Includes tag numbers, specifications, and 2026 budget prices.</p>
+          <div class="rc-meta"><span class="rc-tag">Excel</span><span class="rc-tag">Equipment List</span><span class="rc-tag">Process Plant</span><span class="rc-size">5.1 MB</span></div>
+          <button class="rc-btn rc-btn-view" onclick="event.stopPropagation();openRes('r11')">🔐 <span data-en="Members Only" data-fa="فقط اعضا">Members Only</span></button>
+        </div>
+
+        <div class="rc" style="--rc-color:#0d9488" data-cat="equipment" data-type="pdf" data-title="Equipment Lead Times Mining 2026" onclick="openRes('r12')">
+          <span class="rc-free" data-en="FREE" data-fa="رایگان">FREE</span>
+          <div class="rc-top">
+            <div class="rc-icon" style="background:rgba(13,148,136,.1)">⏱️</div>
+            <div class="rc-info">
+              <div class="rc-type" style="color:#0d9488">PDF Report</div>
+              <div class="rc-title" data-en="Mining Equipment Lead Times 2026 — Critical Path Guide" data-fa="زمان‌های تحویل تجهیزات معدنی ۲۰۲۶ — راهنمای مسیر بحرانی">Mining Equipment Lead Times 2026 — Critical Path Guide</div>
+            </div>
+          </div>
+          <p class="rc-desc" data-en="Current lead times for 60+ critical mining equipment items including SAG mills, autoclaves, HPGR, large pumps, and transformers. Essential for project schedule and CAPEX escalation planning." data-fa="زمان‌های تحویل فعلی برای ۶۰+ قلم تجهیزات معدنی حیاتی شامل آسیاب‌های SAG، اتوکلاوها، HPGR، پمپ‌های بزرگ و ترانسفورماتورها.">Current lead times for 60+ critical mining equipment items including SAG mills, autoclaves, HPGR, large pumps, and transformers. Essential for project schedule and CAPEX escalation planning.</p>
+          <div class="rc-meta"><span class="rc-tag">PDF</span><span class="rc-tag">Lead Times</span><span class="rc-tag">Schedule</span><span class="rc-size">0.9 MB</span></div>
+          <button class="rc-btn rc-btn-dl" onclick="event.stopPropagation();openRes('r12')">📥 <span data-en="Download Free" data-fa="دانلود رایگان">Download Free</span></button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ═══ ESG ═══ -->
+    <div class="cat-section" data-cat="esg" id="secESG">
+      <div class="cat-hdr">
+        <div class="cat-hdr-ic" style="background:rgba(5,150,105,.1)">🌱</div>
+        <div><h2 data-en="ESG Frameworks & Reporting Templates" data-fa="چارچوب‌های ESG و قالب‌های گزارش‌دهی">ESG Frameworks & Reporting Templates</h2><p data-en="GRI, TCFD, Net Zero roadmaps, and IFC compliance tools" data-fa="GRI، TCFD، نقشه‌های راه Net Zero و ابزارهای انطباق IFC">GRI, TCFD, Net Zero roadmaps, and IFC compliance tools</p></div>
+        <span class="cnt">4 resources</span>
+      </div>
+      <div class="rg">
+
+        <div class="rc" style="--rc-color:#059669" data-cat="esg" data-type="excel" data-title="Carbon Footprint Calculator Mining" onclick="openRes('r13')">
+          <span class="rc-free" data-en="FREE" data-fa="رایگان">FREE</span>
+          <div class="rc-top">
+            <div class="rc-icon" style="background:rgba(5,150,105,.1)">🌍</div>
+            <div class="rc-info">
+              <div class="rc-type" style="color:#059669">Excel Calculator</div>
+              <div class="rc-title" data-en="Scope 1/2/3 Carbon Footprint Calculator — Mining Operations" data-fa="ماشین‌حساب ردپای کربن Scope 1/2/3 — عملیات معدنی">Scope 1/2/3 Carbon Footprint Calculator — Mining Operations</div>
+            </div>
+          </div>
+          <p class="rc-desc" data-en="Calculate Scope 1, 2, and 3 GHG emissions for open pit and underground mining operations. Uses GHG Protocol methodology with 2026 IPCC emission factors. Outputs tCO₂e/t ore and tCO₂e/t product." data-fa="انتشارات GHG Scope 1، 2 و 3 را برای عملیات معدن روباز و زیرزمینی محاسبه کنید. از روش‌شناسی GHG Protocol با ضرایب انتشار IPCC 2026 استفاده می‌کند.">Calculate Scope 1, 2, and 3 GHG emissions for open pit and underground mining operations. Uses GHG Protocol methodology with 2026 IPCC emission factors.</p>
+          <div class="rc-meta"><span class="rc-tag">Excel</span><span class="rc-tag">Carbon</span><span class="rc-tag">GHG Protocol</span><span class="rc-size">2.8 MB</span></div>
+          <button class="rc-btn rc-btn-dl" onclick="event.stopPropagation();openRes('r13')">📥 <span data-en="Download Free" data-fa="دانلود رایگان">Download Free</span></button>
+        </div>
+
+        <div class="rc" style="--rc-color:#059669" data-cat="esg" data-type="pdf" data-title="GRI TCFD Mining Report Template" onclick="openRes('r14')">
+          <span class="rc-locked" data-en="MEMBERS" data-fa="اعضا">MEMBERS</span>
+          <div class="rc-top">
+            <div class="rc-icon" style="background:rgba(5,150,105,.1)">📋</div>
+            <div class="rc-info">
+              <div class="rc-type" style="color:#059669">Word Template</div>
+              <div class="rc-title" data-en="GRI Standards + TCFD Mining ESG Report Template 2026" data-fa="قالب گزارش ESG معدنی GRI Standards + TCFD 2026">GRI Standards + TCFD Mining ESG Report Template 2026</div>
+            </div>
+          </div>
+          <p class="rc-desc" data-en="Complete Word template for GRI Standards-aligned ESG report with TCFD climate risk disclosure section. Pre-populated with mining-sector specific disclosures and data tables." data-fa="قالب کامل Word برای گزارش ESG هم‌راستا با GRI Standards با بخش افشای ریسک آب‌وهوایی TCFD. از پیش پر شده با افشاهای خاص بخش معدن و جداول داده.">Complete Word template for GRI Standards-aligned ESG report with TCFD climate risk disclosure section. Pre-populated with mining-sector specific disclosures and data tables.</p>
+          <div class="rc-meta"><span class="rc-tag">Word</span><span class="rc-tag">GRI</span><span class="rc-tag">TCFD</span><span class="rc-size">1.4 MB</span></div>
+          <button class="rc-btn rc-btn-view" onclick="event.stopPropagation();openRes('r14')">🔐 <span data-en="Members Only" data-fa="فقط اعضا">Members Only</span></button>
+        </div>
+
+        <div class="rc" style="--rc-color:#059669" data-cat="esg" data-type="excel" data-title="Net Zero Roadmap Mining Template" onclick="openRes('r15')">
+          <span class="rc-locked" data-en="MEMBERS" data-fa="اعضا">MEMBERS</span>
+          <div class="rc-top">
+            <div class="rc-icon" style="background:rgba(5,150,105,.1)">🎯</div>
+            <div class="rc-info">
+              <div class="rc-type" style="color:#059669">Excel Model</div>
+              <div class="rc-title" data-en="Net Zero 2040/2050 Roadmap Model — Mining Operations" data-fa="مدل نقشه راه Net Zero 2040/2050 — عملیات معدنی">Net Zero 2040/2050 Roadmap Model — Mining Operations</div>
+            </div>
+          </div>
+          <p class="rc-desc" data-en="Build a credible Net Zero roadmap with milestone targets, abatement levers (solar, BESS, EV fleet, hydrogen), cost-per-tonne-abated analysis, and SBTi alignment checker." data-fa="یک نقشه راه Net Zero معتبر با اهداف نقطه عطف، اهرم‌های کاهش (خورشیدی، BESS، ناوگان EV، هیدروژن)، تحلیل هزینه به ازای هر تن کاهش و بررسی‌کننده هم‌راستایی SBTi بسازید.">Build a credible Net Zero roadmap with milestone targets, abatement levers (solar, BESS, EV fleet, hydrogen), cost-per-tonne-abated analysis, and SBTi alignment checker.</p>
+          <div class="rc-meta"><span class="rc-tag">Excel</span><span class="rc-tag">Net Zero</span><span class="rc-tag">SBTi</span><span class="rc-size">3.6 MB</span></div>
+          <button class="rc-btn rc-btn-view" onclick="event.stopPropagation();openRes('r15')">🔐 <span data-en="Members Only" data-fa="فقط اعضا">Members Only</span></button>
+        </div>
+
+        <div class="rc" style="--rc-color:#059669" data-cat="esg" data-type="checklist" data-title="IFC Performance Standards Checklist" onclick="openRes('r16')">
+          <span class="rc-free" data-en="FREE" data-fa="رایگان">FREE</span>
+          <div class="rc-top">
+            <div class="rc-icon" style="background:rgba(5,150,105,.1)">✅</div>
+            <div class="rc-info">
+              <div class="rc-type" style="color:#059669">Checklist PDF</div>
+              <div class="rc-title" data-en="IFC Performance Standards Compliance Checklist — Mining" data-fa="چک‌لیست انطباق استانداردهای عملکرد IFC — معدن">IFC Performance Standards Compliance Checklist — Mining</div>
+            </div>
+          </div>
+          <p class="rc-desc" data-en="120-point compliance checklist covering all 8 IFC Performance Standards for mining projects. Used by lenders, DFIs, and project developers for due diligence and gap analysis." data-fa="چک‌لیست انطباق ۱۲۰ نکته‌ای که تمام ۸ استاندارد عملکرد IFC برای پروژه‌های معدنی را پوشش می‌دهد. توسط وام‌دهندگان، DFI‌ها و توسعه‌دهندگان پروژه برای بررسی دقیق و تحلیل شکاف استفاده می‌شود.">120-point compliance checklist covering all 8 IFC Performance Standards for mining projects. Used by lenders, DFIs, and project developers for due diligence and gap analysis.</p>
+          <div class="rc-meta"><span class="rc-tag">PDF</span><span class="rc-tag">IFC</span><span class="rc-tag">Compliance</span><span class="rc-size">0.7 MB</span></div>
+          <button class="rc-btn rc-btn-dl" onclick="event.stopPropagation();openRes('r16')">📥 <span data-en="Download Free" data-fa="دانلود رایگان">Download Free</span></button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ═══ FINANCIAL MODELS ═══ -->
+    <div class="cat-section" data-cat="financial" id="secFin">
+      <div class="cat-hdr">
+        <div class="cat-hdr-ic" style="background:rgba(245,158,11,.1)">💹</div>
+        <div><h2 data-en="Financial Models & Economic Analysis" data-fa="مدل‌های مالی و تحلیل اقتصادی">Financial Models & Economic Analysis</h2><p data-en="DCF, NPV/IRR, LOM scheduling, and project finance models" data-fa="DCF، NPV/IRR، زمان‌بندی LOM و مدل‌های تأمین مالی پروژه">DCF, NPV/IRR, LOM scheduling, and project finance models</p></div>
+        <span class="cnt">4 resources</span>
+      </div>
+      <div class="rg">
+
+        <div class="rc" style="--rc-color:#d97706" data-cat="financial" data-type="excel" data-title="Mining DCF NPV IRR Financial Model" onclick="openRes('r17')">
+          <span class="rc-locked" data-en="MEMBERS" data-fa="اعضا">MEMBERS</span>
+          <div class="rc-top">
+            <div class="rc-icon" style="background:rgba(245,158,11,.1)">💹</div>
+            <div class="rc-info">
+              <div class="rc-type" style="color:#d97706">Excel Model</div>
+              <div class="rc-title" data-en="Mining Project DCF / NPV / IRR Financial Model — Full LOM" data-fa="مدل مالی DCF / NPV / IRR پروژه معدنی — LOM کامل">Mining Project DCF / NPV / IRR Financial Model — Full LOM</div>
+            </div>
+          </div>
+          <p class="rc-desc" data-en="Complete DCF financial model for mining projects with LOM production schedule, revenue build, CAPEX/OPEX phasing, tax/royalty module, sensitivity analysis, and NPV/IRR waterfall." data-fa="مدل مالی DCF کامل برای پروژه‌های معدنی با برنامه تولید LOM، ساخت درآمد، مرحله‌بندی CAPEX/OPEX، ماژول مالیات/حق‌الامتیاز، تحلیل حساسیت و آبشار NPV/IRR.">Complete DCF financial model for mining projects with LOM production schedule, revenue build, CAPEX/OPEX phasing, tax/royalty module, sensitivity analysis, and NPV/IRR waterfall.</p>
+          <div class="rc-meta"><span class="rc-tag">Excel</span><span class="rc-tag">DCF</span><span class="rc-tag">NPV/IRR</span><span class="rc-size">6.2 MB</span></div>
+          <button class="rc-btn rc-btn-view" onclick="event.stopPropagation();openRes('r17')">🔐 <span data-en="Members Only" data-fa="فقط اعضا">Members Only</span></button>
+        </div>
+
+        <div class="rc" style="--rc-color:#d97706" data-cat="financial" data-type="excel" data-title="Commodity Price Sensitivity Dashboard" onclick="openRes('r18')">
+          <span class="rc-free" data-en="FREE" data-fa="رایگان">FREE</span>
+          <div class="rc-top">
+            <div class="rc-icon" style="background:rgba(245,158,11,.1)">📊</div>
+            <div class="rc-info">
+              <div class="rc-type" style="color:#d97706">Excel Dashboard</div>
+              <div class="rc-title" data-en="Commodity Price Sensitivity Dashboard — NPV Spider Chart" data-fa="داشبورد حساسیت قیمت کالا — نمودار عنکبوتی NPV">Commodity Price Sensitivity Dashboard — NPV Spider Chart</div>
+            </div>
+          </div>
+          <p class="rc-desc" data-en="Interactive sensitivity dashboard showing NPV/IRR response to commodity price, CAPEX, OPEX, and discount rate changes. Includes tornado chart, spider chart, and break-even analysis." data-fa="داشبورد حساسیت تعاملی که پاسخ NPV/IRR به تغییرات قیمت کالا، CAPEX، OPEX و نرخ تنزیل را نشان می‌دهد. شامل نمودار tornado، نمودار عنکبوتی و تحلیل سر به سر.">Interactive sensitivity dashboard showing NPV/IRR response to commodity price, CAPEX, OPEX, and discount rate changes. Includes tornado chart, spider chart, and break-even analysis.</p>
+          <div class="rc-meta"><span class="rc-tag">Excel</span><span class="rc-tag">Sensitivity</span><span class="rc-tag">NPV</span><span class="rc-size">2.9 MB</span></div>
+          <button class="rc-btn rc-btn-dl" onclick="event.stopPropagation();openRes('r18')">📥 <span data-en="Download Free" data-fa="دانلود رایگان">Download Free</span></button>
+        </div>
+
+        <div class="rc" style="--rc-color:#d97706" data-cat="financial" data-type="excel" data-title="Project Finance Debt Model Mining" onclick="openRes('r19')">
+          <span class="rc-locked" data-en="MEMBERS" data-fa="اعضا">MEMBERS</span>
+          <div class="rc-top">
+            <div class="rc-icon" style="background:rgba(245,158,11,.1)">🏦</div>
+            <div class="rc-info">
+              <div class="rc-type" style="color:#d97706">Excel Model</div>
+              <div class="rc-title" data-en="Project Finance Debt Model — Mining DSCR & Covenants" data-fa="مدل بدهی تأمین مالی پروژه — DSCR و تعهدات معدنی">Project Finance Debt Model — Mining DSCR & Covenants</div>
+            </div>
+          </div>
+          <p class="rc-desc" data-en="Project finance model with debt sculpting, DSCR calculation, reserve accounts, covenant testing, and lender base case vs. P90 downside. Suitable for DFI and commercial bank presentations." data-fa="مدل تأمین مالی پروژه با شکل‌دهی بدهی، محاسبه DSCR، حساب‌های ذخیره، آزمون تعهدات و مقایسه حالت پایه وام‌دهنده با نزولی P90.">Project finance model with debt sculpting, DSCR calculation, reserve accounts, covenant testing, and lender base case vs. P90 downside. Suitable for DFI and commercial bank presentations.</p>
+          <div class="rc-meta"><span class="rc-tag">Excel</span><span class="rc-tag">Project Finance</span><span class="rc-tag">DSCR</span><span class="rc-size">4.7 MB</span></div>
+          <button class="rc-btn rc-btn-view" onclick="event.stopPropagation();openRes('r19')">🔐 <span data-en="Members Only" data-fa="فقط اعضا">Members Only</span></button>
+        </div>
+
+        <div class="rc" style="--rc-color:#d97706" data-cat="financial" data-type="excel" data-title="LCOE Solar BESS Mining Calculator" onclick="openRes('r20')">
+          <span class="rc-free" data-en="FREE" data-fa="رایگان">FREE</span>
+          <div class="rc-top">
+            <div class="rc-icon" style="background:rgba(245,158,11,.1)">☀️</div>
+            <div class="rc-info">
+              <div class="rc-type" style="color:#d97706">Excel Calculator</div>
+              <div class="rc-title" data-en="LCOE Calculator — Solar PV + BESS Hybrid for Mine Sites" data-fa="ماشین‌حساب LCOE — هیبرید خورشیدی + BESS برای سایت‌های معدنی">LCOE Calculator — Solar PV + BESS Hybrid for Mine Sites</div>
+            </div>
+          </div>
+          <p class="rc-desc" data-en="Calculate Levelised Cost of Energy (LCOE) for solar PV + BESS hybrid systems at mine sites. Compares against diesel and grid alternatives with payback and NPV analysis." data-fa="هزینه تسطیح‌شده انرژی (LCOE) را برای سیستم‌های هیبریدی خورشیدی + BESS در سایت‌های معدنی محاسبه کنید. با گزینه‌های دیزل و شبکه با تحلیل بازگشت سرمایه و NPV مقایسه می‌کند.">Calculate Levelised Cost of Energy (LCOE) for solar PV + BESS hybrid systems at mine sites. Compares against diesel and grid alternatives with payback and NPV analysis.</p>
+          <div class="rc-meta"><span class="rc-tag">Excel</span><span class="rc-tag">LCOE</span><span class="rc-tag">Solar/BESS</span><span class="rc-size">1.8 MB</span></div>
+          <button class="rc-btn rc-btn-dl" onclick="event.stopPropagation();openRes('r20')">📥 <span data-en="Download Free" data-fa="دانلود رایگان">Download Free</span></button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ═══ STANDARDS ═══ -->
+    <div class="cat-section" data-cat="standards" id="secStd">
+      <div class="cat-hdr">
+        <div class="cat-hdr-ic" style="background:rgba(124,58,237,.1)">📐</div>
+        <div><h2 data-en="Standards & Technical Guides" data-fa="استانداردها و راهنماهای فنی">Standards & Technical Guides</h2><p data-en="AACE, NI 43-101, JORC, GISTM, and IFC reference guides" data-fa="راهنماهای مرجع AACE، NI 43-101، JORC، GISTM و IFC">AACE, NI 43-101, JORC, GISTM, and IFC reference guides</p></div>
+        <span class="cnt">3 resources</span>
+      </div>
+      <div class="rg">
+
+        <div class="rc" style="--rc-color:#7c3aed" data-cat="standards" data-type="pdf" data-title="AACE 47R-11 Summary Guide Mining" onclick="openRes('r21')">
+          <span class="rc-free" data-en="FREE" data-fa="رایگان">FREE</span>
+          <div class="rc-top">
+            <div class="rc-icon" style="background:rgba(124,58,237,.1)">📐</div>
+            <div class="rc-info">
+              <div class="rc-type" style="color:#7c3aed">PDF Guide</div>
+              <div class="rc-title" data-en="AACE 47R-11 Practical Summary for Mining Engineers" data-fa="خلاصه عملی AACE 47R-11 برای مهندسان معدن">AACE 47R-11 Practical Summary for Mining Engineers</div>
+            </div>
+          </div>
+          <p class="rc-desc" data-en="Plain-language summary of AACE Recommended Practice 47R-11 with mining-specific examples. Covers Class 1–5 definitions, accuracy ranges, engineering deliverables, and common compliance failures." data-fa="خلاصه به زبان ساده از AACE Recommended Practice 47R-11 با مثال‌های خاص معدن. شامل تعاریف کلاس ۱–۵، محدوده‌های دقت، تحویلی‌های مهندسی و خرابی‌های رایج انطباق.">Plain-language summary of AACE Recommended Practice 47R-11 with mining-specific examples. Covers Class 1–5 definitions, accuracy ranges, engineering deliverables, and common compliance failures.</p>
+          <div class="rc-meta"><span class="rc-tag">PDF</span><span class="rc-tag">AACE</span><span class="rc-tag">47R-11</span><span class="rc-size">1.1 MB</span></div>
+          <button class="rc-btn rc-btn-dl" onclick="event.stopPropagation();openRes('r21')">📥 <span data-en="Download Free" data-fa="دانلود رایگان">Download Free</span></button>
+        </div>
+
+        <div class="rc" style="--rc-color:#7c3aed" data-cat="standards" data-type="pdf" data-title="NI 43-101 JORC Comparison Guide" onclick="openRes('r22')">
+          <span class="rc-free" data-en="FREE" data-fa="رایگان">FREE</span>
+          <div class="rc-top">
+            <div class="rc-icon" style="background:rgba(124,58,237,.1)">📊</div>
+            <div class="rc-info">
+              <div class="rc-type" style="color:#7c3aed">PDF Guide</div>
+              <div class="rc-title" data-en="NI 43-101 vs. JORC vs. PERC: Resource Reporting Comparison" data-fa="مقایسه گزارش‌دهی منابع: NI 43-101 در مقابل JORC در مقابل PERC">NI 43-101 vs. JORC vs. PERC: Resource Reporting Comparison</div>
+            </div>
+          </div>
+          <p class="rc-desc" data-en="Side-by-side comparison of the three major mineral resource reporting standards. Covers resource/reserve classification, QP/CP requirements, and conversion guidance for cross-border listings." data-fa="مقایسه جنب به جنب سه استاندارد اصلی گزارش‌دهی منابع معدنی. شامل طبقه‌بندی منابع/ذخایر، الزامات QP/CP و راهنمای تبدیل برای فهرست‌های فرامرزی.">Side-by-side comparison of the three major mineral resource reporting standards. Covers resource/reserve classification, QP/CP requirements, and conversion guidance for cross-border listings.</p>
+          <div class="rc-meta"><span class="rc-tag">PDF</span><span class="rc-tag">NI 43-101</span><span class="rc-tag">JORC</span><span class="rc-size">0.8 MB</span></div>
+          <button class="rc-btn rc-btn-dl" onclick="event.stopPropagation();openRes('r22')">📥 <span data-en="Download Free" data-fa="دانلود رایگان">Download Free</span></button>
+        </div>
+
+        <div class="rc" style="--rc-color:#7c3aed" data-cat="standards" data-type="checklist" data-title="GISTM TSF Compliance Checklist" onclick="openRes('r23')">
+          <span class="rc-free" data-en="FREE" data-fa="رایگان">FREE</span>
+          <div class="rc-top">
+            <div class="rc-icon" style="background:rgba(124,58,237,.1)">🏔️</div>
+            <div class="rc-info">
+              <div class="rc-type" style="color:#7c3aed">Checklist PDF</div>
+              <div class="rc-title" data-en="GISTM Tailings Facility Compliance Checklist 2026" data-fa="چک‌لیست انطباق تاسیسات باطله GISTM 2026">GISTM Tailings Facility Compliance Checklist 2026</div>
+            </div>
+          </div>
+          <p class="rc-desc" data-en="Comprehensive compliance checklist for the Global Industry Standard on Tailings Management (GISTM). Covers all 6 themes and 77 requirements with evidence guidance and gap assessment framework." data-fa="چک‌لیست انطباق جامع برای استاندارد جهانی صنعت مدیریت باطله (GISTM). تمام ۶ موضوع و ۷۷ الزام را با راهنمای شواهد و چارچوب ارزیابی شکاف پوشش می‌دهد.">Comprehensive compliance checklist for the Global Industry Standard on Tailings Management (GISTM). Covers all 6 themes and 77 requirements with evidence guidance and gap assessment framework.</p>
+          <div class="rc-meta"><span class="rc-tag">PDF</span><span class="rc-tag">GISTM</span><span class="rc-tag">Tailings</span><span class="rc-size">1.3 MB</span></div>
+          <button class="rc-btn rc-btn-dl" onclick="event.stopPropagation();openRes('r23')">📥 <span data-en="Download Free" data-fa="دانلود رایگان">Download Free</span></button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ═══ MARKET DATA ═══ -->
+    <div class="cat-section" data-cat="market" id="secMkt">
+      <div class="cat-hdr">
+        <div class="cat-hdr-ic" style="background:rgba(220,38,38,.1)">🌍</div>
+        <div><h2 data-en="Market Data & Commodity Reports" data-fa="داده‌های بازار و گزارش‌های کالا">Market Data & Commodity Reports</h2><p data-en="Price forecasts, supply/demand outlooks, and critical minerals data" data-fa="پیش‌بینی‌های قیمت، چشم‌اندازهای عرضه/تقاضا و داده‌های مواد معدنی حیاتی">Price forecasts, supply/demand outlooks, and critical minerals data</p></div>
+        <span class="cnt">3 resources</span>
+      </div>
+      <div class="rg">
+
+        <div class="rc" style="--rc-color:#dc2626" data-cat="market" data-type="report" data-title="Copper Price Forecast 2026-2035" onclick="openRes('r24')">
+          <span class="rc-free" data-en="FREE" data-fa="رایگان">FREE</span>
+          <div class="rc-top">
+            <div class="rc-icon" style="background:rgba(220,38,38,.1)">🔴</div>
+            <div class="rc-info">
+              <div class="rc-type" style="color:#dc2626">PDF Report</div>
+              <div class="rc-title" data-en="Copper Price Forecast 2026–2035: Goldman, CRU & KDMine Consensus" data-fa="پیش‌بینی قیمت مس ۲۰۲۶–۲۰۳۵: اجماع Goldman، CRU و KDMine">Copper Price Forecast 2026–2035: Goldman, CRU & KDMine Consensus</div>
+            </div>
+          </div>
+          <p class="rc-desc" data-en="Aggregated copper price forecast from Goldman Sachs, CRU Group, Wood Mackenzie, and KDMine models. Annual base/upside/downside scenarios 2026–2035 with supply/demand balance analysis." data-fa="پیش‌بینی قیمت مس جمع‌آوری‌شده از Goldman Sachs، CRU Group، Wood Mackenzie و مدل‌های KDMine. سناریوهای پایه/بالا/پایین سالانه ۲۰۲۶–۲۰۳۵ با تحلیل تعادل عرضه/تقاضا.">Aggregated copper price forecast from Goldman Sachs, CRU Group, Wood Mackenzie, and KDMine models. Annual base/upside/downside scenarios 2026–2035 with supply/demand balance analysis.</p>
+          <div class="rc-meta"><span class="rc-tag">PDF</span><span class="rc-tag">Copper</span><span class="rc-tag">Price Forecast</span><span class="rc-size">2.2 MB</span></div>
+          <button class="rc-btn rc-btn-dl" onclick="event.stopPropagation();openRes('r24')">📥 <span data-en="Download Free" data-fa="دانلود رایگان">Download Free</span></button>
+        </div>
+
+        <div class="rc" style="--rc-color:#dc2626" data-cat="market" data-type="report" data-title="Critical Minerals Outlook 2026" onclick="openRes('r25')">
+          <span class="rc-locked" data-en="MEMBERS" data-fa="اعضا">MEMBERS</span>
+          <div class="rc-top">
+            <div class="rc-icon" style="background:rgba(220,38,38,.1)">⚡</div>
+            <div class="rc-info">
+              <div class="rc-type" style="color:#dc2626">PDF Report</div>
+              <div class="rc-title" data-en="Critical Minerals Outlook 2026: Lithium, Cobalt, Nickel, REE" data-fa="چشم‌انداز مواد معدنی حیاتی ۲۰۲۶: لیتیوم، کبالت، نیکل، REE">Critical Minerals Outlook 2026: Lithium, Cobalt, Nickel, REE</div>
+            </div>
+          </div>
+          <p class="rc-desc" data-en="Comprehensive 2026 outlook for lithium, cobalt, nickel, and rare earth elements. Supply/demand balance, price forecasts, project pipeline, and EV battery demand scenarios to 2035." data-fa="چشم‌انداز جامع ۲۰۲۶ برای لیتیوم، کبالت، نیکل و عناصر خاکی کمیاب. تعادل عرضه/تقاضا، پیش‌بینی‌های قیمت، خط لوله پروژه و سناریوهای تقاضای باتری EV تا ۲۰۳۵.">Comprehensive 2026 outlook for lithium, cobalt, nickel, and rare earth elements. Supply/demand balance, price forecasts, project pipeline, and EV battery demand scenarios to 2035.</p>
+          <div class="rc-meta"><span class="rc-tag">PDF</span><span class="rc-tag">Critical Minerals</span><span class="rc-tag">2026</span><span class="rc-size">4.1 MB</span></div>
+          <button class="rc-btn rc-btn-view" onclick="event.stopPropagation();openRes('r25')">🔐 <span data-en="Members Only" data-fa="فقط اعضا">Members Only</span></button>
+        </div>
+
+        <div class="rc" style="--rc-color:#dc2626" data-cat="market" data-type="dataset" data-title="Historical Commodity Prices Dataset" onclick="openRes('r26')">
+          <span class="rc-free" data-en="FREE" data-fa="رایگان">FREE</span>
+          <div class="rc-top">
+            <div class="rc-icon" style="background:rgba(220,38,38,.1)">📋</div>
+            <div class="rc-info">
+              <div class="rc-type" style="color:#dc2626">Excel Dataset</div>
+              <div class="rc-title" data-en="Historical Commodity Prices 2000–2026 — Cu, Au, Fe, Li, Ni" data-fa="قیمت‌های تاریخی کالا ۲۰۰۰–۲۰۲۶ — مس، طلا، آهن، لیتیوم، نیکل">Historical Commodity Prices 2000–2026 — Cu, Au, Fe, Li, Ni</div>
+            </div>
+          </div>
+          <p class="rc-desc" data-en="Monthly commodity price data 2000–2026 for copper, gold, iron ore, lithium carbonate, and nickel. Includes real vs. nominal prices, 3-year/5-year/10-year moving averages, and volatility metrics." data-fa="داده‌های قیمت ماهانه کالا ۲۰۰۰–۲۰۲۶ برای مس، طلا، سنگ آهن، کربنات لیتیوم و نیکل. شامل قیمت‌های واقعی در مقابل اسمی، میانگین‌های متحرک ۳/۵/۱۰ ساله و معیارهای نوسان.">Monthly commodity price data 2000–2026 for copper, gold, iron ore, lithium carbonate, and nickel. Includes real vs. nominal prices, moving averages, and volatility metrics.</p>
+          <div class="rc-meta"><span class="rc-tag">Excel</span><span class="rc-tag">Historical Data</span><span class="rc-tag">Commodities</span><span class="rc-size">1.4 MB</span></div>
+          <button class="rc-btn rc-btn-dl" onclick="event.stopPropagation();openRes('r26')">📥 <span data-en="Download Free" data-fa="دانلود رایگان">Download Free</span></button>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- /res-sec-in -->
+</section>
+
+<!-- ═══ RESOURCE MODAL ═══ -->
+<div class="res-overlay" id="resOverlay" onclick="closeResOutside(event)">
+  <div class="res-modal" id="resModal">
+    <div class="res-modal-hdr">
+      <div class="res-modal-ic" id="resModalIc"></div>
+      <div style="flex:1">
+        <div id="resModalType" style="font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px"></div>
+        <h2 id="resModalTitle"></h2>
+      </div>
+      <button class="res-modal-close" onclick="closeRes()">✕</button>
+    </div>
+    <div class="res-modal-body">
+      <p id="resModalDesc"></p>
+      <div class="res-modal-meta" id="resModalMeta"></div>
+      <div id="resModalContents"></div>
+      <div id="resModalGate"></div>
+    </div>
+    <div class="res-modal-footer" id="resModalFooter"></div>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="cta-sec">
+  <div class="cta-in">
+    <div class="stag" data-en="Unlock Full Library" data-fa="باز کردن کتابخانه کامل">Unlock Full Library</div>
+    <h2 data-en="Get Free Access to 120+ Mining Resources" data-fa="دسترسی رایگان به ۱۲۰+ منبع معدنی دریافت کنید">Get Free Access to 120+ Mining Resources</h2>
+    <p data-en="Register free to unlock all member resources — CAPEX/OPEX models, equipment databases, financial models, ESG frameworks, and market reports. No credit card required." data-fa="ثبت‌نام رایگان کنید تا به تمام منابع اعضا دسترسی داشته باشید — مدل‌های CAPEX/OPEX، پایگاه‌های داده تجهیزات، مدل‌های مالی، چارچوب‌های ESG و گزارش‌های بازار. نیازی به کارت اعتباری نیست.">Register free to unlock all member resources — CAPEX/OPEX models, equipment databases, financial models, ESG frameworks, and market reports. No credit card required.</p>
+    <div class="cta-acts">
+      <a href="register.html" class="bcp">🔓 <span data-en="Register Free →" data-fa="ثبت‌نام رایگان ←">Register Free →</span></a>
+      <a href="contact.html" class="bco">💬 <span data-en="Talk to an Expert" data-fa="صحبت با متخصص">Talk to an Expert</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-in">
+    <div>
+      <div style="display:flex;align-items:center;gap:12px">
+        <img src="https://cdn.grapesjs.com/workspaces/cmgvbwak408ja13nsemkia83b/assets/7e057c43-5d96-4c3a-a8fc-8bd5f6589a93__kavianpremiumbadgelogo.svg" alt="KDMine" style="width:44px;height:44px;border-radius:10px">
+        <div><div style="font-size:1.1rem;font-weight:800;color:#fff" data-en="KDMine Group" data-fa="کاویان توسعه معدن">KDMine Group</div><div style="font-size:.7rem;color:rgba(255,255,255,.45);font-weight:600">Mining Engineering & Economics</div></div>
+      </div>
+      <p class="fb-desc">Data-driven mining engineering platform — from feasibility to ESG and AI, for global mining projects.</p>
+      <div class="fb-socs"><a href="#" class="fb-s">in</a><a href="#" class="fb-s">𝕏</a><a href="#" class="fb-s">▶</a><a href="#" class="fb-s">✉</a></div>
+    </div>
+    <div class="fc"><h4>Engineering</h4><a href="services/feasibility.html">Feasibility Studies</a><a href="services/plant-design.html">Plant Design</a><a href="services/geotechnical.html">Geotechnical</a><a href="services/hydrometallurgy.html">Hydrometallurgy</a></div>
+    <div class="fc"><h4>Economics</h4><a href="services/cost-estimation.html">CAPEX/OPEX</a><a href="services/economic-modelling.html">Financial Modelling</a><a href="services/risk-analysis.html">Risk Analysis</a><a href="services/market-intelligence.html">Market Intelligence</a></div>
+    <div class="fc"><h4>ESG & Digital</h4><a href="services/esg-decarbonization.html">ESG & Decarbonization</a><a href="services/digital-mining.html">Digital Mining & AI</a><a href="services/critical-minerals.html">Critical Minerals</a></div>
+    <div class="fc"><h4>Company</h4><a href="about.html">About Us</a><a href="portfolio.html">Portfolio</a><a href="blog.html">Blog & Insights</a><a href="contact.html">Contact</a><a href="register.html">Free Registration</a></div>
+  </div>
+  <div class="footer-bot">
+    <span data-en="© 2026 KDMine Group. All rights reserved." data-fa="© ۲۰۲۶ کاویان توسعه معدن. تمامی حقوق محفوظ است.">© 2026 KDMine Group. All rights reserved.</span>
+    <div class="fb-lnks"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="sitemap.html">Sitemap</a></div>
+  </div>
+</footer>
+
+<!-- ═══ JAVASCRIPT ═══ -->
+<script>
+/* ── LANG ── */
+let lang='en';
+function applyLang(l){lang=l;const fa=l==='fa';document.documentElement.setAttribute('lang',l);document.documentElement.setAttribute('dir',fa?'rtl':'ltr');document.body.style.fontFamily=fa?"'B Nazanin',Tahoma,Arial,sans-serif":"'Segoe UI',system-ui,sans-serif";document.getElementById('lt-txt').textContent=fa?'EN | English':'FA | فارسی';document.querySelectorAll('[data-en][data-fa]').forEach(el=>{const v=el.getAttribute('data-'+l);if(v!==null){if(el.tagName==='INPUT'||el.tagName==='TEXTAREA')el.placeholder=v;else if(el.tagName==='OPTION')el.textContent=v;else el.innerHTML=v;}});try{localStorage.setItem('kdmine_lang',l);}catch(e){}}
+function tgLang(){applyLang(lang==='en'?'fa':'en');}
+window.addEventListener('DOMContentLoaded',()=>{try{const s=localStorage.getItem('kdmine_lang');if(s&&s!=='en')applyLang(s);}catch(e){}});
+
+/* ── MENU ── */
+function tgMenu(){const nav=document.getElementById('mainNav');const o=nav.classList.toggle('open');const sp=document.querySelectorAll('.mbt span');sp[0].style.transform=o?'translateY(7px) rotate(45deg)':'';sp[1].style.opacity=o?'0':'1';sp[2].style.transform=o?'translateY(-7px) rotate(-45deg)':'';}
+document.addEventListener('click',e=>{const nav=document.getElementById('mainNav');const btn=document.querySelector('.mbt');if(nav&&btn&&!nav.contains(e.target)&&!btn.contains(e.target)){nav.classList.remove('open');document.querySelectorAll('.mbt span').forEach(s=>{s.style.transform='';s.style.opacity='1';});}});
+window.addEventListener('scroll',()=>{const s=document.getElementById('sttBtn');if(s)s.classList.toggle('vis',window.scrollY>400);});
+
+/* ── RESOURCE DATA ── */
+const RES={
+  r1:{title:'2026 Mining CAPEX/OPEX Master Template — AACE Class 3/4/5',icon:'📊',color:'#1a56db',type:'Excel Template',size:'4.8 MB',free:true,
+    desc:'The most comprehensive Excel-based CAPEX/OPEX estimation template for open pit mining projects. 42 worksheets covering all direct and indirect cost line items, equipment sizing, CostMine 2025 pricing, Monte Carlo contingency module, and AACE 47R-11 compliance checklist.',
+    meta:[{l:'Format',v:'Excel (.xlsx)'},{l:'Size',v:'4.8 MB'},{l:'Updated',v:'June 2026'},{l:'Downloads',v:'1,200+'}],
+    contents:['Direct costs: Mining, Processing, Infrastructure, Tailings','Indirect costs: EPCM, Owner\'s costs, Contingency','Equipment list with 2025 CostMine pricing (850+ items)','Monte Carlo contingency module (10,000 iterations)','AACE 47R-11 compliance checklist (68 points)','LOM OPEX model with unit cost breakdown','Escalation and FX adjustment worksheets']},
+  r2:{title:'OPEX Benchmarking Tool 2026 — By Commodity & Region',icon:'📈',color:'#1a56db',type:'Excel Template',size:'2.1 MB',free:true,
+    desc:'Compare your project OPEX against 2026 global benchmarks for copper, gold, iron ore, and lithium. Includes regional adjustment factors for 12 mining jurisdictions and inflation indices by cost category.',
+    meta:[{l:'Format',v:'Excel (.xlsx)'},{l:'Size',v:'2.1 MB'},{l:'Updated',v:'May 2026'},{l:'Downloads',v:'680+'}],
+    contents:['2026 OPEX benchmarks: Cu, Au, Fe, Li, Ni','Regional factors: Australia, Chile, Peru, Africa, Iran, Kazakhstan','Cost category breakdown: Labour, Energy, Reagents, Maintenance','Inflation indices 2023–2026 by category','Peer comparison charts and percentile ranking']},
+  r3:{title:'AACE 47R-11 Compliance Checklist for Mining Estimates',icon:'✅',color:'#1a56db',type:'Checklist PDF',size:'0.4 MB',free:true,
+    desc:'68-point checklist to verify your mining CAPEX estimate complies with AACE Recommended Practice 47R-11. Suitable for Class 3, 4, and 5 estimates.',
+    meta:[{l:'Format',v:'PDF'},{l:'Size',v:'0.4 MB'},{l:'Updated',v:'April 2026'},{l:'Downloads',v:'920+'}],
+    contents:['Section 1: Basis of Estimate documentation (18 points)','Section 2: Scope definition completeness (14 points)','Section 3: Pricing methodology and sources (12 points)','Section 4: Contingency methodology (10 points)','Section 5: Review and sign-off requirements (8 points)','Section 6: Deliverable format compliance (6 points)']},
+  r4:{title:'Monte Carlo CAPEX Simulator — P50/P80/P90 Output',icon:'🎲',color:'#1a56db',type:'Excel Model',size:'3.2 MB',free:false,
+    desc:'10,000-iteration Monte Carlo simulation model for mining CAPEX contingency analysis. Supports PERT, triangular, and lognormal distributions with full correlation matrix.',
+    meta:[{l:'Format',v:'Excel (.xlsm)'},{l:'Size',v:'3.2 MB'},{l:'Updated',v:'June 2026'},{l:'Access',v:'Members Only'}],
+    contents:['10,000-iteration simulation engine (VBA)','PERT, triangular, and lognormal distributions','Full correlation matrix between cost items','Automated P50/P80/P90 output report','Tornado chart of top risk drivers','Sensitivity analysis by cost category']},
+  r5:{title:'Mining Cost Escalation Indices 2023–2026 by Category',icon:'📉',color:'#1a56db',type:'PDF Report',size:'1.8 MB',free:true,
+    desc:'Equipment, labour, energy, and materials cost escalation indices for mining projects 2023–2026 with regional breakdowns.',
+    meta:[{l:'Format',v:'PDF'},{l:'Size',v:'1.8 MB'},{l:'Updated',v:'June 2026'},{l:'Downloads',v:'540+'}],
+    contents:['Equipment CAGR by category (haul trucks, mills, pumps, etc.)','Labour escalation by region and skill category','Energy cost trends: diesel, grid power, LNG','Materials: steel, concrete, copper cable, reagents','Regional indices: Australia, Americas, Africa, Central Asia']},
+  r6:{title:'Basis of Estimate (BoE) Template — Mining Projects',icon:'📄',color:'#1a56db',type:'Word Template',size:'0.6 MB',free:true,
+    desc:'Professional Basis of Estimate document template for AACE Class 3–5 mining estimates. Pre-structured with all required sections.',
+    meta:[{l:'Format',v:'Word (.docx)'},{l:'Size',v:'0.6 MB'},{l:'Updated',v:'March 2026'},{l:'Downloads',v:'780+'}],
+    contents:['Executive summary and estimate classification','Scope inclusions and exclusions register','Pricing basis and data sources','Contingency methodology and allowances','Assumptions and exclusions register','Escalation and foreign exchange basis','Review and approval record']},
+  r7:{title:"Owner's Cost Model — Mining Project Development",icon:'🏗️',color:'#1a56db',type:'Excel Model',size:'2.4 MB',free:false,
+    desc:"Comprehensive owner's cost model for mining project development covering all non-EPC costs from pre-feasibility through commissioning.",
+    meta:[{l:'Format',v:'Excel (.xlsx)'},{l:'Size',v:'2.4 MB'},{l:'Updated',v:'May 2026'},{l:'Access',v:'Members Only'}],
+    contents:["EPCM fee model (% of direct costs by phase)",'Owner\'s team staffing and cost model','Permitting and approvals cost schedule','Land access and compensation model','Community investment program costs','Insurance and bonding costs','Commissioning and ramp-up cost model']},
+  r8:{title:'Mining Equipment Cost Database 2026 — 850+ Items',icon:'🗃️',color:'#0d9488',type:'Excel Database',size:'8.4 MB',free:false,
+    desc:'850+ mining equipment items with 2026 purchase prices, installation factors, operating costs, and lead times sourced from CostMine 2025 and vendor quotes.',
+    meta:[{l:'Format',v:'Excel (.xlsx)'},{l:'Size',v:'8.4 MB'},{l:'Updated',v:'June 2026'},{l:'Access',v:'Members Only'}],
+    contents:['Mobile mining fleet: trucks, excavators, drills, dozers (180 items)','Crushing and grinding 'Crushing and grinding: crushers, SAG/ball mills, HPGR, screens (140 items)',
+      'Flotation, leach, and SX-EW equipment (120 items)',
+      'Thickeners, filters, and tailings equipment (80 items)',
+      'Pumps, pipes, and valves (150 items)',
+      'Electrical: transformers, switchgear, MCC (80 items)',
+      'Infrastructure: conveyors, buildings, water treatment (100 items)',
+      'Installation factors and operating cost rates per item'
+    ]},
+  r9:{title:'Haul Truck Fleet Sizing Calculator — Open Pit',icon:'🚛',color:'#0d9488',type:'Excel Calculator',size:'1.2 MB',free:true,
+    desc:'Calculate required haul truck fleet size based on production rate, haul distance, cycle time, and mechanical availability. Covers Cat 793/797, Komatsu 930E, and Liebherr T 284.',
+    meta:[{l:'Format',v:'Excel (.xlsx)'},{l:'Size',v:'1.2 MB'},{l:'Updated',v:'April 2026'},{l:'Downloads',v:'460+'}],
+    contents:['Input: production rate, haul profile, truck model','Cycle time calculation (load, haul, dump, return)','Fleet size with availability and utilisation factors','Fuel consumption and tyre cost model','Capital cost estimate using 2026 pricing','Sensitivity to haul distance and grade']},
+  r10:{title:'SAG & Ball Mill Sizing Calculator — Bond/Barratt Method',icon:'⚙️',color:'#0d9488',type:'Excel Calculator',size:'1.6 MB',free:true,
+    desc:'Size SAG and ball mills using Bond Work Index and Barratt correction factors. Outputs mill dimensions, installed power, and capital cost estimate using 2026 vendor pricing.',
+    meta:[{l:'Format',v:'Excel (.xlsx)'},{l:'Size',v:'1.6 MB'},{l:'Updated',v:'May 2026'},{l:'Downloads',v:'390+'}],
+    contents:['Bond Work Index input (SAGDesign, SMC, or standard BWi)','Barratt and Morrell correction factors','SAG mill diameter and length calculation','Ball mill sizing and circulating load','Installed power and motor selection','2026 capital cost estimate (mill + motor + gearbox)','Comparison: single SAG vs. two-stage crush/ball']},
+  r11:{title:'Process Plant Equipment List — Flotation/CIL/HPGR/SX-EW',icon:'🏭',color:'#0d9488',type:'Excel Template',size:'5.1 MB',free:false,
+    desc:'Comprehensive equipment list templates for four major processing circuits with tag numbers, specifications, and 2026 budget prices.',
+    meta:[{l:'Format',v:'Excel (.xlsx)'},{l:'Size',v:'5.1 MB'},{l:'Updated',v:'June 2026'},{l:'Access',v:'Members Only'}],
+    contents:['Copper flotation circuit (280 equipment items)','Gold CIL circuit (220 equipment items)','HPGR grinding circuit (160 equipment items)','Copper SX-EW circuit (190 equipment items)','Tag number system per ISA 5.1','Vendor budget prices (2026) and lead times','Installation and commissioning factors']},
+  r12:{title:'Mining Equipment Lead Times 2026 — Critical Path Guide',icon:'⏱️',color:'#0d9488',type:'PDF Report',size:'0.9 MB',free:true,
+    desc:'Current lead times for 60+ critical mining equipment items. Essential for project schedule development and CAPEX escalation planning.',
+    meta:[{l:'Format',v:'PDF'},{l:'Size',v:'0.9 MB'},{l:'Updated',v:'June 2026'},{l:'Downloads',v:'710+'}],
+    contents:['SAG mills: 22–28 months (up from 14 months in 2022)','HPGR: 28–36 months','Large gyratory crushers: 18–24 months','Autoclaves (HPAL): 30–42 months','Large slurry pumps: 12–16 months','Power transformers (>20 MVA): 18–26 months','Procurement strategy recommendations by item']},
+  r13:{title:'Scope 1/2/3 Carbon Footprint Calculator — Mining Operations',icon:'🌍',color:'#059669',type:'Excel Calculator',size:'2.8 MB',free:true,
+    desc:'Calculate Scope 1, 2, and 3 GHG emissions for open pit and underground mining operations using GHG Protocol methodology with 2026 IPCC emission factors.',
+    meta:[{l:'Format',v:'Excel (.xlsx)'},{l:'Size',v:'2.8 MB'},{l:'Updated',v:'June 2026'},{l:'Downloads',v:'580+'}],
+    contents:['Scope 1: diesel combustion, blasting, process emissions','Scope 2: grid electricity (location-based and market-based)','Scope 3 Cat 1: explosives, reagents, tyres, steel','Scope 3 Cat 4: ore and concentrate transport','Scope 3 Cat 11: use of sold products (avoided emissions)','Output: tCO₂e/t ore, tCO₂e/t product, tCO₂e/year','Benchmark comparison vs. industry average']},
+  r14:{title:'GRI Standards + TCFD Mining ESG Report Template 2026',icon:'📋',color:'#059669',type:'Word Template',size:'1.4 MB',free:false,
+    desc:'Complete Word template for GRI Standards-aligned ESG report with TCFD climate risk disclosure. Pre-populated with mining-sector specific disclosures.',
+    meta:[{l:'Format',v:'Word (.docx)'},{l:'Size',v:'1.4 MB'},{l:'Updated',v:'May 2026'},{l:'Access',v:'Members Only'}],
+    contents:['GRI 2: General Disclosures (mining-specific)','GRI 3: Material Topics determination process','GRI 305: Emissions (Scope 1/2/3 tables)','GRI 303: Water and Effluents','GRI 403: Occupational Health and Safety','TCFD: Governance, Strategy, Risk Management, Metrics','Climate scenario analysis (1.5°C, 2°C, 3°C)']},
+  r15:{title:'Net Zero 2040/2050 Roadmap Model — Mining Operations',icon:'🎯',color:'#059669',type:'Excel Model',size:'3.6 MB',free:false,
+    desc:'Build a credible Net Zero roadmap with milestone targets, abatement levers, cost-per-tonne-abated analysis, and SBTi alignment checker.',
+    meta:[{l:'Format',v:'Excel (.xlsm)'},{l:'Size',v:'3.6 MB'},{l:'Updated',v:'June 2026'},{l:'Access',v:'Members Only'}],
+    contents:['Baseline emissions inventory (Scope 1/2/3)','Abatement lever library: solar, BESS, EV fleet, H2, efficiency','Cost-per-tonne-abated (MAC curve)','Milestone target setting (2030/2035/2040/2050)','SBTi Science-Based Targets alignment checker','Green CAPEX investment schedule','Residual emissions and offset strategy']},
+  r16:{title:'IFC Performance Standards Compliance Checklist — Mining',icon:'✅',color:'#059669',type:'Checklist PDF',size:'0.7 MB',free:true,
+    desc:'120-point compliance checklist covering all 8 IFC Performance Standards for mining projects. Used by lenders and project developers for due diligence.',
+    meta:[{l:'Format',v:'PDF'},{l:'Size',v:'0.7 MB'},{l:'Updated',v:'March 2026'},{l:'Downloads',v:'430+'}],
+    contents:['PS1: Assessment and Management of E&S Risks (22 points)','PS2: Labor and Working Conditions (18 points)','PS3: Resource Efficiency and Pollution Prevention (16 points)','PS4: Community Health, Safety and Security (14 points)','PS5: Land Acquisition and Involuntary Resettlement (12 points)','PS6: Biodiversity Conservation (10 points)','PS7: Indigenous Peoples (8 points)','PS8: Cultural Heritage (8 points)']},
+  r17:{title:'Mining Project DCF / NPV / IRR Financial Model — Full LOM',icon:'💹',color:'#d97706',type:'Excel Model',size:'6.2 MB',free:false,
+    desc:'Complete DCF financial model for mining projects with LOM production schedule, revenue build, CAPEX/OPEX phasing, tax/royalty module, sensitivity analysis, and NPV/IRR waterfall.',
+    meta:[{l:'Format',v:'Excel (.xlsm)'},{l:'Size',v:'6.2 MB'},{l:'Updated',v:'June 2026'},{l:'Access',v:'Members Only'}],
+    contents:['LOM production schedule (annual, up to 30 years)','Revenue model: commodity price × production × recovery','CAPEX phasing with pre-production and sustaining split','OPEX model: mining, processing, G&A, royalties','Tax model: corporate tax, mining royalty, depreciation','Financing module: equity, debt, project finance','Sensitivity: commodity price, CAPEX, OPEX, discount rate','NPV/IRR waterfall and payback period chart']},
+  r18:{title:'Commodity Price Sensitivity Dashboard — NPV Spider Chart',icon:'📊',color:'#d97706',type:'Excel Dashboard',size:'2.9 MB',free:true,
+    desc:'Interactive sensitivity dashboard showing NPV/IRR response to commodity price, CAPEX, OPEX, and discount rate changes. Includes tornado chart, spider chart, and break-even analysis.',
+    meta:[{l:'Format',v:'Excel (.xlsm)'},{l:'Size',v:'2.9 MB'},{l:'Updated',v:'April 2026'},{l:'Downloads',v:'350+'}],
+    contents:['One-way sensitivity: NPV vs. each variable ±50%','Two-way sensitivity: commodity price vs. CAPEX','Tornado chart: ranked sensitivity by impact','Spider chart: multi-variable NPV response','Break-even commodity price calculation','IRR sensitivity to discount rate assumption','Pre-built for Cu, Au, Fe, Li, Ni projects']},
+  r19:{title:'Project Finance Debt Model — Mining DSCR & Covenants',icon:'🏦',color:'#d97706',type:'Excel Model',size:'4.7 MB',free:false,
+    desc:'Project finance model with debt sculpting, DSCR calculation, reserve accounts, covenant testing, and lender base case vs. P90 downside. Suitable for DFI and commercial bank presentations.',
+    meta:[{l:'Format',v:'Excel (.xlsm)'},{l:'Size',v:'4.7 MB'},{l:'Updated',v:'May 2026'},{l:'Access',v:'Members Only'}],
+    contents:['Debt sizing: DSCR-based and LTV-based','Debt sculpting with target DSCR profile','Debt Service Reserve Account (DSRA) model','Minimum DSCR covenant testing','Lender base case vs. P90 downside scenario','Equity IRR and returns waterfall','Term sheet parameter sensitivity']},
+  r20:{title:'LCOE Calculator — Solar PV + BESS Hybrid for Mine Sites',icon:'☀️',color:'#d97706',type:'Excel Calculator',size:'1.8 MB',free:true,
+    desc:'Calculate Levelised Cost of Energy (LCOE) for solar PV + BESS hybrid systems at mine sites. Compares against diesel and grid alternatives.',
+    meta:[{l:'Format',v:'Excel (.xlsx)'},{l:'Size',v:'1.8 MB'},{l:'Updated',v:'June 2026'},{l:'Downloads',v:'490+'}],
+    contents:['Solar PV sizing: capacity, yield, degradation','BESS sizing: energy, power, round-trip efficiency','CAPEX model: panels, inverters, BESS, BOS, EPC','OPEX model: O&M, insurance, battery replacement','LCOE calculation (real and nominal)','Comparison: solar+BESS vs. diesel vs. grid','Payback period and NPV analysis','CO₂ abatement cost ($/tCO₂e avoided)']},
+  r21:{title:'AACE 47R-11 Practical Summary for Mining Engineers',icon:'📐',color:'#7c3aed',type:'PDF Guide',size:'1.1 MB',free:true,
+    desc:'Plain-language summary of AACE Recommended Practice 47R-11 with mining-specific examples. Covers Class 1–5 definitions, accuracy ranges, and common compliance failures.',
+    meta:[{l:'Format',v:'PDF'},{l:'Size',v:'1.1 MB'},{l:'Updated',v:'February 2026'},{l:'Downloads',v:'1,050+'}],
+    contents:['Class 1–5 definitions with mining examples','Accuracy range table with real project data','Engineering deliverables required per class','Common compliance failures and how to avoid them','Estimate basis document requirements','Contingency methodology by class','Sign-off and certification requirements']},
+  r22:{title:'NI 43-101 vs. JORC vs. PERC: Resource Reporting Comparison',icon:'📊',color:'#7c3aed',type:'PDF Guide',size:'0.8 MB',free:true,
+    desc:'Side-by-side comparison of the three major mineral resource reporting standards with conversion guidance for cross-border listings.',
+    meta:[{l:'Format',v:'PDF'},{l:'Size',v:'0.8 MB'},{l:'Updated',v:'January 2026'},{l:'Downloads',v:'620+'}],
+    contents:['Resource/reserve classification comparison table','Qualified Person / Competent Person requirements','Materiality and disclosure thresholds','Conversion guide: JORC to NI 43-101','Dual-listed company reporting obligations','Common pitfalls in cross-standard conversion','Regulator contacts and filing requirements']},
+  r23:{title:'GISTM Tailings Facility Compliance Checklist 2026',icon:'🏔️',color:'#7c3aed',type:'Checklist PDF',size:'1.3 MB',free:true,
+    desc:'Comprehensive compliance checklist for the Global Industry Standard on Tailings Management (GISTM). Covers all 6 themes and 77 requirements.',
+    meta:[{l:'Format',v:'PDF'},{l:'Size',v:'1.3 MB'},{l:'Updated',v:'March 2026'},{l:'Downloads',v:'380+'}],
+    contents:['Theme 1: Knowledge Base (12 requirements)','Theme 2: Design, Construction, Operation (18 requirements)','Theme 3: Management and Governance (14 requirements)','Theme 4: Community and Stakeholder Engagement (10 requirements)','Theme 5: Emergency Preparedness (8 requirements)','Theme 6: Long-term Recovery and Closure (15 requirements)','Evidence guidance and gap assessment framework']},
+  r24:{title:'Copper Price Forecast 2026–2035: Goldman, CRU & KDMine Consensus',icon:'🔴',color:'#dc2626',type:'PDF Report',size:'2.2 MB',free:true,
+    desc:'Aggregated copper price forecast from Goldman Sachs, CRU Group, Wood Mackenzie, and KDMine models. Annual base/upside/downside scenarios 2026–2035.',
+    meta:[{l:'Format',v:'PDF'},{l:'Size',v:'2.2 MB'},{l:'Updated',v:'June 2026'},{l:'Downloads',v:'840+'}],
+    contents:['Consensus price table: base/upside/downside 2026–2035','Supply/demand balance model to 2035','Mine supply pipeline: committed vs. required','Demand drivers: EV, grid, construction, AI data centres','Producer cost curve (C1 and AISC)','Scenario analysis: accelerated vs. delayed energy transition','Recommended feasibility study price assumptions']},
+  r25:{title:'Critical Minerals Outlook 2026: Lithium, Cobalt, Nickel, REE',icon:'⚡',color:'#dc2626',type:'PDF Report',size:'4.1 MB',free:false,
+    desc:'Comprehensive 2026 outlook for lithium, cobalt, nickel, and rare earth elements with supply/demand balance, price forecasts, and EV battery demand scenarios to 2035.',
+    meta:[{l:'Format',v:'PDF'},{l:'Size',v:'4.1 MB'},{l:'Updated',v:'June 2026'},{l:'Access',v:'Members Only'}],
+    contents:['Lithium: supply/demand, price forecast, DLE technology update','Cobalt: DRC supply risk, battery chemistry shifts','Nickel: HPAL vs. NPI, Indonesian supply dominance','Rare Earth Elements: China supply concentration, ex-China projects','EV battery demand scenarios (IEA NZE, SPS, CPS)','Project pipeline by mineral and jurisdiction','Investment implications and risk assessment']},
+  r26:{title:'Historical Commodity Prices 2000–2026 — Cu, Au, Fe, Li, Ni',icon:'📋',color:'#dc2626',type:'Excel Dataset',size:'1.4 MB',free:true,
+    desc:'Monthly commodity price data 2000–2026 for copper, gold, iron ore, lithium carbonate, and nickel. Includes real vs. nominal prices and volatility metrics.',
+    meta:[{l:'Format',v:'Excel (.xlsx)'},{l:'Size',v:'1.4 MB'},{l:'Updated',v:'June 2026'},{l:'Downloads',v:'920+'}],
+    contents:['Monthly prices 2000–2026: Cu (LME), Au (LBMA), Fe (62% CFR China)','Lithium carbonate (China spot) and Nickel (LME)','Real prices (2026 USD) using CPI deflator','3/5/10-year moving averages','Annual volatility (σ) and coefficient of variation','Correlation matrix between commodities','Pre-built charts: price history, real vs. nominal']}
+};
+
+/* ── FILTER ── */
+let activeFilter='all';
+function filterCat(cat,btn){
+  activeFilter=cat;
+  document.querySelectorAll('.ftab').forEach(t=>t.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+  filterRes();
+}
+function filterRes(){
+  const q=document.getElementById('resSearch').value.toLowerCase();
+  const type=document.getElementById('resSel').value;
+  let visible=0;
+  document.querySelectorAll('.rc').forEach(c=>{
+    const cat=c.getAttribute('data-cat');
+    const t=c.getAttribute('data-type');
+    const title=c.getAttribute('data-title').toLowerCase();
+    const txt=c.innerText.toLowerCase();
+    const catOk=activeFilter==='all'||cat===activeFilter;
+    const typeOk=type==='all'||t===type;
+    const qOk=!q||title.includes(q)||txt.includes(q);
+    const show=catOk&&typeOk&&qOk;
+    c.style.display=show?'flex':'none';
+    if(show)visible++;
+  });
+  // show/hide section headers
+  document.querySelectorAll('.cat-section').forEach(sec=>{
+    const visCards=[...sec.querySelectorAll('.rc')].filter(c=>c.style.display!=='none');
+    sec.style.display=visCards.length?'block':'none';
+  });
+  document.getElementById('resCount').textContent=visible;
+}
+
+/* ── MODAL ── */
+function openRes(id){
+  const r=RES[id];if(!r)return;
+  document.getElementById('resModalIc').textContent=r.icon;
+  document.getElementById('resModalIc').style.background=r.color+'18';
+  document.getElementById('resModalType').textContent=r.type;
+  document.getElementById('resModalType').style.color=r.color;
+  document.getElementById('resModalTitle').textContent=r.title;
+  document.getElementById('resModalDesc').textContent=r.desc;
+  // meta grid
+  document.getElementById('resModalMeta').innerHTML=r.meta.map(m=>`
+    <div class="rmm"><div class="rmm-l">${m.l}</div><div class="rmm-v">${m.v}</div></div>`).join('');
+  // contents
+  document.getElementById('resModalContents').innerHTML=`
+    <h4 style="font-size:.82rem;font-weight:800;color:var(--text-dark);text-transform:uppercase;letter-spacing:.4px;margin-bottom:10px" data-en="Contents" data-fa="محتوا">Contents</h4>
+    <ul>${r.contents.map(c=>`<li>${c}</li>`).join('')}</ul>`;
+  // gate or free
+  if(r.free){
+    document.getElementById('resModalGate').innerHTML='';
+    document.getElementById('resModalFooter').innerHTML=`
+      <button onclick="simulateDownload('${r.title}')" class="rc-btn rc-btn-dl" style="font-size:.9rem;padding:12px 24px">📥 <span data-en="Download Free" data-fa="دانلود رایگان">Download Free</span></button>
+      <button onclick="closeRes()" style="background:var(--bg-light);color:var(--text-mid);padding:12px 20px;border-radius:50px;font-weight:700;font-size:.88rem;border:1.5px solid var(--border);cursor:pointer">← <span data-en="Back" data-fa="بازگشت">Back</span></button>`;
+  } else {
+    document.getElementById('resModalGate').innerHTML=`
+      <div class="reg-gate">
+        <h3 data-en="🔐 Members-Only Resource" data-fa="🔐 منبع فقط برای اعضا">🔐 Members-Only Resource</h3>
+        <p data-en="Register free to download this resource and unlock 70+ additional member-only templates, models, and reports." data-fa="ثبت‌نام رایگان کنید تا این منبع را دانلود کنید و ۷۰+ قالب، مدل و گزارش اضافی فقط برای اعضا را باز کنید.">Register free to download this resource and unlock 70+ additional member-only templates, models, and reports.</p>
+        <a href="register.html" style="display:inline-flex;align-items:center;gap:7px;background:linear-gradient(135deg,#1a56db,#1d4ed8);color:#fff;padding:11px 24px;border-radius:50px;font-weight:700;font-size:.88rem" data-en="🚀 Register Free to Download →" data-fa="🚀 ثبت‌نام رایگان برای دانلود ←">🚀 Register Free to Download →</a>
+      </div>`;
+    document.getElementById('resModalFooter').innerHTML=`
+      <button onclick="closeRes()" style="background:var(--bg-light);color:var(--text-mid);padding:12px 20px;border-radius:50px;font-weight:700;font-size:.88rem;border:1.5px solid var(--border);cursor:pointer">← <span data-en="Back to Library" data-fa="بازگشت به کتابخانه">Back to Library</span></button>`;
+  }
+  document.getElementById('resOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeRes(){
+  document.getElementById('resOverlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+function closeResOutside(e){
+  if(e.target===document.getElementById('resOverlay'))closeRes();
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeRes();});
+
+function simulateDownload(title){
+  const btn=event.currentTarget;
+  const orig=btn.innerHTML;
+  btn.innerHTML='⏳ Preparing download...';
+  btn.disabled=true;
+  setTimeout(()=>{
+    btn.innerHTML='✅ Download started!';
+    setTimeout(()=>{btn.innerHTML=orig;btn.disabled=false;},2500);
+  },1200);
+}
+
+/* ── SCROLL ANIMATIONS ── */
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.style.opacity='1';
+      e.target.style.transform='translateY(0) scale(1)';
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:0.06});
+window.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('.rc').forEach((el,i)=>{
+    el.style.opacity='0';
+    el.style.transform='translateY(22px) scale(0.97)';
+    el.style.transition=`opacity 0.45s ease ${(i%6)*0.06}s, transform 0.45s ease ${(i%6)*0.06}s`;
+    io.observe(el);
+  });
+});
+</script>             

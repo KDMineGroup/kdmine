@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Blog & Insights — KDMine Group</title>
+<style>
+:root{--primary:#0f2d5e;--secondary:#1a56db;--accent:#3b82f6;--gold:#f59e0b;--success:#059669;--teal:#0d9488;--text-dark:#0f172a;--text-mid:#334155;--text-light:#64748b;--bg-light:#f8fafc;--border:#e2e8f0;--s1:0 1px 3px rgba(0,0,0,.07);--s2:0 4px 12px rgba(0,0,0,.10);--s3:0 12px 30px rgba(0,0,0,.12);--s4:0 20px 50px rgba(0,0,0,.15);--r1:8px;--r2:14px;--r3:20px;--tr:all .3s cubic-bezier(.4,0,.2,1)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,sans-serif;line-height:1.7;color:var(--text-dark);background:#fff;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inherit}
+[dir="rtl"] body{font-family:'B Nazanin',Tahoma,Arial,sans-serif}
+.lt{position:fixed;top:20px;right:20px;z-index:1100;background:#fff;padding:8px 16px;border-radius:50px;box-shadow:var(--s2);cursor:pointer;font-weight:700;font-size:.82rem;border:2px solid var(--border);transition:var(--tr);color:var(--primary);display:flex;align-items:center;gap:6px}
+[dir="rtl"] .lt{right:auto;left:20px}
+.stt{position:fixed;bottom:26px;right:26px;z-index:999;width:42px;height:42px;background:var(--secondary);color:#fff;border-radius:50%;border:none;cursor:pointer;font-size:1.1rem;box-shadow:var(--s3);transition:var(--tr);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none}
+.stt.vis{opacity:1;pointer-events:all}[dir="rtl"] .stt{right:auto;left:26px}
+.topbar{background:var(--primary);color:rgba(255,255,255,.8);font-size:.8rem;padding:7px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.topbar a{color:rgba(255,255,255,.8)}.topbar a:hover{color:#fff}.tb-r{display:flex;gap:20px}
+.hdr{background:rgba(255,255,255,.98);backdrop-filter:blur(12px);position:sticky;top:0;z-index:1000;box-shadow:var(--s2);border-bottom:1px solid var(--border)}
+.hdr-in{max-width:1400px;margin:0 auto;padding:13px 40px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.logo{display:flex;align-items:center;gap:13px}.logo img{width:50px;height:50px;border-radius:11px;box-shadow:var(--s1)}
+.logo h1{font-size:1.3rem;color:var(--primary);font-weight:800}.logo p{font-size:.72rem;color:var(--text-light);font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.nav{display:flex;gap:4px;align-items:center}
+.nl{color:var(--text-mid);font-weight:600;font-size:.9rem;padding:8px 13px;border-radius:var(--r1);transition:var(--tr)}
+.nl:hover,.nl.active{color:var(--secondary);background:rgba(26,86,219,.06)}
+.nl.dd{padding-right:20px;position:relative}.nl.dd::after{content:"▾";position:absolute;right:7px;top:50%;transform:translateY(-50%);font-size:.65rem}
+.ddw{position:relative}.ddm{position:absolute;top:calc(100% + 8px);left:0;background:#fff;border-radius:var(--r2);min-width:270px;box-shadow:var(--s4);border:1px solid var(--border);opacity:0;visibility:hidden;transform:translateY(-8px);transition:var(--tr);z-index:200}
+.ddw:hover .ddm{opacity:1;visibility:visible;transform:translateY(0)}
+.ddi{display:flex;align-items:center;gap:10px;padding:11px 18px;color:var(--text-mid);font-size:.86rem;font-weight:500;transition:var(--tr)}.ddi:hover{background:var(--bg-light);color:var(--secondary)}.ddi-ic{font-size:1rem;width:20px;text-align:center}
+.bcta{background:linear-gradient(135deg,var(--secondary),#1d4ed8);color:#fff;padding:10px 22px;border-radius:50px;font-weight:700;font-size:.88rem;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(26,86,219,.35);transition:var(--tr);display:inline-flex;align-items:center;gap:7px}
+.bcta:hover{transform:translateY(-2px)}
+.mbt{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:10px}.mbt span{width:24px;height:2.5px;background:var(--text-dark);border-radius:2px;transition:var(--tr)}
+/* HERO */
+.page-hero{background:linear-gradient(135deg,#0a1f44 0%,#0f2d5e 50%,#1a56db 100%);color:#fff;padding:110px 40px 80px;position:relative;overflow:hidden}
+.page-hero-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:60px 60px}
+.page-hero-in{max-width:900px;margin:0 auto;position:relative;z-index:1;text-align:center}
+.stag{display:inline-block;background:rgba(26,86,219,.1);color:var(--secondary);font-size:.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:12px}
+.page-hero .stag{background:rgba(255,255,255,.14);color:rgba(255,255,255,.9)}
+.page-hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:800;margin-bottom:18px;line-height:1.2}
+.page-hero p{font-size:1.05rem;opacity:.85;max-width:700px;margin:0 auto}
+.breadcrumb{display:flex;gap:8px;align-items:center;justify-content:center;font-size:.82rem;color:rgba(255,255,255,.6);margin-bottom:20px}
+.breadcrumb a{color:rgba(255,255,255,.7)}.breadcrumb a:hover{color:#fff}.breadcrumb span{color:rgba(255,255,255,.4)}
+/* BLOG LAYOUT */
+.blog-sec{padding:70px 40px 100px}
+.blog-inner{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 340px;gap:52px;align-items:start}
+/* FILTER BAR */
+.filter-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px;align-items:center}
+.filter-label{font-size:.78rem;font-weight:700;color:var(--text-mid);text-transform:uppercase;letter-spacing:.5px;margin-right:4px}
+.ftab{padding:7px 16px;border-radius:50px;border:2px solid var(--border);background:#fff;color:var(--text-mid);font-size:.8rem;font-weight:700;cursor:pointer;transition:var(--tr)}
+.ftab:hover,.ftab.active{background:var(--secondary);color:#fff;border-color:var(--secondary)}
+.search-wrap{display:flex;gap:10px;margin-bottom:28px}
+.s-inp{flex:1;padding:11px 16px;border:1.5px solid var(--border);border-radius:var(--r1);font-size:.9rem;outline:none;font-family:inherit;transition:var(--tr)}
+.s-inp:focus{border-color:var(--secondary);box-shadow:0 0 0 3px rgba(26,86,219,.1)}
+/* FEATURED POST */
+.feat-post{background:linear-gradient(135deg,#0f2d5e,#1a56db);border-radius:var(--r3);overflow:hidden;margin-bottom:32px;display:grid;grid-template-columns:1fr 1fr;min-height:280px}
+.feat-img{overflow:hidden}.feat-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.feat-post:hover .feat-img img{transform:scale(1.04)}
+.feat-body{padding:36px;color:#fff;display:flex;flex-direction:column;justify-content:center}
+.feat-cat{display:inline-block;background:rgba(255,255,255,.15);color:rgba(255,255,255,.9);font-size:.68rem;font-weight:700;padding:3px 12px;border-radius:50px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px}
+.feat-body h2{font-size:1.4rem;font-weight:800;line-height:1.3;margin-bottom:10px}
+.feat-body p{font-size:.88rem;opacity:.82;line-height:1.7;margin-bottom:16px}
+.feat-meta{display:flex;gap:14px;font-size:.75rem;color:rgba(255,255,255,.6);flex-wrap:wrap}
+.feat-read{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.15);color:#fff;padding:8px 18px;border-radius:50px;font-size:.82rem;font-weight:700;margin-top:14px;transition:var(--tr);border:1px solid rgba(255,255,255,.2)}
+.feat-read:hover{background:rgba(255,255,255,.25)}
+/* POSTS GRID */
+.posts-count{font-size:.84rem;color:var(--text-light);margin-bottom:18px}
+.posts-count span{font-weight:700;color:var(--text-dark)}
+.posts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}
+/* POST CARD */
+.pc{background:#fff;border-radius:var(--r2);border:1px solid var(--border);box-shadow:var(--s1);overflow:hidden;transition:var(--tr);display:flex;flex-direction:column;cursor:pointer}
+.pc:hover{transform:translateY(-5px);box-shadow:var(--s3);border-color:transparent}
+.pc-img{height:180px;overflow:hidden;position:relative}
+.pc-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.pc:hover .pc-img img{transform:scale(1.06)}
+.pc-cat{position:absolute;top:12px;left:12px;font-size:.65rem;font-weight:800;padding:3px 10px;border-radius:50px;text-transform:uppercase;letter-spacing:.4px;color:#fff}
+.cat-blue{background:rgba(26,86,219,.9)}.cat-gold{background:rgba(245,158,11,.9)}.cat-green{background:rgba(5,150,105,.9)}.cat-purple{background:rgba(124,58,237,.9)}.cat-teal{background:rgba(13,148,136,.9)}.cat-red{background:rgba(220,38,38,.9)}
+.pc-body{padding:20px;flex:1;display:flex;flex-direction:column}
+.pc-meta{display:flex;gap:10px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.pc-date{font-size:.72rem;color:var(--text-light)}.pc-read{font-size:.72rem;color:var(--text-light);background:var(--bg-light);padding:2px 8px;border-radius:50px;border:1px solid var(--border)}
+.pc h3{font-size:.96rem;font-weight:800;color:var(--text-dark);margin-bottom:8px;line-height:1.4}
+.pc-excerpt{font-size:.83rem;color:var(--text-light);line-height:1.7;flex:1;margin-bottom:14px}
+.pc-footer{display:flex;justify-content:space-between;align-items:center;padding-top:12px;border-top:1px solid var(--border);margin-top:auto}
+.pc-author{display:flex;align-items:center;gap:8px}
+.pc-av{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;color:#fff;flex-shrink:0}
+.pc-an{font-size:.75rem;font-weight:600;color:var(--text-mid)}
+.pc-lnk{color:var(--secondary);font-weight:700;font-size:.8rem;display:inline-flex;align-items:center;gap:4px;transition:var(--tr)}
+.pc-lnk:hover{gap:8px}
+/* SIDEBAR */
+.sidebar{display:flex;flex-direction:column;gap:24px;position:sticky;top:100px}
+.sw{background:#fff;border:1px solid var(--border);border-radius:var(--r2);padding:22px;box-shadow:var(--s1)}
+.sw h3{font-size:.82rem;font-weight:800;color:var(--text-dark);text-transform:uppercase;letter-spacing:.6px;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--border)}
+/* NEWSLETTER */
+.nl-box{background:linear-gradient(135deg,#0f2d5e,#1a56db);border-radius:var(--r2);padding:24px;color:#fff}
+.nl-box h3{font-size:.95rem;font-weight:800;margin-bottom:8px}
+.nl-box p{font-size:.82rem;opacity:.8;line-height:1.6;margin-bottom:16px}
+.nl-inp{width:100%;padding:10px 14px;border-radius:var(--r1);border:none;font-size:.88rem;font-family:inherit;outline:none;margin-bottom:10px}
+.nl-btn{width:100%;padding:10px;background:rgba(255,255,255,.2);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:var(--r1);font-weight:700;font-size:.88rem;cursor:pointer;transition:var(--tr);font-family:inherit}
+.nl-btn:hover{background:rgba(255,255,255,.3)}
+/* CATEGORIES */
+.cat-list{display:flex;flex-direction:column;gap:6px}
+.cat-item{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-radius:var(--r1);cursor:pointer;transition:var(--tr);font-size:.86rem;color:var(--text-mid);font-weight:500}
+.cat-item:hover,.cat-item.active{background:rgba(26,86,219,.08);color:var(--secondary)}
+.cat-count{background:var(--bg-light);color:var(--text-light);font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:50px;border:1px solid var(--border)}
+/* POPULAR */
+.pop-list{display:flex;flex-direction:column;gap:14px}
+.pop-item{display:flex;gap:12px;align-items:flex-start;cursor:pointer;transition:var(--tr);padding:8px;border-radius:var(--r1)}
+.pop-item:hover{background:var(--bg-light)}
+.pop-num{width:26px;height:26px;background:linear-gradient(135deg,var(--secondary),var(--accent));color:#fff;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;flex-shrink:0;margin-top:2px}
+.pop-title{font-size:.83rem;font-weight:700;color:var(--text-dark);line-height:1.4;margin-bottom:3px}
+.pop-meta{font-size:.72rem;color:var(--text-light)}
+/* TAGS */
+.tag-cloud{display:flex;flex-wrap:wrap;gap:7px}
+.tag{padding:5px 12px;background:var(--bg-light);border:1px solid var(--border);border-radius:50px;font-size:.75rem;font-weight:600;color:var(--text-mid);cursor:pointer;transition:var(--tr)}
+.tag:hover{background:var(--secondary);color:#fff;border-color:var(--secondary)}
+/* PAGINATION */
+.pagination{display:flex;gap:8px;justify-content:center;margin-top:48px;flex-wrap:wrap}
+.pg-btn{width:40px;height:40px;border-radius:var(--r1);border:1.5px solid var(--border);background:#fff;color:var(--text-mid);font-weight:700;font-size:.88rem;cursor:pointer;transition:var(--tr);display:flex;align-items:center;justify-content:center}
+.pg-btn:hover,.pg-btn.active{background:var(--secondary);color:#fff;border-color:var(--secondary)}
+/* ARTICLE MODAL */
+.art-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:2000;display:flex;align-items:flex-start;justify-content:center;padding:40px 20px;opacity:0;visibility:hidden;transition:var(--tr);overflow-y:auto}
+.art-overlay.open{opacity:1;visibility:visible}
+.art-modal{background:#fff;border-radius:var(--r3);max-width:820px;width:100%;box-shadow:0 40px 100px rgba(0,0,0,.4);transform:translateY(20px);transition:var(--tr);margin:auto}
+.art-overlay.open .art-modal{transform:translateY(0)}
+.art-hero{height:320px;overflow:hidden;position:relative;border-radius:var(--r3) var(--r3) 0 0}
+.art-hero img{width:100%;height:100%;object-fit:cover}
+.art-close{position:absolute;top:16px;right:16px;width:38px;height:38px;background:rgba(0,0,0,.55);color:#fff;border:none;border-radius:50%;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:var(--tr)}
+.art-close:hover{background:rgba(0,0,0,.85)}
+.art-body{padding:40px}
+.art-cat-badge{display:inline-block;font-size:.68rem;font-weight:800;padding:3px 12px;border-radius:50px;text-transform:uppercase;letter-spacing:.5px;color:#fff;margin-bottom:14px}
+.art-body h1{font-size:1.7rem;font-weight:800;color:var(--text-dark);line-height:1.3;margin-bottom:14px}
+.art-info{display:flex;gap:16px;flex-wrap:wrap;font-size:.8rem;color:var(--text-light);margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+.art-info span{display:flex;align-items:center;gap:5px}
+.art-content p{font-size:.93rem;color:var(--text-mid);line-height:1.85;margin-bottom:16px}
+.art-content h3{font-size:1.05rem;font-weight:800;color:var(--text-dark);margin:24px 0 10px}
+.art-content ul{padding-left:20px;margin-bottom:16px}
+.art-content ul li{font-size:.9rem;color:var(--text-mid);line-height:1.75;margin-bottom:5px}
+.art-content .highlight{background:linear-gradient(135deg,#eff6ff,#dbeafe);border-left:4px solid var(--secondary);padding:16px 20px;border-radius:0 var(--r1) var(--r1) 0;margin:20px 0;font-size:.9rem;color:var(--text-mid);line-height:1.75}
+[dir="rtl"] .art-content .highlight{border-left:none;border-right:4px solid var(--secondary)}
+.art-tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:24px;padding-top:20px;border-top:1px solid var(--border)}
+/* CTA */
+.cta-sec{padding:88px 40px;background:linear-gradient(135deg,#eff6ff,#dbeafe);text-align:center}
+.cta-in{max-width:700px;margin:0 auto}
+.cta-sec h2{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800;color:var(--primary);margin-bottom:14px}
+.cta-sec p{font-size:.98rem;color:var(--text-light);margin-bottom:32px}
+.cta-acts{display:flex;gap:13px;justify-content:center;flex-wrap:wrap}
+.bcp{background:linear-gradient(135deg,var(--secondary),#1d4ed8);color:#fff;padding:14px 30px;border-radius:50px;font-weight:700;font-size:.96rem;border:none;cursor:pointer;box-shadow:0 6px 20px rgba(26,86,219,.35);transition:var(--tr);display:inline-flex;align-items:center;gap:8px}
+.bcp:hover{transform:translateY(-3px)}
+.bco{background:#fff;color:var(--secondary);padding:14px 30px;border-radius:50px;font-weight:700;font-size:.96rem;border:2px solid var(--secondary);cursor:pointer;transition:var(--tr);display:inline-flex;align-items:center;gap:8px}
+.bco:hover{background:var(--secondary);color:#fff;transform:translateY(-3px)}
+/* FOOTER */
+.footer{background:#0a1628;color:#fff;padding:68px 40px 26px}
+.footer-in{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:36px;margin-bottom:46px}
+.fb-desc{font-size:.84rem;color:rgba(255,255,255,.5);line-height:1.75;margin-top:13px;margin-bottom:17px}
+.fb-socs{display:flex;gap:8px}
+.fb-s{width:34px;height:34px;background:rgba(255,255,255,.08);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.86rem;transition:var(--tr);color:rgba(255,255,255,.52)}.fb-s:hover{background:var(--secondary);color:#fff}
+.fc h4{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.45);margin-bottom:15px}
+.fc a{display:block;color:rgba(255,255,255,.66);font-size:.84rem;padding:4px 0;transition:var(--tr)}.fc a:hover{color:#fff}
+.footer-bot{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding-top:22px;border-top:1px solid rgba(255,255,255,.08);font-size:.78rem;color:rgba(255,255,255,.36);flex-wrap:wrap;gap:10px}
+.fb-lnks{display:flex;gap:18px}.fb-lnks a{color:rgba(255,255,255,.36)}.fb-lnks a:hover{color:rgba(255,255,255,.75)}
+@media(max-width:1100px){.blog-inner{grid-template-columns:1fr}.sidebar{position:static}.feat-post{grid-template-columns:1fr}.feat-img{height:200px}.footer-in{grid-template-columns:1fr 1fr 1fr}}
+@media(max-width:768px){.topbar{display:none}.mbt{display:flex}.nav{position:fixed;top:78px;right:-100%;width:80%;max-width:290px;height:calc(100vh - 78px);background:#fff;flex-direction:column;padding:28px;box-shadow:var(--s4);transition:right .3s ease;align-items:flex-start;overflow-y:auto;z-index:999}.nav.open{right:0}.ddm{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:none;background:var(--bg-light);margin-top:5px}.blog-sec,.cta-sec,.footer{padding-left:22px;padding-right:22px}.posts-grid{grid-template-columns:1fr}.footer-in{grid-template-columns:1fr 1fr}.footer-bot{flex-direction:column;text-align:center}.hdr-in{padding:13px 20px}.art-body{padding:24px}.art-hero{height:220px}}
+</style>
+</head>
+<body>
+<button class="lt" onclick="tgLang()">🌐 <span id="lt-txt">FA | فارسی</span></button>
+<button class="stt" id="sttBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<div class="topbar">
+  <div>📧 info@kdmine.com &nbsp;|&nbsp; 📞 +98 21 1234 5678 &nbsp;|&nbsp; 🕐 Sat–Wed 08:00–18:00 IRST</div>
+  <div class="tb-r"><a href="register.html">🔐 Client Login</a><a href="register.html">📊 Dashboard</a></div>
+</div>
+
+<header class="hdr">
+  <div class="hdr-in">
+    <div class="logo">
+      <img src="https://cdn.grapesjs.com/workspaces/cmgvbwak408ja13nsemkia83b/assets/7e057c43-5d96-4c3a-a8fc-8bd5f6589a93__kavianpremiumbadgelogo.svg" alt="KDMine">
+      <div><h1 data-en="KDMine Group" data-fa="کاویان توسعه معدن">KDMine Group</h1><p data-en="Mining Engineering & Economics Platform" data-fa="پلتفرم مهندسی و اقتصاد معدن">Mining Engineering & Economics Platform</p></div>
+    </div>
+    <button class="mbt" onclick="tgMenu()"><span></span><span></span><span></span></button>
+    <nav class="nav" id="mainNav">
+      <div class="ddw"><a href="index.html#services" class="nl dd" data-en="Services" data-fa="خدمات">Services</a>
+        <div class="ddm">
+          <a href="services/feasibility.html" class="ddi"><span class="ddi-ic">📋</span><span>Feasibility Studies</span></a>
+          <a href="services/cost-estimation.html" class="ddi"><span class="ddi-ic">💰</span><span>CAPEX/OPEX Estimation</span></a>
+          <a href="services/plant-design.html" class="ddi"><span class="ddi-ic">🏭</span><span>Process Plant Design</span></a>
+          <a href="services/critical-minerals.html" class="ddi"><span class="ddi-ic">⚡</span><span>Critical Minerals</span></a>
+          <a href="services/esg-decarbonization.html" class="ddi"><span class="ddi-ic">🌱</span><span>ESG & Decarbonization</span></a>
+          <a href="services/digital-mining.html" class="ddi"><span class="ddi-ic">🤖</span><span>Digital Mining & AI</span></a>
+        </div>
+      </div>
+      <div class="ddw"><a href="index.html#tools" class="nl dd" data-en="Tools" data-fa="ابزارها">Tools</a>
+        <div class="ddm">
+          <a href="tools/cost-calculator.html" class="ddi"><span class="ddi-ic">🧮</span><span>Cost Calculator</span></a>
+          <a href="tools/equipment-database.html" class="ddi"><span class="ddi-ic">🗃️</span><span>Equipment Database</span></a>
+          <a href="tools/monte-carlo.html" class="ddi"><span class="ddi-ic">📉</span><span>Monte Carlo Simulator</span></a>
+          <a href="tools/market-dashboard.html" class="ddi"><span class="ddi-ic">🌍</span><span>Market Dashboard</span></a>
+        </div>
+      </div>
+      <a href="resources.html" class="nl" data-en="Resources" data-fa="منابع">Resources</a>
+      <a href="portfolio.html" class="nl" data-en="Portfolio" data-fa="نمونه کارها">Portfolio</a>
+      <a href="about.html" class="nl" data-en="About" data-fa="درباره ما">About</a>
+      <a href="contact.html" class="nl" data-en="Contact" data-fa="تماس">Contact</a>
+      <a href="register.html" class="bcta" data-en="Get Started →" data-fa="شروع کنید ←">Get Started →</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-in">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Blog & Insights</span></div>
+    <div class="stag" data-en="Mining Intelligence" data-fa="هوش معدنی">Mining Intelligence</div>
+    <h1 data-en="Blog & Industry Insights" data-fa="وبلاگ و بینش‌های صنعتی">Blog & Industry Insights</h1>
+    <p data-en="Expert analysis on AACE cost estimation, critical minerals, ESG strategy, digital mining, and global commodity markets — from KDMine Group's senior engineers and economists." data-fa="تحلیل تخصصی در تخمین هزینه AACE، مواد معدنی حیاتی، استراتژی ESG، معدن دیجیتال و بازارهای کالای جهانی — از مهندسان و اقتصاددانان ارشد KDMine Group.">Expert analysis on AACE cost estimation, critical minerals, ESG strategy, digital mining, and global commodity markets — from KDMine Group's senior engineers and economists.</p>
+  </div>
+</section>
+
+<!-- BLOG MAIN -->
+<section class="blog-sec">
+  <div class="blog-inner">
+
+    <!-- LEFT: POSTS -->
+    <div>
+      <!-- SEARCH -->
+      <div class="search-wrap">
+        <input class="s-inp" type="text" id="blogSearch" placeholder="Search articles by title, topic, or author..." oninput="filterPosts()">
+      </div>
+
+      <!-- FILTER TABS -->
+      <div class="filter-row">
+        <span class="filter-label" data-en="Topic:" data-fa="موضوع:">Topic:</span>
+        <button class="ftab active" onclick="filterCat('all',this)" data-en="All" data-fa="همه">All</button>
+        <button class="ftab" onclick="filterCat('cost',this)" data-en="Cost Estimation" data-fa="تخمین هزینه">Cost Estimation</button>
+        <button class="ftab" onclick="filterCat('critical',this)" data-en="Critical Minerals" data-fa="مواد معدنی حیاتی">Critical Minerals</button>
+        <button class="ftab" onclick="filterCat('esg',this)" data-en="ESG" data-fa="ESG">ESG</button>
+        <button class="ftab" onclick="filterCat('digital',this)" data-en="Digital Mining" data-fa="معدن دیجیتال">Digital Mining</button>
+        <button class="ftab" onclick="filterCat('market',this)" data-en="Markets" data-fa="بازارها">Markets</button>
+      </div>
+
+      <!-- FEATURED POST -->
+      <div class="feat-post" onclick="openArticle('a1')">
+        <div class="feat-img"><img src="https://thumbs.dreamstime.com/b/aerial-view-massive-open-pit-copper-mine-industrial-terraces-extraction-operations-large-trucks-navigate-roads-deep-395303962.jpg" alt="Featured"></div>
+        <div class="feat-body">
+          <span class="feat-cat" data-en="Cost Estimation" data-fa="تخمین هزینه">Cost Estimation</span>
+          <h2 data-en="AACE Class 1–5: Which Estimate Does Your Mining Project Actually Need?" data-fa="AACE کلاس ۱–۵: پروژه معدنی شما واقعاً به کدام تخمین نیاز دارد؟">AACE Class 1–5: Which Estimate Does Your Mining Project Actually Need?</h2>
+          <p data-en="A practical guide to selecting the right AACE estimate class for each project stage — from early exploration through to construction decision." data-fa="راهنمای عملی برای انتخاب کلاس تخمین AACE مناسب برای هر مرحله پروژه — از اکتشاف اولیه تا تصمیم ساخت.">A practical guide to selecting the right AACE estimate class for each project stage — from early exploration through to construction decision.</p>
+          <div class="feat-meta">
+            <span>👤 Dr. Kavian Dehghani</span>
+            <span>📅 June 10, 2026</span>
+            <span>⏱ 12 min read</span>
+          </div>
+          <span class="feat-read" data-en="Read Article →" data-fa="خواندن مقاله ←">Read Article →</span>
+        </div>
+      </div>
+
+      <!-- POSTS COUNT -->
+      <div class="posts-count"><span id="postCount">11</span> <span data-en="articles" data-fa="مقاله">articles</span></div>
+
+      <!-- POSTS GRID -->
+      <div class="posts-grid" id="postsGrid">
+
+        <!-- A2 -->
+        <div class="pc" data-cat="critical" data-title="Lithium Supply Crunch 2026" onclick="openArticle('a2')">
+          <div class="pc-img">
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Lithium" loading="lazy">
+            <span class="pc-cat cat-purple" data-en="Critical Minerals" data-fa="مواد معدنی حیاتی">Critical Minerals</span>
+          </div>
+          <div class="pc-body">
+            <div class="pc-meta"><span class="pc-date">June 8, 2026</span><span class="pc-read">9 min</span></div>
+            <h3 data-en="Lithium Supply Crunch 2026–2030: What Mining Engineers Need to Know" data-fa="بحران عرضه لیتیوم ۲۰۲۶–۲۰۳۰: آنچه مهندسان معدن باید بدانند">Lithium Supply Crunch 2026–2030: What Mining Engineers Need to Know</h3>
+            <p class="pc-excerpt" data-en="IEA forecasts a 40% lithium supply deficit by 2030. We break down the engineering and economic implications for project developers." data-fa="IEA کمبود ۴۰٪ عرضه لیتیوم تا ۲۰۳۰ را پیش‌بینی می‌کند. ما پیامدهای مهندسی و اقتصادی را برای توسعه‌دهندگان پروژه تجزیه می‌کنیم.">IEA forecasts a 40% lithium supply deficit by 2030. We break down the engineering and economic implications for project developers.</p>
+            <div class="pc-footer">
+              <div class="pc-author"><div class="pc-av" style="background:linear-gradient(135deg,#7c3aed,#a78bfa)">DL</div><span class="pc-an">Dr. Leila Ahmadi</span></div>
+              <span class="pc-lnk" data-en="Read →" data-fa="بخوانید ←">Read →</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- A3 -->
+        <div class="pc" data-cat="esg" data-title="Green Loan Mining ESG" onclick="openArticle('a3')">
+          <div class="pc-img">
+            <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=600&q=80" alt="ESG" loading="lazy">
+            <span class="pc-cat cat-green" data-en="ESG" data-fa="ESG">ESG</span>
+          </div>
+          <div class="pc-body">
+            <div class="pc-meta"><span class="pc-date">June 5, 2026</span><span class="pc-read">7 min</span></div>
+            <h3 data-en="How to Secure a Green Loan for Your Mining Project in 2026" data-fa="چگونه در ۲۰۲۶ وام سبز برای پروژه معدنی خود تأمین کنید">How to Secure a Green Loan for Your Mining Project in 2026</h3>
+            <p class="pc-excerpt" data-en="Green loans now offer 30–60bps below market rates for mining projects with credible ESG frameworks. Here's exactly what lenders require." data-fa="وام‌های سبز اکنون ۳۰ تا ۶۰ واحد پایه زیر نرخ بازار برای پروژه‌های معدنی با چارچوب‌های ESG معتبر ارائه می‌دهند.">Green loans now offer 30–60bps below market rates for mining projects with credible ESG frameworks. Here's exactly what lenders require.</p>
+            <div class="pc-footer">
+              <div class="pc-author"><div class="pc-av" style="background:linear-gradient(135deg,#059669,#10b981)">LA</div><span class="pc-an">Dr. Leila Ahmadi</span></div>
+              <span class="pc-lnk" data-en="Read →" data-fa="بخوانید ←">Read →</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- A4 -->
+        <div class="pc" data-cat="digital" data-title="Digital Twin Mining ROI" onclick="openArticle('a4')">
+          <div class="pc-img">
+            <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&q=80" alt="Digital Twin" loading="lazy">
+            <span class="pc-cat cat-teal" data-en="Digital Mining" data-fa="معدن دیجیتال">Digital Mining</span>
+          </div>
+          <div class="pc-body">
+            <div class="pc-meta"><span class="pc-date">June 2, 2026</span><span class="pc-read">10 min</span></div>
+            <h3 data-en="Digital Twin ROI in Mining: Real Numbers from 8 Deployments" data-fa="ROI دوقلوی دیجیتال در معدن: اعداد واقعی از ۸ استقرار">Digital Twin ROI in Mining: Real Numbers from 8 Deployments</h3>
+            <p class="pc-excerpt" data-en="We analysed 8 Digital Twin deployments across copper, gold, and iron ore operations. Average OPEX reduction: 16.4%. Average ROI payback: 9.2 months." data-fa="ما ۸ استقرار دوقلوی دیجیتال در عملیات مس، طلا و سنگ آهن را تحلیل کردیم. میانگین کاهش OPEX: ۱۶.۴٪. میانگین بازگشت ROI: ۹.۲ ماه.">We analysed 8 Digital Twin deployments across copper, gold, and iron ore operations. Average OPEX reduction: 16.4%. Average ROI payback: 9.2 months.</p>
+            <div class="pc-footer">
+              <div class="pc-author"><div class="pc-av" style="background:linear-gradient(135deg,#0d9488,#14b8a6)">JT</div><span class="pc-an">James Thornton</span></div>
+              <span class="pc-lnk" data-en="Read →" data-fa="بخوانید ←">Read →</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- A5 -->
+        <div class="pc" data-cat="market" data-title="Copper Price Forecast 2026" onclick="openArticle('a5')">
+          <div class="pc-img">
+            <img src="https://thumbs.dreamstime.com/b/aerial-view-massive-open-pit-copper-mine-industrial-terraces-extraction-operations-large-trucks-navigate-roads-deep-395303962.jpg" alt="Copper Market" loading="lazy">
+            <span class="pc-cat cat-blue" data-en="Markets" data-fa="بازارها">Markets</span>
+          </div>
+          <div class="pc-body">
+            <div class="pc-meta"><span class="pc-date">May 28, 2026</span><span class="pc-read">8 min</span></div>
+            <h3 data-en="Copper Price Outlook 2026–2030: Goldman, CRU & KDMine Consensus" data-fa="چشم‌انداز قیمت مس ۲۰۲۶–۲۰۳۰: اجماع گلدمن، CRU و KDMine">Copper Price Outlook 2026–2030: Goldman, CRU & KDMine Consensus</h3>
+            <p class="pc-excerpt" data-en="We aggregate forecasts from Goldman Sachs, CRU Group, Wood Mackenzie, and our own models. Consensus: $10,200–$12,500/t by 2028 driven by energy transition demand." data-fa="ما پیش‌بینی‌های Goldman Sachs، CRU Group، Wood Mackenzie و مدل‌های خودمان را جمع‌بندی می‌کنیم. اجماع: ۱۰,۲۰۰ تا ۱۲,۵۰۰ دلار در تن تا ۲۰۲۸.">We aggregate forecasts from Goldman Sachs, CRU Group, Wood Mackenzie, and our own models. Consensus: $10,200–$12,500/t by 2028 driven by energy transition demand.</p>
+            <div class="pc-footer">
+              <div class="pc-author"><div class="pc-av" style="background:linear-gradient(135deg,#d97706,#f59e0b)">JT</div><span class="pc-an">James Thornton</span></div>
+              <span class="pc-lnk" data-en="Read →" data-fa="بخوانید ←">Read →</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- A6 -->
+        <div class="pc" data-cat="cost" data-title="OPEX Benchmarking Open Pit" onclick="openArticle('a6')">
+          <div class="pc-img">
+            <img src="https://www.ramenvalves.com/wp-content/uploads/2024/11/Mineral-Processing-Aitik.jpg" alt="OPEX" loading="lazy">
+            <span class="pc-cat cat-blue" data-en="Cost Estimation" data-fa="تخمین هزینه">Cost Estimation</span>
+          </div>
+          <div class="pc-body">
+            <div class="pc-meta"><span class="pc-date">May 22, 2026</span><span class="pc-read">11 min</span></div>
+            <h3 data-en="2026 OPEX Benchmarks: Open Pit Mining Costs by Commodity & Region" data-fa="معیارهای OPEX 2026: هزینه‌های معدن روباز بر اساس کالا و منطقه">2026 OPEX Benchmarks: Open Pit Mining Costs by Commodity & Region</h3>
+            <p class="pc-excerpt" data-en="Updated 2026 OPEX benchmarks for copper, gold, iron ore, and lithium open pit operations across Africa, Australia, Americas, and Central Asia — using CostMine 2025 data." data-fa="معیارهای OPEX به‌روزشده ۲۰۲۶ برای عملیات روباز مس، طلا، سنگ آهن و لیتیوم در آفریقا، استرالیا، آمریکا و آسیای مرکزی — با استفاده از داده‌های CostMine 2025.">Updated 2026 OPEX benchmarks for copper, gold, iron ore, and lithium open pit operations across Africa, Australia, Americas, and Central Asia — using CostMine 2025 data.</p>
+            <div class="pc-footer">
+              <div class="pc-author"><div class="pc-av" style="background:linear-gradient(135deg,#0f2d5e,#1a56db)">KD</div><span class="pc-an">Dr. Kavian Dehghani</span></div>
+              <span class="pc-lnk" data-en="Read →" data-fa="بخوانید ←">Read →</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- A7 -->
+        <div class="pc" data-cat="esg" data-title="Scope 3 Mining Emissions" onclick="openArticle('a7')">
+          <div class="pc-img">
+            <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600&q=80" alt="Scope 3" loading="lazy">
+            <span class="pc-cat cat-green" data-en="ESG" data-fa="ESG">ESG</span>
+          </div>
+          <div class="pc-body">
+            <div class="pc-meta"><span class="pc-date">May 15, 2026</span><span class="pc-read">8 min</span></div>
+            <h3 data-en="Scope 3 Emissions in Mining: The $50B Liability Most Miners Are Ignoring" data-fa="انتشارات Scope 3 در معدن: بدهی ۵۰ میلیارد دلاری که اکثر معدنکاران نادیده می‌گیرند">Scope 3 Emissions in Mining: The $50B Liability Most Miners Are Ignoring</h3>
+            <p class="pc-excerpt" data-en="New ISSB and SEC climate disclosure rules mean Scope 3 emissions are now a material financial liability. We explain the methodology and mitigation strategies." data-fa="قوانین جدید افشای آب‌وهوایی ISSB و SEC به این معنی است که انتشارات Scope 3 اکنون یک بدهی مالی مادی هستند.">New ISSB and SEC climate disclosure rules mean Scope 3 emissions are now a material financial liability. We explain the methodology and mitigation strategies.</p>
+            <div class="pc-footer">
+              <div class="pc-author"><div class="pc-av" style="background:linear-gradient(135deg,#059669,#10b981)">LA</div><span class="pc-an">Dr. Leila Ahmadi</span></div>
+              <span class="pc-lnk" data-en="Read →" data-fa="بخوانید ←">Read →</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- A8 -->
+        <div class="pc" data-cat="digital" data-title="AI Predictive Maintenance Mining" onclick="openArticle('a8')">
+          <div class="pc-img">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80" alt="AI Mining" loading="lazy">
+            <span class="pc-cat cat-teal" data-en="Digital Mining" data-fa="معدن دیجیتال">Digital Mining</span>
+          </div>
+          <div class="pc-body">
+            <div class="pc-meta"><span class="pc-date">May 10, 2026</span><span class="pc-read">9 min</span></div>
+            <h3 data-en="AI Predictive Maintenance in Mining: From Hype to $180M Annual Savings" data-fa="نگهداری پیش‌بینانه هوش مصنوعی در معدن: از تبلیغات تا ۱۸۰ میلیون دلار صرفه‌جویی سالانه">AI Predictive Maintenance in Mining: From Hype to $180M Annual Savings</h3>
+            <p class="pc-excerpt" data-en="Real case studies from 12 mining operations show AI predictive maintenance delivering 15–28% reduction in unplanned downtime. Here's how to implement it." data-fa="مطالعات موردی واقعی از ۱۲ عملیات معدنی نشان می‌دهد نگهداری پیش‌بینانه هوش مصنوعی ۱۵ تا ۲۸٪ کاهش در توقفات برنامه‌ریزی‌نشده ارائه می‌دهد.">Real case studies from 12 mining operations show AI predictive maintenance delivering 15–28% reduction in unplanned downtime. Here's how to implement it.</p>
+            <div class="pc-footer">
+              <div class="pc-author"><div class="pc-av" style="background:linear-gradient(135deg,#0d9488,#14b8a6)">SM</div><span class="pc-an">Dr. Sarah Mitchell</span></div>
+              <span class="pc-lnk" data-en="Read →" data-fa="بخوانید ←">Read →</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- A9 -->
+        <div class="pc" data-cat="critical" data-title="Nickel HPAL Technology 2026" onclick="openArticle('a9')">
+          <div class="pc-img">
+            <img src="https://www.geologyforinvestors.com/wp-content/uploads/2022/05/heap-leaching.jpg" alt="HPAL Nickel" loading="lazy">
+            <span class="pc-cat cat-purple" data-en="Critical Minerals" data-fa="مواد معدنی حیاتی">Critical Minerals</span>
+          </div>
+          <div class="pc-body">
+            <div class="pc-meta"><span class="pc-date">May 5, 2026</span><span class="pc-read">13 min</span></div>
+            <h3 data-en="HPAL Technology for Nickel Laterites: CAPEX Reality vs. Developer Promises" data-fa="فناوری HPAL برای لاتریت‌های نیکل: واقعیت CAPEX در مقابل وعده‌های توسعه‌دهندگان">HPAL Technology for Nickel Laterites: CAPEX Reality vs. Developer Promises</h3>
+            <p class="pc-excerpt" data-en="HPAL projects have historically overrun by 40–120%. We analyse why, and what Class 3 estimates for HPAL should actually include in 2026." data-fa="پروژه‌های HPAL تاریخاً ۴۰ تا ۱۲۰٪ تجاوز کرده‌اند. ما تحلیل می‌کنیم چرا، و تخمین‌های کلاس ۳ برای HPAL در ۲۰۲۶ واقعاً باید چه چیزی را شامل شوند.">HPAL projects have historically overrun by 40–120%. We analyse why, and what Class 3 estimates for HPAL should actually include in 2026.</p>
+            <div class="pc-footer">
+              <div class="pc-author"><div class="pc-av" style="background:linear-gradient(135deg,#0f2d5e,#1a56db)">SM</div><span class="pc-an">Dr. Sarah Mitchell</span></div>
+              <span class="pc-lnk" data-en="Read →" data-fa="بخوانید ←">Read →</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- A10 -->
+        <div class="pc" data-cat="cost" data-title="Monte Carlo Mining Contingency" onclick="openArticle('a10')">
+          <div class="pc-img">
+            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="Monte Carlo" loading="lazy">
+            <span class="pc-cat cat-blue" data-en="Cost Estimation" data-fa="تخمین هزینه">Cost Estimation</span>
+          </div>
+          <div class="pc-body">
+            <div class="pc-meta"><span class="pc-date">April 28, 2026</span><span class="pc-read">10 min</span></div>
+            <h3 data-en="Monte Carlo Simulation for Mining CAPEX: Setting the Right Contingency" data-fa="شبیه‌سازی مونت کارلو برای CAPEX معدن: تعیین ذخیره اقتضایی مناسب">Monte Carlo Simulation for Mining CAPEX: Setting the Right Contingency</h3>
+            <p class="pc-excerpt" data-en="How to use Monte Carlo simulation to determine statistically defensible contingency for AACE Class 3–5 mining estimates. Includes worked examples with P50/P80/P90 outputs." data-fa="چگونه از شبیه‌سازی مونت کارلو برای تعیین ذخیره اقتضایی قابل دفاع آماری برای تخمین‌های معدنی AACE کلاس ۳–۵ استفاده کنیم.">How to use Monte Carlo simulation to determine statistically defensible contingency for AACE Class 3–5 mining estimates. Includes worked examples with P50/P80/P90 outputs.</p>
+            <div class="pc-footer">
+              <div class="pc-author"><div class="pc-av" style="background:linear-gradient(135deg,#d97706,#f59e0b)">JT</div><span class="pc-an">James Thornton</span></div>
+              <span class="pc-lnk" data-en="Read →" data-fa="بخوانید ←">Read →</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- A11 -->
+        <div class="pc" data-cat="market" data-title="Iran Mining Investment 2026" onclick="openArticle('a11')">
+          <div class="pc-img">
+            <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80" alt="Iran Mining" loading="lazy">
+            <span class="pc-cat cat-gold" data-en="Markets" data-fa="بازارها">Markets</span>
+          </div>
+          <div class="pc-body">
+            <div class="pc-meta"><span class="pc-date">April 20, 2026</span><span class="pc-read">7 min</span></div>
+            <h3 data-en="Iran's Mining Sector 2026: $14B Investment Pipeline & Opportunity Map" data-fa="بخش معدن ایران ۲۰۲۶: خط لوله سرمایه‌گذاری ۱۴ میلیارد دلاری و نقشه فرصت">Iran's Mining Sector 2026: $14B Investment Pipeline & Opportunity Map</h3>
+            <p class="pc-excerpt" data-en="Iran holds the world's 10th largest mineral reserves. We map the $14B active project pipeline across copper, zinc, iron ore, and critical minerals — with CAPEX and timeline data." data-fa="ایران دهمین ذخایر معدنی بزرگ جهان را دارد. ما خط لوله پروژه فعال ۱۴ میلیارد دلاری را در مس، روی، سنگ آهن و مواد معدنی حیاتی ترسیم می‌کنیم.">Iran holds the world's 10th largest mineral reserves. We map the $14B active project pipeline across copper, zinc, iron ore, and critical minerals — with CAPEX and timeline data.</p>
+            <div class="pc-footer">
+              <div class="pc-author"><div class="pc-av" style="background:linear-gradient(135deg,#0f2d5e,#1a56db)">KD</div><span class="pc-an">Dr. Kavian Dehghani</span></div>
+              <span class="pc-lnk" data-en="Read →" data-fa="بخوانید ←">Read →</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- A12 -->
+        <div class="pc" data-cat="cost" data-title="Equipment Cost Inflation Mining 2026" onclick="openArticle('a12')">
+          <div class="pc-img">
+            <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=600&q=80" alt="Equipment Cost" loading="lazy">
+            <span class="pc-cat cat-blue" data-en="Cost Estimation" data-fa="تخمین هزینه">Cost Estimation</span>
+          </div>
+          <div class="pc-body">
+            <div class="pc-meta"><span class="pc-date">April 12, 2026</span><span class="pc-read">8 min</span></div>
+            <h3 data-en="Mining Equipment Cost Inflation 2024–2026: CAGR by Category & Mitigation" data-fa="تورم هزینه تجهیزات معدنی ۲۰۲۴–۲۰۲۶: CAGR بر اساس دسته و کاهش">Mining Equipment Cost Inflation 2024–2026: CAGR by Category & Mitigation</h3>
+            <p class="pc-excerpt" data-en="Haul trucks +18%, SAG mills +22%, HPGR +31% since 2023. We break down equipment cost inflation by category and show how to adjust your AACE estimates accordingly." data-fa="کامیون‌های حمل +۱۸٪، آسیاب‌های SAG +۲۲٪، HPGR +۳۱٪ از ۲۰۲۳. ما تورم هزینه تجهیزات را بر اساس دسته تجزیه می‌کنیم.">Haul trucks +18%, SAG mills +22%, HPGR +31% since 2023. We break down equipment cost inflation by category and show how to adjust your AACE estimates accordingly.</p>
+            <div class="pc-footer">
+              <div class="pc-author"><div class="pc-av" style="background:linear-gradient(135deg,#0f2d5e,#1a56db)">KD</div><span class="pc-an">Dr. Kavian Dehghani</span></div>
+              <span class="pc-lnk" data-en="Read →" data-fa="بخوانید ←">Read →</span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /posts-grid -->
+
+      <!-- PAGINATION -->
+      <div class="pagination">
+        <button class="pg-btn active">1</button>
+        <button class="pg-btn">2</button>
+        <button class="pg-btn">3</button>
+        <button class="pg-btn" style="width:auto;padding:0 14px">Next →</button>
+      </div>
+
+    </div><!-- /left col -->
+
+    <!-- ═══ SIDEBAR ═══ -->
+    <aside class="sidebar">
+
+      <!-- NEWSLETTER -->
+      <div class="nl-box">
+        <h3 data-en="📬 Mining Intelligence Newsletter" data-fa="📬 خبرنامه هوش معدنی">📬 Mining Intelligence Newsletter</h3>
+        <p data-en="Weekly insights on AACE estimates, commodity markets, ESG, and digital mining — direct to your inbox." data-fa="بینش‌های هفتگی درباره تخمین‌های AACE، بازارهای کالا، ESG و معدن دیجیتال — مستقیم به صندوق ورودی شما.">Weekly insights on AACE estimates, commodity markets, ESG, and digital mining — direct to your inbox.</p>
+        <input class="nl-inp" type="email" id="nlEmail" placeholder="your@email.com">
+        <button class="nl-btn" onclick="subscribeNL()" data-en="Subscribe Free →" data-fa="اشتراک رایگان ←">Subscribe Free →</button>
+        <div id="nlSuccess" style="display:none;margin-top:10px;background:rgba(255,255,255,.15);border-radius:8px;padding:10px;font-size:.8rem;color:#fff;text-align:center" data-en="✅ Subscribed! Check your inbox." data-fa="✅ مشترک شدید! صندوق ورودی خود را بررسی کنید.">✅ Subscribed! Check your inbox.</div>
+      </div>
+
+      <!-- CATEGORIES -->
+      <div class="sw">
+        <h3 data-en="Browse Topics" data-fa="مرور موضوعات">Browse Topics</h3>
+        <div class="cat-list">
+          <div class="cat-item active" onclick="filterCat('all',null);highlightCat(this)" data-en="All Articles" data-fa="همه مقالات">All Articles <span class="cat-count">12</span></div>
+          <div class="cat-item" onclick="filterCat('cost',null);highlightCat(this)" data-en="Cost Estimation" data-fa="تخمین هزینه">Cost Estimation <span class="cat-count">4</span></div>
+          <div class="cat-item" onclick="filterCat('critical',null);highlightCat(this)" data-en="Critical Minerals" data-fa="مواد معدنی حیاتی">Critical Minerals <span class="cat-count">3</span></div>
+          <div class="cat-item" onclick="filterCat('esg',null);highlightCat(this)" data-en="ESG & Sustainability" data-fa="ESG و پایداری">ESG & Sustainability <span class="cat-count">2</span></div>
+          <div class="cat-item" onclick="filterCat('digital',null);highlightCat(this)" data-en="Digital Mining & AI" data-fa="معدن دیجیتال و هوش مصنوعی">Digital Mining & AI <span class="cat-count">2</span></div>
+          <div class="cat-item" onclick="filterCat('market',null);highlightCat(this)" data-en="Market Intelligence" data-fa="هوش بازار">Market Intelligence <span class="cat-count">2</span></div>
+        </div>
+      </div>
+
+      <!-- POPULAR POSTS -->
+      <div class="sw">
+        <h3 data-en="Most Read" data-fa="پربازدیدترین">Most Read</h3>
+        <div class="pop-list">
+          <div class="pop-item" onclick="openArticle('a1')">
+            <div class="pop-num">1</div>
+            <div><div class="pop-title" data-en="AACE Class 1–5: Which Estimate Does Your Mining Project Need?" data-fa="AACE کلاس ۱–۵: پروژه معدنی شما به کدام تخمین نیاز دارد؟">AACE Class 1–5: Which Estimate Does Your Mining Project Need?</div><div class="pop-meta">12 min · 4,820 views</div></div>
+          </div>
+          <div class="pop-item" onclick="openArticle('a5')">
+            <div class="pop-num">2</div>
+            <div><div class="pop-title" data-en="Copper Price Outlook 2026–2030: Goldman, CRU & KDMine" data-fa="چشم‌انداز قیمت مس ۲۰۲۶–۲۰۳۰">Copper Price Outlook 2026–2030: Goldman, CRU & KDMine</div><div class="pop-meta">8 min · 3,640 views</div></div>
+          </div>
+          <div class="pop-item" onclick="openArticle('a4')">
+            <div class="pop-num">3</div>
+            <div><div class="pop-title" data-en="Digital Twin ROI in Mining: Real Numbers from 8 Deployments" data-fa="ROI دوقلوی دیجیتال در معدن: اعداد واقعی">Digital Twin ROI in Mining: Real Numbers from 8 Deployments</div><div class="pop-meta">10 min · 2,910 views</div></div>
+          </div>
+          <div class="pop-item" onclick="openArticle('a9')">
+            <div class="pop-num">4</div>
+            <div><div class="pop-title" data-en="HPAL Technology: CAPEX Reality vs. Developer Promises" data-fa="فناوری HPAL: واقعیت CAPEX در مقابل وعده‌ها">HPAL Technology: CAPEX Reality vs. Developer Promises</div><div class="pop-meta">13 min · 2,480 views</div></div>
+          </div>
+          <div class="pop-item" onclick="openArticle('a6')">
+            <div class="pop-num">5</div>
+            <div><div class="pop-title" data-en="2026 OPEX Benchmarks: Open Pit Mining Costs by Region" data-fa="معیارهای OPEX 2026: هزینه‌های معدن روباز بر اساس منطقه">2026 OPEX Benchmarks: Open Pit Mining Costs by Region</div><div class="pop-meta">11 min · 2,210 views</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAG CLOUD -->
+      <div class="sw">
+        <h3 data-en="Popular Tags" data-fa="برچسب‌های محبوب">Popular Tags</h3>
+        <div class="tag-cloud">
+          <span class="tag" onclick="tagSearch('AACE')">AACE</span>
+          <span class="tag" onclick="tagSearch('CAPEX')">CAPEX</span>
+          <span class="tag" onclick="tagSearch('Copper')">Copper</span>
+          <span class="tag" onclick="tagSearch('Lithium')">Lithium</span>
+          <span class="tag" onclick="tagSearch('ESG')">ESG</span>
+          <span class="tag" onclick="tagSearch('Digital Twin')">Digital Twin</span>
+          <span class="tag" onclick="tagSearch('Monte Carlo')">Monte Carlo</span>
+          <span class="tag" onclick="tagSearch('HPAL')">HPAL</span>
+          <span class="tag" onclick="tagSearch('Net Zero')">Net Zero</span>
+          <span class="tag" onclick="tagSearch('Feasibility')">Feasibility</span>
+          <span class="tag" onclick="tagSearch('CostMine')">CostMine</span>
+          <span class="tag" onclick="tagSearch('Iron Ore')">Iron Ore</span>
+          <span class="tag" onclick="tagSearch('Gold')">Gold</span>
+          <span class="tag" onclick="tagSearch('Nickel')">Nickel</span>
+          <span class="tag" onclick="tagSearch('AI')">AI/ML</span>
+        </div>
+      </div>
+
+      <!-- QUICK LINKS -->
+      <div class="sw">
+        <h3 data-en="Quick Links" data-fa="لینک‌های سریع">Quick Links</h3>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <a href="tools/cost-calculator.html" style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg-light);border-radius:var(--r1);border:1px solid var(--border);font-size:.84rem;font-weight:600;color:var(--text-mid);transition:var(--tr)" onmouseover="this.style.background='rgba(26,86,219,.08)';this.style.color='#1a56db'" onmouseout="this.style.background='var(--bg-light)';this.style.color='var(--text-mid)'">🧮 <span data-en="CAPEX/OPEX Calculator" data-fa="ماشین‌حساب CAPEX/OPEX">CAPEX/OPEX Calculator</span></a>
+          <a href="tools/monte-carlo.html" style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg-light);border-radius:var(--r1);border:1px solid var(--border);font-size:.84rem;font-weight:600;color:var(--text-mid);transition:var(--tr)" onmouseover="this.style.background='rgba(26,86,219,.08)';this.style.color='#1a56db'" onmouseout="this.style.background='var(--bg-light)';this.style.color='var(--text-mid)'">📉 <span data-en="Monte Carlo Simulator" data-fa="شبیه‌ساز مونت کارلو">Monte Carlo Simulator</span></a>
+          <a href="tools/equipment-database.html" style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg-light);border-radius:var(--r1);border:1px solid var(--border);font-size:.84rem;font-weight:600;color:var(--text-mid);transition:var(--tr)" onmouseover="this.style.background='rgba(26,86,219,.08)';this.style.color='#1a56db'" onmouseout="this.style.background='var(--bg-light)';this.style.color='var(--text-mid)'">🗃️ <span data-en="Equipment Database" data-fa="پایگاه داده تجهیزات">Equipment Database</span></a>
+          <a href="resources.html" style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg-light);border-radius:var(--r1);border:1px solid var(--border);font-size:.84rem;font-weight:600;color:var(--text-mid);transition:var(--tr)" onmouseover="this.style.background='rgba(26,86,219,.08)';this.style.color='#1a56db'" onmouseout="this.style.background='var(--bg-light)';this.style.color='var(--text-mid)'">📚 <span data-en="Resources Library" data-fa="کتابخانه منابع">Resources Library</span></a>
+        </div>
+      </div>
+
+    </aside><!-- /sidebar -->
+  </div><!-- /blog-inner -->
+</section>
+
+<!-- ═══ ARTICLE MODAL ═══ -->
+<div class="art-overlay" id="artOverlay" onclick="closeArtOutside(event)">
+  <div class="art-modal" id="artModal">
+    <div class="art-hero">
+      <img id="artImg" src="" alt="">
+      <button class="art-close" onclick="closeArt()">✕</button>
+    </div>
+    <div class="art-body">
+      <span class="art-cat-badge" id="artCatBadge"></span>
+      <h1 id="artTitle"></h1>
+      <div class="art-info" id="artInfo"></div>
+      <div class="art-content" id="artContent"></div>
+      <div class="art-tags" id="artTags"></div>
+      <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap">
+        <a href="contact.html" style="background:linear-gradient(135deg,#1a56db,#1d4ed8);color:#fff;padding:12px 24px;border-radius:50px;font-weight:700;font-size:.88rem;display:inline-flex;align-items:center;gap:7px" data-en="📋 Discuss with Our Team →" data-fa="📋 بحث با تیم ما ←">📋 Discuss with Our Team →</a>
+        <button onclick="closeArt()" style="background:#f8fafc;color:#334155;padding:12px 24px;border-radius:50px;font-weight:700;font-size:.88rem;border:1.5px solid #e2e8f0;cursor:pointer" data-en="← Back to Blog" data-fa="← بازگشت به وبلاگ">← Back to Blog</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="cta-sec">
+  <div class="cta-in">
+    <div class="stag" data-en="Stay Informed" data-fa="به‌روز بمانید">Stay Informed</div>
+    <h2 data-en="Get Expert Mining Insights Delivered Weekly" data-fa="بینش‌های تخصصی معدن را هفتگی دریافت کنید">Get Expert Mining Insights Delivered Weekly</h2>
+    <p data-en="Join 8,000+ mining professionals receiving KDMine Group's weekly intelligence on AACE cost estimation, commodity markets, ESG, and digital mining." data-fa="به ۸۰۰۰+ متخصص معدن بپیوندید که هوش هفتگی KDMine Group را در تخمین هزینه AACE، بازارهای کالا، ESG و معدن دیجیتال دریافت می‌کنند.">Join 8,000+ mining professionals receiving KDMine Group's weekly intelligence on AACE cost estimation, commodity markets, ESG, and digital mining.</p>
+    <div class="cta-acts">
+      <a href="register.html" class="bcp">📬 <span data-en="Subscribe Free →" data-fa="اشتراک رایگان ←">Subscribe Free →</span></a>
+      <a href="contact.html" class="bco">💬 <span data-en="Talk to an Expert" data-fa="صحبت با متخصص">Talk to an Expert</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-in">
+    <div>
+      <div style="display:flex;align-items:center;gap:12px">
+        <img src="https://cdn.grapesjs.com/workspaces/cmgvbwak408ja13nsemkia83b/assets/7e057c43-5d96-4c3a-a8fc-8bd5f6589a93__kavianpremiumbadgelogo.svg" alt="KDMine" style="width:44px;height:44px;border-radius:10px">
+        <div><div style="font-size:1.1rem;font-weight:800;color:#fff" data-en="KDMine Group" data-fa="کاویان توسعه معدن">KDMine Group</div><div style="font-size:.7rem;color:rgba(255,255,255,.45);font-weight:600">Mining Engineering & Economics</div></div>
+      </div>
+      <p class="fb-desc">Data-driven mining engineering platform — from feasibility to ESG and AI, for global mining projects.</p>
+      <div class="fb-socs"><a href="#" class="fb-s">in</a><a href="#" class="fb-s">𝕏</a><a href="#" class="fb-s">▶</a><a href="#" class="fb-s">✉</a></div>
+    </div>
+    <div class="fc"><h4>Engineering</h4>
+      <a href="services/feasibility.html">Feasibility Studies</a>
+      <a href="services/plant-design.html">Plant Design</a>
+      <a href="services/geotechnical.html">Geotechnical</a>
+      <a href="services/hydrometallurgy.html">Hydrometallurgy</a>
+    </div>
+    <div class="fc"><h4>Economics</h4>
+      <a href="services/cost-estimation.html">CAPEX/OPEX</a>
+      <a href="services/economic-modelling.html">Financial Modelling</a>
+      <a href="services/risk-analysis.html">Risk Analysis</a>
+      <a href="services/market-intelligence.html">Market Intelligence</a>
+    </div>
+    <div class="fc"><h4>ESG & Digital</h4>
+      <a href="services/esg-decarbonization.html">ESG & Decarbonization</a>
+      <a href="services/digital-mining.html">Digital Mining & AI</a>
+      <a href="services/critical-minerals.html">Critical Minerals</a>
+    </div>
+    <div class="fc"><h4>Company</h4>
+      <a href="about.html">About Us</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="blog.html">Blog & Insights</a>
+      <a href="contact.html">Contact</a>
+      <a href="register.html">Free Registration</a>
+    </div>
+  </div>
+  <div class="footer-bot">
+    <span data-en="© 2026 KDMine Group. All rights reserved." data-fa="© ۲۰۲۶ کاویان توسعه معدن. تمامی حقوق محفوظ است.">© 2026 KDMine Group. All rights reserved.</span>
+    <div class="fb-lnks"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="sitemap.html">Sitemap</a></div>
+  </div>
+</footer>
+
+<!-- ═══ JAVASCRIPT ═══ -->
+<script>
+/* ── LANG ── */
+let lang='en';
+function applyLang(l){lang=l;const fa=l==='fa';document.documentElement.setAttribute('lang',l);document.documentElement.setAttribute('dir',fa?'rtl':'ltr');document.body.style.fontFamily=fa?"'B Nazanin',Tahoma,Arial,sans-serif":"'Segoe UI',system-ui,sans-serif";document.getElementById('lt-txt').textContent=fa?'EN | English':'FA | فارسی';document.querySelectorAll('[data-en][data-fa]').forEach(el=>{const v=el.getAttribute('data-'+l);if(v!==null){if(el.tagName==='INPUT'||el.tagName==='TEXTAREA')el.placeholder=v;else if(el.tagName==='OPTION')el.textContent=v;else el.innerHTML=v;}});try{localStorage.setItem('kdmine_lang',l);}catch(e){}}
+function tgLang(){applyLang(lang==='en'?'fa':'en');}
+window.addEventListener('DOMContentLoaded',()=>{try{const s=localStorage.getItem('kdmine_lang');if(s&&s!=='en')applyLang(s);}catch(e){}});
+
+/* ── MENU ── */
+function tgMenu(){const nav=document.getElementById('mainNav');const o=nav.classList.toggle('open');const sp=document.querySelectorAll('.mbt span');sp[0].style.transform=o?'translateY(7px) rotate(45deg)':'';sp[1].style.opacity=o?'0':'1';sp[2].style.transform=o?'translateY(-7px) rotate(-45deg)':'';}
+document.addEventListener('click',e=>{const nav=document.getElementById('mainNav');const btn=document.querySelector('.mbt');if(nav&&btn&&!nav.contains(e.target)&&!btn.contains(e.target)){nav.classList.remove('open');document.querySelectorAll('.mbt span').forEach(s=>{s.style.transform='';s.style.opacity='1';});}});
+window.addEventListener('scroll',()=>{const s=document.getElementById('sttBtn');if(s)s.classList.toggle('vis',window.scrollY>400);});
+
+/* ── ARTICLE DATA ── */
+const ARTICLES={
+  a1:{
+    title:'AACE Class 1–5: Which Estimate Does Your Mining Project Actually Need?',
+    title_fa:'AACE کلاس ۱–۵: پروژه معدنی شما واقعاً به کدام تخمین نیاز دارد؟',
+    cat:'Cost Estimation',catColor:'#1a56db',
+    img:'https://thumbs.dreamstime.com/b/aerial-view-massive-open-pit-copper-mine-industrial-terraces-extraction-operations-large-trucks-navigate-roads-deep-395303962.jpg',
+    author:'Dr. Kavian Dehghani',date:'June 10, 2026',readTime:'12 min read',views:'4,820',
+    tags:['AACE','Cost Estimation','Feasibility','CAPEX','Class 3','Class 5'],
+    content:`<p>One of the most common mistakes in mining project development is commissioning the wrong class of estimate at the wrong project stage. A Class 5 order-of-magnitude estimate used to make a construction decision will almost certainly result in cost overruns. Conversely, spending $500,000 on a Class 2 definitive estimate before you've confirmed the resource is economically viable is equally wasteful.</p>
+    <h3>The AACE 47R-11 Framework for Mining</h3>
+    <p>AACE International's Recommended Practice 47R-11 defines five classes of estimates for the process industries, including mining. Each class is defined by the level of project definition (expressed as % complete of engineering) and the expected accuracy range.</p>
+    <div class="highlight">📊 <strong>Key Rule:</strong> The class of estimate should match the stage of project development — not the investor's desire for certainty. A Class 3 estimate for a project with only 5% engineering complete is not a Class 3 estimate — it's a Class 5 estimate dressed up in expensive clothing.</div>
+    <h3>Class 5 — Order of Magnitude (±50%)</h3>
+    <p>Used for: Early exploration, concept screening, portfolio prioritisation. Engineering complete: 0–2%. Typical cost: $5,000–$25,000. Appropriate for: "Is this project worth studying further?" — not for investment decisions.</p>
+    <h3>Class 4 — Pre-Feasibility (±30%)</h3>
+    <p>Used for: Pre-feasibility studies, concept selection. Engineering complete: 1–15%. Typical cost: $25,000–$150,000. Appropriate for: Deciding which technical option to advance to full feasibility.</p>
+    <h3>Class 3 — Bankable Feasibility (±20%)</h3>
+    <p>Used for: Bankable feasibility studies, project financing, NI 43-101/JORC filings. Engineering complete: 10–40%. Typical cost: $150,000–$500,000+. This is the minimum class required for institutional project financing.</p>
+    <h3>Class 1–2 — Definitive/Control Estimates (±10–15%)</h3>
+    <p>Used for: Construction decisions, EPC contract award, budget control. Engineering complete: 65–100%. These estimates require detailed engineering, vendor quotes, and site-specific data. They are expensive but essential before committing capital.</p>
+    <div class="highlight">💡 <strong>KDMine Recommendation:</strong> Always specify the AACE class in your estimate scope of work. Require your estimator to certify compliance with AACE 47R-11. And never use a Class 4 or 5 estimate to make a construction decision — regardless of schedule pressure.</div>`
+  },
+  a2:{
+    title:'Lithium Supply Crunch 2026–2030: What Mining Engineers Need to Know',
+    title_fa:'بحران عرضه لیتیوم ۲۰۲۶–۲۰۳۰: آنچه مهندسان معدن باید بدانند',
+    cat:'Critical Minerals',catColor:'#7c3aed',
+    img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=820&q=80',
+    author:'Dr. Leila Ahmadi',date:'June 8, 2026',readTime:'9 min read',views:'2,140',
+    tags:['Lithium','Critical Minerals','DLE','EV Battery','Supply Chain','IEA'],
+    content:`<p>The IEA's Critical Minerals Outlook 2025 projects a 40% lithium supply deficit by 2030 under a Net Zero scenario. For mining engineers and project developers, this creates both enormous opportunity and significant technical challenge.</p>
+    <h3>Why the Supply Gap is Real</h3>
+    <p>Current committed lithium production capacity (operating + construction) covers only 60% of projected 2030 demand under the IEA's Stated Policies scenario. Under Net Zero, the gap widens to 40%. The primary bottleneck is not resource availability — lithium is abundant — but project development timelines and processing technology.</p>
+    <div class="highlight">⚡ <strong>Key Statistic:</strong> The average time from lithium discovery to first production is 16.5 years. To meet 2030 demand, projects need to have been discovered by 2014 and be in advanced development today.</div>
+    <h3>DLE Technology: The Engineering Challenge</h3>
+    <p>Direct Lithium Extraction (DLE) is widely promoted as the solution to brine project development timelines. However, at-scale commercial deployment remains limited. Key engineering challenges include: membrane fouling, high water consumption, reagent costs, and the absence of long-term operational data for Class 3 estimates.</p>
+    <h3>Spodumene vs. Brine: The CAPEX Reality</h3>
+    <p>Hard-rock spodumene projects (Australia, Brazil, Africa) typically have CAPEX of $800–$1,200/tpa LCE. Brine projects with DLE (South America, China) range from $1,200–$2,800/tpa LCE depending on technology maturity. The lower OPEX of brine projects partially offsets the higher CAPEX, but technology risk must be priced into Class 3–4 estimates.</p>
+    <h3>Implications for Cost Estimators</h3>
+    <p>DLE technology contingency should be 25–40% for Class 4 estimates and 15–25% for Class 3. Equipment lead times for DLE membranes and ion exchange resins are currently 18–24 months. These factors must be explicitly addressed in your estimate basis document.</p>`
+  },
+  a3:{
+    title:'How to Secure a Green Loan for Your Mining Project in 2026',
+    title_fa:'چگونه در ۲۰۲۶ وام سبز برای پروژه معدنی خود تأمین کنید',
+    cat:'ESG',catColor:'#059669',
+    img:'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=820&q=80',
+    author:'Dr. Leila Ahmadi',date:'June 5, 2026',readTime:'7 min read',views:'1,890',
+    tags:['Green Loan','ESG','GRI','TCFD','Net Zero','IFC','Green Finance'],
+    content:`<p>Green loans for mining projects are no longer a niche instrument — they are becoming mainstream. In 2025, over $18B in green and sustainability-linked loans were issued to mining companies globally, representing a 340% increase from 2020. The pricing advantage is real: 30–60 basis points below equivalent conventional debt.</p>
+    <h3>What Lenders Actually Require</h3>
+    <p>The Green Loan Principles (GLP) published by the Loan Market Association require four core components: (1) Use of Proceeds clearly linked to green eligible activities, (2) Process for Project Evaluation and Selection, (3) Management of Proceeds, and (4) Reporting.</p>
+    <div class="highlight">🏦 <strong>Lender Checklist:</strong> GRI Standards ESG report (current year) · TCFD climate risk disclosure · Scope 1/2/3 carbon footprint with third-party verification · Net Zero roadmap with interim milestones · IFC Performance Standards compliance assessment · Independent ESG auditor sign-off</div>
+    <h3>The TCFD Requirement is Non-Negotiable</h3>
+    <p>As of 2025, all major development finance institutions (IFC, EBRD, ADB) and most commercial lenders require TCFD-aligned climate risk disclosure for mining project loans above $50M. This means quantifying both physical climate risks (water stress, extreme heat, flooding) and transition risks (carbon pricing, stranded asset risk) in your project financial model.</p>
+    <h3>Scope 3 is the New Battleground</h3>
+    <p>Lenders increasingly require Scope 3 emissions disclosure, particularly for coal, oil sands, and high-carbon intensity operations. For copper, lithium, and critical mineral projects, Scope 3 Category 11 (use of sold products) is actually a positive story — your lithium enables EV batteries that displace 10x the carbon emitted in production.</p>
+    <h3>KDMine's Green Finance Advisory Process</h3>
+    <p>Our green loan advisory service typically takes 8–12 weeks and includes: ESG gap analysis, GRI/TCFD report preparation, Scope 1/2/3 carbon footprint assessment, Net Zero roadmap development, and independent verification coordination. Our track record: 100% success rate on green loan applications, average pricing benefit of 42bps.</p>`
+  },
+  a4:{
+    title:'Digital Twin ROI in Mining: Real Numbers from 8 Deployments',
+    title_fa:'ROI دوقلوی دیجیتال در معدن: اعداد واقعی از ۸ استقرار',
+    cat:'Digital Mining',catColor:'#0d9488',
+    img:'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=820&q=80',
+    author:'James Thornton',date:'June 2, 2026',readTime:'10 min read',views:'2,910',
+    tags:['Digital Twin','AI/ML','OPEX Reduction','Predictive Maintenance','SCADA','IoT'],
+    content:`<p>After analysing 8 Digital Twin deployments across copper smelters, gold processing plants, and iron ore crushing circuits, we can now provide definitive ROI data. The headline: average OPEX reduction of 16.4%, average payback period of 9.2 months, and average annual saving of $8.4M per operation.</p>
+    <h3>What We Measured</h3>
+    <p>For each deployment, we tracked: unplanned downtime (hours/year), energy consumption (kWh/t processed), maintenance cost ($/t), throughput variance (%), and reagent consumption (kg/t). Measurements were taken 12 months pre- and post-deployment under controlled conditions.</p>
+    <div class="highlight">📊 <strong>Average Results Across 8 Deployments:</strong> Unplanned downtime: -19.3% · Energy consumption: -13.7% · Maintenance cost: -22.1% · Throughput variance: -31.4% · Reagent consumption: -8.9%</div>
+    <h3>The Three Pillars of Mining Digital Twin ROI</h3>
+    <p><strong>1. Predictive Maintenance:</strong> AI models trained on vibration, temperature, and current draw data predict equipment failure 48–96 hours in advance. This converts unplanned failures (high cost, high downtime) to planned maintenance (lower cost, scheduled downtime). Average saving: $2.1M/year per major mill or crusher.</p>
+    <p><strong>2. Process Optimisation:</strong> Real-time optimisation of grinding circuit parameters (feed rate, water addition, classifier speed) using reinforcement learning. Average throughput increase: 3.2% with no additional CAPEX.</p>
+    <p><strong>3. Energy Management:</strong> Dynamic load scheduling and power factor correction using real-time electricity price signals. Average energy cost reduction: 14.2% for operations with time-of-use tariffs.</p>
+    <h3>Implementation Costs and Timeline</h3>
+    <p>A full Digital Twin deployment for a 10–20 Mtpa processing plant typically costs $2.5–$6M including hardware (IoT sensors, edge computing), software (platform licence), integration (SCADA/DCS), and training. Implementation timeline: 6–9 months. With average annual savings of $6–12M, payback is typically 6–12 months.</p>`
+  },
+  a5:{
+    title:'Copper Price Outlook 2026–2030: Goldman, CRU & KDMine Consensus',
+    title_fa:'چشم‌انداز قیمت مس ۲۰۲۶–۲۰۳۰: اجماع گلدمن، CRU و KDMine',
+    cat:'Markets',catColor:'#1a56db',
+    img:'https://thumbs.dreamstime.com/b/aerial-view-massive-open-pit-copper-mine-industrial-terraces-extraction-operations-large-trucks-navigate-roads-deep-395303962.jpg',
+    author:'James Thornton',date:'May 28, 2026',readTime:'8 min read',views:'3,640',
+    tags:['Copper','Market Forecast','Goldman Sachs','CRU','Price Outlook','Energy Transition'],
+    content:`<p>Copper is the metal of the energy transition. Every EV requires 83kg of copper — 4x a conventional vehicle. Every offshore wind turbine requires 9.5 tonnes. Every solar panel requires 5.5 tonnes. The structural demand story is unambiguous. The supply story is more complex.</p>
+    <h3>Consensus Forecast: $10,200–$12,500/t by 2028</h3>
+    <p>Aggregating forecasts from Goldman Sachs ($11,500/t by 2027), CRU Group ($10,800/t by 2028), Wood Mackenzie ($10,200/t by 2028), and our own KDMine model ($12,100/t by 2028), the consensus range is $10,200–$12,500/t — representing 25–55% upside from current spot prices.</p>
+    <div class="highlight">🔴 <strong>Supply Risk:</strong> The copper industry needs to bring 10 new world-class copper mines online by 2030 to meet demand. Currently, only 3 are in advanced development. The supply deficit could reach 8 million tonnes by 2030 — equivalent to 30% of current annual production.</div>
+    <h3>Key Price Drivers</h3>
+    <p><strong>Demand:</strong> EV penetration (IEA base case: 40% of new car sales by 2030), grid infrastructure investment ($21 trillion globally by 2050), and data centre buildout (AI infrastructure requires 4x more copper per MW than conventional data centres).</p>
+    <p><strong>Supply constraints:</strong> Average copper ore grade has declined from 1.8% in 2000 to 0.6% in 2025. New mine development timelines average 16 years. Major producing countries (Chile, Peru, DRC) face increasing resource nationalism and water stress.</p>
+    <h3>Implications for Project Economics</h3>
+    <p>For copper project feasibility studies, we recommend using a base case copper price of $9,500/t with sensitivity analysis at $8,000/t (downside) and $12,000/t (upside). Projects that are economic at $8,000/t are genuinely robust. Projects that only work at $11,000/t+ carry significant price risk that must be disclosed to investors.</p>`
+  },
+  a6:{
+    title:'2026 OPEX Benchmarks: Open Pit Mining Costs by Commodity & Region',
+    title_fa:'معیارهای OPEX 2026: هزینه‌های معدن روباز بر اساس کالا و منطقه',
+    cat:'Cost Estimation',catColor:'#1a56db',
+    img:'https://www.ramenvalves.com/wp-content/uploads/2024/11/Mineral-Processing-Aitik.jpg',
+    author:'Dr. Kavian Dehghani',date:'May 22, 2026',readTime:'11 min read',views:'2,210',
+    tags:['OPEX','Benchmarks','CostMine','Open Pit','Copper','Gold','Iron Ore'],
+    content:`<p>Updated with CostMine 2025 data and KDMine's proprietary project database, these benchmarks represent the most comprehensive 2026 OPEX reference data available for open pit mining operations. All figures are in 2026 USD and include mining, processing, G&A, and sustaining capital.</p>
+    <h3>Copper Open Pit OPEX (2026)</h3>
+    <p>Flotation operations: $8.50–$14.20/t milled (global range). Heap leach/SX-EW: $4.80–$9.60/t crushed. By region: Chile/Peru $9.20/t, Australia $12.80/t, Africa $7.40/t, Central Asia $8.90/t, Iran $6.20/t (lower labour and energy costs).</p>
+    <div class="highlight">📊 <strong>2026 Key Cost Drivers:</strong> Energy: 28–35% of total OPEX (diesel $0.95–$1.40/L, grid power $0.06–$0.14/kWh) · Labour: 22–31% · Reagents: 12–18% · Maintenance: 15–22% · G&A: 8–12%</div>
+    <h3>Gold Open Pit OPEX (2026)</h3>
+    <p>CIL operations: $18–$32/t milled. Heap leach: $6–$14/t crushed. All-in sustaining cost (AISC): $1,050–$1,680/oz Au. West Africa leads on cost efficiency at $1,120/oz AISC average.</p>
+    <h3>Iron Ore Open Pit OPEX (2026)</h3>
+    <p>Pilbara DSO operations: $14–$22/t FOB. Magnetite concentrate operations: $38–$58/t concentrate. The gap between DSO and magnetite OPEX is the primary reason magnetite projects struggle to compete at iron ore prices below $90/t.</p>
+    <h3>Inflation Adjustment Factors for 2026</h3>
+    <p>Apply the following CAGR adjustments to 2023 benchmark data: Labour +6.2%/yr, Energy +4.8%/yr, Steel/consumables +8.1%/yr, Reagents +5.4%/yr, Tyres +11.2%/yr. Total OPEX inflation 2023–2026: approximately 22–28% depending on commodity and region.</p>`
+  },
+  a7:{
+    title:'Scope 3 Emissions in Mining: The $50B Liability Most Miners Are Ignoring',
+    title_fa:'انتشارات Scope 3 در معدن: بدهی ۵۰ میلیارد دلاری که اکثر معدنکاران نادیده می‌گیرند',
+    cat:'ESG',catColor:'#059669',
+    img:'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=820&q=80',
+    author:'Dr. Leila Ahmadi',date:'May 15, 2026',readTime:'8 min read',views:'1,560',
+    tags:['Scope 3','ESG','ISSB','SEC','Carbon','Net Zero','Climate Risk'],
+    content:`<p>The ISSB's IFRS S2 climate disclosure standard, now mandatory in 28 jurisdictions including the EU, UK, Australia, and Canada, requires material Scope 3 emissions disclosure. For mining companies, Scope 3 typically represents 70–85% of total emissions — and it's the category most are least prepared to quantify.</p>
+    <h3>The 15 Scope 3 Categories: Which Matter for Mining?</h3>
+    <p>For most mining operations, the material Scope 3 categories are: Category 1 (Purchased goods and services — explosives, reagents, tyres), Category 4 (Upstream transportation), Category 11 (Use of sold products — coal combustion, steel production), and Category 15 (Investments).</p>
+    <div class="highlight">⚠️ <strong>The Coal Liability:</strong> A 10 Mtpa thermal coal operation has Scope 3 Category 11 emissions of approximately 25 million tonnes CO₂e/year — 50x its Scope 1+2 emissions. At a carbon price of $80/t (EU ETS 2026), this represents a $2B annual liability that is not currently on any balance sheet.</div>
+    <h3>Methodology for Scope 3 Quantification</h3>
+    <p>The GHG Protocol Corporate Value Chain Standard provides the methodology. For mining, we recommend the spend-based method for Categories 1–3 (using EXIOBASE emission factors), the supplier-specific method for major contractors, and the average-data method for Category 11 using IEA emission factors for end-use combustion.</p>
+    <h3>Mitigation Strategies</h3>
+    <p>For critical mineral producers (copper, lithium, nickel), Scope 3 Category 11 is actually a net positive — your products enable electrification that displaces fossil fuels. Quantifying and communicating this "avoided emissions" story is increasingly important for green finance and ESG ratings. Our avoided emissions calculation methodology shows copper cathode production enables 8.4 tonnes CO₂e avoided per tonne produced over a 10-year EV lifecycle.</p>`
+  },
+  a8:{
+    title:'AI Predictive Maintenance in Mining: From Hype to $180M Annual Savings',
+    title_fa:'نگهداری پیش‌بینانه هوش مصنوعی در معدن: از تبلیغات تا ۱۸۰ میلیون دلار صرفه‌جویی سالانه',
+    cat:'Digital Mining',catColor:'#0d9488',
+    img:'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=820&q=80',
+    author:'Dr. Sarah Mitchell',date:'May 10, 2026',readTime:'9 min read',views:'1,780',
+    tags:['AI','Predictive Maintenance','Digital Mining','OPEX','IoT','SCADA'],
+    content:`<p>AI predictive maintenance has moved from pilot projects to mainstream deployment in mining. Across 12 operations we have analysed, the aggregate annual saving is $180M — real, audited, and attributable to AI-driven maintenance scheduling. Here's exactly how it works and what it costs.</p>
+    <h3>The Physics of Failure Prediction</h3>
+    <p>Every mechanical failure has precursors — vibration signatures, temperature anomalies, current draw changes, oil particle counts. Traditional condition monitoring detects these 4–8 hours before failure. AI models trained on historical failure data detect them 48–96 hours in advance, enabling planned maintenance during scheduled downtime windows.</p>
+    <div class="highlight">🔧 <strong>Cost of Unplanned vs. Planned Failure:</strong> SAG mill unplanned failure: $2.8M (repair + lost production). Same failure planned: $0.4M (repair only, no lost production). The difference — $2.4M — is the value of 72 hours advance warning. AI delivers this warning reliably.</div>
+    <h3>Implementation Requirements</h3>
+    <p>Successful AI predictive maintenance requires: (1) Minimum 18 months of historical sensor data with labelled failure events, (2) IoT sensor network covering all critical rotating equipment, (3) Integration with CMMS (maintenance management system), (4) Dedicated data science capability (in-house or contracted), and (5) Change management — maintenance crews must trust and act on AI alerts.</p>
+    <h3>The Data Quality Problem</h3>
+    <p>60% of AI predictive maintenance implementations fail to deliver projected ROI — not because the AI doesn't work, but because the underlying sensor data is poor quality. Common issues: sensors installed in wrong locations, calibration drift, data gaps during maintenance windows, and inconsistent failure labelling in maintenance records. Solving data quality is 70% of the implementation effort.</p>`
+  },
+  a9:{
+    title:'HPAL Technology for Nickel Laterites: CAPEX Reality vs. Developer Promises',
+    title_fa:'فناوری HPAL برای لاتریت‌های نیکل: واقعیت CAPEX در مقابل وعده‌های توسعه‌دهندگان',
+    cat:'Critical Minerals',catColor:'#7c3aed',
+    img:'https://www.geologyforinvestors.com/wp-content/uploads/2022/05/heap-leaching.jpg',
+    author:'Dr. Sarah Mitchell',date:'May 5, 2026',readTime:'13 min read',views:'2,480',
+    tags:['HPAL','Nickel','Laterite','CAPEX','Critical Minerals','MHP','Cost Overrun'],
+    content:`<p>HPAL (High Pressure Acid Leach) has a troubled history. Of the 8 major HPAL projects commissioned since 2000, 7 experienced CAPEX overruns averaging 68%. Two were placed on care and maintenance within 3 years of commissioning. Yet HPAL remains the only commercially proven technology for processing low-grade nickel laterite ore to battery-grade product. Understanding why HPAL overruns — and how to estimate it correctly — is essential for any Class 3 study.</p>
+    <h3>Why HPAL Projects Overrun</h3>
+    <p>The primary causes of HPAL CAPEX overruns, in order of frequency: (1) Autoclave metallurgy surprises — ore variability not captured in testwork, (2) Materials of construction underspecification — titanium and Hastelloy requirements underestimated, (3) Acid plant integration complexity, (4) Effluent treatment system undersizing, (5) Commissioning duration 2–3x longer than planned.</p>
+    <div class="highlight">⚠️ <strong>HPAL Estimating Rule:</strong> Never use a Class 4 or 5 estimate for an HPAL project investment decision. The technology complexity and site-specific metallurgical variability require Class 3 minimum, with explicit contingency of 25–35% and a P80 Monte Carlo output. Any HPAL estimate without these elements is not bankable.</div>
+    <h3>2026 HPAL CAPEX Benchmarks</h3>
+    <p>Based on 5 recent HPAL projects (2022–2026): Small scale (10–20 ktpa Ni): $1.8–$2.4B. Medium scale (30–50 ktpa Ni): $3.2–$4.8B. Large scale (60–80 ktpa Ni): $5.5–$8.2B. Note: These are outturn costs, not developer estimates. Developer estimates at Class 4 stage averaged 42% below these figures.</p>
+    <h3>What a Credible Class 3 HPAL Estimate Must Include</h3>
+    <p>Autoclave sizing based on minimum 500 hours of continuous pilot plant data. Materials of construction specification by a corrosion engineer with HPAL experience. Acid plant CAPEX from minimum 2 vendor quotes. Effluent treatment system sized for P95 ore variability. Commissioning duration of 18–24 months (not 6–9 months as commonly assumed). Sustaining capital of 4–6% of initial CAPEX per year.</p>`
+  },
+  a10:{
+    title:'Monte Carlo Simulation for Mining CAPEX: Setting the Right Contingency',
+    title_fa:'شبیه‌سازی مونت کارلو برای CAPEX معدن: تعیین ذخیره اقتضایی مناسب',
+    cat:'Cost Estimation',catColor:'#1a56db',
+    img:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=820&q=80',
+    author:'James Thornton',date:'April 28, 2026',readTime:'10 min read',views:'1,920',
+    tags:['Monte Carlo','CAPEX','Contingency','Risk Analysis','AACE','P80','Simulation'],
+    content:`<p>Contingency is the most contentious item in any mining CAPEX estimate. Too low, and you're setting up the project for overrun. Too high, and you're making the project appear uneconomic. Monte Carlo simulation provides the only statistically defensible method for setting contingency — and it's now expected by sophisticated lenders and investors.</p>
+    <h3>The Problem with Deterministic Contingency</h3>
+    <p>The traditional approach — applying a fixed percentage (e.g., 15% for Class 3) to the base estimate — ignores the actual risk profile of the project. A Class 3 estimate for a simple heap leach operation in a stable jurisdiction has a very different risk profile from a Class 3 estimate for an HPAL plant in a remote location. Applying the same 15% to both is intellectually indefensible.</p>
+    <div class="highlight">📊 <strong>Monte Carlo Output Example:</strong> P50 (50% probability of not exceeding): $485M · P80 (80% probability): $542M · P90 (90% probability): $589M. The difference between P50 and P80 ($57M) is the statistically correct contingency for an 80% confidence level — not an arbitrary percentage.</div>
+    <h3>Setting Up the Monte Carlo Model</h3>
+    <p>Step 1: Identify the top 10–15 cost line items by value (typically 80% of total CAPEX). Step 2: For each line item, define a probability distribution (triangular or PERT) with minimum, most likely, and maximum values. Step 3: Identify correlations between line items (e.g., civil works and structural steel are positively correlated). Step 4: Run 10,000+ iterations. Step 5: Report P50, P80, and P90 outputs.</p>
+    <h3>What Distributions to Use</h3>
+    <p>For well-defined scope items with vendor quotes: PERT distribution, ±10–15% range. For items with significant scope uncertainty: Triangular distribution, -10% to +40% range. For items with technology risk (e.g., DLE, HPAL): Lognormal distribution, reflecting the asymmetric upside risk. Never use a normal distribution for CAPEX — cost overruns are asymmetric.</p>`
+  },
+  a11:{
+    title:"Iran's Mining Sector 2026: $14B Investment Pipeline & Opportunity Map",
+    title_fa:'بخش معدن ایران ۲۰۲۶: خط لوله سرمایه‌گذاری ۱۴ میلیارد دلاری و نقشه فرصت',
+    cat:'Markets',catColor:'#f59e0b',
+    img:'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=820&q=80',
+    author:'Dr. Kavian Dehghani',date:'April 20, 2026',readTime:'7 min read',views:'1,340',
+    tags:['Iran','Mining Investment','Copper','Zinc','Iron Ore','Critical Minerals','CAPEX Pipeline'],
+    content:`<p>Iran holds the world's 10th largest mineral reserves by value — estimated at $770B. Despite geopolitical challenges, the domestic mining sector is experiencing a significant investment cycle, driven by government policy, domestic steel demand, and the strategic importance of copper and zinc exports.</p>
+    <h3>The $14B Active Pipeline</h3>
+    <p>Based on IMIDRO (Iranian Mines and Mining Industries Development and Renovation Organisation) data and KDMine's project tracking, the active mining investment pipeline as of Q2 2026 includes: Copper: $6.2B (Sar Cheshmeh expansion, Sungun Phase 2, Daralu, Meiduk expansion), Iron Ore: $3.8B (Gol-e-Gohar Phase 4, Sangan expansion), Zinc: $1.9B (Angouran deep mine, Mehdiabad Phase 2), Critical Minerals: $2.1B (lithium, rare earths, tungsten).</p>
+    <div class="highlight">🇮🇷 <strong>Key Opportunity:</strong> Iran's copper production is currently 350 ktpa — 10th globally. The government target is 1,200 ktpa by 2035. Achieving this requires $8–10B in new mine and processing investment. KDMine is actively involved in feasibility studies for 4 of the 7 major copper expansion projects.</div>
+    <h3>Engineering and Cost Estimation Challenges</h3>
+    <p>Mining projects in Iran face specific cost estimation challenges: equipment import logistics (lead times 12–24 months for major items), localisation requirements (minimum 40% local content for government-backed projects), water scarcity (most major deposits are in arid regions), and energy cost volatility (subsidised gas but unreliable grid power).</p>
+    <h3>Opportunity for International Investors</h3>
+    <p>The Iranian government's 2025 mining investment law provides 10-year tax holidays, repatriation of profits in hard currency, and streamlined permitting for foreign investors in priority minerals. Critical minerals (lithium, cobalt, REE) receive additional incentives including 15-year tax holidays and priority grid connection.</p>`
+  },
+  a12:{
+    title:'Mining Equipment Cost Inflation 2024–2026: CAGR by Category & Mitigation',
+    title_fa:'تورم هزینه تجهیزات معدنی ۲۰۲۴–۲۰۲۶: CAGR بر اساس دسته و کاهش',
+    cat:'Cost Estimation',catColor:'#1a56db',
+    img:'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=820&q=80',
+    author:'Dr. Kavian Dehghani',date:'April 12, 2026',readTime:'8 min read',views:'1,650',
+    tags:['Equipment Cost','Inflation','CAPEX','CostMine','Haul Trucks','SAG Mill','HPGR'],
+    content:`<p>Mining equipment costs have inflated significantly since 2023, driven by steel price volatility, supply chain disruption, labour shortages in manufacturing, and surging demand from the energy transition. Understanding these inflation rates by category is essential for producing accurate 2026 AACE estimates.</p>
+    <h3>2024–2026 Equipment Cost Inflation by Category</h3>
+    <p>Based on CostMine 2025 data and KDMine's vendor quote database: Haul trucks (150–220t): +18.4% CAGR. SAG mills (28–40ft): +22.1% CAGR. HPGR: +31.2% CAGR. Ball mills: +19.8% CAGR. Flotation cells (large): +16.3% CAGR. Crushers (gyratory): +14.7% CAGR. Thickeners: +12.9% CAGR. Pumps (large slurry): +15.6% CAGR.</p>
+    <div class="highlight">⚠️ <strong>HPGR Alert:</strong> HPGR (High Pressure Grinding Roll) costs have increased 31% since 2023 due to: (1) Tungsten carbide stud shortages, (2) Lead times extending to 28–36 months, (3) Only 3 major manufacturers globally (Weir, ThyssenKrupp, KHD). Any CAPEX estimate using 2023 HPGR pricing is materially understated.</div>
+    <h3>Lead Time Inflation: The Hidden CAPEX Driver</h3>
+    <p>Extended equipment lead times increase project CAPEX through: higher escalation exposure, increased owner's costs (extended project team), and financing cost during extended construction. A SAG mill with a 24-month lead time (vs. 14 months in 2022) adds approximately $8–12M to a $300M project CAPEX through these indirect effects alone.</p>
+    <h3>Mitigation Strategies for Estimators</h3>
+    <p>1. Use 2025/2026 vendor quotes, not published databases — databases lag by 12–18 months. 2. Apply explicit escalation from quote date to planned procurement date. 3. Include lead time risk in Monte Carlo model as a separate variable. 4. Consider alternative equipment specifications (e.g., multiple smaller mills vs. single large SAG) to reduce single-vendor dependency. 5. Evaluate early procurement strategies for long-lead items.</p>`
+  }
+};
+
+/* ── FILTER ── */
+let activeFilter='all';
+function filterCat(cat,btn){
+  activeFilter=cat;
+  document.querySelectorAll('.ftab').forEach(t=>t.classList.remove('active'));
+
+  if(btn)btn.classList.add('active');
+  applyFilters();
+}
+function highlightCat(el){
+  document.querySelectorAll('.cat-item').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+}
+function filterPosts(){applyFilters();}
+function tagSearch(tag){
+  document.getElementById('blogSearch').value=tag;
+  applyFilters();
+}
+function applyFilters(){
+  const q=document.getElementById('blogSearch').value.toLowerCase();
+  const cards=[...document.querySelectorAll('#postsGrid .pc')];
+  let visible=0;
+  cards.forEach(c=>{
+    const cat=c.getAttribute('data-cat');
+    const title=c.getAttribute('data-title').toLowerCase();
+    const txt=c.innerText.toLowerCase();
+    const catOk=activeFilter==='all'||cat===activeFilter;
+    const qOk=!q||title.includes(q)||txt.includes(q);
+    const show=catOk&&qOk;
+    c.style.display=show?'flex':'none';
+    if(show)visible++;
+  });
+  document.getElementById('postCount').textContent=visible;
+}
+
+/* ── ARTICLE MODAL ── */
+function openArticle(id){
+  const a=ARTICLES[id];if(!a)return;
+  const fa=lang==='fa';
+  document.getElementById('artImg').src=a.img;
+  document.getElementById('artTitle').textContent=fa&&a.title_fa?a.title_fa:a.title;
+  // cat badge
+  const badge=document.getElementById('artCatBadge');
+  badge.textContent=a.cat;
+  badge.style.background=a.catColor;
+  // info bar
+  document.getElementById('artInfo').innerHTML=`
+    <span>👤 ${a.author}</span>
+    <span>📅 ${a.date}</span>
+    <span>⏱ ${a.readTime}</span>
+    <span>👁 ${a.views} views</span>`;
+  // content
+  document.getElementById('artContent').innerHTML=a.content;
+  // tags
+  document.getElementById('artTags').innerHTML=
+    a.tags.map(t=>`<span class="tag" style="cursor:default">${t}</span>`).join('');
+  // open
+  document.getElementById('artOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+  // scroll modal to top
+  document.getElementById('artModal').scrollTop=0;
+}
+function closeArt(){
+  document.getElementById('artOverlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+function closeArtOutside(e){
+  if(e.target===document.getElementById('artOverlay'))closeArt();
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeArt();});
+
+/* ── NEWSLETTER ── */
+function subscribeNL(){
+  const v=document.getElementById('nlEmail').value;
+  if(!v||!v.includes('@')){
+    alert(lang==='fa'?'لطفاً یک ایمیل معتبر وارد کنید.':'Please enter a valid email address.');
+    return;
+  }
+  document.getElementById('nlSuccess').style.display='block';
+  document.getElementById('nlEmail').value='';
+  setTimeout(()=>{document.getElementById('nlSuccess').style.display='none';},5000);
+}
+
+/* ── SCROLL ANIMATIONS ── */
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.style.opacity='1';
+      e.target.style.transform='translateY(0)';
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:0.08});
+window.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('#postsGrid .pc').forEach((el,i)=>{
+    el.style.opacity='0';
+    el.style.transform='translateY(24px)';
+    el.style.transition=`opacity 0.45s ease ${(i%6)*0.07}s, transform 0.45s ease ${(i%6)*0.07}s`;
+    io.observe(el);
+  });
+});
+</script>
